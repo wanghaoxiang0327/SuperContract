@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="#1C1F22"
+    android:padding="15dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:text="@string/market_pop_kchart_main"
+            android:textColor="@color/common_white"
+            android:textSize="13dp" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="16dp"
+            android:layout_marginEnd="20dp"
+            android:background="@color/common_hint" />
+
+        <TextView
+            android:id="@+id/tvMa"
+            android:layout_width="65dp"
+            android:layout_height="wrap_content"
+            android:text="MA"
+            android:textColor="@color/common_hint"
+            android:textSize="13dp" />
+
+        <TextView
+            android:id="@+id/tvBoll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="22dp"
+            android:text="BOLL"
+            android:textColor="@color/common_hint"
+            android:textSize="13dp" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:id="@+id/ivUpToggle"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+           />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:text="@string/market_pop_kchart_fu"
+            android:textColor="@color/common_white"
+            android:textSize="13dp" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="17dp"
+            android:layout_marginEnd="20dp"
+            android:background="@color/common_hint" />
+
+        <TextView
+            android:id="@+id/tvMacd"
+            android:layout_width="65dp"
+            android:layout_height="wrap_content"
+            android:text="MACD"
+            android:textColor="@color/common_hint"
+            android:textSize="13dp" />
+
+        <TextView
+            android:id="@+id/tvKdj"
+            android:layout_width="65dp"
+            android:layout_height="wrap_content"
+            android:text="KDJ"
+            android:textColor="@color/common_hint"
+            android:textSize="13dp" />
+
+        <TextView
+            android:id="@+id/tvRsi"
+            android:layout_width="65dp"
+            android:layout_height="wrap_content"
+            android:text="RSI"
+            android:textColor="@color/common_hint"
+            android:textSize="13dp" />
+
+        <TextView
+            android:id="@+id/tvWr"
+            android:layout_width="65dp"
+            android:layout_height="wrap_content"
+            android:text="WR"
+            android:textColor="@color/common_hint"
+            android:textSize="13dp" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:id="@+id/ivDownToggle"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+             />
+    </LinearLayout>
+
+</LinearLayout>

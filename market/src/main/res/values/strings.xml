@@ -1,0 +1,9 @@
+<resources>
+    <string name="market_high">高</string>
+    <string name="market_low">低</string>
+    <string name="market_norm">指标</string>
+    <string name="market_pop_kchart_main">主图</string>
+    <string name="market_pop_kchart_fu">副图</string>
+    <string name="market_time">分时</string>
+    <string name="market_day">日线</string>
+</resources>

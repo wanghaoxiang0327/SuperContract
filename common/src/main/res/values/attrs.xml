@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <declare-styleable name="ToolBarLayout" tools:ignore="ResourceName">
+        <attr name="left_img" format="reference" />
+        <attr name="right_img" format="reference" />
+        <attr name="title" format="string" />
+        <attr name="left_text" format="string" />
+        <attr name="title_color" format="color" />
+        <attr name="right_text" format="string" />
+        <attr name="right_text_color" format="color" />
+        <attr name="background_color" format="color"/>
+    </declare-styleable>
+
+</resources>
