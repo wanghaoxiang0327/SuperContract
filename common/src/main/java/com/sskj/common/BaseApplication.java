@@ -10,6 +10,8 @@ import com.lzy.okgo.interceptor.HttpLoggingInterceptor;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
 import com.scwang.smartrefresh.layout.header.ClassicsHeader;
+import com.shizhefei.mvc.MVCHelper;
+import com.sskj.common.mvc.LoadViewFactory;
 
 import java.util.logging.Level;
 
@@ -25,6 +27,7 @@ public class BaseApplication extends Application {
         ToastUtils.init(this);
         SmartRefreshLayout.setDefaultRefreshFooterCreator((context, layout) -> new ClassicsFooter(this));
         SmartRefreshLayout.setDefaultRefreshHeaderCreator((context, layout) -> new ClassicsHeader(this));
+        MVCHelper.setLoadViewFractory(new LoadViewFactory());
     }
 
     private void initHttp() {

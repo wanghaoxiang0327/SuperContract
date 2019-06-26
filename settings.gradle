@@ -1,1 +1,1 @@
-include ':app', ':common', ':login', ':market'
+include ':app', ':common', ':login', ':market', ':mine'

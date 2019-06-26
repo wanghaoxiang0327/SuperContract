@@ -12,6 +12,7 @@ import com.sskj.common.base.NormalActivity;
 import com.sskj.common.router.RoutePath;
 import com.sskj.common.tab.TabItem;
 import com.sskj.common.tab.TabLayout;
+import com.sskj.mine.MineFragment;
 
 import java.util.ArrayList;
 
@@ -48,7 +49,7 @@ public class MainActivity extends BaseActivity<MainPresenter> {
         fragments.add(HomeFragment.newInstance());
         fragments.add(HomeFragment.newInstance());
         fragments.add(HomeFragment.newInstance());
-        fragments.add(HomeFragment.newInstance());
+        fragments.add(MineFragment.newInstance());
         mainTabLayout.setTabData(mainTabs,getSupportFragmentManager(),R.id.main_content,fragments);
     }
 

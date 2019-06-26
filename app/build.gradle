@@ -28,4 +28,5 @@ dependencies {
     implementation project(path: ':common')
     implementation project(path: ':login')
     implementation project(path: ':market')
+    implementation project(path: ':mine')
 }

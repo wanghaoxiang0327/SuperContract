@@ -284,8 +284,6 @@ public class TabLayout extends FrameLayout implements ValueAnimator.AnimatorUpda
                 } else {
                     if (mListener != null) {
                         mListener.onTabReselect(position);
-                    } else {
-                        mListener.onTabReselect(position);
                     }
                 }
             }

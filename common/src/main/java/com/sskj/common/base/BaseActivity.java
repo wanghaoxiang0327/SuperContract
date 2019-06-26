@@ -57,10 +57,10 @@ public abstract class BaseActivity<P extends BasePresenter> extends ExtendActivi
         mPresenter = getPresenter();
         mPresenter.attachView(this);
         getLifecycle().addObserver(mPresenter);
+        initToolBar(contentView);
         initView();
         initData();
         initEvent();
-        initToolBar(contentView);
         loadData();
     }
 
@@ -94,7 +94,7 @@ public abstract class BaseActivity<P extends BasePresenter> extends ExtendActivi
         ImmersionBar.with(this)
                 .statusBarColor(R.color.common_status_bar)
                 //原理：如果当前设备支持状态栏字体变色，会设置状态栏字体为黑色，如果当前设备不支持状态栏字体变色，会使当前状态栏加上透明度，否则不执行透明度
-                .statusBarDarkFont(true, 0.2f)
+                .statusBarDarkFont(false , 0.2f)
                 .init();
     }
 

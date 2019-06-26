@@ -4,6 +4,8 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 
+import com.hjq.toast.ToastUtils;
+
 
 public class CopyUtils {
     public static boolean copy( Context context, String content) {
@@ -11,6 +13,7 @@ public class CopyUtils {
         if (cm != null) {
             // 将文本内容放到系统剪贴板里。
             cm.setPrimaryClip(ClipData.newPlainText("", content));
+            ToastUtils.show("已复制到剪切板");
             return true;
         }
         return false;
@@ -19,8 +22,9 @@ public class CopyUtils {
     public static String getTextFromClip(Context context) {
         ClipboardManager clipboardManager = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
         //判断剪切版时候有内容
-        if (clipboardManager == null || !clipboardManager.hasPrimaryClip())
+        if (clipboardManager == null || !clipboardManager.hasPrimaryClip()) {
             return "";
+        }
         ClipData clipData = clipboardManager.getPrimaryClip();
         if (clipData != null && clipData.getItemCount() > 0) {
             return clipData.getItemAt(0).getText().toString();

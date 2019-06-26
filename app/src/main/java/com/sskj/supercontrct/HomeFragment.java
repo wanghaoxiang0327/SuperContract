@@ -65,11 +65,9 @@ public class HomeFragment extends BaseFragment<HomePresenter> {
         bannerView.setOffscreenPageLimit(1);
         bannerView.setPageTransformer(false, new ZoomOutPageTransformer());
         bannerView.start();
-        wrapRefresh(homeContent);
-
         FragmentTransaction ft=getChildFragmentManager().beginTransaction();
         ft.replace(R.id.home_coin_list, MarketListFragment.newInstance());
-
+        ft.commitAllowingStateLoss();
     }
 
 

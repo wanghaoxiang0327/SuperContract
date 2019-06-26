@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mine_background"
+    android:orientation="vertical">
+
+    <com.sskj.common.view.ToolBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:background_color="@color/common_action_bar"
+        app:title="绑定手机" />
+
+
+    <TextView
+        android:id="@+id/verify_name"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/common_action_bar"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/common_margin"
+        android:paddingRight="@dimen/common_margin"
+        android:text="手机号码"
+        android:textColor="@color/common_hint"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/verify_account_edt"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/common_edt_line_bg"
+        android:gravity="center_vertical"
+        android:hint="请输入您的手机号码"
+        android:paddingLeft="@dimen/common_margin"
+        android:paddingRight="@dimen/common_margin"
+        android:textColor="@color/common_text"
+        android:textColorHint="@color/common_text"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/verify_code_name"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/common_action_bar"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/common_margin"
+        android:paddingRight="@dimen/common_margin"
+        android:text="手机验证码"
+        android:textColor="@color/common_hint"
+        android:textSize="16sp" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/common_edt_line_bg"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/common_margin"
+        android:paddingRight="@dimen/common_margin">
+
+        <EditText
+            android:id="@+id/edt_verify_code"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@drawable/common_edt_line_bg"
+            android:gravity="center_vertical"
+            android:hint="请输入验证码"
+            android:textColor="@color/common_text"
+            android:textColorHint="@color/common_text"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:gravity="center_vertical"
+            android:text="获取验证码"
+            android:textColor="@color/common_tip" />
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,4 +1,4 @@
-package com.sskj.common.adapter;
+package com.sskj.common.mvc;
 
 import android.view.View;
 

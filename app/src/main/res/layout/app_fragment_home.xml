@@ -9,7 +9,6 @@
 
 
     <android.support.constraint.ConstraintLayout
-
         android:layout_width="match_parent"
         android:layout_height="?android:actionBarSize"
         android:background="@color/common_action_bar">

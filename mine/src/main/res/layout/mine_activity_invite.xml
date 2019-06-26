@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <com.sskj.common.view.ToolBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:background_color="@color/common_action_bar"
+        app:right_text="规则"
+        app:right_text_color="@color/common_text"
+        app:title="邀请好友" />
+
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@mipmap/mine_invite_bg">
+
+        <android.support.constraint.Guideline
+            android:id="@+id/mine_guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.58" />
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/mine_constraintlayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/mine_invite_code_bg"
+            android:padding="18dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/mine_guideline2">
+
+            <TextView
+                android:id="@+id/mine_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="专属邀请码"
+                android:textColor="@color/common_text"
+                android:textSize="13sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/copy_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="复制"
+                android:textColor="@color/common_tip"
+                android:textSize="15sp"
+                app:layout_constraintBaseline_toBaselineOf="@+id/mine_textview"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <TextView
+                android:id="@+id/invite_code"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:textColor="@color/common_white"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/mine_textview"
+                app:layout_constraintTop_toBottomOf="@+id/mine_textview"
+                tools:text="1564100" />
+        </android.support.constraint.ConstraintLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="24dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="@+id/mine_constraintlayout"
+            app:layout_constraintStart_toStartOf="@+id/mine_constraintlayout"
+            app:layout_constraintTop_toBottomOf="@+id/mine_constraintlayout">
+
+            <TextView
+                android:id="@+id/share_img"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/common_hint_50"
+                android:gravity="center"
+                android:text="专属推广海报"
+                android:textColor="@color/common_text" />
+
+            <TextView
+                android:id="@+id/my_team"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/common_hint_50"
+                android:gravity="center"
+                android:text="我的客户"
+                android:textColor="@color/common_text" />
+
+            <TextView
+                android:id="@+id/commission_detail"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/common_hint_50"
+                android:gravity="center"
+                android:text="佣金明细"
+                android:textColor="@color/common_text" />
+
+        </LinearLayout>
+
+
+    </android.support.constraint.ConstraintLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+
+    <com.sskj.common.view.ToolBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:background_color="@color/common_action_bar"
+        app:title="我要推广"
+        app:right_text_color="@color/common_text"
+        app:right_text="保存相册"
+        />
+
+    <FrameLayout
+        android:id="@+id/share_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@mipmap/mine_share_img"
+        >
+    
+        <ImageView
+            android:id="@+id/qr_code_img"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:padding="5dp"
+            android:background="@color/white"
+            android:layout_gravity="right|bottom"
+            android:layout_marginRight="25dp"
+            android:layout_marginBottom="25dp"
+            />
+        
+
+    </FrameLayout>
+
+
+</LinearLayout>

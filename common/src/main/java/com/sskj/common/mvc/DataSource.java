@@ -1,4 +1,4 @@
-package com.sskj.common.adapter;
+package com.sskj.common.mvc;
 
 import com.shizhefei.mvc.IAsyncDataSource;
 import com.shizhefei.mvc.RequestHandle;

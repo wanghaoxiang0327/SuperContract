@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="113dp"
+    android:layout_marginLeft="5dp"
+    android:background="@mipmap/mine_commission_bg"
+    android:padding="8dp">
+
+
+    <TextView
+        android:id="@+id/freeze_tv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:textColor="@color/common_text"
+        android:textSize="13sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/mine_textview6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/mine_textview6"
+        tools:text="21.212" />
+
+    <TextView
+        android:id="@+id/mine_textview5"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:textColor="@color/common_text"
+        android:textSize="13sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/total_tv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/total_tv"
+        tools:text="21.212" />
+
+    <TextView
+        android:id="@+id/coin_name"
+        android:layout_width="match_parent"
+        android:layout_height="19dp"
+        android:text="ETH"
+        android:textColor="@color/common_text"
+        android:textSize="17sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/mine_textview6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="冻结佣金:"
+        android:textColor="@color/common_hint"
+        android:textSize="13sp"
+        app:layout_constraintStart_toStartOf="@+id/coin_name"
+        app:layout_constraintTop_toBottomOf="@+id/total_tv" />
+
+    <TextView
+        android:id="@+id/total_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="累计佣金:"
+        android:textColor="@color/common_hint"
+        android:textSize="13sp"
+        app:layout_constraintStart_toStartOf="@+id/coin_name"
+        app:layout_constraintTop_toBottomOf="@+id/mine_textview2" />
+
+    <TextView
+        android:id="@+id/mine_textview2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="今日预估佣金:"
+        android:textColor="@color/common_hint"
+        android:textSize="13sp"
+        app:layout_constraintStart_toStartOf="@+id/coin_name"
+        app:layout_constraintTop_toBottomOf="@+id/coin_name" />
+
+
+    <TextView
+        android:id="@+id/future_tv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:textColor="@color/common_text"
+        android:textSize="13sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/mine_textview2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/mine_textview2"
+        tools:text="21.212" />
+
+</android.support.constraint.ConstraintLayout>
