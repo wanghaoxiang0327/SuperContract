@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.sskj.market" >
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.sskj.market">
 
     <application>
-        <activity android:name=".MarketDetailActivity" />
-    </application>
+        <activity android:name=".MarketDetailActivity"/>
+    <activity android:name="com.sskj.market.TransactionRecordsActivity"/>
+</application>
 </manifest>

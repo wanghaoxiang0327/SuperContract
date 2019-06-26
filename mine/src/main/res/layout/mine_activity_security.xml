@@ -35,7 +35,7 @@
         app:sLeftTextString="短信验证"
         app:sRightTextColor="@color/common_hint"
         app:sRightTextSize="14sp"
-        app:sRightTvDrawableRight="@mipmap/mine_ic_arrow_right" />
+        app:sRightTvDrawableRight="@mipmap/common_arrow_right" />
 
 
     <com.allen.library.SuperTextView
@@ -51,7 +51,7 @@
         app:sLeftTextString="谷歌验证"
         app:sRightTextColor="@color/common_hint"
         app:sRightTextSize="14sp"
-        app:sRightTvDrawableRight="@mipmap/mine_ic_arrow_right" />
+        app:sRightTvDrawableRight="@mipmap/common_arrow_right" />
 
 
     <com.allen.library.SuperTextView
@@ -69,7 +69,7 @@
         app:sLeftTextString="邮箱验证"
         app:sRightTextColor="@color/common_hint"
         app:sRightTextSize="14sp"
-        app:sRightTvDrawableRight="@mipmap/mine_ic_arrow_right" />
+        app:sRightTvDrawableRight="@mipmap/common_arrow_right" />
 
 
     <com.allen.library.SuperTextView
@@ -87,7 +87,7 @@
         app:sLeftTextString="登录密码"
         app:sRightTextColor="@color/common_hint"
         app:sRightTextSize="14sp"
-        app:sRightTvDrawableRight="@mipmap/mine_ic_arrow_right" />
+        app:sRightTvDrawableRight="@mipmap/common_arrow_right" />
 
     <com.allen.library.SuperTextView
         android:id="@+id/menu_pay_ps"
@@ -103,7 +103,7 @@
         app:sLeftTextString="资金密码"
         app:sRightTextColor="@color/common_hint"
         app:sRightTextSize="14sp"
-        app:sRightTvDrawableRight="@mipmap/mine_ic_arrow_right" />
+        app:sRightTvDrawableRight="@mipmap/common_arrow_right" />
 
 
 </LinearLayout>

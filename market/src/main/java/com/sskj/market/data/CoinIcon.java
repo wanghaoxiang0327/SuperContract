@@ -17,10 +17,10 @@ public class CoinIcon {
     }
 
     private static void init(){
-        iconMap.put("btc_usdt", R.mipmap.market_icon_btc);
-        iconMap.put("eos_usdt", R.mipmap.market_icon_eos);
-        iconMap.put("eth_usdt", R.mipmap.market_icon_eth);
-        iconMap.put("bch_usdt", R.mipmap.market_icon_bch);
+        iconMap.put("btc_usdt", R.mipmap.common_icon_btc);
+        iconMap.put("eos_usdt", R.mipmap.common_icon_eos);
+        iconMap.put("eth_usdt", R.mipmap.common_icon_eth);
+        iconMap.put("bch_usdt", R.mipmap.common_icon_bch);
 //        iconMap.put("xrp_usdt", R.mipmap.app_icon_xrp);
 //        iconMap.put("etc_usdt", R.mipmap.app_icon_etc);
 //        iconMap.put("ltc_usdt", R.mipmap.app_icon_ltc);

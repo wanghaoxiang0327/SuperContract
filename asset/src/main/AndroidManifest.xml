@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.sskj.asset">
+    <application>
+        <activity android:name=".RechargeActivity"/>
+    <activity android:name="com.sskj.asset.AssetRecordsActivity"/>
+<activity android:name="com.sskj.asset.TransferActivity"/>
+<activity android:name="com.sskj.asset.TransferRecordsActivity"/>
+<activity android:name="com.sskj.asset.WithdrawActivity"/>
+<activity android:name="com.sskj.asset.WithdrawRecordsActivity"/>
+<activity android:name="com.sskj.asset.AddressListActivity"/>
+<activity android:name="com.sskj.asset.InsertAddressActivity"/>
+</application>
+
+</manifest>

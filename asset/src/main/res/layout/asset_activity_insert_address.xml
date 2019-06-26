@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/common_dark"
+    android:orientation="vertical">
+
+
+    <com.sskj.common.view.ToolBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:background_color="@color/common_action_bar"
+        app:title="提币地址" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/common_edt_line_bg"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/common_margin"
+        android:paddingRight="@dimen/common_margin">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="地址"
+            android:textColor="@color/common_text"
+            android:textSize="15sp" />
+
+        <EditText
+            android:id="@+id/address_edt"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="16dp"
+            android:layout_weight="1"
+            android:background="@null"
+            android:drawablePadding="10dp"
+            android:hint="请输入钱包地址"
+            android:imeOptions="actionNext"
+            android:inputType="text"
+            android:maxLines="1"
+            android:textColor="@color/common_text"
+            android:textColorHint="@color/common_hint"
+            android:textSize="14sp" />
+
+        <ImageView
+            android:id="@+id/select_address"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="16dp"
+            android:src="@mipmap/asset_scan" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/common_edt_line_bg"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/common_margin"
+        android:paddingRight="@dimen/common_margin">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="备注"
+            android:textColor="@color/common_text"
+            android:textSize="15sp" />
+
+        <EditText
+            android:id="@+id/remark_edt"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="16dp"
+            android:layout_weight="1"
+            android:background="@null"
+            android:drawablePadding="10dp"
+            android:hint="请填写备注信息"
+            android:imeOptions="actionNext"
+            android:inputType="text"
+            android:maxLines="1"
+            android:textColor="@color/common_text"
+            android:textColorHint="@color/common_hint"
+            android:textSize="14sp" />
+
+
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginLeft="@dimen/common_margin"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="@dimen/common_margin"
+        android:background="@drawable/common_tip_50"
+        android:text="提币"
+        android:textColor="@color/common_white" />
+</LinearLayout>

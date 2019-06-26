@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/common_background"
+    android:padding="@dimen/common_margin">
+
+    <TextView
+        android:id="@+id/marketTextview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="买涨"
+        android:textColor="@color/market_green"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="XRP/USDT"
+        android:textColor="@color/common_text"
+        android:textSize="15sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/marketTextview"
+        app:layout_constraintStart_toEndOf="@+id/marketTextview" />
+
+    <View
+        android:id="@+id/marketView"
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/common_divider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/marketTextview"
+        app:layout_constraintTop_toBottomOf="@+id/marketTextview" />
+
+    <TextView
+        android:id="@+id/marketTextview2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="资产币种"
+        android:textColor="@color/common_hint"
+        app:layout_constraintEnd_toStartOf="@+id/marketGuideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/marketView" />
+
+    <TextView
+        android:id="@+id/marketTextview3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="下单价"
+        android:textColor="@color/common_hint"
+        app:layout_constraintBaseline_toBaselineOf="@+id/marketTextview2"
+        app:layout_constraintEnd_toStartOf="@+id/marketGuideline2"
+        app:layout_constraintStart_toStartOf="@+id/marketGuideline" />
+
+    <TextView
+        android:id="@+id/marketTextview11"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:gravity="right"
+        android:text="交易总额"
+        android:textColor="@color/common_hint"
+        app:layout_constraintBaseline_toBaselineOf="@+id/marketTextview3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/marketGuideline2" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/marketGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.33" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/marketGuideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.66" />
+
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:text="EOS"
+        android:textColor="@color/common_text"
+        app:layout_constraintBaseline_toBaselineOf="@+id/marketTextview10"
+        app:layout_constraintEnd_toEndOf="@+id/marketTextview11"
+        app:layout_constraintStart_toStartOf="@+id/marketTextview11" />
+
+    <TextView
+        android:id="@+id/marketTextview10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="EOS"
+        android:textColor="@color/common_text"
+        app:layout_constraintBaseline_toBaselineOf="@+id/marketTextview9"
+        app:layout_constraintStart_toStartOf="@+id/marketTextview3" />
+
+    <TextView
+        android:id="@+id/marketTextview9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="EOS"
+        android:textColor="@color/common_text"
+        app:layout_constraintStart_toStartOf="@+id/marketTextview2"
+        app:layout_constraintTop_toBottomOf="@+id/marketTextview2" />
+
+
+    <TextView
+        android:id="@+id/marketTextview6"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:text="EOS"
+        android:textColor="@color/common_text"
+        app:layout_constraintBaseline_toBaselineOf="@+id/marketTextview8"
+        app:layout_constraintEnd_toEndOf="@+id/marketTextview5"
+        app:layout_constraintStart_toStartOf="@+id/marketTextview5" />
+
+    <TextView
+        android:id="@+id/marketTextview7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="EOS"
+        android:textColor="@color/common_text"
+        app:layout_constraintStart_toStartOf="@+id/marketTextview12"
+        app:layout_constraintTop_toBottomOf="@+id/marketTextview12" />
+
+    <TextView
+        android:id="@+id/marketTextview8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="EOS"
+        android:textColor="@color/common_text"
+        app:layout_constraintBaseline_toBaselineOf="@+id/marketTextview7"
+        app:layout_constraintStart_toStartOf="@+id/marketTextview4" />
+
+    <TextView
+        android:id="@+id/marketTextview12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="点位"
+        android:textColor="@color/common_hint"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/marketTextview9" />
+
+    <TextView
+        android:id="@+id/marketTextview4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="止盈价"
+
+        android:textColor="@color/common_hint"
+        app:layout_constraintBaseline_toBaselineOf="@+id/marketTextview12"
+        app:layout_constraintEnd_toStartOf="@+id/marketGuideline2"
+        app:layout_constraintStart_toStartOf="@+id/marketGuideline" />
+
+    <TextView
+        android:id="@+id/marketTextview5"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:gravity="right"
+        android:text="止损价"
+        android:textColor="@color/common_hint"
+        app:layout_constraintBaseline_toBaselineOf="@+id/marketTextview4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/marketGuideline2" />
+
+    <View
+        android:id="@+id/marketView2"
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/common_divider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/marketTextview7" />
+
+    <TextView
+        android:id="@+id/marketTextview13"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/market_green_bg"
+        android:gravity="center"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="最新价 64.3256"
+        android:textColor="@color/common_button_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/marketTextview14"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/marketView2" />
+
+    <TextView
+        android:id="@+id/marketTextview14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2019-06-17 12:03:48"
+        android:textColor="@color/common_hint"
+        app:layout_constraintBottom_toBottomOf="@+id/marketTextview13"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/marketTextview13" />
+</android.support.constraint.ConstraintLayout>

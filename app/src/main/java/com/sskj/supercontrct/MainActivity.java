@@ -6,6 +6,7 @@ import android.widget.FrameLayout;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.flyco.tablayout.listener.CustomTabEntity;
+import com.sskj.asset.AssetFragment;
 import com.sskj.common.base.BaseActivity;
 import com.sskj.common.base.BasePresenter;
 import com.sskj.common.base.NormalActivity;
@@ -47,8 +48,8 @@ public class MainActivity extends BaseActivity<MainPresenter> {
         mainTabs.add(new TabItem("资产", R.mipmap.tab_asset, R.mipmap.tab_asset_p));
         mainTabs.add(new TabItem("我的", R.mipmap.tab_mine, R.mipmap.tab_mine_p));
         fragments.add(HomeFragment.newInstance());
-        fragments.add(HomeFragment.newInstance());
-        fragments.add(HomeFragment.newInstance());
+        fragments.add(NewsFragment.newInstance());
+        fragments.add(AssetFragment.newInstance());
         fragments.add(MineFragment.newInstance());
         mainTabLayout.setTabData(mainTabs,getSupportFragmentManager(),R.id.main_content,fragments);
     }

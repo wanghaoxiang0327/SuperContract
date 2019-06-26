@@ -14,4 +14,6 @@
     <color name="common_divider">#223249</color>
     <color name="common_button_text">#FFFFFF</color>
     <color name="common_text">#d8dcf3</color>
+    <color name="common_dark">#071724</color>
+
 </resources>

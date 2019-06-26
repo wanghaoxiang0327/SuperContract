@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.sskj.common.view.ToolBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:background_color="@color/common_action_bar"
+        app:title="资讯详情" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@color/common_dark" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/common_background"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/title_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:lineHeight="24dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="35dp"
+            android:gravity="center"
+            android:textColor="@color/common_text"
+            android:textSize="17sp"
+            tools:text="Algorand区块链正式完全开源，并推出公
+共Bug奖励计划" />
+
+        <TextView
+            android:id="@+id/time_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:textColor="@color/common_hint"
+            android:textSize="12sp"
+            tools:text="2019-06-14 09:13:28" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="@dimen/common_margin"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="@dimen/common_margin"
+            android:background="@color/common_divider" />
+
+        <TextView
+            android:id="@+id/content_tv"
+            android:lineHeight="24dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/common_margin"
+            android:textColor="@color/common_text" />
+    </LinearLayout>
+
+
+</LinearLayout>

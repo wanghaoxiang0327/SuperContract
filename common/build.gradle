@@ -93,4 +93,6 @@ dependencies {
     api 'com.google.code.gson:gson:2.8.5'
 
     api 'com.github.tbruyelle:rxpermissions:0.10.2'
+
+    api 'com.hey.lib:HeySpinner:2.0.2'
 }

@@ -12,6 +12,7 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
 import com.scwang.smartrefresh.layout.header.ClassicsHeader;
 import com.sskj.common.R;
+import com.sskj.common.exception.BreakException;
 import com.sskj.common.view.ToolBarLayout;
 
 import butterknife.ButterKnife;
@@ -30,6 +31,8 @@ public abstract class BaseFragment<P extends BasePresenter> extends ExtendFragme
 
     private boolean enableLoadMore = true;
 
+    protected ToolBarLayout mToolBarLayout;
+
     Unbinder unbinder;
 
     @Nullable
@@ -45,6 +48,7 @@ public abstract class BaseFragment<P extends BasePresenter> extends ExtendFragme
         super.onViewCreated(view, savedInstanceState);
         mPresenter = getPresenter();
         mPresenter.attachView(this);
+        initToolBar(rootView);
         initView();
         initData();
         initEvent();
@@ -60,6 +64,28 @@ public abstract class BaseFragment<P extends BasePresenter> extends ExtendFragme
 
     }
 
+
+
+    /**
+     * 递归查找当前activity中的ToolBarLayout,设置返回事件
+     *
+     * @param view
+     */
+    private void initToolBar(View view) {
+        try {
+            ViewGroup viewGroup = (ViewGroup) view;
+            for (int i = 0; i < viewGroup.getChildCount(); i++) {
+                if (viewGroup.getChildAt(i) instanceof ToolBarLayout) {
+                    mToolBarLayout = (ToolBarLayout) viewGroup.getChildAt(i);
+                    throw new BreakException();
+                } else if (viewGroup.getChildAt(i) instanceof ViewGroup) {
+                    initToolBar(viewGroup.getChildAt(i));
+                }
+            }
+        } catch (BreakException e) {
+            mToolBarLayout.mLeftButton.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+        }
+    }
 
     /**
      * 包裹模式 在view的外层包裹上RefreshLayout

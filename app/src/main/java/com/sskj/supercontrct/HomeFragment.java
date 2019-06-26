@@ -16,6 +16,7 @@ import com.sskj.common.base.BaseFragment;
 import com.sskj.common.glide.GlideImageLoader;
 import com.sskj.common.glide.ZoomOutPageTransformer;
 import com.sskj.market.MarketListFragment;
+import com.sskj.market.dialog.CreateOrderDialog;
 import com.youth.banner.Banner;
 
 import java.util.ArrayList;
@@ -73,7 +74,9 @@ public class HomeFragment extends BaseFragment<HomePresenter> {
 
     @Override
     public void initData() {
-
+        tvNotice.setOnClickListener(view -> {
+            new CreateOrderDialog(getContext()).show();
+        });
     }
 
     @Override

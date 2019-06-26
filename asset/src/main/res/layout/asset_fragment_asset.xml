@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/common_background"
+    android:orientation="vertical">
+
+    <com.sskj.common.view.ToolBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:background_color="@color/common_action_bar"
+        app:right_img="@mipmap/asset_records"
+        app:title="资产" />
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/common_margin"
+        android:background="@drawable/common_tip_15"
+        android:padding="@dimen/common_margin">
+
+        <TextView
+            android:id="@+id/asset_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="目标账户"
+            android:textColor="@color/common_text"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/asset_textview2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="总资产折合(USDT)"
+            android:textColor="@color/common_text"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@+id/asset_textview"
+            app:layout_constraintTop_toBottomOf="@+id/asset_textview" />
+
+        <TextView
+            android:id="@+id/total_asset_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:textColor="@color/common_text"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/asset_textview2"
+            app:layout_constraintTop_toBottomOf="@+id/asset_textview2"
+            android:text="0.0000" />
+
+        <ImageView
+            android:id="@+id/hide_asset_img"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_marginStart="16dp"
+            android:src="@mipmap/asset_icon_show"
+            app:layout_constraintBottom_toBottomOf="@+id/total_asset_tv"
+            app:layout_constraintStart_toEndOf="@+id/total_asset_tv"
+            app:layout_constraintTop_toTopOf="@+id/total_asset_tv" />
+
+        <TextView
+            android:id="@+id/cny_asset_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/common_text"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@+id/total_asset_tv"
+            app:layout_constraintTop_toBottomOf="@+id/total_asset_tv"
+            android:text="≈0.00CNY" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/common_dark" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/asset_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>

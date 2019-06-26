@@ -56,7 +56,6 @@ public class TipDialog extends AlertDialog {
     @Override
     public void show() {
         super.show();
-
         WindowManager.LayoutParams params = getWindow().getAttributes();
         params.width = (int) (ScreenUtil.getScreenWidth(getContext()) * 0.8);
         getWindow().setAttributes(params);
