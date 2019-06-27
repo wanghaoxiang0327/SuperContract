@@ -3,6 +3,7 @@ package com.sskj.market;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.ImageView;
@@ -104,7 +105,9 @@ public class MarketDetailActivity extends BaseActivity<MarketDetailPresenter> {
 
     @Override
     public void initData() {
-
+        FragmentTransaction ft=getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.order_content, ProfitOrderFragment.newInstance());
+        ft.commitAllowingStateLoss();
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)

@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.shizhefei.mvc.IDataAdapter;
+import com.sskj.common.R;
 
 import java.util.Collection;
 import java.util.List;
@@ -18,13 +19,19 @@ public abstract class BaseAdapter<T> extends BaseQuickAdapter<T, ViewHolder> imp
         }
     }
 
+    public BaseAdapter(int layoutResId, @Nullable List<T> data, RecyclerView recyclerView,boolean showEmpty) {
+        this(layoutResId,data,recyclerView);
+        if (showEmpty){
+            setEmptyView(R.layout.common_empty_view,null);
+        }
+    }
+
     @Override
     protected void convert(ViewHolder helper, T item) {
         bind(helper, item);
     }
 
     public abstract void bind(ViewHolder holder, T item);
-
 
     @Override
     public void setNewData(@Nullable List<T> data) {

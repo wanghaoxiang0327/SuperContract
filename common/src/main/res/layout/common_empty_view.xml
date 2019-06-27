@@ -14,5 +14,6 @@
         android:drawablePadding="10dp"
         android:gravity="center"
         android:padding="@dimen/common_margin"
+        android:textColor="@color/common_text"
         android:text="@string/common_no_data" />
 </FrameLayout>

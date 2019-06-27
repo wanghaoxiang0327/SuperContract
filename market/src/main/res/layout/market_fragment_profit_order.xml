@@ -39,6 +39,8 @@
 
 
     <LinearLayout
+        android:paddingLeft="@dimen/common_margin"
+        android:paddingRight="@dimen/common_margin"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/common_background"
