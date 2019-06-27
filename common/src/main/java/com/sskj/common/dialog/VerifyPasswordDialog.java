@@ -130,7 +130,7 @@ public class VerifyPasswordDialog extends BottomSheetDialog {
             public void onNext(Long aLong) {
                 int time = (int) (60 - aLong);
                 if (getCodeView != null) {
-                    getCodeView.setText(time + getString(R.string.login_get_code_retry));
+                    getCodeView.setText(time +"S后重新发送");
                 }
             }
 
@@ -142,10 +142,9 @@ public class VerifyPasswordDialog extends BottomSheetDialog {
             @Override
             public void onComplete() {
                 if (getCodeView != null) {
-                    getCodeView.setText(getString(R.string.login_get_verify_code));
+                    getCodeView.setText("获取验证码");
                     getCodeView.setEnabled(true);
-                    getCodeView.setTextColor(color(R.color.common_white));
-
+                    getCodeView.setTextColor( ContextCompat.getColor(getContext(),R.color.common_white));
                 }
                 if (!disposableSubscriber.isDisposed()) {
                     disposableSubscriber.dispose();
