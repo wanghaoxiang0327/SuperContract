@@ -28,7 +28,7 @@ class ChartPresenter extends BasePresenter<ChartFragment> {
                 .params("code", code)
                 .execute(new JsonCallBack<HttpResult<List<Stock>>>() {
                     @Override
-                    protected void onSuccess(HttpResult<List<Stock>> result) {
+                    protected void onNext(HttpResult<List<Stock>> result) {
                         mView.setChartData(result.getData());
                     }
                 });

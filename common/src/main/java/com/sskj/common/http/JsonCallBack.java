@@ -1,5 +1,7 @@
 package com.sskj.common.http;
 
+import android.support.annotation.CallSuper;
+
 import com.alibaba.fastjson.JSON;
 import com.lzy.okgo.callback.AbsCallback;
 import com.lzy.okgo.model.Response;
@@ -33,7 +35,7 @@ public abstract class JsonCallBack<T> extends AbsCallback<T> {
 
     @Override
     public void onSuccess(Response<T> response) {
-        onSuccess(response);
+        onNext(response.body());
         onFinish();
     }
 
@@ -68,8 +70,10 @@ public abstract class JsonCallBack<T> extends AbsCallback<T> {
         return null;
     }
 
-    protected abstract void onSuccess(T result);
+    protected abstract void onNext(T result);
 
+    @Override
+    @CallSuper
     public void onFinish(){
         if (presenter!=null){
             presenter.hideLoading();

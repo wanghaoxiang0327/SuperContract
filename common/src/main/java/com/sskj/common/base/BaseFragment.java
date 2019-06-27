@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.github.nukc.stateview.StateView;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
@@ -34,6 +35,10 @@ public abstract class BaseFragment<P extends BasePresenter> extends ExtendFragme
     protected ToolBarLayout mToolBarLayout;
 
     Unbinder unbinder;
+
+
+    protected StateView stateView;
+
 
     @Nullable
     @Override
@@ -64,6 +69,13 @@ public abstract class BaseFragment<P extends BasePresenter> extends ExtendFragme
 
     }
 
+
+    public void showError() {
+        if (stateView == null) {
+            stateView = StateView.inject(rootView, true);
+        }
+        stateView.showRetry();
+    }
 
 
     /**
@@ -106,7 +118,7 @@ public abstract class BaseFragment<P extends BasePresenter> extends ExtendFragme
     public void initRefreshLayout() {
         View rootView = LayoutInflater.from(getContext()).inflate(R.layout.common_refresh_layout, null);
         mRefreshLayout = rootView.findViewById(R.id.refreshLayout);
-        mRefreshLayout.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT));
+        mRefreshLayout.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         mRefreshLayout.setRefreshHeader(new ClassicsHeader(getContext()));
         mRefreshLayout.setRefreshFooter(new ClassicsFooter(getContext()));
         mRefreshLayout.setEnableRefresh(enableRefresh);
@@ -128,7 +140,7 @@ public abstract class BaseFragment<P extends BasePresenter> extends ExtendFragme
     }
 
     public void stopRefresh() {
-        if (mRefreshLayout!=null){
+        if (mRefreshLayout != null) {
             mRefreshLayout.finishRefresh();
             mRefreshLayout.finishLoadMore();
         }
@@ -156,10 +168,6 @@ public abstract class BaseFragment<P extends BasePresenter> extends ExtendFragme
         super.onDestroy();
         unbinder.unbind();
     }
-
-
-
-
 
 
 }

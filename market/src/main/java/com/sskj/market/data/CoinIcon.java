@@ -10,13 +10,14 @@ public class CoinIcon {
     private static Map<String, Integer> iconMap = new HashMap<>();
 
     public static int getIcon(String name) {
-        if (iconMap==null){
+        if (iconMap.isEmpty()) {
             init();
         }
-        return iconMap.get(name);
+        name = name.toLowerCase().replace("/", "_");
+        return iconMap.get(name) == null ? 0 : iconMap.get(name);
     }
 
-    private static void init(){
+    private static void init() {
         iconMap.put("btc_usdt", R.mipmap.common_icon_btc);
         iconMap.put("eos_usdt", R.mipmap.common_icon_eos);
         iconMap.put("eth_usdt", R.mipmap.common_icon_eth);

@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.github.tifezh.kchartlib.utils.NumberUtil;
 import com.sskj.common.App;
@@ -22,6 +23,7 @@ import com.sskj.common.tab.TabItem;
 import com.sskj.common.tab.TabLayout;
 import com.sskj.common.utils.ClickUtil;
 import com.sskj.common.utils.NumberUtils;
+import com.sskj.common.view.ToolBarLayout;
 import com.sskj.market.data.CoinBean;
 
 import java.util.ArrayList;
@@ -36,16 +38,6 @@ import butterknife.BindView;
 @Route(path = RoutePath.MARKET_DETAIL)
 public class MarketDetailActivity extends BaseActivity<MarketDetailPresenter> {
 
-    @BindView(R2.id.tvTitle)
-    TextView tvTitle;
-    @BindView(R2.id.left_img)
-    ImageView leftImg;
-    @BindView(R2.id.left_tv)
-    TextView leftTv;
-    @BindView(R2.id.left_layout)
-    LinearLayout leftLayout;
-    @BindView(R2.id.right_tv)
-    TextView rightTv;
     @BindView(R2.id.tv_price)
     TextView tvPrice;
     @BindView(R2.id.tv_high)
@@ -75,6 +67,7 @@ public class MarketDetailActivity extends BaseActivity<MarketDetailPresenter> {
 
     private String code;
 
+
     @Override
     public int getLayoutId() {
         return R.layout.market_activity_market_detail;
@@ -87,8 +80,11 @@ public class MarketDetailActivity extends BaseActivity<MarketDetailPresenter> {
 
     @Override
     public void initView() {
-        if (coinBean!=null){
-            code=coinBean.getCode();
+        ARouter.getInstance().inject(this);
+        if (coinBean != null) {
+            code = coinBean.getCode();
+            mToolBarLayout.setTitle(coinBean.getCode());
+            updateUI(coinBean);
         }
         chartTabs.add(new TabItem(getString(R.string.market_time), 0, 0));
         chartTabs.add(new TabItem("1M", 0, 0));
@@ -115,14 +111,13 @@ public class MarketDetailActivity extends BaseActivity<MarketDetailPresenter> {
     public void updateUI(CoinBean data) {
         if (data != null) {
             if (data.getCode().equals(code)) {
-                tvTitle.setText(data.getName().replace("_", "/"));
                 tvPrice.setText(NumberUtils.keep4(data.getPrice()));
                 tvCny.setText(String.format("≈%s CNY", NumberUtils.keep2(data.getCnyPrice())));
                 tvChangeRate.setText(data.getChangeRate());
                 tvLow.setText(NumberUtils.keep4(data.getLow()));
                 tvHigh.setText(NumberUtils.keep4(data.getHigh()));
-                tvPrice.setTextColor(ContextCompat.getColor(App.INSTANCE, data.isUp() ? color(R.color.market_green) : color(R.color.market_red)));
-                tvChangeRate.setTextColor(ContextCompat.getColor(App.INSTANCE, data.isUp() ?color(R.color.market_green) : color(R.color.market_red)));
+                tvPrice.setTextColor(data.isUp() ? color(R.color.market_green) : color(R.color.market_red));
+                tvChangeRate.setTextColor(data.isUp() ? color(R.color.market_green) : color(R.color.market_red));
             }
         }
     }
@@ -213,8 +208,9 @@ public class MarketDetailActivity extends BaseActivity<MarketDetailPresenter> {
     }
 
 
-    public static void start(Context context) {
+    public static void start(Context context, CoinBean coinBean) {
         Intent intent = new Intent(context, MarketDetailActivity.class);
+        intent.putExtra("coinBean", coinBean);
         context.startActivity(intent);
     }
 

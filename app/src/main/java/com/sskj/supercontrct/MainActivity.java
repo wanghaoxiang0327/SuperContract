@@ -65,12 +65,6 @@ public class MainActivity extends BaseActivity<MainPresenter> {
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        ButterKnife.bind(this);
-    }
-
-    @Override
     protected MainPresenter getPresenter() {
         return new MainPresenter();
     }

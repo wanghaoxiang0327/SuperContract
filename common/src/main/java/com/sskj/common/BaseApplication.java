@@ -3,6 +3,7 @@ package com.sskj.common;
 import android.app.Application;
 import android.support.multidex.MultiDex;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.hjq.toast.ToastUtils;
 import com.hjq.toast.style.ToastQQStyle;
 import com.lzy.okgo.OkGo;
@@ -28,6 +29,11 @@ public class BaseApplication extends Application {
         SmartRefreshLayout.setDefaultRefreshFooterCreator((context, layout) -> new ClassicsFooter(this));
         SmartRefreshLayout.setDefaultRefreshHeaderCreator((context, layout) -> new ClassicsHeader(this));
         MVCHelper.setLoadViewFractory(new LoadViewFactory());
+        if (BuildConfig.DEBUG){
+            ARouter.openDebug();
+            ARouter.openLog();
+        }
+        ARouter.init(this);
     }
 
     private void initHttp() {

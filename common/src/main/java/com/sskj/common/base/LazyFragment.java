@@ -13,7 +13,7 @@ public class LazyFragment extends Fragment {
     public void onResume() {
         super.onResume();
         isResume = true;
-        if (getUserVisibleHint()&&!isFirst){
+        if (getUserVisibleHint() && !isFirst) {
             onVisible();
         }
     }
@@ -33,15 +33,16 @@ public class LazyFragment extends Fragment {
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
-        if (isResume && isVisibleToUser && isFirst) {
-            lazyLoad();
-            isFirst = false;
-        }
-        if (!isVisibleToUser) {
-            onInVisible();
-        } else {
-            if (!isFirst) {
+        if (isVisibleToUser) {
+            if (isFirst) {
+                lazyLoad();
+                isFirst = false;
+            } else {
                 onVisible();
+            }
+        } else {
+            if (isFirst){
+                onInVisible();
             }
         }
     }

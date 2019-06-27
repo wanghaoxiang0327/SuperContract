@@ -4,10 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000"
+    android:background="@color/common_background"
     android:orientation="vertical">
 
-    <include layout="@layout/common_include_head" />
+
+    <com.sskj.common.view.ToolBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:background_color="@color/common_action_bar" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@color/common_dark" />
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -104,6 +113,11 @@
 
     </android.support.constraint.ConstraintLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/common_divider" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -117,6 +131,9 @@
             <com.sskj.common.tab.TabLayout
                 android:id="@+id/chart_tabLayout"
                 android:layout_width="0dp"
+                app:tabSelectedTextColor="@color/common_tip"
+                app:textUnselectColor="@color/common_hint"
+                app:indicator_color="@color/common_tip"
                 android:layout_height="match_parent"
                 android:layout_weight="1" />
 
@@ -125,11 +142,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
                 android:text="@string/market_norm"
                 android:textColor="@color/common_hint" />
 
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_marginRight="16dp"
+                android:layout_height="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_gravity="bottom"
+                android:src="@mipmap/market_icon_triangle"
+                />
         </LinearLayout>
 
         <FrameLayout

@@ -39,7 +39,6 @@ public class SmartRefreshHelper<DATA> extends MVCHelper<DATA> {
         private View view;
 
         public SmartRefreshView(SmartRefreshLayout smartRefreshLayout) {
-
             this.smartRefreshLayout = smartRefreshLayout;
             smartRefreshLayout.setEnableLoadMore(false);
             try {
@@ -70,7 +69,6 @@ public class SmartRefreshHelper<DATA> extends MVCHelper<DATA> {
         @Override
         public void setOnRefreshListener(OnRefreshListener onRefreshListener) {
             this.onRefreshListener = onRefreshListener;
-
         }
 
         @Override

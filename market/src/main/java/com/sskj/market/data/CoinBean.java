@@ -1,6 +1,8 @@
 package com.sskj.market.data;
 
-public class CoinBean {
+import java.io.Serializable;
+
+public class CoinBean implements Serializable {
 
     /**
      * code : btc_usdt
