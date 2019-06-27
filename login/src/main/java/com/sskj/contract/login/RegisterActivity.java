@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.gyf.barlibrary.ImmersionBar;
 import com.hjq.toast.ToastUtils;
+import com.sskj.common.CommonConfig;
 import com.sskj.common.base.BaseActivity;
 import com.sskj.common.tab.TabItem;
 import com.sskj.common.tab.TabLayout;
@@ -157,12 +158,34 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> {
                 ToastUtils.show("请先阅读并同意《用户注册协议》");
                 return;
             }
+            mPresenter.register(mobileEdt.getText().toString(),
+                    nameEdt.getText().toString(),
+                    verifyCodeEdt.getText().toString(),
+                    psEdt.getText().toString(),
+                    repeatPsEdt.getText().toString(),
+                    inviteCodeEdt.getText().toString()
+            );
 
         });
 
         //发送验证码
         getCodeBtn.setOnClickListener(v -> {
-            sendVerifyCodeSuccess();
+            if (registerType == RegisterType.MOBILE) {
+                if (!PatternUtils.isMobile(getText(mobileEdt))) {
+                    return;
+                }
+            } else {
+                if (!PatternUtils.isEmail(getText(mobileEdt))) {
+                    return;
+                }
+            }
+            if (registerType == RegisterType.EMAIL) {
+
+                mPresenter.sendEmail(mobileEdt.getText().toString());
+            } else {
+                mPresenter.sendSms(mobileEdt.getText().toString());
+
+            }
         });
     }
 
@@ -254,4 +277,10 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> {
         context.startActivity(intent);
     }
 
+    public void registerSuccess(String mobile) {
+        Intent intent = new Intent();
+        intent.putExtra(CommonConfig.MOBILE, mobile);
+        setResult(RESULT_OK, intent);
+        finish();
+    }
 }

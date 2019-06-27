@@ -121,6 +121,9 @@ public class VerifyPasswordDialog extends BottomSheetDialog {
         });
     }
 
+    public void setOnConfirmListener(OnConfirmListener onConfirmListener) {
+        this.onConfirmListener = onConfirmListener;
+    }
 
     public void startTimeDown(TextView getCodeView) {
         getCodeView.setEnabled(false);

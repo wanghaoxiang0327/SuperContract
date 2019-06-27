@@ -3,6 +3,11 @@ package com.sskj.common.http;
 import com.sskj.common.BuildConfig;
 
 public class HttpConfig {
+    public static final String LOGIN = "/Home/user/user_login";
+    public static final String GOOGLE_CHECK = "/Home/User/is_start_google";
+    public static final String REGISTER = "/Home/user/register";
+    public static final String SEND_SMS = "/Home/user/send_sms";
+    public static final String SEND_EMAIL = "/Home/User/send_email";
     public static String BASE_URL = BuildConfig.IP;
 
 

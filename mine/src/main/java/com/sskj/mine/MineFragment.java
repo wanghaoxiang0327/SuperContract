@@ -3,9 +3,11 @@ package com.sskj.mine;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.allen.library.SuperTextView;
 import com.sskj.common.base.BaseFragment;
 import com.sskj.common.dialog.TipDialog;
+import com.sskj.common.router.RoutePath;
 import com.sskj.common.utils.ClickUtil;
 
 import butterknife.BindView;
@@ -73,6 +75,9 @@ public class MineFragment extends BaseFragment<MinePresenter> {
         ClickUtil.click(menuInvite, view -> {
             InviteActivity.start(getContext());
         });
+               ClickUtil.click(menuLogout,(view) -> {
+                   ARouter.getInstance().build(RoutePath.LOGIN_LOGIN).navigation();
+                       });
     }
 
     @Override

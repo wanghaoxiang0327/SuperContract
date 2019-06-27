@@ -2,7 +2,6 @@ package com.sskj.contract.login;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.text.InputType;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,7 +23,6 @@ import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import io.reactivex.Flowable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
@@ -36,7 +34,7 @@ import io.reactivex.subscribers.DisposableSubscriber;
  * @author Hey
  * Create at  2019/06/21
  */
-public class ForgetPsActivity extends BaseActivity<forgetPsPresenter> {
+public class ForgetPsActivity extends BaseActivity<ForgetPsPresenter> {
 
 
     @BindView(R2.id.typeTabLayout)
@@ -72,8 +70,8 @@ public class ForgetPsActivity extends BaseActivity<forgetPsPresenter> {
     }
 
     @Override
-    public forgetPsPresenter getPresenter() {
-        return new forgetPsPresenter();
+    public ForgetPsPresenter getPresenter() {
+        return new ForgetPsPresenter();
     }
 
     @Override

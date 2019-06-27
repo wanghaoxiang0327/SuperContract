@@ -16,9 +16,13 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.gyf.barlibrary.ImmersionBar;
+import com.lzy.okgo.OkGo;
+import com.lzy.okgo.model.HttpHeaders;
+import com.sskj.common.CommonConfig;
 import com.sskj.common.base.BaseActivity;
 import com.sskj.common.dialog.VerifyPasswordDialog;
 import com.sskj.common.router.RoutePath;
@@ -28,6 +32,8 @@ import com.sskj.common.tab.TabSelectListener;
 import com.sskj.common.utils.ClickUtil;
 import com.sskj.common.utils.EditUtil;
 import com.sskj.common.utils.PatternUtils;
+import com.sskj.common.utils.SpUtil;
+import com.sskj.contract.login.bean.LoginBean;
 
 import java.util.ArrayList;
 
@@ -37,6 +43,7 @@ import butterknife.BindView;
  * @author Hey
  * Create at  2019/06/20
  */
+@Route(path = RoutePath.LOGIN_LOGIN)
 public class LoginActivity extends BaseActivity<LoginPresenter> {
 
 
@@ -142,8 +149,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> {
             if (!PatternUtils.isLoginPs(getText(psEdt))) {
                 return;
             }
-            loginSuccess();
-
+            mPresenter.isGoogleCheck(mobileEdt.getText().toString(), psEdt.getText().toString());
         });
         //忘记密码
         ClickUtil.click(forgetPs, view -> {
@@ -169,7 +175,13 @@ public class LoginActivity extends BaseActivity<LoginPresenter> {
     }
 
 
-    public void loginSuccess(){
+    public void loginSuccess(LoginBean loginBean) {
+        SpUtil.put(CommonConfig.ACCOUNT, loginBean.getAccount());
+        SpUtil.put(CommonConfig.TOKEN, loginBean.getToken());
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.put(CommonConfig.ACCOUNT, loginBean.getAccount());
+        httpHeaders.put(CommonConfig.TOKEN, loginBean.getToken());
+        OkGo.getInstance().addCommonHeaders(httpHeaders);
         ARouter.getInstance().build(RoutePath.MAIN).navigation();
     }
 
@@ -188,5 +200,16 @@ public class LoginActivity extends BaseActivity<LoginPresenter> {
                 .statusBarDarkFont(false, 0.2f)
                 .init();
 
+    }
+
+    /**
+     * 显示谷歌验证
+     */
+    public void showCheckGoogle(String mobile, String opwd) {
+        VerifyPasswordDialog verifyPasswordDialog = new VerifyPasswordDialog(this, false, true, false);
+        verifyPasswordDialog.setOnConfirmListener((dialog, ps, sms, google) -> {
+
+            mPresenter.login(mobile, opwd, google);
+        });
     }
 }
