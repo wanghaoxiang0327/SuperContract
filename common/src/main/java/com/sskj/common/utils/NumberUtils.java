@@ -44,8 +44,8 @@ public class NumberUtils {
         NumberFormat numberFormat = NumberFormat.getInstance();
         numberFormat.setGroupingUsed(false);
         numberFormat.setRoundingMode(mode);
-        numberFormat.setMinimumIntegerDigits(minDigit);
-        numberFormat.setMaximumIntegerDigits(maxDigit);
+        numberFormat.setMinimumFractionDigits(minDigit);
+        numberFormat.setMaximumFractionDigits(maxDigit);
         if (num instanceof String) {
             String str = (String) num;
             if (TextUtils.isEmpty(str)) {

@@ -3,6 +3,7 @@ package com.sskj.common.http;
 import android.support.annotation.CallSuper;
 
 import com.alibaba.fastjson.JSON;
+import com.hjq.toast.ToastUtils;
 import com.lzy.okgo.callback.AbsCallback;
 import com.lzy.okgo.model.Response;
 import com.lzy.okgo.request.base.Request;
@@ -43,6 +44,9 @@ public abstract class JsonCallBack<T> extends AbsCallback<T> {
     public void onError(Response<T> response) {
         super.onError(response);
         onFinish();
+        if (response.getException() instanceof ApiException){
+            ToastUtils.show(((ApiException) response.getException()).getMsg());
+        }
     }
 
 

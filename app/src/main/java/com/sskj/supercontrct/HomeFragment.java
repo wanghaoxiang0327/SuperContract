@@ -1,17 +1,11 @@
 package com.sskj.supercontrct;
 
 import android.os.Bundle;
-import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 import android.widget.TextSwitcher;
 import android.widget.TextView;
 
@@ -20,12 +14,10 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.sskj.common.adapter.BaseAdapter;
 import com.sskj.common.adapter.ViewHolder;
 import com.sskj.common.base.BaseFragment;
-import com.sskj.common.dialog.Coin;
 import com.sskj.common.glide.GlideImageLoader;
 import com.sskj.common.glide.ZoomOutPageTransformer;
 import com.sskj.common.router.RoutePath;
 import com.sskj.common.utils.ClickUtil;
-import com.sskj.market.MarketDetailActivity;
 import com.sskj.market.MarketListFragment;
 import com.sskj.market.data.CoinBean;
 import com.sskj.market.dialog.CreateOrderDialog;
@@ -35,8 +27,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 
 /**
  * @author Hey
@@ -118,7 +108,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> {
     @Override
     public void initData() {
         tvNotice.setOnClickListener(view -> {
-            new CreateOrderDialog(getContext()).show();
+
         });
         wrapRefresh(homeContent);
         setEnableLoadMore(false);

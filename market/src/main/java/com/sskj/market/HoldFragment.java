@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import com.sskj.common.adapter.BaseAdapter;
 import com.sskj.common.adapter.ViewHolder;
 import com.sskj.common.base.BaseFragment;
+import com.sskj.common.http.Page;
 import com.sskj.market.data.HoldBean;
 
 import butterknife.BindView;
@@ -25,6 +26,8 @@ public class HoldFragment extends BaseFragment<HoldPresenter> {
     @BindView(R2.id.records_list)
     RecyclerView recordsList;
 
+    private int page = 1;
+    private int size = 10;
 
     @Override
     public int getLayoutId() {
@@ -50,7 +53,7 @@ public class HoldFragment extends BaseFragment<HoldPresenter> {
 
     @Override
     public void initData() {
-
+        mPresenter.getOrder(1, page, size);
     }
 
     @Override
@@ -67,4 +70,12 @@ public class HoldFragment extends BaseFragment<HoldPresenter> {
     }
 
 
+    public void setData(Page<HoldBean> data) {
+        if (page == 1) {
+            holdAdapter.setNewData(data.getRes());
+        } else {
+            holdAdapter.addData(data.getRes());
+        }
+
+    }
 }

@@ -131,7 +131,6 @@ public class LoginActivity extends BaseActivity<LoginPresenter> {
             if (isEmptyShow(mobileEdt)) {
                 return;
             }
-
             if (registerType == RegisterType.MOBILE) {
                 if (!PatternUtils.isMobile(getText(mobileEdt))) {
                     return;

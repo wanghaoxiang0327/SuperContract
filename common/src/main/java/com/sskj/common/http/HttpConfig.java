@@ -18,6 +18,26 @@ public class HttpConfig {
      */
     public static final String GET_PRODUCT = "/home/ajax/getpro";
 
+    //=======================交易==============================
+    //币种资产
+    public static final String COINASSET = "/home/user/wall_list";
+
+    //交易币种
+    public static final String TRADECOIN = "/home/Contract/pro_list";
+
+    //创建订单
+    public static final String CREATE_ORDER = "/home/Contract/create_order";
+
+    //我的订单
+    public static final String MYORDER = "/Home/Contract/contract_record";
+
+
+
+
+
+
+
+
 
     //========================mine================================
 

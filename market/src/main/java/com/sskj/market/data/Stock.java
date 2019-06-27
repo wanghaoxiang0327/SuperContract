@@ -2,6 +2,7 @@ package com.sskj.market.data;
 
 import android.text.TextUtils;
 
+import com.alibaba.fastjson.annotation.JSONField;
 import com.github.tifezh.kchartlib.chart.entity.IBOLL;
 import com.github.tifezh.kchartlib.chart.entity.IKDJ;
 import com.github.tifezh.kchartlib.chart.entity.IKLine;
@@ -11,6 +12,7 @@ import com.github.tifezh.kchartlib.chart.entity.IRSI;
 import com.github.tifezh.kchartlib.chart.entity.IWR;
 
 import java.util.Date;
+import java.util.NavigableMap;
 
 /**
  * Created by Administrator on 2018/4/3.
@@ -72,9 +74,13 @@ public class Stock implements IKLine, IMinuteLine, IBOLL, IKDJ, IMACD, IRSI, IWR
     private String code;
     private double volume;
     private String price;
+    @JSONField(name = "openingPrice")
     private double open;
+    @JSONField(name = "closingPrice")
     private double close;
+    @JSONField(name = "highestPrice")
     private double high;
+    @JSONField(name = "lowestPrice")
     private double low;
     private long timestamp;
     public float wr;
@@ -136,7 +142,7 @@ public class Stock implements IKLine, IMinuteLine, IBOLL, IKDJ, IMACD, IRSI, IWR
         this.code = code;
     }
 
-
+    @Override
     public float getVolume() {
         return (float) volume;
     }
@@ -167,6 +173,7 @@ public class Stock implements IKLine, IMinuteLine, IBOLL, IKDJ, IMACD, IRSI, IWR
         return 0;
     }
 
+    @Override
     public float getPrice() {
         return TextUtils.isEmpty(price) ? 0 : Float.valueOf(price);
     }
@@ -177,6 +184,7 @@ public class Stock implements IKLine, IMinuteLine, IBOLL, IKDJ, IMACD, IRSI, IWR
     }
 
 
+    @Override
     public float getOpenPrice() {
         return (float) open;
     }
@@ -191,7 +199,7 @@ public class Stock implements IKLine, IMinuteLine, IBOLL, IKDJ, IMACD, IRSI, IWR
         return (float) low;
     }
 
-
+    @Override
     public float getClosePrice() {
         return (float) close;
     }

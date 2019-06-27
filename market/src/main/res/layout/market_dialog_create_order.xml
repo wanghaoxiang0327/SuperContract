@@ -17,6 +17,7 @@
         android:orientation="horizontal">
 
         <TextView
+            android:id="@+id/name_tv"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center"
@@ -49,55 +50,13 @@
 
 
     <RadioGroup
+        android:id="@+id/asset_group"
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:layout_marginTop="10dp"
         android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:orientation="horizontal" />
 
-        <RadioButton
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/market_tip_5"
-            android:button="@null"
-            android:gravity="center"
-            android:text="USDT"
-            android:textColor="@color/common_text" />
-
-        <RadioButton
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="18dp"
-            android:layout_weight="1"
-            android:background="@drawable/market_tip_5"
-            android:button="@null"
-            android:gravity="center"
-            android:text="ETH"
-            android:textColor="@color/common_text" />
-
-        <RadioButton
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="18dp"
-            android:layout_weight="1"
-            android:background="@drawable/market_tip_5"
-            android:button="@null"
-            android:gravity="center"
-            android:text="BTC"
-            android:textColor="@color/common_text" />
-
-        <RadioButton
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="18dp"
-            android:layout_weight="1"
-            android:background="@drawable/market_tip_5"
-            android:button="@null"
-            android:gravity="center"
-            android:text="EOS"
-            android:textColor="@color/common_text" />
-    </RadioGroup>
 
     <View
         android:layout_width="match_parent"
@@ -105,54 +64,28 @@
         android:layout_marginTop="16dp"
         android:background="@color/common_divider" />
 
-    <RadioGroup
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="35dp"
         android:layout_marginTop="16dp"
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:gravity="center_vertical"
             android:text="交易量"
             android:textColor="@color/common_text" />
 
-        <RadioButton
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="18dp"
-            android:layout_weight="1"
-            android:background="@drawable/market_tip_5"
-            android:button="@null"
-            android:gravity="center"
-            android:text="0.01"
-            android:textColor="@color/common_text" />
+        <RadioGroup
+            android:id="@+id/trade_count_group"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginLeft="28dp"
+            android:orientation="horizontal" />
 
-        <RadioButton
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="18dp"
-            android:layout_weight="1"
-            android:background="@drawable/market_tip_5"
-            android:button="@null"
-            android:gravity="center"
-            android:text="0.1"
-            android:textColor="@color/common_text" />
-
-        <RadioButton
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="18dp"
-            android:layout_weight="1"
-            android:background="@drawable/market_tip_5"
-            android:button="@null"
-            android:gravity="center"
-            android:text="1"
-            android:textColor="@color/common_text" />
-    </RadioGroup>
-
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -167,62 +100,41 @@
             android:textColor="@color/common_text" />
 
         <com.hey.lib.HeySpinner
-            android:layout_width="wrap_content"
+            android:id="@+id/trade_num_spinner"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="1手"
+            app:dividerColor="@color/common_divider"
+            app:itemTextColor="@color/common_text"
+            app:itemBackground="@color/common_action_bar"
             android:textColor="@color/common_text"
             app:arrowColor="@color/common_tip" />
 
     </LinearLayout>
 
-    <RadioGroup
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="35dp"
         android:layout_marginTop="16dp"
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:gravity="center_vertical"
             android:text="目标点位"
             android:textColor="@color/common_text" />
 
-        <RadioButton
-            android:layout_width="0dp"
+        <RadioGroup
+            android:id="@+id/trade_point_group"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="18dp"
-            android:layout_weight="1"
-            android:background="@drawable/market_tip_5"
-            android:button="@null"
-            android:gravity="center"
-            android:text="0.01"
-            android:textColor="@color/common_text" />
+            android:layout_marginLeft="16dp"
+            android:orientation="horizontal" />
 
-        <RadioButton
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="18dp"
-            android:layout_weight="1"
-            android:background="@drawable/market_tip_5"
-            android:button="@null"
-            android:gravity="center"
-            android:text="0.1"
-            android:textColor="@color/common_text" />
-
-        <RadioButton
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="18dp"
-            android:layout_weight="1"
-            android:background="@drawable/market_tip_5"
-            android:button="@null"
-            android:gravity="center"
-            android:text="1"
-            android:textColor="@color/common_text" />
-    </RadioGroup>
+    </LinearLayout>
 
     <View
         android:layout_width="match_parent"
@@ -246,6 +158,7 @@
             android:textSize="12sp" />
 
         <TextView
+            android:id="@+id/stop_win_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="0.0000"
@@ -260,6 +173,7 @@
             android:textSize="12sp" />
 
         <TextView
+            android:id="@+id/stop_loss_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="0.0000"
@@ -277,6 +191,7 @@
         android:textColor="@color/common_text" />
 
     <Button
+        android:id="@+id/submit"
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:layout_marginTop="20dp"
