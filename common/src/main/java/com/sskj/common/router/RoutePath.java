@@ -7,4 +7,5 @@ public class RoutePath {
     public  static  final  String MARKET_DETAIL="/market/detail";
     public static final String LOGIN_LOGIN = "/login/login";
     public static final String SECURITY = "/mine/security";
+    public static final String SPLASH ="/app/splash" ;
 }

@@ -73,7 +73,7 @@ public class RefreshActivity extends AppCompatActivity {
     public void initRefreshLayout() {
         View rootView = LayoutInflater.from(this).inflate(R.layout.common_refresh_layout, null);
         mRefreshLayout = rootView.findViewById(R.id.refreshLayout);
-        mRefreshLayout.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT));
+        mRefreshLayout.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         mRefreshLayout.setRefreshHeader(new ClassicsHeader(this));
         mRefreshLayout.setRefreshFooter(new ClassicsFooter(this));
         mRefreshLayout.setEnableRefresh(enableRefresh);
@@ -97,9 +97,9 @@ public class RefreshActivity extends AppCompatActivity {
 
 
     public void stopRefresh() {
-        if (mRefreshLayout!=null){
-            mRefreshLayout.finishRefresh();
-            mRefreshLayout.finishLoadMore();
+        if (mRefreshLayout != null) {
+            mRefreshLayout.finishRefresh(1);
+            mRefreshLayout.finishLoadMore(1);
         }
     }
 

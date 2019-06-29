@@ -16,9 +16,9 @@ import com.sskj.common.dialog.LoadingProgressDialog;
 
 public abstract class ExtendActivity extends RefreshActivity implements IBaseView {
 
-    private LoadingProgressDialog loadingDialog;
+    public LoadingProgressDialog loadingDialog;
 
-    private int request;
+    public int request;
 
 
     @Override

@@ -1,6 +1,8 @@
 package com.sskj.common;
 
 import android.app.Application;
+import android.content.Context;
+import android.content.res.Configuration;
 import android.support.multidex.MultiDex;
 import android.text.TextUtils;
 
@@ -14,6 +16,7 @@ import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
 import com.scwang.smartrefresh.layout.header.ClassicsHeader;
 import com.shizhefei.mvc.MVCHelper;
+import com.sskj.common.language.LocalManageUtil;
 import com.sskj.common.mvc.LoadViewFactory;
 import com.sskj.common.utils.SpUtil;
 
@@ -38,6 +41,7 @@ public class BaseApplication extends Application {
             ARouter.openLog();
         }
         ARouter.init(this);
+        LocalManageUtil.setApplicationLanguage(this);
     }
 
     private void initHeader() {
@@ -52,6 +56,21 @@ public class BaseApplication extends Application {
         }
         OkGo.getInstance().addCommonHeaders(httpHeaders);
     }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        //保存系统选择语言
+        LocalManageUtil.onConfigurationChanged(getApplicationContext());
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        //保存系统选择语言
+        LocalManageUtil.saveSystemCurrentLanguage(base);
+        super.attachBaseContext(LocalManageUtil.setLocal(base));
+    }
+
 
     private void initHttp() {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();

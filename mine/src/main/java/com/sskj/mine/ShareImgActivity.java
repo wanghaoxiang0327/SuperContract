@@ -7,7 +7,9 @@ import android.os.Bundle;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.sskj.common.base.BaseActivity;
+import com.sskj.common.http.BaseHttpConfig;
 import com.sskj.common.utils.ImgUtil;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
@@ -26,6 +28,8 @@ public class ShareImgActivity extends BaseActivity<ShareImgPresenter> {
     ImageView qrCodeImg;
     @BindView(R2.id.share_layout)
     FrameLayout shareLayout;
+
+    private String url;
 
     @Override
     public int getLayoutId() {
@@ -54,11 +58,13 @@ public class ShareImgActivity extends BaseActivity<ShareImgPresenter> {
 
     @Override
     public void initData() {
-
+        url = getIntent().getStringExtra("url");
+        Glide.with(this).load( url).into(qrCodeImg);
     }
 
-    public static void start(Context context) {
+    public static void start(Context context, String url) {
         Intent intent = new Intent(context, ShareImgActivity.class);
+        intent.putExtra("url", url);
         context.startActivity(intent);
     }
 

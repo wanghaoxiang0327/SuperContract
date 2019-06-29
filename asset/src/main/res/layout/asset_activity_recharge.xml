@@ -15,7 +15,6 @@
         app:title="充币" />
 
 
-
     <com.allen.library.SuperTextView
         android:id="@+id/select_coin"
         android:layout_width="match_parent"
@@ -34,9 +33,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
+        android:layout_marginLeft="30dp"
         android:layout_marginTop="20dp"
-        android:layout_marginRight="50dp"
+        android:layout_marginRight="30dp"
         android:background="@drawable/asset_recharge_bg"
         android:gravity="center_horizontal"
         android:orientation="vertical">
@@ -74,6 +73,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:gravity="center"
+            android:paddingLeft="@dimen/common_margin"
+            android:paddingRight="@dimen/common_margin"
             android:textColor="@color/common_text"
             tools:text="ghsofjlasfdgksjdlf;asfjeso5" />
 

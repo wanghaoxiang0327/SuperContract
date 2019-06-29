@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.Editable;
+import android.text.InputFilter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -18,8 +20,10 @@ import com.sskj.common.data.CoinAsset;
 import com.sskj.common.dialog.Coin;
 import com.sskj.common.dialog.SelectCoinDialog;
 import com.sskj.common.dialog.VerifyPasswordDialog;
+import com.sskj.common.simple.SimpleTextWatcher;
 import com.sskj.common.utils.ClickUtil;
 import com.sskj.common.utils.DigitUtils;
+import com.sskj.common.utils.MoneyValueFilter;
 import com.sskj.common.utils.NumberUtils;
 
 import java.util.List;
@@ -69,6 +73,8 @@ public class WithdrawActivity extends BaseActivity<WithdrawPresenter> {
     double minCount;
     boolean checkSms;
     boolean checkGoogle;
+    double fee;
+    double useful;
 
     @Override
     public int getLayoutId() {
@@ -98,6 +104,7 @@ public class WithdrawActivity extends BaseActivity<WithdrawPresenter> {
     public void initData() {
         ClickUtil.click(selectAddress, view -> {
             Intent intent = new Intent(this, AddressListActivity.class);
+            intent.putExtra("select", true);
             startActivityForResult(intent, SELECT_ADDRESS);
         });
         //选择币种
@@ -109,19 +116,38 @@ public class WithdrawActivity extends BaseActivity<WithdrawPresenter> {
             }
         });
         ClickUtil.click(submit, view -> {
-
             if (isEmpty(countEdt)) {
                 ToastUtils.show("请输入转账数量");
+                return;
             }
             double count = Double.parseDouble(getText(countEdt));
             if (count < minCount) {
                 ToastUtils.show("转账数量不可少于" + minCount);
+                return;
             }
+
+            if (count > useful) {
+                ToastUtils.show("账户余额不足");
+                return;
+            }
+
             new VerifyPasswordDialog(this, checkSms, checkGoogle, true, 5)
                     .setOnConfirmListener((dialog, ps, sms, google) -> {
                         dialog.dismiss();
                         mPresenter.withdraw(getText(addressEdt), pid, getText(countEdt), ps, sms, google);
                     }).show();
+        });
+
+        countEdt.setFilters(new InputFilter[]{new MoneyValueFilter(DigitUtils.ASSET_DIGIT)});
+        countEdt.addTextChangedListener(new SimpleTextWatcher() {
+            @Override
+            public void afterTextChanged(Editable s) {
+                super.afterTextChanged(s);
+                computeArrive();
+            }
+        });
+        all.setOnClickListener(view -> {
+            countEdt.setText(useful + "");
         });
     }
 
@@ -150,6 +176,7 @@ public class WithdrawActivity extends BaseActivity<WithdrawPresenter> {
         unit = coin.getPname();
         pid = coin.getPid();
         mPresenter.getWithdrawInfo(pid);
+        countEdt.getText().clear();
     }
 
 
@@ -180,12 +207,29 @@ public class WithdrawActivity extends BaseActivity<WithdrawPresenter> {
 
 
     public void setWithDrawInfo(WithdrawInfo data) {
-        usefulTv.setText(NumberUtils.keepDown(data.getUsable(), DigitUtils.ASSET_DIGIT) +" "+ unit);
+        usefulTv.setText(NumberUtils.keepDown(data.getUsable(), DigitUtils.ASSET_DIGIT) + " " + unit);
         countEdt.setHint("最小提币数量" + data.getTb_min());
-        feeTv.setText("手续费:" + data.getSxfee() + unit + "/次");
+        feeTv.setText("手续费:" + data.getSxfee() + " " + unit + "/次");
+        fee = data.getSxfee();
+        useful = data.getUsable();
+    }
+
+    /**
+     * 计算到账数量
+     */
+    public void computeArrive() {
+        double count;
+        if (isEmpty(countEdt)) {
+            count = 0;
+        } else {
+            count = Double.parseDouble(getText(countEdt));
+        }
+        double arriveNum = count - fee;
+        setText(arriveCount, "到账数量：" + NumberUtils.keepDown(arriveNum, DigitUtils.ASSET_DIGIT) + " " + unit);
     }
 
     public void withdrawSuccess() {
-
+        mPresenter.getWithdrawInfo(pid);
+        countEdt.getText().clear();
     }
 }

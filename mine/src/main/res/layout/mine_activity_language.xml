@@ -14,6 +14,7 @@
         app:title="选择语言" />
 
     <RadioGroup
+        android:id="@+id/languageGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -23,6 +24,7 @@
         android:paddingRight="@dimen/common_margin">
 
         <RadioButton
+            android:id="@+id/chinese"
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:button="@drawable/mine_check_btn"
@@ -38,13 +40,14 @@
             android:background="@color/common_divider" />
 
         <RadioButton
+            android:id="@+id/chinese_p"
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:button="@drawable/mine_check_btn"
             android:buttonTint="@color/common_tip"
             android:gravity="center_vertical"
             android:layoutDirection="rtl"
-            android:text="简体中文"
+            android:text="繁体中文"
             android:textColor="@color/common_text" />
 
         <View
@@ -53,13 +56,14 @@
             android:background="@color/common_divider" />
 
         <RadioButton
+            android:id="@+id/english"
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:button="@drawable/mine_check_btn"
             android:buttonTint="@color/common_tip"
             android:gravity="center_vertical"
             android:layoutDirection="rtl"
-            android:text="简体中文"
+            android:text="English"
             android:textColor="@color/common_text" />
 
         <View
@@ -68,13 +72,14 @@
             android:background="@color/common_divider" />
 
         <RadioButton
+            android:id="@+id/korean"
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:button="@drawable/mine_check_btn"
             android:buttonTint="@color/common_tip"
             android:gravity="center_vertical"
             android:layoutDirection="rtl"
-            android:text="简体中文"
+            android:text="韩文"
             android:textColor="@color/common_text" />
     </RadioGroup>
 

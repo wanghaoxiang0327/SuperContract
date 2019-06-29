@@ -15,248 +15,68 @@
         app:right_text_color="@color/common_text"
         app:title="董事分红" />
 
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/content_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/common_margin"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="@dimen/common_margin"
-        android:background="@mipmap/mine_dircetor_top_bg"
-        android:padding="@dimen/common_margin">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:layout_marginLeft="@dimen/common_margin"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="@dimen/common_margin"
+            android:background="@mipmap/mine_dircetor_top_bg"
+            android:padding="@dimen/common_margin">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="累计分红"
-                android:textColor="@color/common_tip"
-                android:textSize="15sp" />
-
-
-            <TableLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-                <TableRow
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="累计分红"
+                    android:textColor="@color/common_tip"
+                    android:textSize="15sp" />
+
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/topList"
+                    android:layout_marginTop="16dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingTop="5dp"
-                    android:paddingBottom="5dp">
+                    android:nestedScrollingEnabled="false" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="BTC:"
-                        android:textColor="@color/common_hint" />
-
-                    <TextView
-                        android:id="@+id/btc_total"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:textColor="@color/common_text"
-                        tools:text="21.21" />
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="5dp"
-                    android:paddingBottom="5dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="ETH:"
-                        android:textColor="@color/common_hint" />
-
-                    <TextView
-                        android:id="@+id/eth_total"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:textColor="@color/common_text"
-                        tools:text="21.21" />
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="5dp"
-                    android:paddingBottom="5dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="EOS:"
-                        android:textColor="@color/common_hint" />
-
-                    <TextView
-                        android:id="@+id/eos_total"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:textColor="@color/common_text"
-                        tools:text="21.21" />
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="5dp"
-                    android:paddingBottom="5dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="USDT:"
-                        android:textColor="@color/common_hint" />
-
-                    <TextView
-                        android:id="@+id/usdt_total"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:textColor="@color/common_text"
-                        tools:text="21.21" />
-                </TableRow>
-
-
-            </TableLayout>
+            </LinearLayout>
 
 
         </LinearLayout>
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/common_action_bar"
+            android:elevation="1dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/common_margin"
+            android:text="分红明细"
+            android:textColor="@color/common_text"
+            android:textSize="15sp" />
 
-        <LinearLayout
-            android:layout_width="0dp"
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/dividend_list"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="上周交易额"
-                android:textColor="@color/common_tip"
-                android:textSize="15sp" />
-
-
-            <TableLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="5dp"
-                    android:paddingBottom="5dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="BTC:"
-                        android:textColor="@color/common_hint" />
-
-                    <TextView
-                        android:id="@+id/btc_last"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:textColor="@color/common_text"
-                        tools:text="21.21" />
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="5dp"
-                    android:paddingBottom="5dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="ETH:"
-                        android:textColor="@color/common_hint" />
-
-                    <TextView
-                        android:id="@+id/eth_last"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:textColor="@color/common_text"
-                        tools:text="21.21" />
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="5dp"
-                    android:paddingBottom="5dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="EOS:"
-                        android:textColor="@color/common_hint" />
-
-                    <TextView
-                        android:id="@+id/eos_last"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:textColor="@color/common_text"
-                        tools:text="21.21" />
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="5dp"
-                    android:paddingBottom="5dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="USDT:"
-                        android:textColor="@color/common_hint" />
-
-                    <TextView
-                        android:id="@+id/usdt_last"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:textColor="@color/common_text"
-                        tools:text="21.21" />
-                </TableRow>
-
-
-            </TableLayout>
-
-        </LinearLayout>
+            android:layout_marginTop="5dp" />
     </LinearLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="16dp"
-        android:background="@color/common_action_bar"
-        android:elevation="1dp"
-        android:gravity="center_vertical"
-        android:paddingLeft="@dimen/common_margin"
-        android:text="分红明细"
-        android:textColor="@color/common_text"
-        android:textSize="15sp" />
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/dividend_list"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp" />
-
+    </android.support.v4.widget.NestedScrollView>
 </LinearLayout>

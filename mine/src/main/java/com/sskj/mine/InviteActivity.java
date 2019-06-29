@@ -7,8 +7,11 @@ import android.support.constraint.ConstraintLayout;
 import android.widget.TextView;
 
 import com.sskj.common.base.BaseActivity;
+import com.sskj.common.http.HttpResult;
 import com.sskj.common.utils.ClickUtil;
 import com.sskj.common.utils.CopyUtils;
+import com.sskj.common.view.LoadingView;
+import com.sskj.mine.data.ShareInfo;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -33,6 +36,8 @@ public class InviteActivity extends BaseActivity<InvitePresenter> {
     @BindView(R2.id.commission_detail)
     TextView commissionDetail;
 
+    private ShareInfo shareInfo;
+
     @Override
     public int getLayoutId() {
         return R.layout.mine_activity_invite;
@@ -56,7 +61,7 @@ public class InviteActivity extends BaseActivity<InvitePresenter> {
         });
         //推广海报
         ClickUtil.click(shareImg, view -> {
-            ShareImgActivity.start(this);
+            ShareImgActivity.start(this,shareInfo.getQrc());
         });
         //佣金明细
         ClickUtil.click(commissionDetail, view -> {
@@ -68,10 +73,19 @@ public class InviteActivity extends BaseActivity<InvitePresenter> {
         });
     }
 
+    @Override
+    public void loadData() {
+        mPresenter.getShareInfo();
+    }
+
     public static void start(Context context) {
         Intent intent = new Intent(context, InviteActivity.class);
         context.startActivity(intent);
     }
 
 
+    public void setShareInfo(ShareInfo result) {
+        shareInfo = result;
+        inviteCode.setText(result.getTgno());
+    }
 }

@@ -13,6 +13,7 @@ import com.sskj.common.base.BaseActivity;
 import com.sskj.common.data.CoinAsset;
 import com.sskj.common.dialog.Coin;
 import com.sskj.common.dialog.SelectCoinDialog;
+import com.sskj.common.http.BaseHttpConfig;
 import com.sskj.common.http.HttpResult;
 
 import java.util.List;
@@ -105,7 +106,7 @@ public class RechargeActivity extends BaseActivity<RechargePresenter> {
 
 
     public void setRechargeInfo(Map<String, String> result) {
-        Glide.with(this).load(result.get("qrc")).into(qrCodeImg);
+        Glide.with(this).load(BaseHttpConfig.BASE_URL + "/" + result.get("qrc")).into(qrCodeImg);
         rechargeAddressTv.setText(result.get("url"));
     }
 }

@@ -9,7 +9,7 @@ public class WithdrawInfo {
      * usable : 1000
      */
 
-    private String sxfee;
+    private double sxfee;
     private double tb_min;
     private double tb_max;
     private double usable;
@@ -30,11 +30,11 @@ public class WithdrawInfo {
         this.tb_min = tb_min;
     }
 
-    public String getSxfee() {
+    public double getSxfee() {
         return sxfee;
     }
 
-    public void setSxfee(String sxfee) {
+    public void setSxfee(double sxfee) {
         this.sxfee = sxfee;
     }
 

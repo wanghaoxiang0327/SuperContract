@@ -3,6 +3,7 @@ package com.sskj.common.base;
 import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -17,6 +18,7 @@ import android.widget.TextView;
 import com.gyf.barlibrary.ImmersionBar;
 import com.sskj.common.R;
 import com.sskj.common.exception.BreakException;
+import com.sskj.common.language.LocalManageUtil;
 import com.sskj.common.user.model.UserViewModel;
 import com.sskj.common.view.ToolBarLayout;
 
@@ -78,6 +80,12 @@ public abstract class BaseActivity<P extends BasePresenter> extends ExtendActivi
         initEvent();
         loadData();
     }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(LocalManageUtil.setLocal(newBase));
+    }
+
 
     /**
      * 递归查找当前activity中的ToolBarLayout,设置返回事件

@@ -31,4 +31,5 @@ dependencies {
     implementation project(path: ':market')
     implementation project(path: ':mine')
     implementation project(path: ':asset')
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
 }

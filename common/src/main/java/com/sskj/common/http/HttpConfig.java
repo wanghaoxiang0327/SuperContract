@@ -65,6 +65,14 @@ public class HttpConfig {
 
     public static final String GET_GOOGLE_INFO = "/Home/Google/createGoogleCommand";
 
+    public static final String SHARE_INFO = "/Home/user/link";
+
+    public static final String MY_TEAM = "/Home/user/my_down";
+
+    public static final String COMISSION = "/Home/contract/commission_log";
+
+    public static final String DIRECTOR_PROFIT = "/Home/contract/director_bonus";
+
 
 
 
@@ -94,10 +102,14 @@ public class HttpConfig {
 
     public static final String WITHDRAW = "/Home/Users/ti_bi";
 
+    public static final String WITHDRAW_RECORDS = "/Home/user/record";
+
 
     public static final String ADDRESS_LIST = "/Home/Users/AddrList";
 
     public static final String ADDRESS_MANAGE = "/Home/Users/AddrManage";
+
+
 
 
 

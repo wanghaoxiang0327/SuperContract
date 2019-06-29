@@ -93,7 +93,7 @@
             android:textColor="@color/common_hint" />
 
         <TextView
-            android:id="@+id/type"
+            android:id="@+id/check_time"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"

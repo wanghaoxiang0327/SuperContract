@@ -27,13 +27,13 @@
         app:sLeftTextColor="@color/common_text"
         app:sLeftTextString="选择币种"
         app:sLeftViewMarginLeft="0dp"
+        android:layout_marginBottom="5dp"
         app:sRightTextColor="@color/common_text"
         app:sRightTvDrawableRight="@mipmap/common_arrow_right" />
 
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/withdraw_records"
-        android:layout_marginTop="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 

@@ -9,6 +9,7 @@ import android.widget.ImageView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.sskj.asset.data.AddressBean;
+import com.sskj.common.DividerLineItemDecoration;
 import com.sskj.common.adapter.BaseAdapter;
 import com.sskj.common.adapter.ViewHolder;
 import com.sskj.common.base.BaseActivity;
@@ -32,11 +33,10 @@ public class AddressListActivity extends BaseActivity<AddressListPresenter> {
     @BindView(R2.id.eth_address_list)
     RecyclerView ethAddressList;
 
-
     BaseAdapter<AddressBean.Address> btcAdapter, ethAdapter;
 
-    private final int INSERT_BTC = 1000;
-    private final int INSERT_ETH = 1001;
+    private boolean select;
+
 
     @Override
     public int getLayoutId() {
@@ -50,8 +50,13 @@ public class AddressListActivity extends BaseActivity<AddressListPresenter> {
 
     @Override
     public void initView() {
+        select = getIntent().getBooleanExtra("select", false);
         btcAddressList.setLayoutManager(new LinearLayoutManager(this));
+        btcAddressList.addItemDecoration(new DividerLineItemDecoration(this)
+                .setDividerColor(color(R.color.common_divider)));
         ethAddressList.setLayoutManager(new LinearLayoutManager(this));
+        ethAddressList.addItemDecoration(new DividerLineItemDecoration(this)
+                .setDividerColor(color(R.color.common_divider)));
         btcAdapter = new BaseAdapter<AddressBean.Address>(R.layout.asset_item_address, null, btcAddressList) {
             @Override
             public void bind(ViewHolder holder, AddressBean.Address item) {
@@ -59,6 +64,14 @@ public class AddressListActivity extends BaseActivity<AddressListPresenter> {
                         .setText(R.id.address, item.getQiaobao_url());
                 ClickUtil.click(holder.getView(R.id.delete), view -> {
                     mPresenter.deleteAddress(item.getId());
+                });
+                ClickUtil.click(holder.itemView, view -> {
+                    if (select) {
+                        Intent intent = new Intent();
+                        intent.putExtra("address", item.getQiaobao_url());
+                        setResult(RESULT_OK, intent);
+                        finish();
+                    }
                 });
             }
         };
@@ -70,6 +83,15 @@ public class AddressListActivity extends BaseActivity<AddressListPresenter> {
                         .setText(R.id.address, item.getQiaobao_url());
                 ClickUtil.click(holder.getView(R.id.delete), view -> {
                     mPresenter.deleteAddress(item.getId());
+                });
+
+                ClickUtil.click(holder.itemView, view -> {
+                    if (select) {
+                        Intent intent = new Intent();
+                        intent.putExtra("address", item.getQiaobao_url());
+                        setResult(RESULT_OK, intent);
+                        finish();
+                    }
                 });
             }
         };

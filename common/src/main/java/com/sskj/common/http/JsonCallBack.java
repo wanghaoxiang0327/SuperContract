@@ -12,6 +12,7 @@ import com.sskj.common.base.BasePresenter;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
+import io.reactivex.schedulers.Schedulers;
 import okhttp3.ResponseBody;
 
 public abstract class JsonCallBack<T> extends AbsCallback<T> {
@@ -37,15 +38,15 @@ public abstract class JsonCallBack<T> extends AbsCallback<T> {
     @Override
     public void onSuccess(Response<T> response) {
         onNext(response.body());
-        onFinish();
     }
 
     @Override
     public void onError(Response<T> response) {
         super.onError(response);
-        onFinish();
         if (response.getException() instanceof ApiException){
             ToastUtils.show(((ApiException) response.getException()).getMsg());
+        }else {
+            response.getException().printStackTrace();
         }
     }
 

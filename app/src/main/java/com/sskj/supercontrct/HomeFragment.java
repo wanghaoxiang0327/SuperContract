@@ -21,6 +21,7 @@ import com.sskj.common.utils.ClickUtil;
 import com.sskj.market.MarketListFragment;
 import com.sskj.market.data.CoinBean;
 import com.sskj.market.dialog.CreateOrderDialog;
+import com.sskj.mine.LanguageActivity;
 import com.youth.banner.Banner;
 
 import java.util.ArrayList;
@@ -112,6 +113,9 @@ public class HomeFragment extends BaseFragment<HomePresenter> {
         });
         wrapRefresh(homeContent);
         setEnableLoadMore(false);
+        ClickUtil.click(changeLanguage, view -> {
+            LanguageActivity.start(getContext());
+        });
     }
 
     @Override
