@@ -177,6 +177,9 @@ public class LoginActivity extends BaseActivity<LoginPresenter> {
     public void loginSuccess(LoginBean loginBean) {
         SpUtil.put(CommonConfig.ACCOUNT, loginBean.getAccount());
         SpUtil.put(CommonConfig.TOKEN, loginBean.getToken());
+        if (registerType == RegisterType.MOBILE) {
+            SpUtil.put(CommonConfig.MOBILE, getText(mobileEdt));
+        }
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.put(CommonConfig.ACCOUNT, loginBean.getAccount());
         httpHeaders.put(CommonConfig.TOKEN, loginBean.getToken());
@@ -205,10 +208,10 @@ public class LoginActivity extends BaseActivity<LoginPresenter> {
      * 显示谷歌验证
      */
     public void showCheckGoogle(String mobile, String opwd) {
-        VerifyPasswordDialog verifyPasswordDialog = new VerifyPasswordDialog(this, false, true, false);
+        VerifyPasswordDialog verifyPasswordDialog = new VerifyPasswordDialog(this, false, true, false,0);
         verifyPasswordDialog.setOnConfirmListener((dialog, ps, sms, google) -> {
-
             mPresenter.login(mobile, opwd, google);
         });
+        verifyPasswordDialog.show();
     }
 }

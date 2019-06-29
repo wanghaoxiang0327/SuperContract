@@ -2,7 +2,6 @@ package com.sskj.market;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
@@ -17,9 +16,6 @@ import com.flyco.tablayout.listener.CustomTabEntity;
 import com.hjq.toast.ToastUtils;
 import com.sskj.common.base.BaseActivity;
 import com.sskj.common.dialog.SelectCoinDialog;
-import com.sskj.common.http.HttpObserver;
-import com.sskj.common.http.HttpResult;
-import com.sskj.common.http.RxUtils;
 import com.sskj.common.router.RoutePath;
 import com.sskj.common.rxbus.Subscribe;
 import com.sskj.common.rxbus.ThreadMode;
@@ -27,7 +23,6 @@ import com.sskj.common.tab.TabItem;
 import com.sskj.common.tab.TabLayout;
 import com.sskj.common.utils.ClickUtil;
 import com.sskj.common.utils.NumberUtils;
-import com.sskj.market.data.CoinAsset;
 import com.sskj.market.data.CoinBean;
 import com.sskj.market.data.TradeCoin;
 import com.sskj.market.dialog.CreateOrderDialog;
@@ -36,7 +31,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 
 /**

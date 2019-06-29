@@ -1,18 +1,47 @@
 package com.sskj.asset;
 
-import com.sskj.common.base.BaseActivity;
-import com.sskj.asset.RechargePresenter;
 import android.content.Context;
 import android.content.Intent;
-import com.sskj.asset.R;
+import android.os.Bundle;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.allen.library.SuperTextView;
+import com.bumptech.glide.Glide;
+import com.sskj.common.base.BaseActivity;
+import com.sskj.common.data.CoinAsset;
+import com.sskj.common.dialog.Coin;
+import com.sskj.common.dialog.SelectCoinDialog;
+import com.sskj.common.http.HttpResult;
+
+import java.util.List;
+import java.util.Map;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 /**
  * 充币
+ *
  * @author Hey
  * Create at  2019/06/26
  */
 public class RechargeActivity extends BaseActivity<RechargePresenter> {
 
-
+    @BindView(R2.id.select_coin)
+    SuperTextView selectCoin;
+    @BindView(R2.id.qr_code_img)
+    ImageView qrCodeImg;
+    @BindView(R2.id.recharge_address_tv)
+    TextView rechargeAddressTv;
+    @BindView(R2.id.recharge_tip)
+    TextView rechargeTip;
+    @BindView(R2.id.copy)
+    Button copy;
+    private SelectCoinDialog selectCoinDialog;
+    private List<CoinAsset> coinList;
+    private String pid;
 
     @Override
     public int getLayoutId() {
@@ -26,17 +55,57 @@ public class RechargeActivity extends BaseActivity<RechargePresenter> {
 
     @Override
     public void initView() {
-    
+        selectCoin.setOnClickListener(view -> {
+            if (coinList == null) {
+                mPresenter.getCoinAsset(true);
+            } else {
+                showCoinDialog(coinList);
+            }
+        });
     }
 
     @Override
     public void initData() {
-
+        mPresenter.getCoinAsset(false);
     }
 
-    public static void start(Context context){
-        Intent intent=new Intent(context,RechargeActivity.class);
+
+    public void showCoinDialog(List<CoinAsset> data) {
+        if (selectCoinDialog == null) {
+            selectCoinDialog = new SelectCoinDialog(this, (dialog, coin) -> {
+                changeCoin(coin);
+                dialog.dismiss();
+            });
+        }
+        selectCoinDialog.setData(data);
+        selectCoinDialog.show();
+    }
+
+
+    public static void start(Context context) {
+        Intent intent = new Intent(context, RechargeActivity.class);
         context.startActivity(intent);
     }
-   
+
+
+    public void setCoinList(List<CoinAsset> data) {
+        if (data != null && !data.isEmpty()) {
+            coinList = data;
+            changeCoin(data.get(0));
+        }
+
+    }
+
+    public void changeCoin(CoinAsset coin) {
+        pid = coin.getPid();
+        selectCoin.setRightString(coin.getPname());
+        mPresenter.getRechargeInfo(pid);
+        rechargeTip.setText("请勿向上述地址充值任何非" + coin.getPname() + "资产，否则资产将不可找回。");
+    }
+
+
+    public void setRechargeInfo(Map<String, String> result) {
+        Glide.with(this).load(result.get("qrc")).into(qrCodeImg);
+        rechargeAddressTv.setText(result.get("url"));
+    }
 }

@@ -1,18 +1,23 @@
 package com.sskj.common.user.data;
 
 
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Embedded;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 
+import com.alibaba.fastjson.annotation.JSONField;
 import com.google.gson.annotations.SerializedName;
 
-@Entity
-public class User {
+import org.jetbrains.annotations.NotNull;
 
-    @PrimaryKey
-    private int id;
-
-
+/**
+ * 用户信息
+ *
+ * @author Hey
+ */
+@Entity(tableName = "user_data")
+public class UserBean {
     /**
      * uid : 52034171
      * mobile : 15738733951
@@ -27,34 +32,48 @@ public class User {
      * zc_total : {"ttl_usable":5.4466040608038E7,"ttl_frost":0,"ttl_money":5.4466040608038E7,"ttl_cnymoney":"375815680.20"}
      */
 
+    @PrimaryKey
+    @NotNull
     private String uid;
     private String mobile;
     private String mail;
     private String nickname;
     private String tgno;
-    @SerializedName("user_level")
-    private int userLevel;
-    @SerializedName("register_type")
+    private String tpwd;
+    @JSONField(name = "command")
+    private int isBindGoogle;
+    @JSONField(name = "user_level")
+    private String userLevel;
+    @JSONField(name = "register_type")
     private String registerType;
     //是否开启谷歌验证 0关  1开
-    @SerializedName("is_start_google")
+    @JSONField(name = "is_start_google")
     private int isStartGoogle;
     //短信验证  0关  1开
-    @SerializedName("is_start_sms")
+    @JSONField(name = "is_start_sms")
     private int isStartSms;
     //是否绑定邮箱
-    @SerializedName("is_bd_mail")
+    @JSONField(name = "is_bd_mail")
     private int isBindMail;
-    @SerializedName("zc_total")
+    @JSONField(name = "zc_total")
+    @Embedded
     private ZcTotalBean zcTotal;
 
 
-    public int getId() {
-        return id;
+    public String getTpwd() {
+        return tpwd;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setTpwd(String tpwd) {
+        this.tpwd = tpwd;
+    }
+
+    public int getIsBindGoogle() {
+        return isBindGoogle;
+    }
+
+    public void setIsBindGoogle(int isBindGoogle) {
+        this.isBindGoogle = isBindGoogle;
     }
 
     public String getUid() {
@@ -97,11 +116,11 @@ public class User {
         this.tgno = tgno;
     }
 
-    public int getUserLevel() {
+    public String getUserLevel() {
         return userLevel;
     }
 
-    public void setUserLevel(int userLevel) {
+    public void setUserLevel(String userLevel) {
         this.userLevel = userLevel;
     }
 
@@ -145,6 +164,7 @@ public class User {
         this.zcTotal = zcTotal;
     }
 
+
     public static class ZcTotalBean {
         /**
          * ttl_usable : 5.4466040608038E7
@@ -153,10 +173,15 @@ public class User {
          * ttl_cnymoney : 375815680.20
          */
 
+        @ColumnInfo
         private double ttl_usable;
+        @ColumnInfo
         private int ttl_frost;
+        @ColumnInfo
         private double ttl_money;
+        @ColumnInfo
         private String ttl_cnymoney;
+
 
         public double getTtl_usable() {
             return ttl_usable;

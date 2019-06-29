@@ -214,45 +214,7 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> {
     }
 
 
-    public void startTimeDown(TextView getCodeView) {
-        getCodeView.setEnabled(false);
-        getCodeView.setTextColor(color(R.color.common_hint));
-        disposableSubscriber = new DisposableSubscriber<Long>() {
-            @Override
-            public void onNext(Long aLong) {
-                int time = (int) (60 - aLong);
-                if (getCodeView != null) {
-                    getCodeView.setText(time + getString(R.string.login_get_code_retry));
-                }
-            }
 
-            @Override
-            public void onError(Throwable t) {
-                System.out.println(t.toString());
-            }
-
-            @Override
-            public void onComplete() {
-                if (getCodeView != null) {
-                    getCodeView.setText(getString(R.string.login_get_verify_code));
-                    getCodeView.setEnabled(true);
-                    getCodeView.setTextColor(color(R.color.common_white));
-
-                }
-                if (!disposableSubscriber.isDisposed()) {
-                    disposableSubscriber.dispose();
-                    disposableSubscriber = null;
-                }
-
-            }
-        };
-
-        Flowable.interval(0, 1, TimeUnit.SECONDS, Schedulers.newThread())
-                .take(60)
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(disposableSubscriber);
-
-    }
 
     @Override
     public void initImmersionBar() {
@@ -264,13 +226,7 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> {
 
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        if (disposableSubscriber != null) {
-            disposableSubscriber.dispose();
-        }
-    }
+
 
     public static void start(Context context) {
         Intent intent = new Intent(context, RegisterActivity.class);

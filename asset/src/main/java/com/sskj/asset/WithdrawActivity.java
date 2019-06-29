@@ -10,10 +10,19 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.allen.library.SuperTextView;
+import com.hjq.toast.ToastUtils;
+import com.sskj.asset.data.TransferInfo;
+import com.sskj.asset.data.WithdrawInfo;
 import com.sskj.common.base.BaseActivity;
+import com.sskj.common.data.CoinAsset;
 import com.sskj.common.dialog.Coin;
 import com.sskj.common.dialog.SelectCoinDialog;
+import com.sskj.common.dialog.VerifyPasswordDialog;
 import com.sskj.common.utils.ClickUtil;
+import com.sskj.common.utils.DigitUtils;
+import com.sskj.common.utils.NumberUtils;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -52,6 +61,15 @@ public class WithdrawActivity extends BaseActivity<WithdrawPresenter> {
 
     private String unit;
 
+
+    private SelectCoinDialog selectCoinDialog;
+    private List<CoinAsset> coinList;
+    private String pid;
+
+    double minCount;
+    boolean checkSms;
+    boolean checkGoogle;
+
     @Override
     public int getLayoutId() {
         return R.layout.asset_activity_withdraw;
@@ -67,6 +85,13 @@ public class WithdrawActivity extends BaseActivity<WithdrawPresenter> {
         mToolBarLayout.setRightButtonOnClickListener(view -> {
             WithdrawRecordsActivity.start(this);
         });
+
+        userViewModel.getUser().observe(this, userBean -> {
+            if (userBean != null) {
+                checkSms = userBean.getIsStartSms() == 1;
+                checkGoogle = userBean.getIsStartGoogle() == 1;
+            }
+        });
     }
 
     @Override
@@ -77,13 +102,33 @@ public class WithdrawActivity extends BaseActivity<WithdrawPresenter> {
         });
         //选择币种
         ClickUtil.click(selectCoin, view -> {
-            new SelectCoinDialog(this, (dialog, coin) -> {
-                changeCoin(coin);
-                dialog.dismiss();
-            }).show();
+            if (coinList == null) {
+                mPresenter.getCoinAsset(true);
+            } else {
+                showCoinDialog(coinList);
+            }
+        });
+        ClickUtil.click(submit, view -> {
+
+            if (isEmpty(countEdt)) {
+                ToastUtils.show("请输入转账数量");
+            }
+            double count = Double.parseDouble(getText(countEdt));
+            if (count < minCount) {
+                ToastUtils.show("转账数量不可少于" + minCount);
+            }
+            new VerifyPasswordDialog(this, checkSms, checkGoogle, true, 5)
+                    .setOnConfirmListener((dialog, ps, sms, google) -> {
+                        dialog.dismiss();
+                        mPresenter.withdraw(getText(addressEdt), pid, getText(countEdt), ps, sms, google);
+                    }).show();
         });
     }
 
+    @Override
+    public void loadData() {
+        mPresenter.getCoinAsset(false);
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -99,11 +144,34 @@ public class WithdrawActivity extends BaseActivity<WithdrawPresenter> {
         }
     }
 
-    public void changeCoin(Coin coin) {
-        selectCoin.setRightString(coin.getName());
-        coinName.setText(coin.getName());
-        unit = coin.getName();
+    public void changeCoin(CoinAsset coin) {
+        selectCoin.setRightString(coin.getPname());
+        coinName.setText(coin.getPname());
+        unit = coin.getPname();
+        pid = coin.getPid();
+        mPresenter.getWithdrawInfo(pid);
     }
+
+
+    public void setCoinList(List<CoinAsset> data) {
+        if (data != null && !data.isEmpty()) {
+            coinList = data;
+            changeCoin(data.get(0));
+        }
+
+    }
+
+    public void showCoinDialog(List<CoinAsset> data) {
+        if (selectCoinDialog == null) {
+            selectCoinDialog = new SelectCoinDialog(this, (dialog, coin) -> {
+                changeCoin(coin);
+                dialog.dismiss();
+            });
+        }
+        selectCoinDialog.setData(data);
+        selectCoinDialog.show();
+    }
+
 
     public static void start(Context context) {
         Intent intent = new Intent(context, WithdrawActivity.class);
@@ -111,4 +179,13 @@ public class WithdrawActivity extends BaseActivity<WithdrawPresenter> {
     }
 
 
+    public void setWithDrawInfo(WithdrawInfo data) {
+        usefulTv.setText(NumberUtils.keepDown(data.getUsable(), DigitUtils.ASSET_DIGIT) +" "+ unit);
+        countEdt.setHint("最小提币数量" + data.getTb_min());
+        feeTv.setText("手续费:" + data.getSxfee() + unit + "/次");
+    }
+
+    public void withdrawSuccess() {
+
+    }
 }

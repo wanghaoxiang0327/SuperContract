@@ -71,6 +71,11 @@ public class TipDialog extends AlertDialog {
         return this;
     }
 
+    public TipDialog setCancelVisible(int visible) {
+        cancelBtn.setVisibility(visible);
+        return this;
+    }
+
 
     public interface OnConfirmListener {
         void onConfirm(TipDialog dialog);

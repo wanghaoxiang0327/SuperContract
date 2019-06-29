@@ -3,9 +3,12 @@ package com.sskj.mine;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.allen.library.SuperTextView;
 import com.sskj.common.base.BaseActivity;
+import com.sskj.common.router.RoutePath;
 import com.sskj.common.utils.ClickUtil;
 import com.sskj.mine.data.Verify;
 
@@ -16,6 +19,7 @@ import butterknife.ButterKnife;
  * @author Hey
  * Create at  2019/06/24
  */
+@Route(path = RoutePath.SECURITY)
 public class SecurityActivity extends BaseActivity<SecurityPresenter> {
 
 
@@ -30,6 +34,8 @@ public class SecurityActivity extends BaseActivity<SecurityPresenter> {
     @BindView(R2.id.menu_pay_ps)
     SuperTextView menuPayPs;
 
+    private boolean setPayPs;
+
     @Override
     public int getLayoutId() {
         return R.layout.mine_activity_security;
@@ -43,6 +49,41 @@ public class SecurityActivity extends BaseActivity<SecurityPresenter> {
     @Override
     public void initView() {
 
+        userViewModel.getUser().observe(this, userBean -> {
+            if (userBean != null) {
+                setPayPs = TextUtils.isEmpty(userBean.getTpwd());
+                if (setPayPs) {
+                    menuPayPs.setRightString("未设置");
+                } else {
+                    menuPayPs.setRightString("已设置");
+                }
+                if (userBean.getIsBindMail() == 1) {
+                    menuEmailVerify.setRightString("已设置");
+                } else {
+                    menuEmailVerify.setRightString("未设置");
+                }
+
+                if (userBean.getIsStartGoogle() == 1) {
+                    menuGoogleVerify.setRightString("已开启");
+                } else {
+                    if (userBean.getIsBindGoogle() == 1) {
+                        menuGoogleVerify.setRightString("未开启");
+                    } else {
+                        menuGoogleVerify.setRightString("未设置");
+                    }
+                }
+                if (userBean.getIsStartSms() == 1) {
+                    menuSmsVerify.setRightString("已开启");
+                } else {
+                    if (TextUtils.isEmpty(userBean.getMobile())) {
+                        menuSmsVerify.setRightString("未设置");
+                    } else {
+                        menuSmsVerify.setRightString("未开启");
+                    }
+
+                }
+            }
+        });
     }
 
     @Override
@@ -56,6 +97,22 @@ public class SecurityActivity extends BaseActivity<SecurityPresenter> {
         ClickUtil.click(menuGoogleVerify, view -> {
             VerifySettingActivity.start(this, Verify.GOOGLE);
         });
+        ClickUtil.click(menuLoginPs, view -> {
+            ResetPasswordActivity.start(this);
+        });
+        ClickUtil.click(menuPayPs, view -> {
+            if (setPayPs) {
+                SettingPasswordActivity.start(this);
+            } else {
+                ResetPayPasswordActivity.start(this);
+            }
+        });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        userViewModel.update();
     }
 
     public static void start(Context context) {

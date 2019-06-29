@@ -15,7 +15,7 @@ import com.sskj.common.R;
  *
  * @author Hey
  */
-@Database(entities = {User.class}, version = 1)
+@Database(entities = {UserBean.class}, version = 1)
 public abstract class UserDataBase extends RoomDatabase {
 
     private static UserDataBase INSTANCE;

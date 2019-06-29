@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.sskj.common.base.BaseActivity;
@@ -27,11 +28,14 @@ public class TransactionRecordsActivity extends BaseActivity<TransactionRecordsP
 
     @BindView(R2.id.tabLayout)
     TabLayout tabLayout;
+    @BindView(R2.id.left_img)
+    ImageView leftImg;
+
     @BindView(R2.id.content)
     FrameLayout content;
 
-    ArrayList<CustomTabEntity> tabs=new ArrayList<>();
-    ArrayList<Fragment> fragments=new ArrayList<>();
+    ArrayList<CustomTabEntity> tabs = new ArrayList<>();
+    ArrayList<Fragment> fragments = new ArrayList<>();
 
     @Override
     public int getLayoutId() {
@@ -45,11 +49,14 @@ public class TransactionRecordsActivity extends BaseActivity<TransactionRecordsP
 
     @Override
     public void initView() {
+        leftImg.setOnClickListener(v -> {
+            finish();
+        });
         tabs.add(new TabItem("持仓"));
         tabs.add(new TabItem("成交"));
         fragments.add(HoldFragment.newInstance());
         fragments.add(DealFragment.newInstance());
-        tabLayout.setTabData(tabs,getSupportFragmentManager(),R.id.content,fragments);
+        tabLayout.setTabData(tabs, getSupportFragmentManager(), R.id.content, fragments);
     }
 
     @Override

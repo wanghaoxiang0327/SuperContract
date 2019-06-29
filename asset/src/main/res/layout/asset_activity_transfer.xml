@@ -115,6 +115,7 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="8dp"
             android:background="@null"
+            android:inputType="numberDecimal"
             android:hint="转账数量不可少于100"
             android:textColor="@color/common_text"
             android:textColorHint="@color/common_hint"

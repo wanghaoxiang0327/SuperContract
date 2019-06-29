@@ -36,7 +36,8 @@ public abstract class DataSource<T> implements IAsyncDataSource<List<T>> {
     }
 
     private RequestHandle loadData(ResponseSender<List<T>> sender,int page){
-        Disposable disposable= bindData(page).observeOn(AndroidSchedulers.mainThread())
+        Disposable disposable= bindData(page)
+                .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(data->{
                     if (data!=null&&data.size()==size){

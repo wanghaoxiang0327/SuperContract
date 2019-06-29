@@ -5,6 +5,9 @@ import android.arch.lifecycle.LifecycleObserver;
 import android.arch.lifecycle.OnLifecycleEvent;
 
 import com.lzy.okgo.OkGo;
+import com.sskj.common.http.HttpConfig;
+import com.sskj.common.http.HttpResult;
+import com.sskj.common.http.JsonCallBack;
 
 import java.lang.ref.WeakReference;
 
@@ -18,7 +21,6 @@ public class BasePresenter<V extends  IBaseView> implements LifecycleObserver {
     private WeakReference<V> mReference;
 
     private CompositeDisposable requests=new CompositeDisposable();
-
 
 
     public void attachView(V view){
@@ -59,5 +61,10 @@ public class BasePresenter<V extends  IBaseView> implements LifecycleObserver {
         }
         OkGo.getInstance().cancelTag(this);
     }
+
+
+
+
+
 
 }

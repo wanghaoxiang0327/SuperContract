@@ -16,8 +16,12 @@
         android:paddingRight="@dimen/common_margin">
 
         <ImageView
-            android:layout_width="15dp"
-            android:layout_height="13dp"
+            android:id="@+id/left_img"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:paddingTop="18dp"
+            android:paddingRight="18dp"
+            android:paddingBottom="18dp"
             android:src="@mipmap/common_icon_back" />
 
         <com.sskj.common.tab.TabLayout

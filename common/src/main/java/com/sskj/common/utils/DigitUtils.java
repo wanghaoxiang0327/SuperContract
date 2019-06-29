@@ -9,6 +9,9 @@ import java.util.Map;
  */
 public class DigitUtils {
 
+
+    public static int ASSET_DIGIT=4;
+
     private static Map<String, Integer> digitMap = new HashMap<>();
 
     public static int getDigit(String name) {

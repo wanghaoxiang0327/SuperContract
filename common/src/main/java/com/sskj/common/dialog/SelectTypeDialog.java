@@ -10,6 +10,7 @@ import com.sskj.common.R;
 import com.sskj.common.R2;
 import com.sskj.common.adapter.BaseAdapter;
 import com.sskj.common.adapter.ViewHolder;
+import com.sskj.common.data.AssetType;
 import com.sskj.common.data.CoinAsset;
 
 import java.util.List;
@@ -17,20 +18,20 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class SelectCoinDialog extends BottomSheetDialog {
+public class SelectTypeDialog extends BottomSheetDialog {
 
     @BindView(R2.id.coin_list)
     RecyclerView coinList;
 
 
-    private BaseAdapter<CoinAsset> coinAdapter;
+    private BaseAdapter<AssetType> coinAdapter;
 
 
     private OnSelectListener onSelectListener;
 
 
 
-    public SelectCoinDialog(@NonNull Context context, OnSelectListener onSelectListener) {
+    public SelectTypeDialog(@NonNull Context context, OnSelectListener onSelectListener) {
         super(context);
         setContentView(R.layout.common_dialog_coin);
         ButterKnife.bind(this);
@@ -43,13 +44,13 @@ public class SelectCoinDialog extends BottomSheetDialog {
 
     private void initView() {
         coinList.setLayoutManager(new LinearLayoutManager(getContext()));
-        coinAdapter = new BaseAdapter<CoinAsset>(R.layout.common_item_coind, null, coinList) {
+        coinAdapter = new BaseAdapter<AssetType>(R.layout.common_item_coind, null, coinList) {
             @Override
-            public void bind(ViewHolder holder, CoinAsset item) {
-                holder.setText(R.id.name, item.getPname());
+            public void bind(ViewHolder holder, AssetType item) {
+                holder.setText(R.id.name, item.getTitle());
                 holder.itemView.setOnClickListener(view -> {
                     if (onSelectListener != null) {
-                        onSelectListener.onSelect(SelectCoinDialog.this, item);
+                        onSelectListener.onSelect(SelectTypeDialog.this, item);
                     }
                 });
             }
@@ -57,12 +58,12 @@ public class SelectCoinDialog extends BottomSheetDialog {
     }
 
 
-    public void setData(List<CoinAsset> data){
+    public void setData(List<AssetType> data){
         coinAdapter.setNewData(data);
     }
 
     public interface OnSelectListener {
-        void onSelect(SelectCoinDialog dialog, CoinAsset coin);
+        void onSelect(SelectTypeDialog dialog, AssetType coin);
     }
 
 }

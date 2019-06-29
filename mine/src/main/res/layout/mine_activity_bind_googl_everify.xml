@@ -67,6 +67,7 @@
             tools:text="RIOXOGNG3F4DX" />
 
         <TextView
+            android:id="@+id/copy_tv"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
@@ -104,6 +105,7 @@
         android:textSize="14sp" />
 
     <Button
+        android:id="@+id/submit"
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:layout_marginLeft="@dimen/common_margin"

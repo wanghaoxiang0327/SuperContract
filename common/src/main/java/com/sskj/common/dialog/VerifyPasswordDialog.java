@@ -1,6 +1,7 @@
 package com.sskj.common.dialog;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomSheetDialog;
 import android.support.v4.content.ContextCompat;
@@ -13,8 +14,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.hjq.toast.ToastUtils;
+import com.lzy.okgo.OkGo;
+import com.sskj.common.BaseApplication;
 import com.sskj.common.R;
 import com.sskj.common.R2;
+import com.sskj.common.http.HttpConfig;
+import com.sskj.common.http.HttpResult;
+import com.sskj.common.http.JsonCallBack;
 import com.sskj.common.utils.ClickUtil;
 
 import java.util.concurrent.TimeUnit;
@@ -63,15 +69,17 @@ public class VerifyPasswordDialog extends BottomSheetDialog {
     private OnConfirmListener onConfirmListener;
     private DisposableSubscriber<Long> disposableSubscriber;
 
-    public VerifyPasswordDialog(@NonNull Context context) {
-        this(context, false, true, false);
-    }
+    private int smsType;
 
-    public VerifyPasswordDialog(@NonNull Context context, boolean showPS) {
-        this(context, showPS, true, false);
-    }
-
-    public VerifyPasswordDialog(@NonNull Context context, boolean showSMS, boolean showGoogle, boolean showPs) {
+    /**
+     *
+     * @param context Context
+     * @param showSMS 显示短信验证
+     * @param showGoogle 显示谷歌验证
+     * @param showPs 显示资金密码
+     * @param smsType 短信验证类型
+     */
+    public VerifyPasswordDialog(@NonNull Context context, boolean showSMS, boolean showGoogle, boolean showPs,int smsType) {
         super(context);
         View view = LayoutInflater.from(context).inflate(R.layout.common_dialog_verify_password, null);
         setContentView(view);
@@ -79,6 +87,7 @@ public class VerifyPasswordDialog extends BottomSheetDialog {
         this.showSMS = showSMS;
         this.showGoogle = showGoogle;
         this.showPS = showPs;
+        this.smsType=smsType;
         initView();
     }
 
@@ -117,12 +126,21 @@ public class VerifyPasswordDialog extends BottomSheetDialog {
         });
         //发送验证码
         ClickUtil.click(getCodeTv, view -> {
-
+            OkGo.<HttpResult>post(HttpConfig.BASE_URL + HttpConfig.SEND_SMS)
+                    .params("mobile", BaseApplication.getMobile())
+                    .params("type", smsType)
+                    .execute(new JsonCallBack<HttpResult>() {
+                        @Override
+                        protected void onNext(HttpResult result) {
+                           startTimeDown(getCodeTv);
+                        }
+                    });
         });
     }
 
-    public void setOnConfirmListener(OnConfirmListener onConfirmListener) {
+    public VerifyPasswordDialog setOnConfirmListener(OnConfirmListener onConfirmListener) {
         this.onConfirmListener = onConfirmListener;
+        return this;
     }
 
     public void startTimeDown(TextView getCodeView) {

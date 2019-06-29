@@ -17,6 +17,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Map;
 
+import static com.sskj.common.CommonConfig.MOBILE;
+
 public class SpUtil {
 
     private static final String FILE_NAME = "share_data";
@@ -160,6 +162,14 @@ public class SpUtil {
         SharedPreferences sp = App.INSTANCE.getSharedPreferences("share_data", 0);
         SharedPreferences.Editor editor = sp.edit();
         editor.clear();
+        SharedPreferencesCompat.apply(editor);
+    }
+
+    public static void exit(String mobile) {
+        SharedPreferences sp = App.INSTANCE.getSharedPreferences("share_data", 0);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.clear();
+        editor.putString(MOBILE,mobile);
         SharedPreferencesCompat.apply(editor);
     }
 

@@ -4,27 +4,17 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import com.scwang.smartrefresh.layout.SmartRefreshLayout;
-import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
-import com.scwang.smartrefresh.layout.header.ClassicsHeader;
 import com.sskj.common.DividerLineItemDecoration;
 import com.sskj.common.adapter.BaseAdapter;
-import com.sskj.common.http.HttpResult;
-import com.sskj.common.http.RxUtils;
-import com.sskj.common.mvc.DataSource;
-import com.sskj.common.mvc.SmartRefreshHelper;
 import com.sskj.common.adapter.ViewHolder;
 import com.sskj.common.base.BaseFragment;
 import com.sskj.common.utils.ClickUtil;
 import com.sskj.market.data.CoinBean;
-import com.sskj.market.data.CoinIcon;
+import com.sskj.common.utils.CoinIcon;
 
 import java.util.List;
 
 import butterknife.BindView;
-import io.reactivex.Flowable;
-import io.reactivex.Observable;
-import io.reactivex.Observer;
 
 /**
  * @author Hey

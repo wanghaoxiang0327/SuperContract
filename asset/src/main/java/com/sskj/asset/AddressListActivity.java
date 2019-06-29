@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.ImageView;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.sskj.asset.data.AddressBean;
 import com.sskj.common.adapter.BaseAdapter;
 import com.sskj.common.adapter.ViewHolder;
@@ -32,7 +33,7 @@ public class AddressListActivity extends BaseActivity<AddressListPresenter> {
     RecyclerView ethAddressList;
 
 
-    BaseAdapter<AddressBean> btcAdapter, ethAdapter;
+    BaseAdapter<AddressBean.Address> btcAdapter, ethAdapter;
 
     private final int INSERT_BTC = 1000;
     private final int INSERT_ETH = 1001;
@@ -51,19 +52,25 @@ public class AddressListActivity extends BaseActivity<AddressListPresenter> {
     public void initView() {
         btcAddressList.setLayoutManager(new LinearLayoutManager(this));
         ethAddressList.setLayoutManager(new LinearLayoutManager(this));
-
-        btcAdapter = new BaseAdapter<AddressBean>(R.layout.asset_item_address, null, btcAddressList) {
+        btcAdapter = new BaseAdapter<AddressBean.Address>(R.layout.asset_item_address, null, btcAddressList) {
             @Override
-            public void bind(ViewHolder holder, AddressBean item) {
-
-
+            public void bind(ViewHolder holder, AddressBean.Address item) {
+                holder.setText(R.id.name_tv, item.getNotes())
+                        .setText(R.id.address, item.getQiaobao_url());
+                ClickUtil.click(holder.getView(R.id.delete), view -> {
+                    mPresenter.deleteAddress(item.getId());
+                });
             }
         };
 
-        ethAdapter = new BaseAdapter<AddressBean>(R.layout.asset_item_address, null, ethAddressList) {
+        ethAdapter = new BaseAdapter<AddressBean.Address>(R.layout.asset_item_address, null, ethAddressList) {
             @Override
-            public void bind(ViewHolder holder, AddressBean item) {
-
+            public void bind(ViewHolder holder, AddressBean.Address item) {
+                holder.setText(R.id.name_tv, item.getNotes())
+                        .setText(R.id.address, item.getQiaobao_url());
+                ClickUtil.click(holder.getView(R.id.delete), view -> {
+                    mPresenter.deleteAddress(item.getId());
+                });
             }
         };
     }
@@ -71,17 +78,19 @@ public class AddressListActivity extends BaseActivity<AddressListPresenter> {
     @Override
     public void initData() {
         ClickUtil.click(addBtcAddress, view -> {
-            Intent intent = new Intent(this, InsertAddressActivity.class);
-            intent.putExtra("type", "BTC");
-            startActivityForResult(intent, INSERT_BTC);
+            InsertAddressActivity.start(this, "btc");
         });
 
         ClickUtil.click(addEthAddress, view -> {
-            Intent intent = new Intent(this, InsertAddressActivity.class);
-            intent.putExtra("type", "ETH");
-            startActivityForResult(intent, INSERT_ETH);
+            InsertAddressActivity.start(this, "eth");
         });
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mPresenter.getAddressList();
     }
 
     public static void start(Context context) {
@@ -89,4 +98,14 @@ public class AddressListActivity extends BaseActivity<AddressListPresenter> {
         context.startActivity(intent);
     }
 
+    public void setData(AddressBean data) {
+        if (data != null) {
+            btcAdapter.setNewData(data.getBtc());
+            ethAdapter.setNewData(data.getEth());
+        }
+    }
+
+    public void deleteSuccess(Object data) {
+        mPresenter.getAddressList();
+    }
 }

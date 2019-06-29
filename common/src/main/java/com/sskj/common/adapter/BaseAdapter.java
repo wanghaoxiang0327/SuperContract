@@ -22,7 +22,7 @@ public abstract class BaseAdapter<T> extends BaseQuickAdapter<T, ViewHolder> imp
     public BaseAdapter(int layoutResId, @Nullable List<T> data, RecyclerView recyclerView,boolean showEmpty) {
         this(layoutResId,data,recyclerView);
         if (showEmpty){
-            setEmptyView(R.layout.common_empty_view,null);
+            setEmptyView(R.layout.common_empty_view);
         }
     }
 

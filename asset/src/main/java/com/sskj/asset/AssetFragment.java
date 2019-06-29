@@ -1,26 +1,30 @@
 package com.sskj.asset;
 
 import android.os.Bundle;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.sskj.asset.data.AssetBean;
+import com.alibaba.android.arouter.launcher.ARouter;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.sskj.asset.data.AssetData;
 import com.sskj.common.adapter.BaseAdapter;
 import com.sskj.common.adapter.ViewHolder;
 import com.sskj.common.base.BaseFragment;
+import com.sskj.common.dialog.TipDialog;
+import com.sskj.common.router.RoutePath;
 import com.sskj.common.utils.ClickUtil;
+import com.sskj.common.utils.CoinIcon;
+import com.sskj.common.utils.DigitUtils;
+import com.sskj.common.utils.NumberUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 
 /**
  * 资产
@@ -39,9 +43,12 @@ public class AssetFragment extends BaseFragment<AssetPresenter> {
     TextView cnyAssetTv;
     @BindView(R2.id.asset_list)
     RecyclerView assetList;
+    @BindView(R2.id.content_layout)
+    NestedScrollView contentLayout;
 
-    BaseAdapter<AssetBean> assetAdapter;
-
+    BaseAdapter<AssetData.ResBean.AssetBean> assetAdapter;
+    private boolean checkSms;
+    private boolean checkGoogle;
 
     @Override
     public int getLayoutId() {
@@ -55,19 +62,55 @@ public class AssetFragment extends BaseFragment<AssetPresenter> {
 
     @Override
     public void initView() {
-        assetList.setLayoutManager(new LinearLayoutManager(getContext()));
-        assetAdapter = new BaseAdapter<AssetBean>(R.layout.asset_item_asset, null, assetList) {
-            @Override
-            public void bind(ViewHolder holder, AssetBean item) {
 
+        userViewModel.getUser().observe(this, userBean -> {
+            if (userBean != null) {
+                checkSms = userBean.getIsStartSms() == 1;
+                checkGoogle = userBean.getIsStartGoogle() == 1;
+            }
+        });
+
+        assetList.setLayoutManager(new LinearLayoutManager(getContext()));
+        assetAdapter = new BaseAdapter<AssetData.ResBean.AssetBean>(R.layout.asset_item_asset, null, assetList) {
+            @Override
+            public void bind(ViewHolder holder, AssetData.ResBean.AssetBean item) {
+                holder.setText(R.id.coin_name, item.getPname());
+                holder.setImageResource(R.id.coin_icon, CoinIcon.getIcon(item.getMark()));
+                holder.setText(R.id.asset_useful, NumberUtils.keepDown(item.getUsable(), 4));
+                holder.setText(R.id.asset_frost, NumberUtils.keepDown(item.getFrost(), 4));
                 ClickUtil.click(holder.getView(R.id.recharge), view -> {
                     RechargeActivity.start(getContext());
                 });
                 ClickUtil.click(holder.getView(R.id.transfer), view -> {
-                    TransferActivity.start(getContext());
+
+                    if (!checkSms && !checkGoogle) {
+                        new TipDialog(getContext())
+                                .setContent("为了保证您的账户安全，短信验证和谷歌验证方式至少开启一种")
+                                .setCancelVisible(View.GONE)
+                                .setConfirmListener(dialog -> {
+                                    dialog.dismiss();
+                                    ARouter.getInstance().build(RoutePath.SECURITY).navigation();
+                                })
+                                .show();
+                    } else {
+                        TransferActivity.start(getContext());
+                    }
+
                 });
                 ClickUtil.click(holder.getView(R.id.cashOut), view -> {
-                    WithdrawActivity.start(getContext());
+                    if (!checkSms && !checkGoogle) {
+                        new TipDialog(getContext())
+                                .setContent("为了保证您的账户安全，短信验证和谷歌验证方式至少开启一种")
+                                .setCancelVisible(View.GONE)
+                                .setConfirmListener(dialog -> {
+                                    dialog.dismiss();
+                                    ARouter.getInstance().build(RoutePath.SECURITY).navigation();
+                                })
+                                .show();
+                    } else {
+                        WithdrawActivity.start(getContext());
+                    }
+
                 });
             }
         };
@@ -76,6 +119,8 @@ public class AssetFragment extends BaseFragment<AssetPresenter> {
 
     @Override
     public void initData() {
+        wrapRefresh(contentLayout);
+        setEnableLoadMore(false);
         //资产明细
         mToolBarLayout.setRightButtonOnClickListener(view -> {
             AssetRecordsActivity.start(getContext());
@@ -84,11 +129,17 @@ public class AssetFragment extends BaseFragment<AssetPresenter> {
 
     @Override
     public void loadData() {
-        List<AssetBean> data = new ArrayList<>();
-        data.add(new AssetBean());
-        data.add(new AssetBean());
-        data.add(new AssetBean());
-        assetAdapter.setNewData(data);
+
+    }
+
+    @Override
+    public void lazyLoad() {
+        mPresenter.getAsset();
+    }
+
+    @Override
+    public void onRefresh(RefreshLayout refreshLayout) {
+        mPresenter.getAsset();
     }
 
 
@@ -100,4 +151,9 @@ public class AssetFragment extends BaseFragment<AssetPresenter> {
     }
 
 
+    public void setAsset(AssetData data) {
+        totalAssetTv.setText(NumberUtils.keepDown(data.getRes().getTotal().getTtl_money(), 4));
+        cnyAssetTv.setText("≈" + NumberUtils.keepDown(data.getRes().getTotal().getTtl_cnymoney(), 2) + "CNY");
+        assetAdapter.setNewData(data.getRes().getAsset());
+    }
 }

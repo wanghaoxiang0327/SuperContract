@@ -1,5 +1,6 @@
 package com.sskj.common.base;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -14,6 +15,7 @@ import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
 import com.scwang.smartrefresh.layout.header.ClassicsHeader;
 import com.sskj.common.R;
 import com.sskj.common.exception.BreakException;
+import com.sskj.common.user.model.UserViewModel;
 import com.sskj.common.view.ToolBarLayout;
 
 import butterknife.ButterKnife;
@@ -26,7 +28,7 @@ public abstract class BaseFragment<P extends BasePresenter> extends ExtendFragme
     protected P mPresenter;
 
 
-    private SmartRefreshLayout mRefreshLayout;
+    protected SmartRefreshLayout mRefreshLayout;
 
     private boolean enableRefresh = true;
 
@@ -39,7 +41,7 @@ public abstract class BaseFragment<P extends BasePresenter> extends ExtendFragme
 
     protected StateView stateView;
 
-
+    protected UserViewModel userViewModel;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -54,6 +56,7 @@ public abstract class BaseFragment<P extends BasePresenter> extends ExtendFragme
         mPresenter = getPresenter();
         mPresenter.attachView(this);
         initToolBar(rootView);
+        userViewModel = ViewModelProviders.of(this).get(UserViewModel.class);
         initView();
         initData();
         initEvent();

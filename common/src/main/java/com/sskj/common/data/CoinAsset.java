@@ -1,4 +1,4 @@
-package com.sskj.market.data;
+package com.sskj.common.data;
 
 import java.util.List;
 

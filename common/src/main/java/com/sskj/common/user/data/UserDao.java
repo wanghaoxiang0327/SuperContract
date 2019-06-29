@@ -7,22 +7,24 @@ import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
 
+import java.util.List;
+
 @Dao
 public interface UserDao {
 
 
-    @Query("SELECT * FROM　User")
-    LiveData<User> getAllUser();
+    @Query("select * from user_data")
+    LiveData<List<UserBean>> getUsers();
 
-    @Query("SELECT * FROM　User LIMIT 1")
-    LiveData<User> getUser();
+    @Query("select * from user_data limit 1")
+    LiveData<UserBean> getUser();
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insert(User user);
+    void insert(UserBean userBean);
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
-    void update(User user);
+    void update(UserBean userBean);
 
-    @Query("Delete from USER")
+    @Query("Delete from user_data")
     void clear();
 }

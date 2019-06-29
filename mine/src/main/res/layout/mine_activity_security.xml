@@ -79,6 +79,7 @@
         android:layout_marginTop="5dp"
         android:paddingLeft="@dimen/common_margin"
         android:paddingRight="@dimen/common_margin"
+        app:sRightTextString="已设置"
         app:sBackgroundDrawableRes="@color/common_background"
         app:sDividerLineColor="@color/common_divider"
         app:sDividerLineType="bottom"

@@ -1,6 +1,6 @@
-package com.sskj.market.data;
+package com.sskj.common.utils;
 
-import com.sskj.market.R;
+import com.sskj.common.R;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -19,9 +19,13 @@ public class CoinIcon {
 
     private static void init() {
         iconMap.put("btc_usdt", R.mipmap.common_icon_btc);
+        iconMap.put("btc", R.mipmap.common_icon_btc);
         iconMap.put("eos_usdt", R.mipmap.common_icon_eos);
+        iconMap.put("eos", R.mipmap.common_icon_eos);
         iconMap.put("eth_usdt", R.mipmap.common_icon_eth);
+        iconMap.put("eth", R.mipmap.common_icon_eth);
         iconMap.put("bch_usdt", R.mipmap.common_icon_bch);
+        iconMap.put("bch", R.mipmap.common_icon_bch);
 //        iconMap.put("xrp_usdt", R.mipmap.app_icon_xrp);
 //        iconMap.put("etc_usdt", R.mipmap.app_icon_etc);
 //        iconMap.put("ltc_usdt", R.mipmap.app_icon_ltc);

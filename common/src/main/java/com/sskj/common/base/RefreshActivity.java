@@ -29,7 +29,7 @@ public class RefreshActivity extends AppCompatActivity {
 
     private boolean enableLoadMore = true;
 
-    private SmartRefreshLayout mRefreshLayout;
+    public SmartRefreshLayout mRefreshLayout;
 
 
     /**

@@ -64,4 +64,8 @@ public class BaseApplication extends Application {
                 .setRetryCount(3);
     }
 
+
+    public  static String getMobile(){
+        return SpUtil.getString(CommonConfig.MOBILE, "");
+    }
 }

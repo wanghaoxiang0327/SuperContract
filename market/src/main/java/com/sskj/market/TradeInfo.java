@@ -1,6 +1,6 @@
 package com.sskj.market;
 
-import com.sskj.market.data.CoinAsset;
+import com.sskj.common.data.CoinAsset;
 import com.sskj.market.data.TradeCoin;
 
 import java.util.List;

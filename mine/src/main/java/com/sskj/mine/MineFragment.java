@@ -57,10 +57,24 @@ public class MineFragment extends BaseFragment<MinePresenter> {
 
     @Override
     public void initData() {
+        userViewModel.getUser().observe(this, userBean -> {
+            if (userBean != null) {
+                userName.setText(userBean.getNickname());
+                userLevel.setText(userBean.getUserLevel());
+                userId.setText(userBean.getUid());
+            }else {
+                userName.setText("点击登录");
+                userId.setText("欢迎来到SCEX");
+                ClickUtil.click(userName, view -> {
+                    ARouter.getInstance().build(RoutePath.LOGIN_LOGIN).navigation();
+                });
+            }
+        });
+
+        //安全中心
         ClickUtil.click(menuSecurity, view -> {
             SecurityActivity.start(getContext());
         });
-
         //董事分红
         ClickUtil.click(menuDirector, view -> {
             new TipDialog(getContext())
@@ -75,16 +89,20 @@ public class MineFragment extends BaseFragment<MinePresenter> {
         ClickUtil.click(menuInvite, view -> {
             InviteActivity.start(getContext());
         });
-               ClickUtil.click(menuLogout,(view) -> {
-                   ARouter.getInstance().build(RoutePath.LOGIN_LOGIN).navigation();
-                       });
+        ClickUtil.click(menuLogout, (view) -> {
+            ARouter.getInstance().build(RoutePath.LOGIN_LOGIN).navigation();
+        });
     }
 
     @Override
     public void loadData() {
-
+        userViewModel.update();
     }
 
+    @Override
+    public void onVisible() {
+        userViewModel.update();
+    }
 
     public static MineFragment newInstance() {
         MineFragment fragment = new MineFragment();

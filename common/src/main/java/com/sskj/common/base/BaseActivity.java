@@ -1,5 +1,8 @@
 package com.sskj.common.base;
 
+import android.arch.lifecycle.ViewModel;
+import android.arch.lifecycle.ViewModelProvider;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,13 +12,21 @@ import android.view.ViewGroup;
 import android.view.ViewStub;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 
 import com.gyf.barlibrary.ImmersionBar;
 import com.sskj.common.R;
 import com.sskj.common.exception.BreakException;
+import com.sskj.common.user.model.UserViewModel;
 import com.sskj.common.view.ToolBarLayout;
 
+import java.util.concurrent.TimeUnit;
+
 import butterknife.ButterKnife;
+import io.reactivex.Flowable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
+import io.reactivex.subscribers.DisposableSubscriber;
 
 public abstract class BaseActivity<P extends BasePresenter> extends ExtendActivity {
 
@@ -26,10 +37,13 @@ public abstract class BaseActivity<P extends BasePresenter> extends ExtendActivi
      */
     private boolean isPortrait = true;
 
-
     View contentView;
 
     protected ToolBarLayout mToolBarLayout;
+
+    private DisposableSubscriber<Long> disposableSubscriber;
+
+    protected UserViewModel userViewModel;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -58,6 +72,7 @@ public abstract class BaseActivity<P extends BasePresenter> extends ExtendActivi
         mPresenter.attachView(this);
         getLifecycle().addObserver(mPresenter);
         initToolBar(contentView);
+        userViewModel = ViewModelProviders.of(this).get(UserViewModel.class);
         initView();
         initData();
         initEvent();
@@ -94,7 +109,7 @@ public abstract class BaseActivity<P extends BasePresenter> extends ExtendActivi
         ImmersionBar.with(this)
                 .statusBarColor(R.color.common_status_bar)
                 //原理：如果当前设备支持状态栏字体变色，会设置状态栏字体为黑色，如果当前设备不支持状态栏字体变色，会使当前状态栏加上透明度，否则不执行透明度
-                .statusBarDarkFont(false , 0.2f)
+                .statusBarDarkFont(false, 0.2f)
                 .init();
     }
 
@@ -111,11 +126,13 @@ public abstract class BaseActivity<P extends BasePresenter> extends ExtendActivi
     }
 
 
-
     @Override
     protected void onDestroy() {
         super.onDestroy();
         ImmersionBar.with(this).destroy();
+        if (disposableSubscriber != null) {
+            disposableSubscriber.dispose();
+        }
     }
 
     @Override
@@ -131,6 +148,47 @@ public abstract class BaseActivity<P extends BasePresenter> extends ExtendActivi
 
     @Override
     public void loadData() {
+
+    }
+
+
+    public void startTimeDown(TextView getCodeView) {
+        getCodeView.setEnabled(false);
+        getCodeView.setTextColor(color(R.color.common_hint));
+        disposableSubscriber = new DisposableSubscriber<Long>() {
+            @Override
+            public void onNext(Long aLong) {
+                int time = (int) (60 - aLong);
+                if (getCodeView != null) {
+                    getCodeView.setText(time + "S后重新发送");
+                }
+            }
+
+            @Override
+            public void onError(Throwable t) {
+                System.out.println(t.toString());
+            }
+
+            @Override
+            public void onComplete() {
+                if (getCodeView != null) {
+                    getCodeView.setText("获取验证码");
+                    getCodeView.setEnabled(true);
+                    getCodeView.setTextColor(color(R.color.common_white));
+
+                }
+                if (!disposableSubscriber.isDisposed()) {
+                    disposableSubscriber.dispose();
+                    disposableSubscriber = null;
+                }
+
+            }
+        };
+
+        Flowable.interval(0, 1, TimeUnit.SECONDS, Schedulers.newThread())
+                .take(60)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(disposableSubscriber);
 
     }
 }

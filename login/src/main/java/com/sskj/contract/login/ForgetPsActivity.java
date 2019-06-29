@@ -180,54 +180,6 @@ public class ForgetPsActivity extends BaseActivity<ForgetPsPresenter> {
     }
 
 
-    public void startTimeDown(TextView getCodeView) {
-        getCodeView.setEnabled(false);
-        getCodeView.setTextColor(color(R.color.common_hint));
-        disposableSubscriber = new DisposableSubscriber<Long>() {
-            @Override
-            public void onNext(Long aLong) {
-                int time = (int) (60 - aLong);
-                if (getCodeView != null) {
-                    getCodeView.setText(time + getString(R.string.login_get_code_retry));
-                }
-            }
-
-            @Override
-            public void onError(Throwable t) {
-                t.printStackTrace();
-            }
-
-            @Override
-            public void onComplete() {
-                if (getCodeView != null) {
-                    getCodeView.setText(getString(R.string.login_get_verify_code));
-                    getCodeView.setEnabled(true);
-                    getCodeView.setTextColor(color(R.color.common_white));
-
-                }
-                if (!disposableSubscriber.isDisposed()) {
-                    disposableSubscriber.dispose();
-                    disposableSubscriber = null;
-                }
-
-            }
-        };
-
-        Flowable.interval(0, 1, TimeUnit.SECONDS, Schedulers.newThread())
-                .take(60)
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(disposableSubscriber);
-
-    }
-
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        if (disposableSubscriber!=null){
-            disposableSubscriber.dispose();
-        }
-    }
 
 
     @Override

@@ -10,7 +10,7 @@ import com.sskj.common.http.HttpResult;
 import com.sskj.common.http.JsonCallBack;
 import com.sskj.common.http.JsonConvert;
 import com.sskj.common.http.RxUtils;
-import com.sskj.market.data.CoinAsset;
+import com.sskj.common.data.CoinAsset;
 import com.sskj.market.data.TradeCoin;
 
 import java.util.List;
