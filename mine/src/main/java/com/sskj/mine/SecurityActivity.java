@@ -4,10 +4,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.allen.library.SuperTextView;
 import com.sskj.common.base.BaseActivity;
+import com.sskj.common.dialog.TipDialog;
 import com.sskj.common.router.RoutePath;
 import com.sskj.common.utils.ClickUtil;
 import com.sskj.mine.data.Verify;
@@ -35,6 +37,9 @@ public class SecurityActivity extends BaseActivity<SecurityPresenter> {
     SuperTextView menuPayPs;
 
     private boolean setPayPs;
+
+    private boolean startGoogle;
+    private boolean startSms;
 
     @Override
     public int getLayoutId() {
@@ -64,8 +69,10 @@ public class SecurityActivity extends BaseActivity<SecurityPresenter> {
                 }
 
                 if (userBean.getIsStartGoogle() == 1) {
+                    startGoogle=true;
                     menuGoogleVerify.setRightString("已开启");
                 } else {
+                    startGoogle=false;
                     if (userBean.getIsBindGoogle() == 1) {
                         menuGoogleVerify.setRightString("未开启");
                     } else {
@@ -73,8 +80,10 @@ public class SecurityActivity extends BaseActivity<SecurityPresenter> {
                     }
                 }
                 if (userBean.getIsStartSms() == 1) {
+                    startSms=true;
                     menuSmsVerify.setRightString("已开启");
                 } else {
+                    startSms=false;
                     if (TextUtils.isEmpty(userBean.getMobile())) {
                         menuSmsVerify.setRightString("未设置");
                     } else {
@@ -102,7 +111,14 @@ public class SecurityActivity extends BaseActivity<SecurityPresenter> {
         });
         ClickUtil.click(menuPayPs, view -> {
             if (setPayPs) {
-                SettingPasswordActivity.start(this);
+                if (!startSms&&startGoogle){
+                    new TipDialog(this)
+                            .setContent("为了保证您的账户安全，短信验证和谷歌验证方式至少开启一种")
+                            .setCancelVisible(View.GONE)
+                            .show();
+                }else {
+                    SettingPasswordActivity.start(this);
+                }
             } else {
                 ResetPayPasswordActivity.start(this);
             }

@@ -7,8 +7,10 @@ import android.support.v4.app.Fragment;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.sskj.common.base.BaseActivity;
+import com.sskj.common.router.RoutePath;
 import com.sskj.common.tab.TabItem;
 import com.sskj.common.tab.TabLayout;
 
@@ -23,6 +25,7 @@ import butterknife.ButterKnife;
  * @author Hey
  * Create at  2019/06/26
  */
+@Route(path = RoutePath.ORDER_MANAGER)
 public class TransactionRecordsActivity extends BaseActivity<TransactionRecordsPresenter> {
 
 

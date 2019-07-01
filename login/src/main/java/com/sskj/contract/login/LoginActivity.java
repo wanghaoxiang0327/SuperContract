@@ -180,6 +180,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> {
         if (registerType == RegisterType.MOBILE) {
             SpUtil.put(CommonConfig.MOBILE, getText(mobileEdt));
         }
+        SpUtil.put(CommonConfig.LOGIN,true);
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.put(CommonConfig.ACCOUNT, loginBean.getAccount());
         httpHeaders.put(CommonConfig.TOKEN, loginBean.getToken());

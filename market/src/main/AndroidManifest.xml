@@ -3,5 +3,6 @@
     <application>
         <activity android:name=".MarketDetailActivity"/>
     <activity android:name="com.sskj.market.TransactionRecordsActivity"/>
+<activity android:name="com.sskj.market.ProfitShareActivity"/>
 </application>
 </manifest>

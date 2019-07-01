@@ -15,11 +15,22 @@ import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.gyf.barlibrary.ImmersionBar;
+import com.sskj.common.AppManager;
+import com.sskj.common.BaseApplication;
+import com.sskj.common.CommonConfig;
 import com.sskj.common.R;
+import com.sskj.common.dialog.TipDialog;
 import com.sskj.common.exception.BreakException;
+import com.sskj.common.exception.LogoutException;
 import com.sskj.common.language.LocalManageUtil;
+import com.sskj.common.router.RoutePath;
+import com.sskj.common.rxbus.RxBus;
+import com.sskj.common.rxbus.Subscribe;
+import com.sskj.common.rxbus.ThreadMode;
 import com.sskj.common.user.model.UserViewModel;
+import com.sskj.common.utils.SpUtil;
 import com.sskj.common.view.ToolBarLayout;
 
 import java.util.concurrent.TimeUnit;
@@ -74,6 +85,7 @@ public abstract class BaseActivity<P extends BasePresenter> extends ExtendActivi
         mPresenter.attachView(this);
         getLifecycle().addObserver(mPresenter);
         initToolBar(contentView);
+        getLifecycle().addObserver(RxBus.getDefault(this, true));
         userViewModel = ViewModelProviders.of(this).get(UserViewModel.class);
         initView();
         initData();
@@ -159,6 +171,20 @@ public abstract class BaseActivity<P extends BasePresenter> extends ExtendActivi
 
     }
 
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void logout(LogoutException e) {
+        new TipDialog(this)
+                .setContent(e.getMessage())
+                .setCancelVisible(View.GONE)
+                .setConfirmListener(dialog -> {
+                    dialog.dismiss();
+                    SpUtil.exit(BaseApplication.getMobile());
+                    userViewModel.clear();
+                    ARouter.getInstance().build(RoutePath.LOGIN_LOGIN).navigation();
+                    AppManager.getInstance().finishAllLogin();
+                }).show();
+    }
 
     public void startTimeDown(TextView getCodeView) {
         getCodeView.setEnabled(false);

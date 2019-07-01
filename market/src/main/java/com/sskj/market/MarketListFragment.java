@@ -4,10 +4,14 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.github.tifezh.kchartlib.chart.draw.MainDraw;
 import com.sskj.common.DividerLineItemDecoration;
 import com.sskj.common.adapter.BaseAdapter;
 import com.sskj.common.adapter.ViewHolder;
 import com.sskj.common.base.BaseFragment;
+import com.sskj.common.rxbus.RxBus;
+import com.sskj.common.rxbus.Subscribe;
+import com.sskj.common.rxbus.ThreadMode;
 import com.sskj.common.utils.ClickUtil;
 import com.sskj.market.data.CoinBean;
 import com.sskj.common.utils.CoinIcon;
@@ -26,8 +30,8 @@ public class MarketListFragment extends BaseFragment<MarketListPresenter> {
     @BindView(R2.id.market_list)
     RecyclerView marketList;
 
-
     BaseAdapter<CoinBean> adapter;
+
 
     @Override
     public int getLayoutId() {
@@ -41,7 +45,9 @@ public class MarketListFragment extends BaseFragment<MarketListPresenter> {
 
     @Override
     public void initView() {
+        getLifecycle().addObserver(RxBus.getDefault(this, true));
         marketList.setLayoutManager(new LinearLayoutManager(getContext()));
+        marketList.getItemAnimator().setChangeDuration(0);
         marketList.addItemDecoration(new DividerLineItemDecoration(getContext())
                 .setLastDraw(false)
                 .setFirstDraw(false)
@@ -82,6 +88,21 @@ public class MarketListFragment extends BaseFragment<MarketListPresenter> {
     public void loadData() {
 
     }
+
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void updateCoin(CoinBean coinBean) {
+        if (adapter != null) {
+            for (int i = 0; i < adapter.getData().size(); i++) {
+                if (adapter.getData().get(i).getCode().equals(coinBean.getCode())) {
+                    coinBean.setPid(adapter.getData().get(i).getPid());
+                    adapter.getData().set(i, coinBean);
+                    adapter.notifyItemChanged(i);
+                }
+            }
+        }
+    }
+
 
     public static MarketListFragment newInstance() {
         MarketListFragment fragment = new MarketListFragment();

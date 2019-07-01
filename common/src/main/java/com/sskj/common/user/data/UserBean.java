@@ -59,6 +59,16 @@ public class UserBean {
     @Embedded
     private ZcTotalBean zcTotal;
 
+    //是否是董事
+    private int is_ds;
+
+    public int getIs_ds() {
+        return is_ds;
+    }
+
+    public void setIs_ds(int is_ds) {
+        this.is_ds = is_ds;
+    }
 
     public String getTpwd() {
         return tpwd;

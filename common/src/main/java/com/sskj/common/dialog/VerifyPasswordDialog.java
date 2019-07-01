@@ -22,6 +22,7 @@ import com.sskj.common.http.HttpConfig;
 import com.sskj.common.http.HttpResult;
 import com.sskj.common.http.JsonCallBack;
 import com.sskj.common.utils.ClickUtil;
+import com.sskj.common.utils.CopyUtils;
 
 import java.util.concurrent.TimeUnit;
 
@@ -72,14 +73,13 @@ public class VerifyPasswordDialog extends BottomSheetDialog {
     private int smsType;
 
     /**
-     *
-     * @param context Context
-     * @param showSMS 显示短信验证
+     * @param context    Context
+     * @param showSMS    显示短信验证
      * @param showGoogle 显示谷歌验证
-     * @param showPs 显示资金密码
-     * @param smsType 短信验证类型
+     * @param showPs     显示资金密码
+     * @param smsType    短信验证类型
      */
-    public VerifyPasswordDialog(@NonNull Context context, boolean showSMS, boolean showGoogle, boolean showPs,int smsType) {
+    public VerifyPasswordDialog(@NonNull Context context, boolean showSMS, boolean showGoogle, boolean showPs, int smsType) {
         super(context);
         View view = LayoutInflater.from(context).inflate(R.layout.common_dialog_verify_password, null);
         setContentView(view);
@@ -87,7 +87,7 @@ public class VerifyPasswordDialog extends BottomSheetDialog {
         this.showSMS = showSMS;
         this.showGoogle = showGoogle;
         this.showPS = showPs;
-        this.smsType=smsType;
+        this.smsType = smsType;
         initView();
     }
 
@@ -124,6 +124,10 @@ public class VerifyPasswordDialog extends BottomSheetDialog {
                 onConfirmListener.onConfirm(this, psEdt.getText().toString(), smsCodeEdt.getText().toString(), googleCodeEdt.getText().toString());
             }
         });
+
+        pastTv.setOnClickListener(v -> {
+            googleCodeEdt.setText(CopyUtils.getTextFromClip(getContext()));
+        });
         //发送验证码
         ClickUtil.click(getCodeTv, view -> {
             OkGo.<HttpResult>post(HttpConfig.BASE_URL + HttpConfig.SEND_SMS)
@@ -132,7 +136,7 @@ public class VerifyPasswordDialog extends BottomSheetDialog {
                     .execute(new JsonCallBack<HttpResult>() {
                         @Override
                         protected void onNext(HttpResult result) {
-                           startTimeDown(getCodeTv);
+                            startTimeDown(getCodeTv);
                         }
                     });
         });
@@ -151,7 +155,7 @@ public class VerifyPasswordDialog extends BottomSheetDialog {
             public void onNext(Long aLong) {
                 int time = (int) (60 - aLong);
                 if (getCodeView != null) {
-                    getCodeView.setText(time +"S后重新发送");
+                    getCodeView.setText(time + "S后重新发送");
                 }
             }
 
@@ -165,7 +169,7 @@ public class VerifyPasswordDialog extends BottomSheetDialog {
                 if (getCodeView != null) {
                     getCodeView.setText("获取验证码");
                     getCodeView.setEnabled(true);
-                    getCodeView.setTextColor( ContextCompat.getColor(getContext(),R.color.common_white));
+                    getCodeView.setTextColor(ContextCompat.getColor(getContext(), R.color.common_white));
                 }
                 if (!disposableSubscriber.isDisposed()) {
                     disposableSubscriber.dispose();

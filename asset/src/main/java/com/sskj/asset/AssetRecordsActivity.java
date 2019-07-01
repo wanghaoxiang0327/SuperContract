@@ -129,7 +129,7 @@ public class AssetRecordsActivity extends BaseActivity<AssetRecordsPresenter> {
 
     public void showCoinDialog(List<CoinAsset> data) {
         if (selectCoinDialog == null) {
-            selectCoinDialog = new SelectCoinDialog(this, (dialog, coin) -> {
+            selectCoinDialog = new SelectCoinDialog(this, (dialog, coin, position) -> {
                 pid = coin.getPid();
                 selectCoinName.setText(coin.getPname());
                 smartRefreshHelper.refresh();

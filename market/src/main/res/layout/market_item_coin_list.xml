@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="50dp"
+    android:layout_height="60dp"
     android:background="@color/common_action_bar"
     android:orientation="horizontal"
     android:paddingLeft="@dimen/common_margin"
@@ -61,7 +61,7 @@
         <TextView
             android:id="@+id/coin_change_rate"
             android:layout_width="wrap_content"
-            android:layout_height="25dp"
+            android:layout_height="30dp"
             android:background="@drawable/market_green_bg"
             android:gravity="center"
             android:minWidth="70dp"

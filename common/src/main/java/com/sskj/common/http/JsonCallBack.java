@@ -8,6 +8,8 @@ import com.lzy.okgo.callback.AbsCallback;
 import com.lzy.okgo.model.Response;
 import com.lzy.okgo.request.base.Request;
 import com.sskj.common.base.BasePresenter;
+import com.sskj.common.exception.LogoutException;
+import com.sskj.common.rxbus.RxBus;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
@@ -23,7 +25,7 @@ public abstract class JsonCallBack<T> extends AbsCallback<T> {
         this.presenter = presenter;
     }
 
-    public JsonCallBack(){
+    public JsonCallBack() {
 
     }
 
@@ -43,9 +45,11 @@ public abstract class JsonCallBack<T> extends AbsCallback<T> {
     @Override
     public void onError(Response<T> response) {
         super.onError(response);
-        if (response.getException() instanceof ApiException){
+        if (response.getException() instanceof ApiException) {
             ToastUtils.show(((ApiException) response.getException()).getMsg());
-        }else {
+        } else if (response.getException() instanceof LogoutException) {
+            RxBus.getDefault().post(response.getException());
+        } else {
             response.getException().printStackTrace();
         }
     }
@@ -66,8 +70,10 @@ public abstract class JsonCallBack<T> extends AbsCallback<T> {
                     HttpResult result = (HttpResult) data;
                     if (result.getStatus() == BaseHttpConfig.OK) {
                         return data;
+                    } else if (result.getStatus() == BaseHttpConfig.LOGOUT) {
+                        throw new LogoutException(result.getMsg());
                     } else {
-                        throw new ApiException(result.getMsg());
+                         throw new ApiException(result.getMsg());
                     }
                 }
             }
@@ -79,9 +85,11 @@ public abstract class JsonCallBack<T> extends AbsCallback<T> {
 
     @Override
     @CallSuper
-    public void onFinish(){
-        if (presenter!=null){
+    public void onFinish() {
+        if (presenter != null) {
             presenter.hideLoading();
         }
-    };
+    }
+
+    ;
 }

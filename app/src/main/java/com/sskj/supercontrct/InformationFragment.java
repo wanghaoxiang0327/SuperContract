@@ -11,11 +11,16 @@ import android.view.ViewGroup;
 import com.sskj.common.adapter.BaseAdapter;
 import com.sskj.common.adapter.ViewHolder;
 import com.sskj.common.base.BaseFragment;
+import com.sskj.common.mvc.DataSource;
+import com.sskj.common.mvc.SmartRefreshHelper;
 import com.sskj.supercontrct.data.NewsBean;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import io.reactivex.Flowable;
 
 /**
  * 0行业资讯 1 平台公告
@@ -29,11 +34,12 @@ public class InformationFragment extends BaseFragment<InformationPresenter> {
 
     private int type;
 
-    int page = 1;
     int size = 10;
 
     BaseAdapter<NewsBean> newsAdapter;
 
+
+    SmartRefreshHelper<List<NewsBean>> smartRefreshHelper;
 
     @Override
     public int getLayoutId() {
@@ -59,19 +65,29 @@ public class InformationFragment extends BaseFragment<InformationPresenter> {
         newsAdapter = new BaseAdapter<NewsBean>(R.layout.app_item_news, null, newsList) {
             @Override
             public void bind(ViewHolder holder, NewsBean item) {
-
+                holder.getView(R.id.news_img).setVisibility(View.GONE);
+                holder.setText(R.id.news_title, item.getTitle())
+                        .setText(R.id.time_tv, item.getDate());
             }
         };
     }
 
     @Override
     public void initData() {
-
+        wrapRefresh(newsList);
+        smartRefreshHelper = new SmartRefreshHelper<>(mRefreshLayout);
+        smartRefreshHelper.setDataSource(new DataSource<NewsBean>() {
+            @Override
+            public Flowable<List<NewsBean>> bindData(int page) {
+                return mPresenter.getNotice(page, size);
+            }
+        });
+        smartRefreshHelper.setAdapter(newsAdapter);
     }
 
     @Override
     public void loadData() {
-
+        smartRefreshHelper.refresh();
     }
 
     /**

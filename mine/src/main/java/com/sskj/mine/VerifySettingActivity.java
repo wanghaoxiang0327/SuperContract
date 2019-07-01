@@ -9,6 +9,7 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.sskj.common.base.BaseActivity;
+import com.sskj.common.dialog.TipDialog;
 import com.sskj.common.dialog.VerifyPasswordDialog;
 import com.sskj.common.utils.ClickUtil;
 import com.sskj.common.view.CheckButton;
@@ -34,6 +35,9 @@ public class VerifySettingActivity extends BaseActivity<VerifySettingPresenter> 
     TextView verifyStatus;
     @BindView(R2.id.verify_check)
     CheckButton verifyCheck;
+
+    private boolean startGoogle;
+    private boolean startSms;
 
     @Override
     public int getLayoutId() {
@@ -73,6 +77,8 @@ public class VerifySettingActivity extends BaseActivity<VerifySettingPresenter> 
 
         userViewModel.getUser().observe(this, user -> {
             if (user != null) {
+                startGoogle = user.getIsStartGoogle() == 1;
+                startSms = user.getIsStartSms() == 1;
                 if (verify == Verify.SMS) {
                     if (TextUtils.isEmpty(user.getMobile())) {
                         verifyStatus.setText("未绑定");
@@ -105,17 +111,36 @@ public class VerifySettingActivity extends BaseActivity<VerifySettingPresenter> 
     public void initData() {
         verifyCheck.setOnSwitchListener(isChecked -> {
             if (verify == Verify.SMS) {
-                new VerifyPasswordDialog(this, true, false, false, 3)
-                        .setOnConfirmListener((dialog, ps, sms, google) -> {
-                            mPresenter.setSmsState(isChecked ? 0 : 1,sms);
-                            dialog.dismiss();
-                        }).show();
+                //谷歌和短信必须开启一种
+                if (isChecked && !startGoogle) {
+                    new TipDialog(this)
+                            .setContent("为了保证您的账户安全，短信验证和谷歌验证方式至少开启一种")
+                            .setCancelVisible(View.GONE)
+                            .show();
+                } else {
+                    new VerifyPasswordDialog(this, true, false, false, 3)
+                            .setOnConfirmListener((dialog, ps, sms, google) -> {
+                                mPresenter.setSmsState(isChecked ? 0 : 1, sms);
+                                dialog.dismiss();
+                            }).show();
+                }
+
+
             } else if (verify == Verify.GOOGLE) {
-                new VerifyPasswordDialog(this, false, true, false, 0)
-                        .setOnConfirmListener((dialog, ps, sms, google) -> {
-                            mPresenter.setGoogleState(isChecked ? 0 : 1, google);
-                            dialog.dismiss();
-                        }).show();
+                //谷歌和短信必须开启一种
+                if (isChecked && !startSms) {
+                    new TipDialog(this)
+                            .setContent("为了保证您的账户安全，短信验证和谷歌验证方式至少开启一种")
+                            .setCancelVisible(View.GONE)
+                            .show();
+                } else {
+                    new VerifyPasswordDialog(this, false, true, false, 0)
+                            .setOnConfirmListener((dialog, ps, sms, google) -> {
+                                mPresenter.setGoogleState(isChecked ? 0 : 1, google);
+                                dialog.dismiss();
+                            }).show();
+                }
+
             }
             return false;
         });

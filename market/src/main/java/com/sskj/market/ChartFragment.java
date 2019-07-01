@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 
 import com.github.tifezh.kchartlib.chart.KChartView;
+import com.sskj.common.ChangeCoinEvent;
 import com.sskj.common.base.BaseFragment;
 import com.sskj.common.rxbus.RxBus;
 import com.sskj.common.rxbus.Subscribe;
@@ -102,31 +103,31 @@ public class ChartFragment extends BaseFragment<ChartPresenter> {
 
     /**
      * 长连接更新
-     * @param data
      *
+     * @param data
      */
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void socketUpdate(CoinBean data) {
-        if (data.getCode().equals(code)&&mAdapter.getCount()>0){
+        if (data.getCode().equals(code) && mAdapter.getCount() > 0) {
             Stock lastItem = (Stock) mAdapter.getItem(mAdapter.getCount() - 1);
             try {
-                long  timeStamp = dateFormat.parse(data.getDate() + " " + data.getTime()).getTime();
-                if (isAdd(timeStamp, lastItem.getTimestamp()*1000)){
-                    List<Stock> stocks=new ArrayList<>();
-                    Stock stock=copyStock(data);
+                long timeStamp = dateFormat.parse(data.getDate() + " " + data.getTime()).getTime();
+                if (isAdd(timeStamp, lastItem.getTimestamp() * 1000)) {
+                    List<Stock> stocks = new ArrayList<>();
+                    Stock stock = copyStock(data);
                     stock.setOpen(lastItem.getClosePrice());
                     stock.setVolume(lastItem.getVolume());
                     stocks.add(stock);
                     mAdapter.addNewData(stocks);
-                }else {
-                    if (data.getPrice()>lastItem.getHigh()){
+                } else {
+                    if (data.getPrice() > lastItem.getHigh()) {
                         lastItem.setHigh(data.getPrice());
                     }
-                    if (data.getPrice()<lastItem.getLow()){
+                    if (data.getPrice() < lastItem.getLow()) {
                         lastItem.setLow(data.getPrice());
                     }
                     lastItem.setClose(data.getPrice());
-                    mAdapter.getDatas().set(mAdapter.getCount()-1,lastItem);
+                    mAdapter.getDatas().set(mAdapter.getCount() - 1, lastItem);
                     mAdapter.changeLastItemClosePrice((float) data.getPrice());
                 }
 
@@ -144,7 +145,7 @@ public class ChartFragment extends BaseFragment<ChartPresenter> {
             long timeStamp = dateFormat.parse(newStock.getDate() + " " + newStock.getTime()).getTime();
             stock.setCode(newStock.getCode());
             stock.setClosePrice((float) newStock.getClose());
-            stock.setTimestamp(timeStamp/1000);
+            stock.setTimestamp(timeStamp / 1000);
             stock.setHigh(newStock.getPrice());
             stock.setLow(newStock.getPrice());
         } catch (ParseException e) {
@@ -157,6 +158,7 @@ public class ChartFragment extends BaseFragment<ChartPresenter> {
 
     /**
      * 比较时间 是否添加新的数据
+     *
      * @param newTime
      * @param lastTime
      * @return
@@ -176,9 +178,9 @@ public class ChartFragment extends BaseFragment<ChartPresenter> {
             add = time >= 15 * 60;
         } else if (goodsType.equals("minute30")) {
             add = time >= 30 * 60;
-        }else if (goodsType.equals("minute60")) {
+        } else if (goodsType.equals("minute60")) {
             add = time >= 60 * 60;
-        }else if (goodsType.equals("minute240")) {
+        } else if (goodsType.equals("minute240")) {
             add = time >= 4 * 60 * 60;
         } else if (goodsType.equals("day")) {
             add = time >= 24 * 60 * 60;
@@ -188,10 +190,9 @@ public class ChartFragment extends BaseFragment<ChartPresenter> {
 
 
     /**
-     *
-     * @param code 币种代码
+     * @param code      币种代码
      * @param goodsType K线类型
-     * @param isMinute 是否是分时线
+     * @param isMinute  是否是分时线
      * @return
      */
     public static ChartFragment newInstance(String code, String goodsType, boolean isMinute) {
@@ -213,6 +214,11 @@ public class ChartFragment extends BaseFragment<ChartPresenter> {
         }
     }
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void changeCoin(ChangeCoinEvent event) {
+        this.code = event.getCode();
+        mPresenter.getStockInfo(goodsType, code);
+    }
 
     public KChartView getKChartView() {
         return chartView;

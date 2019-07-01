@@ -25,6 +25,7 @@ public class SplashActivity extends NormalActivity {
 
     @Override
     public void initView() {
+        setNavigationBarColor();
         Flowable.timer(3, TimeUnit.SECONDS)
                 .observeOn(Schedulers.io())
                 .subscribeOn(AndroidSchedulers.mainThread())

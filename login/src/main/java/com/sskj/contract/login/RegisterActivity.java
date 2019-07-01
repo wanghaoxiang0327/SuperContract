@@ -3,16 +3,26 @@ package com.sskj.contract.login;
 import android.content.Context;
 import android.content.Intent;
 import android.text.InputType;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.TextPaint;
+import android.text.method.LinkMovementMethod;
+import android.text.method.MovementMethod;
+import android.text.style.ClickableSpan;
+import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.gyf.barlibrary.ImmersionBar;
 import com.hjq.toast.ToastUtils;
 import com.sskj.common.CommonConfig;
+import com.sskj.common.WebActivity;
 import com.sskj.common.base.BaseActivity;
 import com.sskj.common.tab.TabItem;
 import com.sskj.common.tab.TabLayout;
@@ -110,6 +120,22 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> {
         showRepeatPsImg.setOnClickListener(v ->
                 EditUtil.togglePs(repeatPsEdt, showRepeatPsImg)
         );
+
+        SpannableString reg=new SpannableString("已阅读并同意《用户注册协议》");
+        ClickableSpan clickableSpan=new ClickableSpan() {
+            @Override
+            public void onClick(@NonNull View widget) {
+                WebActivity.start(RegisterActivity.this,1);
+            }
+
+            @Override
+            public void updateDrawState(@NonNull TextPaint ds) {
+
+            }
+        };
+        reg.setSpan(clickableSpan, reg.toString().indexOf("《"), reg.toString().indexOf("》"), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        readRules.setText(reg);
+        readRules.setMovementMethod(new LinkMovementMethod());
 
         //注册
         ClickUtil.click(submit, view -> {

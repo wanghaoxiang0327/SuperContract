@@ -25,6 +25,6 @@ public interface UserDao {
     @Update(onConflict = OnConflictStrategy.REPLACE)
     void update(UserBean userBean);
 
-    @Query("Delete from user_data")
+    @Query("delete from user_data")
     void clear();
 }

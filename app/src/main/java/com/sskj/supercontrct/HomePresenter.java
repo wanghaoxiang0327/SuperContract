@@ -5,8 +5,11 @@ import com.sskj.common.base.BasePresenter;
 import com.sskj.common.http.HttpConfig;
 import com.sskj.common.http.HttpResult;
 import com.sskj.common.http.JsonCallBack;
+import com.sskj.common.http.Page;
 import com.sskj.market.data.CoinBean;
 import com.sskj.supercontrct.HomeFragment;
+import com.sskj.supercontrct.data.BannerBean;
+import com.sskj.supercontrct.data.NewsBean;
 
 import java.util.List;
 
@@ -22,6 +25,28 @@ public class HomePresenter extends BasePresenter<HomeFragment> {
                     @Override
                     protected void onNext(HttpResult<List<CoinBean>> result) {
                         mView.setData(result.getData());
+                    }
+                });
+
+    }
+
+
+    public void getBanner() {
+        OkGo.<HttpResult<List<BannerBean>>>get(HttpConfig.BASE_URL + HttpConfig.BANNER)
+                .execute(new JsonCallBack<HttpResult<List<BannerBean>>>(this) {
+                    @Override
+                    protected void onNext(HttpResult<List<BannerBean>> result) {
+                        mView.setBanner(result.getData());
+                    }
+                });
+
+    }
+    public void getNotice() {
+        OkGo.<HttpResult<Page<NewsBean>>>get(HttpConfig.BASE_URL + HttpConfig.NOTICE_LIST)
+                .execute(new JsonCallBack<HttpResult<Page<NewsBean>>>(this) {
+                    @Override
+                    protected void onNext(HttpResult<Page<NewsBean>> result) {
+                        mView.setNotice(result.getData());
                     }
                 });
 

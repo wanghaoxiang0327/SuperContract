@@ -190,7 +190,7 @@ public class WithdrawActivity extends BaseActivity<WithdrawPresenter> {
 
     public void showCoinDialog(List<CoinAsset> data) {
         if (selectCoinDialog == null) {
-            selectCoinDialog = new SelectCoinDialog(this, (dialog, coin) -> {
+            selectCoinDialog = new SelectCoinDialog(this, (dialog, coin, position) -> {
                 changeCoin(coin);
                 dialog.dismiss();
             });

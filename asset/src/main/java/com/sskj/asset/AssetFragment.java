@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.sskj.asset.data.AssetData;
+import com.sskj.common.CommonConfig;
 import com.sskj.common.adapter.BaseAdapter;
 import com.sskj.common.adapter.ViewHolder;
 import com.sskj.common.base.BaseFragment;
@@ -20,6 +21,7 @@ import com.sskj.common.utils.ClickUtil;
 import com.sskj.common.utils.CoinIcon;
 import com.sskj.common.utils.DigitUtils;
 import com.sskj.common.utils.NumberUtils;
+import com.sskj.common.utils.SpUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,6 +52,10 @@ public class AssetFragment extends BaseFragment<AssetPresenter> {
     private boolean checkSms;
     private boolean checkGoogle;
 
+    private boolean showAsset;
+    private String total;
+    private String cny;
+
     @Override
     public int getLayoutId() {
         return R.layout.asset_fragment_asset;
@@ -62,12 +68,28 @@ public class AssetFragment extends BaseFragment<AssetPresenter> {
 
     @Override
     public void initView() {
-
+        showAsset = SpUtil.getBoolean(CommonConfig.SHOWASSET, true);
         userViewModel.getUser().observe(this, userBean -> {
             if (userBean != null) {
                 checkSms = userBean.getIsStartSms() == 1;
                 checkGoogle = userBean.getIsStartGoogle() == 1;
             }
+        });
+        hideAssetImg.setOnClickListener(view -> {
+            if (showAsset) {
+                totalAssetTv.setText("****");
+                cnyAssetTv.setText("****");
+                showAsset = false;
+                SpUtil.put(CommonConfig.SHOWASSET, showAsset);
+                hideAssetImg.setImageResource(R.mipmap.asset_icon_hide);
+            } else {
+                totalAssetTv.setText(total);
+                cnyAssetTv.setText("≈" + cny + "CNY");
+                showAsset = true;
+                SpUtil.put(CommonConfig.SHOWASSET, showAsset);
+                hideAssetImg.setImageResource(R.mipmap.asset_icon_show);
+            }
+
         });
 
         assetList.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -152,8 +174,10 @@ public class AssetFragment extends BaseFragment<AssetPresenter> {
 
 
     public void setAsset(AssetData data) {
-        totalAssetTv.setText(NumberUtils.keepDown(data.getRes().getTotal().getTtl_money(), 4));
-        cnyAssetTv.setText("≈" + NumberUtils.keepDown(data.getRes().getTotal().getTtl_cnymoney(), 2) + "CNY");
+        total = NumberUtils.keepDown(data.getRes().getTotal().getTtl_money(), 4);
+        totalAssetTv.setText(total);
+        cny = NumberUtils.keepDown(data.getRes().getTotal().getTtl_cnymoney(), 2);
+        cnyAssetTv.setText("≈" + cny + "CNY");
         assetAdapter.setNewData(data.getRes().getAsset());
     }
 }

@@ -9,10 +9,22 @@ public class HttpConfig {
 
     //==================================================
 
+
+
+
     /**
      * 行情数据
      */
     public static final String GET_PRODUCT = "/home/ajax/getpro";
+
+    public static final String BANNER = "/Home/Sign/bannerfind";
+
+    public static final String NOTICE_LIST = "/Home/Article/notice_list";
+
+    public static final String NOTICE_DETAIL = "/Home/Article/notice_detail";
+
+
+    public static final String WEB_AGGREE = "/Home/ajax/get_web_agree";
 
     //=======================交易==============================
     //币种资产
@@ -27,11 +39,7 @@ public class HttpConfig {
     //我的订单
     public static final String MYORDER = "/Home/Contract/contract_record";
 
-
-
-
-
-
+    public static final String ORDER_DETAIL = "/Home/contract/contract_detail";
 
 
     //========================mine================================

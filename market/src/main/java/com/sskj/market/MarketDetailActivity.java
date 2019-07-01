@@ -14,9 +14,13 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.hjq.toast.ToastUtils;
+import com.sskj.common.BaseApplication;
+import com.sskj.common.ChangeCoinEvent;
 import com.sskj.common.base.BaseActivity;
+import com.sskj.common.data.CoinAsset;
 import com.sskj.common.dialog.SelectCoinDialog;
 import com.sskj.common.router.RoutePath;
+import com.sskj.common.rxbus.RxBus;
 import com.sskj.common.rxbus.Subscribe;
 import com.sskj.common.rxbus.ThreadMode;
 import com.sskj.common.tab.TabItem;
@@ -72,9 +76,19 @@ public class MarketDetailActivity extends BaseActivity<MarketDetailPresenter> {
     @Autowired
     CoinBean coinBean;
 
+    @Autowired
+    List<TradeCoin> coinBeans;
+
     private String code;
 
     private CreateOrderDialog createOrderDialog;
+
+    private List<CoinAsset> coinAssets = new ArrayList<>();
+
+
+    private String pid;
+
+    private SelectCoinDialog selectCoinDialog;
 
     @Override
     public int getLayoutId() {
@@ -91,18 +105,20 @@ public class MarketDetailActivity extends BaseActivity<MarketDetailPresenter> {
         ARouter.getInstance().inject(this);
         if (coinBean != null) {
             code = coinBean.getCode();
+            pid = coinBean.getPid();
             mToolBarLayout.setTitle(coinBean.getCode());
             mToolBarLayout.mTextTitle.setCompoundDrawablesWithIntrinsicBounds(null, null, drawable(R.mipmap.market_down), null);
-            mToolBarLayout.mTextTitle.setOnClickListener(v -> {
-                new SelectCoinDialog(MarketDetailActivity.this, (dialog, coin) -> {
-                    mToolBarLayout.setTitle(coin.getName());
-                    dialog.dismiss();
-                }).show();
-            });
             updateUI(coinBean);
         }
+
         mToolBarLayout.setRightButtonOnClickListener(v -> {
-            TransactionRecordsActivity.start(this);
+            if (BaseApplication.isLogin()){
+                TransactionRecordsActivity.start(this);
+            }else {
+                ARouter.getInstance().build(RoutePath.LOGIN_LOGIN).navigation();
+            }
+
+
         });
         chartTabs.add(new TabItem(getString(R.string.market_time), 0, 0));
         chartTabs.add(new TabItem("1M", 0, 0));
@@ -123,22 +139,33 @@ public class MarketDetailActivity extends BaseActivity<MarketDetailPresenter> {
     @Override
     public void initData() {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.order_content, ProfitOrderFragment.newInstance());
+        ft.replace(R.id.order_content, ProfitOrderFragment.newInstance(code, pid));
         ft.commitAllowingStateLoss();
-
         //买涨下单
         ClickUtil.click(buyUpBtn, view -> {
-            mPresenter.getTradeInfo(true);
+            if (BaseApplication.isLogin()){
+                mPresenter.getTradeInfo(true);
+            }else {
+                ARouter.getInstance().build(RoutePath.LOGIN_LOGIN).navigation();
+            }
         });
         //买跌下单
         ClickUtil.click(buyDownBtn, view -> {
-            mPresenter.getTradeInfo(false);
+            if (BaseApplication.isLogin()){
+                mPresenter.getTradeInfo(false);
+            }else {
+                ARouter.getInstance().build(RoutePath.LOGIN_LOGIN).navigation();
+            }
         });
+        mToolBarLayout.mTextTitle.setOnClickListener(v -> {
+            showDialog();
+        });
+
     }
 
     @Override
     public void loadData() {
-
+        mPresenter.getTradeCoinList(false);
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
@@ -257,13 +284,53 @@ public class MarketDetailActivity extends BaseActivity<MarketDetailPresenter> {
         });
     }
 
-    public void setTradeCoinInfo(List<TradeCoin> data) {
-
-
-    }
 
     public void createOrderSuccess() {
         ToastUtils.show("创建订单成功");
         createOrderDialog.dismiss();
+    }
+
+    public void setCoinList(List<TradeCoin> data, boolean showDialog) {
+        coinBeans = data;
+        //选择币种
+        if (coinBeans != null) {
+            coinAssets.clear();
+            for (TradeCoin bean : coinBeans) {
+                CoinAsset coinAsset = new CoinAsset();
+                coinAsset.setName(bean.getMark());
+                coinAsset.setPname(bean.getMark());
+                coinAsset.setPid(bean.getPid());
+                coinAssets.add(coinAsset);
+            }
+        }
+        if (showDialog) {
+            showDialog();
+        }
+    }
+
+    public void showDialog() {
+        if (coinAssets.isEmpty()) {
+            mPresenter.getTradeCoinList(true);
+        } else {
+            if (selectCoinDialog == null) {
+                selectCoinDialog = new SelectCoinDialog(MarketDetailActivity.this, (dialog, coin, position) -> {
+                    mToolBarLayout.setTitle(coin.getName());
+                    code = coin.getName();
+                    pid = coin.getPid();
+                    mPresenter.getMarketList();
+                    RxBus.getDefault().postPre(new ChangeCoinEvent(coin.getName(), coin.getPid()));
+                    dialog.dismiss();
+                });
+            }
+            selectCoinDialog.setData(coinAssets).show();
+        }
+    }
+
+    public void setCoin(List<CoinBean> data) {
+        for (CoinBean coin : data) {
+            if (coin.getCode().equals(code)) {
+                updateUI(coin);
+            }
+        }
     }
 }

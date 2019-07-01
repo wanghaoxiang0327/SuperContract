@@ -8,6 +8,7 @@ import com.sskj.common.base.BaseFragment;
 import com.sskj.common.http.Page;
 import com.sskj.common.mvc.DataSource;
 import com.sskj.common.mvc.SmartRefreshHelper;
+import com.sskj.common.utils.ClickUtil;
 import com.sskj.common.utils.DigitUtils;
 import com.sskj.common.utils.NumberUtils;
 import com.sskj.common.utils.TimeFormatUtil;
@@ -72,22 +73,30 @@ public class DealFragment extends BaseFragment<DealPresenter> {
                 } else {
                     holder.setTextColor(R.id.buy_type_tv, color(R.color.market_red));
                 }
-                holder.setVisible(R.id.share_tv, true);
+
                 //已平仓
                 if (item.getState() == 2) {
                     holder.setText(R.id.time_tv, TimeFormatUtil.SF_FORMAT_E.format(item.getSelltime() * 1000));
                     if (item.getPc_type() == 1) {
+                        holder.setVisible(R.id.share_tv, true);
                         holder.setText(R.id.new_pirce_tv, "止盈平仓");
                         holder.setTextColor(R.id.new_pirce_tv, color(R.color.market_green));
+                        ClickUtil.click(holder.getView(R.id.share_tv), view -> {
+                            ProfitShareActivity.start(getContext(), item.getId());
+                        });
                     } else {
+                        holder.setVisible(R.id.share_tv, false);
                         holder.setText(R.id.new_pirce_tv, "止损平仓");
                         holder.setTextColor(R.id.new_pirce_tv, color(R.color.market_red));
+                        ClickUtil.click(holder.getView(R.id.share_tv), view -> {
+                        });
                     }
                     holder.getView(R.id.new_pirce_tv).setPadding(0, 0, 0, 0);
                     holder.setBackgroundColor(R.id.new_pirce_tv, Color.TRANSPARENT);
                 } else {
                     holder.setText(R.id.time_tv, TimeFormatUtil.SF_FORMAT_E.format(item.getAddtime() * 1000));
                 }
+
 
             }
         };
@@ -101,7 +110,6 @@ public class DealFragment extends BaseFragment<DealPresenter> {
         smartRefreshHelper.setDataSource(new DataSource<HoldBean>() {
             @Override
             public Flowable<List<HoldBean>> bindData(int page) {
-
                 return  mPresenter.getOrder(2, page, size);
             }
         });

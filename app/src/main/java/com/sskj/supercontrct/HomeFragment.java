@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Gravity;
 import android.widget.FrameLayout;
 import android.widget.TextSwitcher;
 import android.widget.TextView;
@@ -16,18 +17,30 @@ import com.sskj.common.adapter.ViewHolder;
 import com.sskj.common.base.BaseFragment;
 import com.sskj.common.glide.GlideImageLoader;
 import com.sskj.common.glide.ZoomOutPageTransformer;
+import com.sskj.common.http.BaseHttpConfig;
+import com.sskj.common.http.Page;
+import com.sskj.common.language.LanguageSPUtil;
 import com.sskj.common.router.RoutePath;
+import com.sskj.common.rxbus.RxBus;
+import com.sskj.common.rxbus.Subscribe;
+import com.sskj.common.rxbus.ThreadMode;
 import com.sskj.common.utils.ClickUtil;
 import com.sskj.market.MarketListFragment;
 import com.sskj.market.data.CoinBean;
-import com.sskj.market.dialog.CreateOrderDialog;
 import com.sskj.mine.LanguageActivity;
+import com.sskj.supercontrct.data.BannerBean;
+import com.sskj.supercontrct.data.NewsBean;
 import com.youth.banner.Banner;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
+import io.reactivex.Flowable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * @author Hey
@@ -56,6 +69,8 @@ public class HomeFragment extends BaseFragment<HomePresenter> {
     List<CoinBean> topList = new ArrayList<>();
 
     private MarketListFragment marketListFragment;
+    private Disposable noticeDisposable;
+
 
     @Override
     public int getLayoutId() {
@@ -69,19 +84,16 @@ public class HomeFragment extends BaseFragment<HomePresenter> {
 
     @Override
     public void initView() {
+        getLifecycle().addObserver(RxBus.getDefault(this, true));
         bannerView.setImageLoader(new GlideImageLoader());
-        bannerImages.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1561120133254&di=9472a6c875e07f2d3eba6fdc09ef14d4&imgtype=0&src=http%3A%2F%2Fimg.mp.itc.cn%2Fupload%2F20170517%2F5334d6802d164ead9acae878e9b826bf_th.jpg");
-        bannerImages.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1561120134184&di=3e171ec7d493110ba0734bbcdd3909bb&imgtype=0&src=http%3A%2F%2Fimg.juimg.com%2Ftuku%2Fyulantu%2F110915%2F15-1109150P62810.jpg");
-        bannerImages.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1561120134184&di=001ddecdfdd5beef2cfd4fd6cf1e3cc9&imgtype=0&src=http%3A%2F%2Fpic21.nipic.com%2F20120513%2F2786001_164627479000_2.jpg");
-        bannerView.setImages(bannerImages);
         bannerView.setOffscreenPageLimit(1);
         bannerView.setPageTransformer(false, new ZoomOutPageTransformer());
-        bannerView.start();
         marketListFragment = MarketListFragment.newInstance();
         FragmentTransaction ft = getChildFragmentManager().beginTransaction();
         ft.replace(R.id.home_coin_list, marketListFragment);
         ft.commitAllowingStateLoss();
         topCoinRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3));
+        topCoinRecyclerView.getItemAnimator().setChangeDuration(0);
         topAdapter = new BaseAdapter<CoinBean>(R.layout.market_item_top_coin, null, topCoinRecyclerView) {
             @Override
             public void bind(ViewHolder holder, CoinBean item) {
@@ -98,16 +110,46 @@ public class HomeFragment extends BaseFragment<HomePresenter> {
                 }
 
                 ClickUtil.click(holder.itemView, view -> {
-                    ARouter.getInstance().build(RoutePath.MARKET_DETAIL).withSerializable("coinBean", item).navigation();
+                    ARouter.getInstance()
+                            .build(RoutePath.MARKET_DETAIL)
+                            .withSerializable("coinBean", item)
+                            .navigation();
                 });
 
             }
         };
+
+        tvNotice.setFactory(() -> {
+            TextView textView = new TextView(getActivity());
+            textView.setTextColor(color(R.color.common_text));
+            textView.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT));
+            textView.setGravity(Gravity.CENTER_VERTICAL);
+            textView.setPadding(20, 0, 0, 0);
+            return textView;
+        });
     }
 
 
     @Override
     public void initData() {
+
+        switch (LanguageSPUtil.getInstance(getContext()).getSelectLanguage()) {
+            case 1:
+                changeLanguage.setText("简体中文");
+                break;
+            case 2:
+                changeLanguage.setText("繁體中文");
+                break;
+            case 3:
+                changeLanguage.setText("English");
+                break;
+            case 4:
+                changeLanguage.setText("한글");
+                break;
+            default:
+                break;
+        }
+
         tvNotice.setOnClickListener(view -> {
 
         });
@@ -121,6 +163,8 @@ public class HomeFragment extends BaseFragment<HomePresenter> {
     @Override
     public void loadData() {
         mPresenter.getMarketList();
+        mPresenter.getBanner();
+        mPresenter.getNotice();
     }
 
     @Override
@@ -147,6 +191,21 @@ public class HomeFragment extends BaseFragment<HomePresenter> {
         bannerView.stopAutoPlay();
     }
 
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void updateCoin(CoinBean coinBean) {
+        if (topAdapter != null) {
+            for (int i = 0; i < topAdapter.getData().size(); i++) {
+                if (topAdapter.getData().get(i).getCode().equals(coinBean.getCode())) {
+                    coinBean.setPid(topAdapter.getData().get(i).getPid());
+                    topAdapter.getData().set(i, coinBean);
+                    topAdapter.notifyItemChanged(i);
+                }
+            }
+        }
+    }
+
+
     public void setData(List<CoinBean> data) {
         if (marketListFragment != null) {
             marketListFragment.setData(data);
@@ -158,5 +217,41 @@ public class HomeFragment extends BaseFragment<HomePresenter> {
             }
         }
         topAdapter.setNewData(topList);
+    }
+
+    public void setBanner(List<BannerBean> data) {
+        bannerImages.clear();
+        for (BannerBean bean : data) {
+            bannerImages.add(BaseHttpConfig.BASE_URL + bean.getPath());
+        }
+        bannerView.setImages(bannerImages);
+        bannerView.start();
+    }
+
+    public void setNotice(Page<NewsBean> data) {
+        if (data != null) {
+            noticeDisposable = Flowable.interval(0, 5, TimeUnit.SECONDS)
+                    .onBackpressureDrop()
+                    .subscribeOn(Schedulers.newThread())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(i -> {
+                        if (tvNotice != null) {
+                            int position = (int) (i % data.getRes().size());
+                            String text = data.getRes().get(position).getTitle();
+                            tvNotice.setText(text);
+                            ClickUtil.click(tvNotice, view -> {
+                                NewsDetailActivity.start(getContext(), data.getRes().get(position).getId());
+                            });
+                        }
+                    }, throwable -> {
+                        throwable.printStackTrace();
+                    });
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        noticeDisposable.dispose();
     }
 }

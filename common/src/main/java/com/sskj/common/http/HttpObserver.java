@@ -1,6 +1,9 @@
 package com.sskj.common.http;
 
+import com.hjq.toast.ToastUtils;
 import com.sskj.common.base.BasePresenter;
+import com.sskj.common.exception.LogoutException;
+import com.sskj.common.rxbus.RxBus;
 
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
@@ -29,7 +32,13 @@ public abstract class HttpObserver<T> implements Observer<T> {
 
     @Override
     public void onError(Throwable e) {
-        e.printStackTrace();
+        if (e instanceof ApiException) {
+            ToastUtils.show(((ApiException) e).getMsg());
+        } else if (e instanceof LogoutException) {
+            RxBus.getDefault().post(e);
+        } else {
+            e.printStackTrace();
+        }
         onFinish();
     }
 
@@ -38,9 +47,10 @@ public abstract class HttpObserver<T> implements Observer<T> {
 
     }
 
-    public void onFinish(){
+    public void onFinish() {
         presenter.hideLoading();
-    };
+    }
+
 
     protected abstract void onSuccess(T t);
 

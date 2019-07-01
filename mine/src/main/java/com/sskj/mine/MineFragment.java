@@ -1,14 +1,18 @@
 package com.sskj.mine;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.allen.library.SuperTextView;
+import com.sskj.common.AppManager;
+import com.sskj.common.BaseApplication;
 import com.sskj.common.base.BaseFragment;
 import com.sskj.common.dialog.TipDialog;
 import com.sskj.common.router.RoutePath;
 import com.sskj.common.utils.ClickUtil;
+import com.sskj.common.utils.SpUtil;
 
 import butterknife.BindView;
 
@@ -39,6 +43,7 @@ public class MineFragment extends BaseFragment<MinePresenter> {
     @BindView(R2.id.menu_director)
     SuperTextView menuDirector;
 
+    private boolean isDirector;
 
     @Override
     public int getLayoutId() {
@@ -62,35 +67,76 @@ public class MineFragment extends BaseFragment<MinePresenter> {
                 userName.setText(userBean.getNickname());
                 userLevel.setText(userBean.getUserLevel());
                 userId.setText(userBean.getUid());
-            }else {
+                isDirector = userBean.getIs_ds() == 1;
+                menuLogout.setVisibility(View.VISIBLE);
+            } else {
                 userName.setText("点击登录");
                 userId.setText("欢迎来到SCEX");
                 ClickUtil.click(userName, view -> {
                     ARouter.getInstance().build(RoutePath.LOGIN_LOGIN).navigation();
                 });
+                menuLogout.setVisibility(View.GONE);
             }
+        });
+
+        ClickUtil.click(menuOrderManager, view -> {
+            if (BaseApplication.isLogin()) {
+                ARouter.getInstance().build(RoutePath.ORDER_MANAGER).navigation();
+            } else {
+                ARouter.getInstance().build(RoutePath.LOGIN_LOGIN).navigation();
+            }
+
         });
 
         //安全中心
         ClickUtil.click(menuSecurity, view -> {
-            SecurityActivity.start(getContext());
+
+            if (BaseApplication.isLogin()) {
+                SecurityActivity.start(getContext());
+            } else {
+                ARouter.getInstance().build(RoutePath.LOGIN_LOGIN).navigation();
+            }
+
         });
         //董事分红
         ClickUtil.click(menuDirector, view -> {
-            new TipDialog(getContext())
-                    .setContent("离董事分红仅差一步，赶快邀请好友。")
-                    .setConfirmListener(dialog -> {
-                        dialog.dismiss();
-                        DirectorActivity.start(getContext());
-                    }).show();
+
+            if (BaseApplication.isLogin()) {
+                if (isDirector) {
+                    DirectorActivity.start(getContext());
+                } else {
+                    new TipDialog(getContext())
+                            .setContent("离董事分红仅差一步，赶快邀请好友。")
+                            .setConfirmListener(dialog -> {
+                                dialog.dismiss();
+
+                            }).show();
+                }
+            } else {
+                ARouter.getInstance().build(RoutePath.LOGIN_LOGIN).navigation();
+            }
+
 
         });
         //邀请好友
         ClickUtil.click(menuInvite, view -> {
-            InviteActivity.start(getContext());
+            if (BaseApplication.isLogin()) {
+                InviteActivity.start(getContext());
+            } else {
+                ARouter.getInstance().build(RoutePath.LOGIN_LOGIN).navigation();
+            }
+
         });
         ClickUtil.click(menuLogout, (view) -> {
-            ARouter.getInstance().build(RoutePath.LOGIN_LOGIN).navigation();
+            new TipDialog(getContext())
+                    .setContent("确定要退出吗")
+                    .setConfirmListener(dialog -> {
+                        dialog.dismiss();
+                        SpUtil.exit(BaseApplication.getMobile());
+                        userViewModel.clear();
+                        ARouter.getInstance().build(RoutePath.LOGIN_LOGIN).navigation();
+                        AppManager.getInstance().finishAllLogin();
+                    }).show();
         });
     }
 

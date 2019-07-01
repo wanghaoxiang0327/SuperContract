@@ -49,7 +49,7 @@ public class SelectCoinDialog extends BottomSheetDialog {
                 holder.setText(R.id.name, item.getPname());
                 holder.itemView.setOnClickListener(view -> {
                     if (onSelectListener != null) {
-                        onSelectListener.onSelect(SelectCoinDialog.this, item);
+                        onSelectListener.onSelect(SelectCoinDialog.this, item,holder.getLayoutPosition());
                     }
                 });
             }
@@ -57,12 +57,13 @@ public class SelectCoinDialog extends BottomSheetDialog {
     }
 
 
-    public void setData(List<CoinAsset> data){
+    public SelectCoinDialog setData(List<CoinAsset> data){
         coinAdapter.setNewData(data);
+        return this;
     }
 
     public interface OnSelectListener {
-        void onSelect(SelectCoinDialog dialog, CoinAsset coin);
+        void onSelect(SelectCoinDialog dialog, CoinAsset coin,int position);
     }
 
 }

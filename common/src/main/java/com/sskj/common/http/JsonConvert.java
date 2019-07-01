@@ -2,6 +2,8 @@ package com.sskj.common.http;
 
 import com.alibaba.fastjson.JSON;
 import com.lzy.okgo.convert.Converter;
+import com.sskj.common.exception.LogoutException;
+import com.sskj.common.rxbus.RxBus;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
@@ -25,6 +27,8 @@ public class JsonConvert<T> implements Converter<T> {
                     HttpResult result = (HttpResult) data;
                     if (result.getStatus() == BaseHttpConfig.OK) {
                         return data;
+                    } else if (result.getStatus() == BaseHttpConfig.LOGOUT) {
+                        throw new LogoutException(result.getMsg());
                     } else {
                         throw new ApiException(result.getMsg());
                     }

@@ -46,6 +46,23 @@ public class LocalManageUtil {
         }
     }
 
+
+
+    public static String getLanguage(Context context){
+        switch (LanguageSPUtil.getInstance(context).getSelectLanguage()) {
+            case 1:
+                return "zh";
+            case 2:
+                return "fan";
+            case 3:
+                return "en";
+            case 4:
+                return "han";
+            default:
+                return "zh";
+        }
+    }
+
     public static void saveSelectLanguage(Context context, int select) {
         LanguageSPUtil.getInstance(context).saveLanguage(select);
         setApplicationLanguage(context);

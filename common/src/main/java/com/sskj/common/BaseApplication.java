@@ -19,6 +19,7 @@ import com.shizhefei.mvc.MVCHelper;
 import com.sskj.common.language.LocalManageUtil;
 import com.sskj.common.mvc.LoadViewFactory;
 import com.sskj.common.utils.SpUtil;
+import com.zzhoujay.richtext.RichText;
 
 import java.util.logging.Level;
 
@@ -41,6 +42,7 @@ public class BaseApplication extends Application {
             ARouter.openLog();
         }
         ARouter.init(this);
+        RichText.initCacheDir(this);
         LocalManageUtil.setApplicationLanguage(this);
     }
 
@@ -84,7 +86,13 @@ public class BaseApplication extends Application {
     }
 
 
-    public  static String getMobile(){
+    public static String getMobile() {
         return SpUtil.getString(CommonConfig.MOBILE, "");
     }
+
+    public static Boolean isLogin() {
+        return SpUtil.getBoolean(CommonConfig.LOGIN, false);
+    }
+
+
 }

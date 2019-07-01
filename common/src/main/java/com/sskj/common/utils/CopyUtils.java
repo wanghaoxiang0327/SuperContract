@@ -19,6 +19,7 @@ public class CopyUtils {
         return false;
     }
 
+
     public static String getTextFromClip(Context context) {
         ClipboardManager clipboardManager = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
         //判断剪切版时候有内容

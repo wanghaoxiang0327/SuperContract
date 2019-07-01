@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string name="login_failed">"Login failed"</string>
+	<string name="login_input_mobile">Please enter your cell phone number</string>
+	<string name="login_input_email">Please enter your email address</string>
+	<string name="login_get_verify_code">Get the authentication code</string>
+	<string name="login_get_code_retry">Re-send after S</string>
+	<string name="login_input_loagin_ps">Please enter your login password</string>
+	<string name="login_login_btn">Login</string>
+	<string name="login_ps_format">8-20-bit characters and alphanumeric combinations</string>
+	<string name="login_repeat_ps">Please enter a confirmation password</string>
+
+</resources>

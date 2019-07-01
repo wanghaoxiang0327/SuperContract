@@ -17,6 +17,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Map;
 
+import static com.sskj.common.CommonConfig.LOGIN;
 import static com.sskj.common.CommonConfig.MOBILE;
 
 public class SpUtil {
@@ -170,6 +171,7 @@ public class SpUtil {
         SharedPreferences.Editor editor = sp.edit();
         editor.clear();
         editor.putString(MOBILE,mobile);
+        editor.putBoolean(LOGIN, false);
         SharedPreferencesCompat.apply(editor);
     }
 

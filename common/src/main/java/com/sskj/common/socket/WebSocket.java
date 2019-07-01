@@ -43,7 +43,7 @@ public class WebSocket extends WebSocketListener {
     //连接失败重试次数
     protected int retryCount = 0;
     //最大重试次数
-    protected int maxTryCount = 10;
+    protected int maxTryCount = 1000;
 
     protected boolean isUserCancel = false;
 
@@ -55,7 +55,7 @@ public class WebSocket extends WebSocketListener {
         isLog = log;
     }
 
-    protected boolean isLog = true;
+    protected boolean isLog = false;
 
     protected boolean isSSL = true;
 
@@ -177,7 +177,7 @@ public class WebSocket extends WebSocketListener {
     public void onFailure(okhttp3.WebSocket webSocket, Throwable t, Response response) {
         if (!isUserCancel) {
             if (retryCount < maxTryCount) {
-                retryHandler.postDelayed(runnable, retryCount * 5000);
+                retryHandler.postDelayed(runnable, 1000*10);
                 if (isLog) {
                     Log.e(tag + "WebSocket>>retry:", retryCount + "");
                 }

@@ -4,6 +4,8 @@ import android.arch.lifecycle.Lifecycle;
 import android.arch.lifecycle.LifecycleObserver;
 import android.arch.lifecycle.OnLifecycleEvent;
 
+import com.sskj.common.base.BaseActivity;
+
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,9 +34,9 @@ public class RxBus implements LifecycleObserver {
     private Map<Object, List<Class>> eventTypesBySubscriber = new HashMap();
     private Map<Class, List<SubscriberMethod>> subscriberMethodByEventType = new HashMap();
     private final Subject<Object> bus = PublishSubject.create().toSerialized();
-    private final Subject<Object> preBus= BehaviorSubject.create().toSerialized();
+    private final Subject<Object> preBus = BehaviorSubject.create().toSerialized();
 
-    private  boolean isPre;
+    private boolean isPre;
 
     private Object host;
 
@@ -48,33 +50,33 @@ public class RxBus implements LifecycleObserver {
         return defaultInstance;
     }
 
-    public synchronized static RxBus getDefault(Object object,  boolean isPre) {
+    public synchronized static RxBus getDefault(Object object, boolean isPre) {
         if (defaultInstance == null) {
             defaultInstance = new RxBus();
         }
-        defaultInstance.isPre=isPre;
-        defaultInstance.host=object;
+        defaultInstance.isPre = isPre;
+        defaultInstance.host = object;
         return defaultInstance;
     }
 
 
-    private <T> Flowable<T> toObservable(Class<T> eventType,boolean pre) {
-        if (pre){
+    private <T> Flowable<T> toObservable(Class<T> eventType, boolean pre) {
+        if (pre) {
             return this.preBus.toFlowable(BackpressureStrategy.BUFFER).ofType(eventType);
         }
         return this.bus.toFlowable(BackpressureStrategy.BUFFER).ofType(eventType);
     }
 
-    private <T> Flowable<T> toObservable(final int code, final Class<T> eventType,boolean pre) {
+    private <T> Flowable<T> toObservable(final int code, final Class<T> eventType, boolean pre) {
 
-       if (pre){
-           return this.preBus.toFlowable(BackpressureStrategy.BUFFER).ofType(Message.class).filter(o -> o.getCode() == code && eventType.isInstance(o.getObject())).map(new Function<Message, Object>() {
-               @Override
-               public Object apply(Message o) {
-                   return o.getObject();
-               }
-           }).cast(eventType);
-       }
+        if (pre) {
+            return this.preBus.toFlowable(BackpressureStrategy.BUFFER).ofType(Message.class).filter(o -> o.getCode() == code && eventType.isInstance(o.getObject())).map(new Function<Message, Object>() {
+                @Override
+                public Object apply(Message o) {
+                    return o.getObject();
+                }
+            }).cast(eventType);
+        }
 
         return this.bus.toFlowable(BackpressureStrategy.BUFFER).ofType(Message.class).filter(o -> o.getCode() == code && eventType.isInstance(o.getObject())).map(new Function<Message, Object>() {
             @Override
@@ -85,27 +87,27 @@ public class RxBus implements LifecycleObserver {
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
-    public void onCreate(){
-        if (isPre){
+    public void onCreate() {
+        if (isPre) {
             registerPre(host);
-        }else {
+        } else {
             register(host);
         }
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
-    public void onDestroy(){
+    public void onDestroy() {
         unregister(host);
-        host=null;
+        host = null;
     }
 
 
-    public void registerPre(Object subscriber){
-        if (isRegistered(subscriber)){
+    public void registerPre(Object subscriber) {
+        if (isRegistered(subscriber)) {
             return;
         }
         Class subClass = subscriber.getClass();
-        Method[] methods = subClass.getDeclaredMethods();
+        Method[] methods = subClass.getMethods();
         Method[] var4 = methods;
         int var5 = methods.length;
 
@@ -127,7 +129,7 @@ public class RxBus implements LifecycleObserver {
                     threadMode = sub.threadMode();
                     subscriberMethod = new SubscriberMethod(subscriber, method, eventType, code, threadMode);
                     this.addSubscriberToMap(eventType, subscriberMethod);
-                    this.addSubscriber(subscriberMethod,true);
+                    this.addSubscriber(subscriberMethod, true);
                 } else if (parameterType == null || parameterType.length == 0) {//无参数
                     eventType = BusData.class;
                     this.addEventTypeToMap(subscriber, eventType);
@@ -136,21 +138,20 @@ public class RxBus implements LifecycleObserver {
                     threadMode = sub.threadMode();
                     subscriberMethod = new SubscriberMethod(subscriber, method, eventType, code, threadMode);
                     this.addSubscriberToMap(eventType, subscriberMethod);
-                    this.addSubscriber(subscriberMethod,true);
+                    this.addSubscriber(subscriberMethod, true);
                 }
             }
         }
     }
 
 
-
-
     public void register(Object subscriber) {
-        if (isRegistered(subscriber)){
+        if (isRegistered(subscriber)) {
             return;
         }
         Class subClass = subscriber.getClass();
-        Method[] methods = subClass.getDeclaredMethods();
+
+        Method[] methods = subClass.getMethods();
         Method[] var4 = methods;
         int var5 = methods.length;
 
@@ -172,7 +173,7 @@ public class RxBus implements LifecycleObserver {
                     threadMode = sub.threadMode();
                     subscriberMethod = new SubscriberMethod(subscriber, method, eventType, code, threadMode);
                     this.addSubscriberToMap(eventType, subscriberMethod);
-                    this.addSubscriber(subscriberMethod,false);
+                    this.addSubscriber(subscriberMethod, false);
                 } else if (parameterType == null || parameterType.length == 0) {//无参数
                     eventType = BusData.class;
                     this.addEventTypeToMap(subscriber, eventType);
@@ -181,7 +182,7 @@ public class RxBus implements LifecycleObserver {
                     threadMode = sub.threadMode();
                     subscriberMethod = new SubscriberMethod(subscriber, method, eventType, code, threadMode);
                     this.addSubscriberToMap(eventType, subscriberMethod);
-                    this.addSubscriber(subscriberMethod,false);
+                    this.addSubscriber(subscriberMethod, false);
                 }
             }
         }
@@ -227,12 +228,12 @@ public class RxBus implements LifecycleObserver {
 
     }
 
-    private void addSubscriber(final SubscriberMethod subscriberMethod,boolean pre) {
+    private void addSubscriber(final SubscriberMethod subscriberMethod, boolean pre) {
         Flowable flowable;
         if (subscriberMethod.code == -1) {
-            flowable = this.toObservable(subscriberMethod.eventType,pre);
+            flowable = this.toObservable(subscriberMethod.eventType, pre);
         } else {
-            flowable = this.toObservable(subscriberMethod.code, subscriberMethod.eventType,pre);
+            flowable = this.toObservable(subscriberMethod.code, subscriberMethod.eventType, pre);
         }
 
         Disposable subscription = this.postToObservable(flowable, subscriberMethod).subscribe(o -> RxBus.this.callEvent(subscriberMethod, o));
@@ -330,22 +331,25 @@ public class RxBus implements LifecycleObserver {
     public void send(int code, Object o) {
         this.bus.onNext(new Message(code, o));
     }
+
     public void sendPre(int code, Object o) {
         this.preBus.onNext(new Message(code, o));
     }
 
     /**
      * 注册后接受注册之前最后一条信息
+     *
      * @param o
      */
-    public void postPre(Object o){
-        if (o!=null){
+    public void postPre(Object o) {
+        if (o != null) {
             this.preBus.onNext(o);
         }
     }
 
     /**
      * 注册后接受注册之后的信息
+     *
      * @param o
      */
     public void post(Object o) {

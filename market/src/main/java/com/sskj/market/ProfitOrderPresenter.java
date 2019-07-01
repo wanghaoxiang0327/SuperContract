@@ -18,8 +18,9 @@ import java.util.List;
  * Create at  2019/06/27
  */
 public class ProfitOrderPresenter extends BasePresenter<ProfitOrderFragment> {
-    public void getProfitOrder() {
+    public void getProfitOrder(String pid) {
         OkGo.<HttpResult<Page<OrderBean>>>post(BaseHttpConfig.BASE_URL + HttpConfig.PROFIT_ORDER)
+                .params("pid",pid)
                 .execute(new JsonCallBack<HttpResult<Page<OrderBean>>>(this) {
                     @Override
                     protected void onNext(HttpResult<Page<OrderBean>> result) {

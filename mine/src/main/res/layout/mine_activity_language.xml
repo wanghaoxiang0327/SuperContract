@@ -79,7 +79,7 @@
             android:buttonTint="@color/common_tip"
             android:gravity="center_vertical"
             android:layoutDirection="rtl"
-            android:text="韩文"
+            android:text="한글"
             android:textColor="@color/common_text" />
     </RadioGroup>
 

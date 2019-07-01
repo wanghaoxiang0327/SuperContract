@@ -9,11 +9,16 @@ import android.widget.RadioGroup;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.sskj.common.AppManager;
 import com.sskj.common.base.BaseActivity;
+import com.sskj.common.language.LanguageSPUtil;
 import com.sskj.common.language.LocalManageUtil;
 import com.sskj.common.router.RoutePath;
 
+import java.util.Locale;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
+import static java.util.Locale.SIMPLIFIED_CHINESE;
 
 /**
  * @author Hey
@@ -45,6 +50,22 @@ public class LanguageActivity extends BaseActivity<LanguagePresenter> {
 
     @Override
     public void initView() {
+        switch (LanguageSPUtil.getInstance(this).getSelectLanguage()) {
+            case 1:
+                languageGroup.check(R.id.chinese);
+                break;
+            case 2:
+                languageGroup.check(R.id.chinese_p);
+                break;
+            case 3:
+                languageGroup.check(R.id.english);
+                break;
+            case 4:
+                languageGroup.check(R.id.korean);
+                break;
+            default:
+                break;
+        }
 
     }
 

@@ -1,9 +1,12 @@
 package com.sskj.common.http;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 import java.util.List;
 
 public class Page<T> {
 
+    @JSONField(name = "res",alternateNames = {"res","list"})
     private List<T> res;
     private int p;
     private int count;

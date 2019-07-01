@@ -9,15 +9,13 @@
 
 
     <com.sskj.common.view.ToolBarLayout
+        android:focusableInTouchMode="true"
+        android:focusable="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:right_img="@mipmap/market_order_history"
-        app:background_color="@color/common_action_bar" />
+        app:background_color="@color/common_action_bar"
+        app:right_img="@mipmap/market_order_history" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="5dp"
-        android:background="@color/common_dark" />
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -28,6 +26,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:background="@color/common_dark" />
 
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
@@ -193,10 +196,10 @@
             android:textColor="@color/common_button_text" />
 
         <Button
-            android:layout_marginLeft="16dp"
             android:id="@+id/buy_down_btn"
             android:layout_width="0dp"
             android:layout_height="45dp"
+            android:layout_marginLeft="16dp"
             android:layout_weight="1"
             android:background="@drawable/market_red_bg_50"
             android:text="买跌"
