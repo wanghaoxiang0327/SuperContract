@@ -52,6 +52,10 @@ public class HttpConfig {
 
     public static final String BIND_GOOGLE = "/home/google/checkGoogleCommand";
 
+    public static final String FORGET_PS = "/Home/user/find_opwd";
+
+
+
 
     public static final String LOGIN = "/Home/user/user_login";
 

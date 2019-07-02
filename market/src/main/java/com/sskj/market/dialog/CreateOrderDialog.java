@@ -137,7 +137,7 @@ public class CreateOrderDialog extends BottomSheetDialog {
         });
 
         ClickUtil.click(submit, view -> {
-            if (listener!=null){
+            if (listener != null) {
                 listener.createOrder(isUp ? 1 : 2, payCoin, tradeVolume, tradeNum, pid, tradePoint);
             }
         });
@@ -149,11 +149,7 @@ public class CreateOrderDialog extends BottomSheetDialog {
      */
     private void initTradeCoin() {
         assetGroup.removeAllViews();
-        List<String> coinList = new ArrayList<>();
         for (int i = 0; i < tradeInfo.getCoinAssets().size(); i++) {
-            coinList.add(tradeInfo.getCoinAssets().get(i).getPname());
-        }
-        for (int i = 0; i < coinList.size(); i++) {
             RadioButton radioButton = new RadioButton(getContext());
             RadioGroup.LayoutParams layoutParams = new RadioGroup.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT);
             layoutParams.weight = 1;
@@ -166,7 +162,8 @@ public class CreateOrderDialog extends BottomSheetDialog {
             radioButton.setTag(i);
             radioButton.setLayoutParams(layoutParams);
             radioButton.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.market_tip_5));
-            radioButton.setText(coinList.get(i));
+            radioButton.setText(tradeInfo.getCoinAssets().get(i).getPname());
+            radioButton.setEnabled(tradeInfo.getCoinAssets().get(i).getYue() != 0);
             radioButton.setGravity(Gravity.CENTER);
             radioButton.setTextColor(ContextCompat.getColor(getContext(), R.color.common_text));
             radioButton.setButtonDrawable(null);
@@ -288,8 +285,8 @@ public class CreateOrderDialog extends BottomSheetDialog {
     }
 
 
-    public interface CreateOrderListener{
-        void createOrder(int type,String ptype,Double unit_num,int num,String pid,Double aim_point);
+    public interface CreateOrderListener {
+        void createOrder(int type, String ptype, Double unit_num, int num, String pid, Double aim_point);
     }
 
     private CreateOrderListener listener;

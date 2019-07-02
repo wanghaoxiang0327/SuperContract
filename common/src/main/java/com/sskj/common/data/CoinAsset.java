@@ -15,6 +15,7 @@ public class CoinAsset {
     private String pid;
     private String pname;
     private String name;
+    private double yue;
 
     //单位交易量
     private List<String> aim_point;
@@ -45,6 +46,13 @@ public class CoinAsset {
 
     public List<String> getAim_point() {
         return aim_point;
+    }
+    public double getYue() {
+        return yue;
+    }
+
+    public void setYue(double yue) {
+        this.yue = yue;
     }
 
     public void setAim_point(List<String> aim_point) {

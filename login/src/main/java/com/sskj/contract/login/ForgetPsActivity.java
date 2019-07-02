@@ -61,7 +61,6 @@ public class ForgetPsActivity extends BaseActivity<ForgetPsPresenter> {
 
     private ArrayList<CustomTabEntity> typeTabs = new ArrayList<>();
     private RegisterType registerType = RegisterType.MOBILE;
-    private DisposableSubscriber<Long> disposableSubscriber;
 
 
     @Override
@@ -145,12 +144,30 @@ public class ForgetPsActivity extends BaseActivity<ForgetPsPresenter> {
                 return;
             }
 
+            mPresenter.forgetPs(getText(mobileEdt), getText(verifyCodeEdt), getText(psEdt), getText(repeatPsEdt));
 
         });
 
         //发送验证码
         getCodeBtn.setOnClickListener(v -> {
-            sendVerifyCodeSuccess();
+            if (isEmptyShow(mobileEdt)) {
+                return;
+            }
+
+            if (registerType == RegisterType.MOBILE) {
+                if (!PatternUtils.isMobile(getText(mobileEdt))) {
+                    return;
+                }
+                mPresenter.sendSms(getText(mobileEdt));
+
+            } else {
+                if (!PatternUtils.isEmail(getText(mobileEdt))) {
+                    return;
+                }
+                mPresenter.sendEmail(getText(mobileEdt));
+            }
+
+
         });
     }
 
@@ -180,8 +197,6 @@ public class ForgetPsActivity extends BaseActivity<ForgetPsPresenter> {
     }
 
 
-
-
     @Override
     public void initImmersionBar() {
         ImmersionBar.with(this)
@@ -198,4 +213,8 @@ public class ForgetPsActivity extends BaseActivity<ForgetPsPresenter> {
     }
 
 
+    public void resetPsSuccess() {
+        LoginActivity.start(this);
+        finish();
+    }
 }

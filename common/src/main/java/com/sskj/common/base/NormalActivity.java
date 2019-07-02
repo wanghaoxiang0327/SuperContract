@@ -13,9 +13,6 @@ public abstract class NormalActivity extends ExtendActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (isPortrait) {
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        }
         setContentView(getLayoutId());
         ButterKnife.bind(this);
         initView();

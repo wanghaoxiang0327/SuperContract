@@ -39,7 +39,7 @@ public class CommissionActivity extends BaseActivity<CommissionPresenter> {
     @BindView(R2.id.detail_list)
     RecyclerView detailList;
     @BindView(R2.id.content_layout)
-    NestedScrollView contentLayout;
+    LinearLayout contentLayout;
 
     private int size = 10;
     private int page = 1;

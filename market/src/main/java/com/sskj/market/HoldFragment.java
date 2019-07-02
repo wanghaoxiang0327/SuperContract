@@ -76,8 +76,10 @@ public class HoldFragment extends BaseFragment<HoldPresenter> {
                         .setText(R.id.time_tv, TimeFormatUtil.SF_FORMAT_E.format(item.getAddtime() * 1000));
                 if (item.getType() == 1) {
                     holder.setTextColor(R.id.buy_type_tv, color(R.color.market_green));
+                    holder.getView(R.id.new_pirce_tv).setBackgroundResource(R.drawable.market_green_bg_5);
                 } else {
                     holder.setTextColor(R.id.buy_type_tv, color(R.color.market_red));
+                    holder.getView(R.id.new_pirce_tv).setBackgroundResource(R.drawable.market_red_bg_5);
                 }
             }
         };

@@ -112,9 +112,9 @@ public class MarketDetailActivity extends BaseActivity<MarketDetailPresenter> {
         }
 
         mToolBarLayout.setRightButtonOnClickListener(v -> {
-            if (BaseApplication.isLogin()){
+            if (BaseApplication.isLogin()) {
                 TransactionRecordsActivity.start(this);
-            }else {
+            } else {
                 ARouter.getInstance().build(RoutePath.LOGIN_LOGIN).navigation();
             }
 
@@ -143,17 +143,17 @@ public class MarketDetailActivity extends BaseActivity<MarketDetailPresenter> {
         ft.commitAllowingStateLoss();
         //买涨下单
         ClickUtil.click(buyUpBtn, view -> {
-            if (BaseApplication.isLogin()){
+            if (BaseApplication.isLogin()) {
                 mPresenter.getTradeInfo(true);
-            }else {
+            } else {
                 ARouter.getInstance().build(RoutePath.LOGIN_LOGIN).navigation();
             }
         });
         //买跌下单
         ClickUtil.click(buyDownBtn, view -> {
-            if (BaseApplication.isLogin()){
+            if (BaseApplication.isLogin()) {
                 mPresenter.getTradeInfo(false);
-            }else {
+            } else {
                 ARouter.getInstance().build(RoutePath.LOGIN_LOGIN).navigation();
             }
         });
@@ -174,7 +174,7 @@ public class MarketDetailActivity extends BaseActivity<MarketDetailPresenter> {
             if (data.getCode().equals(code)) {
                 tvPrice.setText(NumberUtils.keep4(data.getPrice()));
                 tvCny.setText(String.format("≈%s CNY", NumberUtils.keep2(data.getCnyPrice())));
-                tvChangeRate.setText(data.getChangeRate());
+                tvChangeRate.setText(data.getChange() > 0 ? "+" + data.getChangeRate() : data.getChangeRate());
                 tvLow.setText(NumberUtils.keep4(data.getLow()));
                 tvHigh.setText(NumberUtils.keep4(data.getHigh()));
                 tvPrice.setTextColor(data.isUp() ? color(R.color.market_green) : color(R.color.market_red));

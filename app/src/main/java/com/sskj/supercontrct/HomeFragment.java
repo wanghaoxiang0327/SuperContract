@@ -25,6 +25,8 @@ import com.sskj.common.rxbus.RxBus;
 import com.sskj.common.rxbus.Subscribe;
 import com.sskj.common.rxbus.ThreadMode;
 import com.sskj.common.utils.ClickUtil;
+import com.sskj.common.utils.DigitUtils;
+import com.sskj.common.utils.NumberUtils;
 import com.sskj.market.MarketListFragment;
 import com.sskj.market.data.CoinBean;
 import com.sskj.mine.LanguageActivity;
@@ -98,9 +100,9 @@ public class HomeFragment extends BaseFragment<HomePresenter> {
             @Override
             public void bind(ViewHolder holder, CoinBean item) {
                 holder.setText(R.id.coin_name, item.getCode())
-                        .setText(R.id.coin_price, item.getPrice() + "")
+                        .setText(R.id.coin_price, NumberUtils.keepDown(item.getPrice() , DigitUtils.getDigit(item.getCode())))
                         .setText(R.id.coin_cny_price, "≈" + item.getCnyPrice() + " CNY")
-                        .setText(R.id.coin_change_rate, item.getChangeRate());
+                        .setText(R.id.coin_change_rate, item.getChange() > 0 ? "+" + item.getChangeRate() : item.getChangeRate());
                 if (item.isUp()) {
                     holder.setTextColor(R.id.coin_price, color(R.color.market_green));
                     holder.setTextColor(R.id.coin_change_rate, color(R.color.market_green));
@@ -235,7 +237,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> {
                     .subscribeOn(Schedulers.newThread())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(i -> {
-                        if (tvNotice != null) {
+                        if (tvNotice != null && data.getRes() != null && !data.getRes().isEmpty()) {
                             int position = (int) (i % data.getRes().size());
                             String text = data.getRes().get(position).getTitle();
                             tvNotice.setText(text);

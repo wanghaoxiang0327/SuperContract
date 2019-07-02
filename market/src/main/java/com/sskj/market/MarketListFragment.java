@@ -13,6 +13,8 @@ import com.sskj.common.rxbus.RxBus;
 import com.sskj.common.rxbus.Subscribe;
 import com.sskj.common.rxbus.ThreadMode;
 import com.sskj.common.utils.ClickUtil;
+import com.sskj.common.utils.DigitUtils;
+import com.sskj.common.utils.NumberUtils;
 import com.sskj.market.data.CoinBean;
 import com.sskj.common.utils.CoinIcon;
 
@@ -61,8 +63,8 @@ public class MarketListFragment extends BaseFragment<MarketListPresenter> {
                 } else {
                     holder.setText(R.id.coin_name, item.getCode());
                 }
-                holder.setText(R.id.coin_price, item.getPrice() + "")
-                        .setText(R.id.coin_change_rate, item.getChangeRate());
+                holder.setText(R.id.coin_price, NumberUtils.keepDown(item.getPrice() , DigitUtils.getDigit(item.getCode())))
+                        .setText(R.id.coin_change_rate, item.getChange() > 0 ? "+" + item.getChangeRate():item.getChangeRate());
                 if (item.isUp()) {
                     holder.setTextColor(R.id.coin_price, color(R.color.market_green));
                     holder.setBackgroundRes(R.id.coin_change_rate, R.drawable.market_green_bg);

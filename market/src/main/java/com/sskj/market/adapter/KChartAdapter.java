@@ -8,6 +8,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import io.reactivex.Flowable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
+
 public class KChartAdapter extends BaseKChartAdapter {
     private List<Stock> datas = new ArrayList<>();
 
@@ -51,10 +55,19 @@ public class KChartAdapter extends BaseKChartAdapter {
      */
     public void updateData(List<Stock> data) {
         if (data != null && !data.isEmpty()) {
-            ChartUtil.calculate(data);
-            datas.clear();
-            datas.addAll(0, data);
-            notifyDataSetChanged();
+            Flowable.just(data)
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribeOn(Schedulers.io())
+                    .map(stocks -> {
+                        ChartUtil.calculate(data);
+                        datas.clear();
+                        datas.addAll(0, data);
+                        return datas;
+                    }).subscribe(result -> {
+                         notifyDataSetChanged();
+                     }, e -> {
+                         e.printStackTrace();
+                     });
         }
     }
 
