@@ -1,6 +1,7 @@
 package com.sskj.market;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import com.github.tifezh.kchartlib.chart.KChartView;
@@ -72,6 +73,8 @@ public class ChartFragment extends BaseFragment<ChartPresenter> {
         chartView.setGridColumns(4);
         chartView.setVolumeMaGone(true);
         chartView.setDrawMinuteStyle(mIsMinute);
+        chartView.setDrawDown(false);
+        chartView.setShader(Color.parseColor("#23305b"),Color.parseColor("#1a2644"),Color.parseColor("#162137"),1000);
         if (goodsType.equals("day")) {
             chartView.setDateTimeFormatter(date -> TimeFormatUtil.SF_FORMAT_K.format(date));
         } else {
@@ -180,7 +183,7 @@ public class ChartFragment extends BaseFragment<ChartPresenter> {
             add = time >= 30 * 60;
         } else if (goodsType.equals("minute60")) {
             add = time >= 60 * 60;
-        } else if (goodsType.equals("minute240")) {
+        } else if (goodsType.equals("hour4")) {
             add = time >= 4 * 60 * 60;
         } else if (goodsType.equals("day")) {
             add = time >= 24 * 60 * 60;

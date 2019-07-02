@@ -66,7 +66,7 @@ public class MineFragment extends BaseFragment<MinePresenter> {
             if (userBean != null) {
                 userName.setText(userBean.getNickname());
                 userLevel.setText(userBean.getUserLevel());
-                userId.setText(userBean.getUid());
+                userId.setText("UID：" + userBean.getUid());
                 isDirector = userBean.getIs_ds() == 1;
                 menuLogout.setVisibility(View.VISIBLE);
             } else {

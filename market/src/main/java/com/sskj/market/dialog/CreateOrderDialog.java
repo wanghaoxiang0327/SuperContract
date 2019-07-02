@@ -12,6 +12,9 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.hey.lib.HeySpinner;
+import com.sskj.common.rxbus.RxBus;
+import com.sskj.common.rxbus.Subscribe;
+import com.sskj.common.rxbus.ThreadMode;
 import com.sskj.common.utils.ClickUtil;
 import com.sskj.common.utils.DigitUtils;
 import com.sskj.common.utils.NumberUtils;
@@ -49,6 +52,8 @@ public class CreateOrderDialog extends BottomSheetDialog {
     TextView stopWinTv;
     @BindView(R2.id.stop_loss_tv)
     TextView stopLossTv;
+    @BindView(R2.id.price_tv)
+    TextView price_tv;
     @BindView(R2.id.submit)
     Button submit;
 
@@ -80,7 +85,7 @@ public class CreateOrderDialog extends BottomSheetDialog {
     private double price;
 
     /**
-     * 最小变动价
+     * 最小变动价*
      */
     private double minChangePrice;
 
@@ -96,10 +101,12 @@ public class CreateOrderDialog extends BottomSheetDialog {
         setContentView(R.layout.market_dialog_create_order);
         setCancelable(false);
         ButterKnife.bind(this);
+        RxBus.getDefault().registerPre(this);
         this.tradeInfo = data;
         this.isUp = up;
         this.code = code;
         initView();
+
     }
 
     private void initView() {
@@ -121,6 +128,7 @@ public class CreateOrderDialog extends BottomSheetDialog {
                 initTradePoint(tradeCoin.getAim_point());
                 minChangePrice = tradeCoin.getMin_price();
                 price = Double.parseDouble(tradeCoin.getPrice());
+                price_tv.setText(tradeCoin.getPrice());
                 pid = tradeCoin.getPid();
             }
         }
@@ -143,6 +151,29 @@ public class CreateOrderDialog extends BottomSheetDialog {
         });
     }
 
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void updateUI(CoinBean data) {
+        if (data != null) {
+            if (data.getCode().equals(code)) {
+                price = data.getPrice();
+                price_tv.setText(NumberUtils.keepDown(data.getPrice(), DigitUtils.getDigit(data.getCode())));
+                if (data.getChange() > 0) {
+                    price_tv.setTextColor(ContextCompat.getColor(getContext(), R.color.market_green));
+                } else {
+                    price_tv.setTextColor(ContextCompat.getColor(getContext(), R.color.market_red));
+                }
+                computeTotal();
+            }
+        }
+    }
+
+
+    @Override
+    public void dismiss() {
+        super.dismiss();
+        RxBus.getDefault().unregister(this);
+    }
 
     /**
      * 初始化交易币种

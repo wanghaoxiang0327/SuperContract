@@ -1,85 +1,279 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:background="@color/common_background" android:layout_height="match_parent" android:layout_width="match_parent" android:orientation="vertical">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/common_background"
+    android:orientation="vertical">
 
-    <LinearLayout android:background="@mipmap/login_top_bg" android:layout_height="wrap_content" android:layout_width="match_parent" android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/login_top_bg"
+        android:orientation="vertical">
 
-        <com.sskj.common.view.ToolBarLayout android:layout_height="wrap_content" android:layout_width="match_parent" app:title="@string/login_login_activity_register40"/>
+        <com.sskj.common.view.ToolBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="@string/login_login_activity_register40" />
 
     </LinearLayout>
 
-    <android.support.v4.widget.NestedScrollView android:layout_height="match_parent" android:layout_width="match_parent">
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
 
-        <LinearLayout android:layout_height="wrap_content" android:layout_marginLeft="38dp" android:layout_marginRight="38dp" android:layout_width="match_parent" android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="38dp"
+            android:layout_marginRight="38dp"
+            android:orientation="vertical">
 
-            <com.sskj.common.tab.TabLayout android:id="@+id/typeTabLayout" android:layout_height="50dp" android:layout_marginTop="20dp" android:layout_width="match_parent" app:indicator_color="@color/common_tip" app:indicator_width="30dp" app:selctTextSize="16sp" app:textSelectColor="@color/common_tip" app:textUnselectColor="@color/common_normal_text" app:textsize="16sp"/>
+            <com.sskj.common.tab.TabLayout
+                android:id="@+id/typeTabLayout"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                app:indicator_color="@color/common_tip"
+                app:indicator_width="30dp"
+                app:selctTextSize="16sp"
+                app:textSelectColor="@color/common_tip"
+                app:textUnselectColor="@color/common_normal_text"
+                app:textsize="16sp" />
 
-            <View android:background="@color/common_divider" android:layout_height="1dp" android:layout_width="match_parent"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/common_divider" />
 
-            <LinearLayout android:background="@drawable/common_edt_line_bg" android:gravity="center_vertical" android:layout_height="50dp" android:layout_width="match_parent" android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/common_edt_line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
-                <ImageView android:layout_height="20dp" android:layout_marginRight="10dp" android:layout_width="20dp" android:src="@mipmap/login_icon_name"/>
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginRight="10dp"
+                    android:src="@mipmap/login_icon_name" />
 
-                <EditText android:background="@null" android:drawablePadding="10dp" android:hint="@string/login_login_activity_register190" android:id="@+id/name_edt" android:imeOptions="actionNext" android:inputType="text" android:layout_height="50dp" android:layout_width="match_parent" android:maxLines="1" android:textColor="@color/common_text" android:textColorHint="@color/common_hint" android:textSize="14sp"/>
-
-            </LinearLayout>
-
-
-            <LinearLayout android:background="@drawable/common_edt_line_bg" android:gravity="center_vertical" android:layout_height="50dp" android:layout_width="match_parent" android:orientation="horizontal">
-
-                <ImageView android:id="@+id/account_img" android:layout_height="20dp" android:layout_marginRight="10dp" android:layout_width="20dp" android:src="@mipmap/login_icon_mobile"/>
-
-                <EditText android:background="@null" android:drawablePadding="10dp" android:hint="@string/login_input_mobile" android:id="@+id/mobile_edt" android:imeOptions="actionNext" android:layout_height="50dp" android:layout_width="match_parent" android:maxLines="1" android:textColor="@color/common_text" android:textColorHint="@color/common_hint" android:textSize="14sp"/>
-            </LinearLayout>
-
-
-            <LinearLayout android:background="@drawable/common_edt_line_bg" android:gravity="center_vertical" android:layout_height="wrap_content" android:layout_width="match_parent" android:orientation="horizontal">
-
-                <ImageView android:layout_height="20dp" android:layout_marginRight="10dp" android:layout_width="20dp" android:src="@mipmap/login_icon_verify_code"/>
-
-                <EditText android:background="@null" android:drawablePadding="10dp" android:hint="@string/login_login_activity_forget_ps240" android:id="@+id/verify_code_edt" android:imeOptions="actionNext" android:inputType="number" android:layout_height="50dp" android:layout_weight="1" android:layout_width="0dp" android:maxLines="1" android:textColor="@color/common_text" android:textColorHint="@color/common_hint" android:textSize="14sp"/>
-
-                <TextView android:background="@drawable/common_tip_50" android:gravity="center" android:id="@+id/get_code_btn" android:layout_gravity="center_vertical" android:layout_height="30dp" android:layout_width="wrap_content" android:paddingLeft="10dp" android:paddingRight="10dp" android:text="@string/login_get_verify_code" android:textColor="@color/common_button_text" android:textSize="12sp"/>
-            </LinearLayout>
-
-
-            <LinearLayout android:background="@drawable/common_edt_line_bg" android:gravity="center_vertical" android:layout_height="50dp" android:layout_width="match_parent" android:orientation="horizontal">
-
-                <ImageView android:layout_height="20dp" android:layout_marginRight="10dp" android:layout_width="20dp" android:src="@mipmap/login_icon_ps"/>
-
-                <EditText android:background="@null" android:drawablePadding="10dp" android:hint="@string/login_ps_format" android:id="@+id/ps_edt" android:imeOptions="actionNext" android:inputType="textPassword" android:layout_height="50dp" android:layout_weight="1" android:layout_width="0dp" android:maxLines="1" android:textColor="@color/common_text" android:textColorHint="@color/common_hint" android:textSize="14sp"/>
-
-                <ImageView android:id="@+id/show_ps_img" android:layout_height="20dp" android:layout_width="20dp" android:src="@mipmap/common_icon_hide"/>
-
-            </LinearLayout>
-
-
-            <LinearLayout android:background="@drawable/common_edt_line_bg" android:gravity="center_vertical" android:layout_height="50dp" android:layout_width="match_parent" android:orientation="horizontal">
-
-                <ImageView android:layout_height="20dp" android:layout_marginRight="10dp" android:layout_width="20dp" android:src="@mipmap/login_icon_ps"/>
-
-
-                <EditText android:background="@null" android:drawablePadding="10dp" android:hint="@string/login_repeat_ps" android:id="@+id/repeat_ps_edt" android:imeOptions="actionNext" android:inputType="textPassword" android:layout_height="50dp" android:layout_weight="1" android:layout_width="0dp" android:maxLines="1" android:textColor="@color/common_text" android:textColorHint="@color/common_hint" android:textSize="14sp"/>
-
-                <ImageView android:id="@+id/show_repeat_ps_img" android:layout_height="20dp" android:layout_width="20dp" android:src="@mipmap/common_icon_hide"/>
-
-            </LinearLayout>
-
-
-            <LinearLayout android:background="@drawable/common_edt_line_bg" android:gravity="center_vertical" android:layout_height="50dp" android:layout_width="match_parent" android:orientation="horizontal">
-
-                <ImageView android:layout_height="20dp" android:layout_marginRight="10dp" android:layout_width="20dp" android:src="@mipmap/login_icon_invite"/>
-
-
-                <EditText android:background="@null" android:drawablePadding="10dp" android:hint="@string/login_login_activity_register600" android:id="@+id/invite_code_edt" android:imeOptions="actionDone" android:layout_height="50dp" android:layout_width="match_parent" android:maxLines="1" android:textColor="@color/common_text" android:textColorHint="@color/common_hint" android:textSize="14sp"/>
-
+                <EditText
+                    android:id="@+id/name_edt"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@null"
+                    android:drawablePadding="10dp"
+                    android:hint="@string/login_login_activity_register190"
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:textColor="@color/common_text"
+                    android:textColorHint="@color/common_hint"
+                    android:textSize="14sp" />
 
             </LinearLayout>
 
 
-            <CheckBox android:buttonTint="@color/common_tip" android:id="@+id/read_rules" android:layout_height="wrap_content" android:layout_marginLeft="-8dp" android:layout_width="match_parent" android:text="@string/login_registerActivity3" android:textColor="@color/common_hint"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/common_edt_line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
-            <Button android:background="@drawable/common_tip_50" android:id="@+id/submit" android:layout_height="45dp" android:layout_marginTop="30dp" android:layout_width="match_parent" android:text="@string/login_login_activity_register40" android:textColor="@color/common_button_text"/>
+                <ImageView
+                    android:id="@+id/account_img"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginRight="10dp"
+                    android:src="@mipmap/login_icon_mobile" />
+
+                <EditText
+                    android:id="@+id/mobile_edt"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@null"
+                    android:drawablePadding="10dp"
+                    android:hint="@string/login_input_mobile"
+                    android:imeOptions="actionNext"
+                    android:maxLines="1"
+                    android:textColor="@color/common_text"
+                    android:textColorHint="@color/common_hint"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/common_edt_line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginRight="10dp"
+                    android:src="@mipmap/login_icon_verify_code" />
+
+                <EditText
+                    android:id="@+id/verify_code_edt"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:drawablePadding="10dp"
+                    android:hint="@string/login_login_activity_forget_ps240"
+                    android:imeOptions="actionNext"
+                    android:inputType="number"
+                    android:maxLines="1"
+                    android:textColor="@color/common_text"
+                    android:textColorHint="@color/common_hint"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/get_code_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/common_tip_50"
+                    android:gravity="center"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="@string/login_get_verify_code"
+                    android:textColor="@color/common_button_text"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/common_edt_line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginRight="10dp"
+                    android:src="@mipmap/login_icon_ps" />
+
+                <EditText
+                    android:id="@+id/ps_edt"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:drawablePadding="10dp"
+                    android:hint="@string/login_ps_format"
+                    android:imeOptions="actionNext"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:textColor="@color/common_text"
+                    android:textColorHint="@color/common_hint"
+                    android:textSize="14sp" />
+
+                <ImageView
+                    android:id="@+id/show_ps_img"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@mipmap/common_icon_hide" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/common_edt_line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginRight="10dp"
+                    android:src="@mipmap/login_icon_ps" />
+
+
+                <EditText
+                    android:id="@+id/repeat_ps_edt"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:drawablePadding="10dp"
+                    android:hint="@string/login_repeat_ps"
+                    android:imeOptions="actionNext"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:textColor="@color/common_text"
+                    android:textColorHint="@color/common_hint"
+                    android:textSize="14sp" />
+
+                <ImageView
+                    android:id="@+id/show_repeat_ps_img"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@mipmap/common_icon_hide" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/common_edt_line_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginRight="10dp"
+                    android:src="@mipmap/login_icon_invite" />
+
+
+                <EditText
+                    android:id="@+id/invite_code_edt"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@null"
+                    android:drawablePadding="10dp"
+                    android:hint="@string/login_login_activity_register600"
+                    android:imeOptions="actionDone"
+                    android:maxLines="1"
+                    android:textColor="@color/common_text"
+                    android:textColorHint="@color/common_hint"
+                    android:textSize="14sp" />
+
+
+            </LinearLayout>
+
+
+            <CheckBox
+                android:id="@+id/read_rules"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="-3dp"
+                android:buttonTint="@color/common_tip"
+                android:text="@string/login_registerActivity3"
+                android:textColor="@color/common_hint" />
+
+            <Button
+                android:id="@+id/submit"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/common_tip_50"
+                android:text="@string/login_login_activity_register40"
+                android:textColor="@color/common_button_text" />
 
         </LinearLayout>
 

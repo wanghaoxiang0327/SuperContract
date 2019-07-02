@@ -12,19 +12,25 @@ import com.sskj.common.adapter.BaseAdapter;
 import com.sskj.common.adapter.ViewHolder;
 import com.sskj.common.base.BaseFragment;
 import com.sskj.common.http.Page;
+import com.sskj.common.http.RxUtils;
 import com.sskj.common.mvc.DataSource;
 import com.sskj.common.mvc.SmartRefreshHelper;
+import com.sskj.common.rxbus.RxBus;
+import com.sskj.common.simple.SimpleObserver;
 import com.sskj.common.utils.DigitUtils;
 import com.sskj.common.utils.NumberUtils;
 import com.sskj.common.utils.TimeFormatUtil;
 import com.sskj.market.data.HoldBean;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import io.reactivex.Flowable;
+import io.reactivex.Observable;
+import io.reactivex.disposables.Disposable;
 
 /**
  * Create at  2019/06/26
@@ -36,10 +42,12 @@ public class HoldFragment extends BaseFragment<HoldPresenter> {
     @BindView(R2.id.records_list)
     RecyclerView recordsList;
 
-
+    private int mPage = 1;
     private int size = 10;
 
     SmartRefreshHelper<List<HoldBean>> smartRefreshHelper;
+
+    private Disposable disposable;
 
     @Override
     public int getLayoutId() {
@@ -61,7 +69,7 @@ public class HoldFragment extends BaseFragment<HoldPresenter> {
                 .setLastDraw(false)
         );
 
-        holdAdapter = new BaseAdapter<HoldBean>(R.layout.market_item_hold, null, recordsList,false) {
+        holdAdapter = new BaseAdapter<HoldBean>(R.layout.market_item_hold, null, recordsList, false) {
             @Override
             public void bind(ViewHolder holder, HoldBean item) {
                 holder.setText(R.id.name_tv, item.getMark())
@@ -89,22 +97,42 @@ public class HoldFragment extends BaseFragment<HoldPresenter> {
     @Override
     public void initData() {
         wrapRefresh(recordsList);
-        smartRefreshHelper=new SmartRefreshHelper<>(mRefreshLayout);
+        smartRefreshHelper = new SmartRefreshHelper<>(mRefreshLayout);
         smartRefreshHelper.setDataSource(new DataSource<HoldBean>() {
             @Override
             public Flowable<List<HoldBean>> bindData(int page) {
-
-                return  mPresenter.getOrder(1, page, size);
+                mPage = page;
+                return mPresenter.getOrder(1, page, size);
             }
         });
         smartRefreshHelper.setAdapter(holdAdapter);
+        Observable.interval(3, TimeUnit.SECONDS)
+                .compose(RxUtils.transform())
+                .subscribe(new SimpleObserver<Long>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        disposable = d;
+                    }
+
+                    @Override
+                    public void onNext(Long aLong) {
+                        mPresenter.getOrderEx(1, mPage, size);
+                    }
+                });
     }
 
     @Override
     public void loadData() {
-       smartRefreshHelper.refresh();
+        smartRefreshHelper.refresh();
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (disposable != null) {
+            disposable.dispose();
+        }
+    }
 
     public static HoldFragment newInstance() {
         HoldFragment fragment = new HoldFragment();
@@ -114,12 +142,12 @@ public class HoldFragment extends BaseFragment<HoldPresenter> {
     }
 
 
-//    public void setData(Page<HoldBean> data) {
-//        if (page == 1) {
-//            holdAdapter.setNewData(data.getRes());
-//        } else {
-//            holdAdapter.addData(data.getRes());
-//        }
-//
-//    }
+    public void setData(Page<HoldBean> data) {
+        if (mPage == 1) {
+            holdAdapter.setNewData(data.getRes());
+        } else {
+            holdAdapter.addData(data.getRes());
+        }
+
+    }
 }

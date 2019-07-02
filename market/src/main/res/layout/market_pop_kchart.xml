@@ -78,7 +78,8 @@
 
         <TextView
             android:id="@+id/tvMacd"
-            android:layout_width="65dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="MACD"
             android:textColor="@color/common_hint"
@@ -86,7 +87,8 @@
 
         <TextView
             android:id="@+id/tvKdj"
-            android:layout_width="65dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="KDJ"
             android:textColor="@color/common_hint"
@@ -94,7 +96,8 @@
 
         <TextView
             android:id="@+id/tvRsi"
-            android:layout_width="65dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="RSI"
             android:textColor="@color/common_hint"
@@ -102,16 +105,13 @@
 
         <TextView
             android:id="@+id/tvWr"
-            android:layout_width="65dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="WR"
             android:textColor="@color/common_hint"
             android:textSize="13dp" />
 
-        <View
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_weight="1" />
 
         <ImageView
             android:id="@+id/ivDownToggle"

@@ -67,7 +67,7 @@ public class MarketDetailActivity extends BaseActivity<MarketDetailPresenter> {
 
 
     private ArrayList<Fragment> fragmentList = new ArrayList<>();
-    String[] goodsType = {"1min", "1min", "5min", "15min", "30min", "day"};
+    String[] goodsType = {"minute", "minute", "minute5", "minute15", "minute60","hour4", "day"};
     //指标
     private boolean isUpToggle = true;
     private boolean isDownToggle = true;
@@ -124,7 +124,8 @@ public class MarketDetailActivity extends BaseActivity<MarketDetailPresenter> {
         chartTabs.add(new TabItem("1M", 0, 0));
         chartTabs.add(new TabItem("5M", 0, 0));
         chartTabs.add(new TabItem("15M", 0, 0));
-        chartTabs.add(new TabItem("30M", 0, 0));
+        chartTabs.add(new TabItem("1小时", 0, 0));
+        chartTabs.add(new TabItem("4小时", 0, 0));
         chartTabs.add(new TabItem(getString(R.string.market_day), 0, 0));
         fragmentList.add(ChartFragment.newInstance(code, goodsType[0], true));
         fragmentList.add(ChartFragment.newInstance(code, goodsType[1], false));
@@ -132,6 +133,7 @@ public class MarketDetailActivity extends BaseActivity<MarketDetailPresenter> {
         fragmentList.add(ChartFragment.newInstance(code, goodsType[3], false));
         fragmentList.add(ChartFragment.newInstance(code, goodsType[4], false));
         fragmentList.add(ChartFragment.newInstance(code, goodsType[5], false));
+        fragmentList.add(ChartFragment.newInstance(code, goodsType[6], false));
         chartTabLayout.setTabData(chartTabs, getSupportFragmentManager(), R.id.chart_content, fragmentList);
         initPoint();
     }

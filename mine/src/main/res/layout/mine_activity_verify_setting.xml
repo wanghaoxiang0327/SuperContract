@@ -1,24 +1,80 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:background="@color/mine_background" android:layout_height="match_parent" android:layout_width="match_parent" android:orientation="vertical">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mine_background"
+    android:orientation="vertical">
 
 
-    <com.sskj.common.view.ToolBarLayout android:layout_height="wrap_content" android:layout_width="match_parent" app:background_color="@color/common_action_bar" app:title="@string/mine_verify2"/>
+    <com.sskj.common.view.ToolBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:background_color="@color/common_action_bar"
+        app:title="@string/mine_verify2" />
 
-    <LinearLayout android:background="@color/common_action_bar" android:layout_height="50dp" android:layout_width="match_parent" android:orientation="horizontal" android:paddingLeft="@dimen/common_margin" android:paddingRight="@dimen/common_margin">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/common_action_bar"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/common_margin"
+        android:paddingRight="@dimen/common_margin">
 
-        <TextView android:gravity="center" android:id="@+id/verify_name" android:layout_height="match_parent" android:layout_width="wrap_content" android:text="@string/mine_verify1" android:textColor="@color/common_text" android:textSize="16sp"/>
+        <TextView
+            android:id="@+id/verify_name"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/mine_verify1"
+            android:textColor="@color/common_text"
+            android:textSize="16sp" />
 
-        <TextView android:gravity="center_vertical" android:id="@+id/verify_account" android:layout_height="match_parent" android:layout_marginLeft="@dimen/common_margin" android:layout_weight="1" android:layout_width="0dp" android:textColor="@color/common_text" android:textSize="16sp" tools:text="187*111"/>
+        <TextView
+            android:id="@+id/verify_account"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/common_margin"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:textColor="@color/common_text"
+            android:textSize="16sp"
+            tools:text="187*111" />
 
-        <TextView android:gravity="center_vertical" android:id="@+id/verify_status" android:layout_height="match_parent" android:layout_width="wrap_content" android:text="@string/mine_verifySettingActivity1" android:textColor="@color/common_hint"/>
-
+        <TextView
+            android:id="@+id/verify_status"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="@string/mine_verifySettingActivity1"
+            android:textColor="@color/common_hint" />
 
     </LinearLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/common_divider"
+        />
 
-    <LinearLayout android:background="@color/common_action_bar" android:layout_height="wrap_content" android:layout_width="match_parent" android:paddingLeft="@dimen/common_margin" android:paddingRight="@dimen/common_margin">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/common_action_bar"
+        android:paddingLeft="@dimen/common_margin"
+        android:paddingRight="@dimen/common_margin">
 
-        <com.sskj.common.view.CheckButton android:button="@drawable/mine_switch" android:id="@+id/verify_check" android:layoutDirection="rtl" android:layout_height="50dp" android:layout_width="match_parent" android:text="@string/mine_verify2" android:textColor="@color/common_text"/>
+        <com.sskj.common.view.CheckButton
+            android:id="@+id/verify_check"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:button="@drawable/mine_switch"
+            android:layoutDirection="rtl"
+            android:text="@string/mine_verify2"
+            android:textColor="@color/common_text" />
     </LinearLayout>
 
 </LinearLayout>

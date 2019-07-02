@@ -79,6 +79,7 @@
                     android:id="@+id/tv_change_rate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginBottom="16dp"
                     android:text="+0.00%"
@@ -86,21 +87,21 @@
                     android:textSize="14sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/tv_price"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_price" />
+                    app:layout_constraintStart_toEndOf="@+id/tvCny"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_price"
+                    app:layout_constraintVertical_bias="0.0" />
 
                 <TextView
                     android:id="@+id/tvCny"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
                     android:layout_weight="1"
                     android:text="≈0.00 CNY"
-                    android:textColor="@color/common_hint"
+                    android:textColor="@color/common_text"
                     android:textSize="14sp"
                     android:textStyle="bold"
                     app:layout_constraintBaseline_toBaselineOf="@+id/tv_change_rate"
-                    app:layout_constraintStart_toEndOf="@+id/tv_change_rate" />
+                    app:layout_constraintStart_toStartOf="@+id/tv_price" />
 
                 <TextView
 
@@ -143,9 +144,12 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    app:selctTextSize="12sp"
+                    app:textsize="12sp"
                     app:indicator_color="@color/common_tip"
-                    app:tabSelectedTextColor="@color/common_tip"
-                    app:textUnselectColor="@color/common_hint" />
+                    app:textSelectColor="@color/common_tip"
+                    app:textUnselectColor="@color/common_hint"
+                    />
 
                 <TextView
                     android:id="@+id/chart_norm"
@@ -154,7 +158,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:text="@string/market_norm"
-                    android:textSize="13sp"
+                    android:textSize="12sp"
                     android:textColor="@color/common_hint" />
 
                 <ImageView

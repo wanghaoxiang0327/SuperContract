@@ -65,8 +65,10 @@ public class DealFragment extends BaseFragment<DealPresenter> {
                         .setText(R.id.price_tv, NumberUtils.keepDown(item.getBuyprice(), DigitUtils.getDigit(item.getMark())))
                         .setText(R.id.total_price_tv, item.getTotal_num())
                         .setText(R.id.point_tv, item.getAim_point())
-                        .setText(R.id.stop_win_tv, NumberUtils.keepDown(item.getStopwin(), DigitUtils.getDigit(item.getMark())))
-                        .setText(R.id.stop_loss_tv, NumberUtils.keepDown(item.getStoploss(), DigitUtils.getDigit(item.getMark())));
+                        .setText(R.id.stop_win_str, "平仓价")
+                        .setText(R.id.stop_loss_str, "获利")
+                        .setText(R.id.stop_win_tv, NumberUtils.keepDown(item.getSellprice(), DigitUtils.getDigit(item.getMark())))
+                        .setText(R.id.stop_loss_tv, NumberUtils.keepDown(item.getIncome(), DigitUtils.getDigit(item.getMark())));
 
                 if (item.getType() == 1) {
                     holder.setTextColor(R.id.buy_type_tv, color(R.color.market_green));
