@@ -60,16 +60,19 @@ public class VerifySettingActivity extends BaseActivity<VerifySettingPresenter> 
                 ClickUtil.click(verifyStatus, view -> {
                     BindMobileOrEmailActivity.start(this, verify);
                 });
+                mToolBarLayout.setTitle(getString(R.string.mine_verify2));
                 break;
             case EMAIL:
                 ClickUtil.click(verifyStatus, view -> {
                     BindMobileOrEmailActivity.start(this, verify);
                 });
+                mToolBarLayout.setTitle(getString(R.string.mine_verify6));
                 break;
             case GOOGLE:
                 ClickUtil.click(verifyStatus, view -> {
                     BindGoogleVerifyActivity.start(this);
                 });
+                mToolBarLayout.setTitle(getString(R.string.mine_verify4));
                 break;
             default:
                 break;
@@ -81,24 +84,24 @@ public class VerifySettingActivity extends BaseActivity<VerifySettingPresenter> 
                 startSms = user.getIsStartSms() == 1;
                 if (verify == Verify.SMS) {
                     if (TextUtils.isEmpty(user.getMobile())) {
-                        verifyStatus.setText("未绑定");
+                        verifyStatus.setText(getString(R.string.mine_verifySettingActivity1));
                     } else {
-                        verifyStatus.setText("已绑定");
+                        verifyStatus.setText(getString(R.string.mine_verifySettingActivity2));
                     }
                     verifyCheck.setChecked(user.getIsStartSms() == 1);
                 } else if (verify == Verify.EMAIL) {
                     if (user.getIsBindMail() == 1) {
-                        verifyStatus.setText("已绑定");
+                        verifyStatus.setText(getString(R.string.mine_verifySettingActivity2));
                     } else {
-                        verifyStatus.setText("未绑定");
+                        verifyStatus.setText(getString(R.string.mine_verifySettingActivity1));
                     }
                     verifyCheck.setVisibility(View.GONE);
                 } else {
 
                     if (user.getIsBindGoogle() == 1) {
-                        verifyStatus.setText("已绑定");
+                        verifyStatus.setText(getString(R.string.mine_verifySettingActivity2));
                     } else {
-                        verifyStatus.setText("未绑定");
+                        verifyStatus.setText(getString(R.string.mine_verifySettingActivity1));
                     }
                     verifyCheck.setChecked(user.getIsStartGoogle() == 1);
                 }
@@ -114,7 +117,7 @@ public class VerifySettingActivity extends BaseActivity<VerifySettingPresenter> 
                 //谷歌和短信必须开启一种
                 if (isChecked && !startGoogle) {
                     new TipDialog(this)
-                            .setContent("为了保证您的账户安全，短信验证和谷歌验证方式至少开启一种")
+                            .setContent(getString(R.string.mine_securityActivity5))
                             .setCancelVisible(View.GONE)
                             .show();
                 } else {
@@ -130,7 +133,7 @@ public class VerifySettingActivity extends BaseActivity<VerifySettingPresenter> 
                 //谷歌和短信必须开启一种
                 if (isChecked && !startSms) {
                     new TipDialog(this)
-                            .setContent("为了保证您的账户安全，短信验证和谷歌验证方式至少开启一种")
+                            .setContent(getString(R.string.mine_securityActivity5))
                             .setCancelVisible(View.GONE)
                             .show();
                 } else {

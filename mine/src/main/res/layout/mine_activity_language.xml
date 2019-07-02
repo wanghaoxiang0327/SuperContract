@@ -1,86 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/mine_background"
-    android:orientation="vertical">
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:background="@color/mine_background" android:layout_height="match_parent" android:layout_width="match_parent" android:orientation="vertical">
 
 
-    <com.sskj.common.view.ToolBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:background_color="@color/common_action_bar"
-        app:title="选择语言" />
+    <com.sskj.common.view.ToolBarLayout android:layout_height="wrap_content" android:layout_width="match_parent" app:background_color="@color/common_action_bar" app:title="@string/mine_mine_activity_language20"/>
 
-    <RadioGroup
-        android:id="@+id/languageGroup"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:background="@color/common_background"
-        android:orientation="vertical"
-        android:paddingLeft="@dimen/common_margin"
-        android:paddingRight="@dimen/common_margin">
+    <RadioGroup android:background="@color/common_background" android:id="@+id/languageGroup" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:layout_width="match_parent" android:orientation="vertical" android:paddingLeft="@dimen/common_margin" android:paddingRight="@dimen/common_margin">
 
-        <RadioButton
-            android:id="@+id/chinese"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:button="@drawable/mine_check_btn"
-            android:buttonTint="@color/common_tip"
-            android:gravity="center_vertical"
-            android:layoutDirection="rtl"
-            android:text="简体中文"
-            android:textColor="@color/common_text" />
+        <RadioButton android:button="@drawable/mine_check_btn" android:buttonTint="@color/common_tip" android:gravity="center_vertical" android:id="@+id/chinese" android:layoutDirection="rtl" android:layout_height="56dp" android:layout_width="match_parent" android:text="@string/mine_mine_activity_language60" android:textColor="@color/common_text"/>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/common_divider" />
+        <View android:background="@color/common_divider" android:layout_height="1dp" android:layout_width="match_parent"/>
 
-        <RadioButton
-            android:id="@+id/chinese_p"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:button="@drawable/mine_check_btn"
-            android:buttonTint="@color/common_tip"
-            android:gravity="center_vertical"
-            android:layoutDirection="rtl"
-            android:text="繁体中文"
-            android:textColor="@color/common_text" />
+        <RadioButton android:button="@drawable/mine_check_btn" android:buttonTint="@color/common_tip" android:gravity="center_vertical" android:id="@+id/chinese_p" android:layoutDirection="rtl" android:layout_height="56dp" android:layout_width="match_parent" android:text="@string/mine_mine_activity_language100" android:textColor="@color/common_text"/>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/common_divider" />
+        <View android:background="@color/common_divider" android:layout_height="1dp" android:layout_width="match_parent"/>
 
-        <RadioButton
-            android:id="@+id/english"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:button="@drawable/mine_check_btn"
-            android:buttonTint="@color/common_tip"
-            android:gravity="center_vertical"
-            android:layoutDirection="rtl"
-            android:text="English"
-            android:textColor="@color/common_text" />
+        <RadioButton android:button="@drawable/mine_check_btn" android:buttonTint="@color/common_tip" android:gravity="center_vertical" android:id="@+id/english" android:layoutDirection="rtl" android:layout_height="56dp" android:layout_width="match_parent" android:text="English" android:textColor="@color/common_text"/>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/common_divider" />
+        <View android:background="@color/common_divider" android:layout_height="1dp" android:layout_width="match_parent"/>
 
-        <RadioButton
-            android:id="@+id/korean"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:button="@drawable/mine_check_btn"
-            android:buttonTint="@color/common_tip"
-            android:gravity="center_vertical"
-            android:layoutDirection="rtl"
-            android:text="한글"
-            android:textColor="@color/common_text" />
+        <RadioButton android:button="@drawable/mine_check_btn" android:buttonTint="@color/common_tip" android:gravity="center_vertical" android:id="@+id/korean" android:layoutDirection="rtl" android:layout_height="56dp" android:layout_width="match_parent" android:text="한글" android:textColor="@color/common_text"/>
     </RadioGroup>
 
 

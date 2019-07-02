@@ -1,175 +1,27 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/mine_background"
-    android:orientation="vertical">
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:background="@color/mine_background" android:layout_height="match_parent" android:layout_width="match_parent" android:orientation="vertical">
 
-    <android.support.constraint.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/common_action_bar"
-        android:padding="@dimen/common_margin">
+    <android.support.constraint.ConstraintLayout android:background="@color/common_action_bar" android:layout_height="wrap_content" android:layout_width="match_parent" android:padding="@dimen/common_margin">
 
-        <TextView
-            android:id="@+id/user_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/common_text"
-            android:textSize="21sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="阿童木" />
+        <TextView android:id="@+id/user_name" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textColor="@color/common_text" android:textSize="21sp" android:textStyle="bold" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" tools:text="@string/mine_mine_fragment_mine40"/>
 
-        <TextView
-            android:id="@+id/user_id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:textColor="@color/common_hint"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/user_name"
-            app:layout_constraintTop_toBottomOf="@+id/user_name"
-            tools:text="65456589" />
+        <TextView android:id="@+id/user_id" android:layout_height="wrap_content" android:layout_marginTop="16dp" android:layout_width="wrap_content" android:textColor="@color/common_hint" android:textSize="12sp" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="@+id/user_name" app:layout_constraintTop_toBottomOf="@+id/user_name" tools:text="65456589"/>
 
-        <TextView
-            android:id="@+id/user_level"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/common_hint"
-            android:textSize="14sp"
-            app:layout_constraintBaseline_toBaselineOf="@+id/user_name"
-            app:layout_constraintEnd_toEndOf="parent"
-            tools:text="普通会员" />
+        <TextView android:id="@+id/user_level" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textColor="@color/common_hint" android:textSize="14sp" app:layout_constraintBaseline_toBaselineOf="@+id/user_name" app:layout_constraintEnd_toEndOf="parent" tools:text="@string/mine_mine_fragment_mine80"/>
 
     </android.support.constraint.ConstraintLayout>
 
 
-    <com.allen.library.SuperTextView
-        android:id="@+id/menu_security"
-        android:layout_marginTop="10dp"
-        android:paddingLeft="@dimen/common_margin"
-        android:paddingRight="@dimen/common_margin"
-        app:sBackgroundDrawableRes="@color/common_background"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        app:sLeftTextSize="16sp"
-        app:sRightTextSize="14sp"
-        app:sDividerLineType="none"
-        app:sLeftTextString="安全中心"
-        app:sLeftTextColor="@color/common_text"
-        app:sLeftTvDrawableLeft="@mipmap/mine_ic_security"
-        app:sRightTvDrawableRight="@mipmap/common_arrow_right"
-        />
-    <com.allen.library.SuperTextView
-        android:id="@+id/menu_order_manager"
-        android:layout_marginTop="5dp"
-        app:sLeftTextSize="16sp"
-        app:sRightTextSize="14sp"
-        app:sBottomDividerLineMarginLeft="@dimen/common_margin"
-        app:sBottomDividerLineMarginRight="@dimen/common_margin"
-        android:paddingLeft="@dimen/common_margin"
-        android:paddingRight="@dimen/common_margin"
-        app:sBackgroundDrawableRes="@color/common_background"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        app:sLeftTextString="订单管理"
-        app:sDividerLineColor="@color/common_divider"
-        app:sDividerLineHeight="1dp"
-        app:sLeftTextColor="@color/common_text"
-        app:sLeftTvDrawableLeft="@mipmap/mine_ic_order_manager"
-        app:sRightTvDrawableRight="@mipmap/common_arrow_right"
-        />
-    <com.allen.library.SuperTextView
-        android:id="@+id/menu_invite"
-        app:sDividerLineType="bottom"
-        app:sLeftTextSize="16sp"
-        app:sRightTextSize="14sp"
-        app:sDividerLineColor="@color/common_divider"
-        android:paddingLeft="@dimen/common_margin"
-        android:paddingRight="@dimen/common_margin"
-        app:sBackgroundDrawableRes="@color/common_background"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        app:sLeftTextString="邀请好友"
-        app:sLeftTextColor="@color/common_text"
-        app:sLeftTvDrawableLeft="@mipmap/mine_ic_invite"
-        app:sRightTvDrawableRight="@mipmap/common_arrow_right"
-        />
+    <com.allen.library.SuperTextView android:id="@+id/menu_security" android:layout_height="56dp" android:layout_marginTop="10dp" android:layout_width="match_parent" android:paddingLeft="@dimen/common_margin" android:paddingRight="@dimen/common_margin" app:sBackgroundDrawableRes="@color/common_background" app:sDividerLineType="none" app:sLeftTextColor="@color/common_text" app:sLeftTextSize="16sp" app:sLeftTextString="@string/mine_mine_activity_security20" app:sLeftTvDrawableLeft="@mipmap/mine_ic_security" app:sRightTextSize="14sp" app:sRightTvDrawableRight="@mipmap/common_arrow_right"/>
+    <com.allen.library.SuperTextView android:id="@+id/menu_order_manager" android:layout_height="56dp" android:layout_marginTop="5dp" android:layout_width="match_parent" android:paddingLeft="@dimen/common_margin" android:paddingRight="@dimen/common_margin" app:sBackgroundDrawableRes="@color/common_background" app:sBottomDividerLineMarginLeft="@dimen/common_margin" app:sBottomDividerLineMarginRight="@dimen/common_margin" app:sDividerLineColor="@color/common_divider" app:sDividerLineHeight="1dp" app:sLeftTextColor="@color/common_text" app:sLeftTextSize="16sp" app:sLeftTextString="@string/mine_mine_fragment_mine130" app:sLeftTvDrawableLeft="@mipmap/mine_ic_order_manager" app:sRightTextSize="14sp" app:sRightTvDrawableRight="@mipmap/common_arrow_right"/>
+    <com.allen.library.SuperTextView android:id="@+id/menu_invite" android:layout_height="56dp" android:layout_width="match_parent" android:paddingLeft="@dimen/common_margin" android:paddingRight="@dimen/common_margin" app:sBackgroundDrawableRes="@color/common_background" app:sDividerLineColor="@color/common_divider" app:sDividerLineType="bottom" app:sLeftTextColor="@color/common_text" app:sLeftTextSize="16sp" app:sLeftTextString="@string/mine_mine_activity_invite20" app:sLeftTvDrawableLeft="@mipmap/mine_ic_invite" app:sRightTextSize="14sp" app:sRightTvDrawableRight="@mipmap/common_arrow_right"/>
 
-    <com.allen.library.SuperTextView
-        android:id="@+id/menu_director"
-        app:sDividerLineType="none"
-        app:sLeftTextSize="16sp"
-        app:sRightTextSize="14sp"
-        android:paddingLeft="@dimen/common_margin"
-        android:paddingRight="@dimen/common_margin"
-        app:sBackgroundDrawableRes="@color/common_background"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        app:sLeftTextString="董事分红"
-        app:sLeftTextColor="@color/common_text"
-        app:sLeftTvDrawableLeft="@mipmap/mine_ic_director"
-        app:sRightTvDrawableRight="@mipmap/common_arrow_right"
-        />
+    <com.allen.library.SuperTextView android:id="@+id/menu_director" android:layout_height="56dp" android:layout_width="match_parent" android:paddingLeft="@dimen/common_margin" android:paddingRight="@dimen/common_margin" app:sBackgroundDrawableRes="@color/common_background" app:sDividerLineType="none" app:sLeftTextColor="@color/common_text" app:sLeftTextSize="16sp" app:sLeftTextString="@string/mine_mine_activity_director20" app:sLeftTvDrawableLeft="@mipmap/mine_ic_director" app:sRightTextSize="14sp" app:sRightTvDrawableRight="@mipmap/common_arrow_right"/>
 
-    <com.allen.library.SuperTextView
-        android:id="@+id/menu_service"
-        android:layout_marginTop="5dp"
-        app:sLeftTextSize="16sp"
-        app:sRightTextSize="14sp"
-        app:sBottomDividerLineMarginLeft="@dimen/common_margin"
-        app:sBottomDividerLineMarginRight="@dimen/common_margin"
-        android:paddingLeft="@dimen/common_margin"
-        android:paddingRight="@dimen/common_margin"
-        app:sBackgroundDrawableRes="@color/common_background"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        app:sLeftTextString="联系客服"
-        app:sDividerLineColor="@color/common_divider"
-        app:sDividerLineHeight="1dp"
-        app:sLeftTextColor="@color/common_text"
-        app:sLeftTvDrawableLeft="@mipmap/mine_ic_service"
-        app:sRightTvDrawableRight="@mipmap/common_arrow_right"
-        />
+    <com.allen.library.SuperTextView android:id="@+id/menu_service" android:layout_height="56dp" android:layout_marginTop="5dp" android:layout_width="match_parent" android:paddingLeft="@dimen/common_margin" android:paddingRight="@dimen/common_margin" app:sBackgroundDrawableRes="@color/common_background" app:sBottomDividerLineMarginLeft="@dimen/common_margin" app:sBottomDividerLineMarginRight="@dimen/common_margin" app:sDividerLineColor="@color/common_divider" app:sDividerLineHeight="1dp" app:sLeftTextColor="@color/common_text" app:sLeftTextSize="16sp" app:sLeftTextString="@string/mine_mine_fragment_mine190" app:sLeftTvDrawableLeft="@mipmap/mine_ic_service" app:sRightTextSize="14sp" app:sRightTvDrawableRight="@mipmap/common_arrow_right"/>
 
-    <com.allen.library.SuperTextView
-        android:id="@+id/menu_version"
-        app:sLeftTextSize="16sp"
-        app:sRightTextSize="14sp"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        app:sDividerLineType="none"
-        android:paddingLeft="@dimen/common_margin"
-        android:paddingRight="@dimen/common_margin"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:sBackgroundDrawableRes="@color/common_background"
-        app:sLeftTextColor="@color/common_text"
-        app:sLeftTextString="版本号"
-        app:sLeftTvDrawableLeft="@mipmap/mine_ic_verison"
-        app:sRightTextColor="@color/common_hint"
-        app:sRightTvDrawableRight="@mipmap/common_arrow_right" />
+    <com.allen.library.SuperTextView android:id="@+id/menu_version" android:layout_height="56dp" android:layout_width="match_parent" android:paddingLeft="@dimen/common_margin" android:paddingRight="@dimen/common_margin" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:sBackgroundDrawableRes="@color/common_background" app:sDividerLineType="none" app:sLeftTextColor="@color/common_text" app:sLeftTextSize="16sp" app:sLeftTextString="@string/mine_mine_fragment_mine210" app:sLeftTvDrawableLeft="@mipmap/mine_ic_verison" app:sRightTextColor="@color/common_hint" app:sRightTextSize="14sp" app:sRightTvDrawableRight="@mipmap/common_arrow_right"/>
 
-    <com.allen.library.SuperTextView
-        android:id="@+id/menu_logout"
-        android:layout_marginTop="5dp"
-        app:sLeftTextSize="16sp"
-        app:sRightTextSize="14sp"
-        android:paddingLeft="@dimen/common_margin"
-        android:paddingRight="@dimen/common_margin"
-        app:sBackgroundDrawableRes="@color/common_background"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        app:sLeftTextString="退出登录"
-        app:sDividerLineType="none"
-        app:sLeftTextColor="@color/common_text"
-        app:sLeftTvDrawableLeft="@mipmap/mine_ic_logout"
-        app:sRightTvDrawableRight="@mipmap/common_arrow_right"
-        />
+    <com.allen.library.SuperTextView android:id="@+id/menu_logout" android:layout_height="56dp" android:layout_marginTop="5dp" android:layout_width="match_parent" android:paddingLeft="@dimen/common_margin" android:paddingRight="@dimen/common_margin" app:sBackgroundDrawableRes="@color/common_background" app:sDividerLineType="none" app:sLeftTextColor="@color/common_text" app:sLeftTextSize="16sp" app:sLeftTextString="@string/mine_mine_fragment_mine230" app:sLeftTvDrawableLeft="@mipmap/mine_ic_logout" app:sRightTextSize="14sp" app:sRightTvDrawableRight="@mipmap/common_arrow_right"/>
 
 </LinearLayout>

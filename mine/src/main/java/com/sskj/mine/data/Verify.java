@@ -1,7 +1,15 @@
 package com.sskj.mine.data;
 
+import com.sskj.common.App;
+import com.sskj.mine.R;
+
 public enum Verify {
-    SMS("手机号码","短信验证"),GOOGLE("谷歌身份验证器","谷歌验证"),EMAIL("邮箱地址","邮箱验证");
+    SMS(App.INSTANCE.getString(R.string.mine_verify1),
+            App.INSTANCE.getString(R.string.mine_verify2)),
+    GOOGLE(App.INSTANCE.getString(R.string.mine_verify3),
+            App.INSTANCE.getString(R.string.mine_verify4)),
+    EMAIL(App.INSTANCE.getString(R.string.mine_verify5),
+            App.INSTANCE.getString(R.string.mine_verify6));
 
     String name;
     String type;

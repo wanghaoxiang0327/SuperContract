@@ -70,8 +70,8 @@ public class MineFragment extends BaseFragment<MinePresenter> {
                 isDirector = userBean.getIs_ds() == 1;
                 menuLogout.setVisibility(View.VISIBLE);
             } else {
-                userName.setText("点击登录");
-                userId.setText("欢迎来到SCEX");
+                userName.setText(getString(R.string.mine_mineFragment1));
+                userId.setText(getString(R.string.mine_mineFragment2));
                 ClickUtil.click(userName, view -> {
                     ARouter.getInstance().build(RoutePath.LOGIN_LOGIN).navigation();
                 });
@@ -106,7 +106,7 @@ public class MineFragment extends BaseFragment<MinePresenter> {
                     DirectorActivity.start(getContext());
                 } else {
                     new TipDialog(getContext())
-                            .setContent("离董事分红仅差一步，赶快邀请好友。")
+                            .setContent(getString(R.string.mine_mineFragment3))
                             .setConfirmListener(dialog -> {
                                 dialog.dismiss();
 
@@ -129,7 +129,7 @@ public class MineFragment extends BaseFragment<MinePresenter> {
         });
         ClickUtil.click(menuLogout, (view) -> {
             new TipDialog(getContext())
-                    .setContent("确定要退出吗")
+                    .setContent(getString(R.string.mine_mineFragment4))
                     .setConfirmListener(dialog -> {
                         dialog.dismiss();
                         SpUtil.exit(BaseApplication.getMobile());

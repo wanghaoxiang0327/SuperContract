@@ -1,40 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="60dp"
-    android:background="@color/common_background"
-    android:orientation="horizontal"
-    android:paddingLeft="@dimen/common_margin"
-    android:paddingRight="@dimen/common_margin">
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" android:background="@color/common_background" android:layout_height="60dp" android:layout_width="match_parent" android:orientation="horizontal" android:paddingLeft="@dimen/common_margin" android:paddingRight="@dimen/common_margin">
 
-    <TextView
-        android:id="@+id/name_tv"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:gravity="center_vertical"
-        android:textColor="@color/common_text"
-        tools:text="孙悟空" />
+    <TextView android:gravity="center_vertical" android:id="@+id/name_tv" android:layout_height="match_parent" android:layout_weight="1" android:layout_width="0dp" android:textColor="@color/common_text" tools:text="@string/mine_mine_item_team20"/>
 
-    <TextView
-        android:id="@+id/mobile_tv"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:gravity="center_vertical"
-        android:textColor="@color/common_text"
-        tools:text="1871121" />
+    <TextView android:gravity="center_vertical" android:id="@+id/mobile_tv" android:layout_height="match_parent" android:layout_weight="1" android:layout_width="0dp" android:textColor="@color/common_text" tools:text="1871121"/>
 
 
-    <TextView
-        android:id="@+id/time_tv"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:gravity="center_vertical|right"
-        android:textColor="@color/common_text"
-        tools:text="孙悟空" />
+    <TextView android:gravity="center_vertical|right" android:id="@+id/time_tv" android:layout_height="match_parent" android:layout_weight="1" android:layout_width="0dp" android:textColor="@color/common_text" tools:text="@string/mine_mine_item_team20"/>
 
 
 </LinearLayout>

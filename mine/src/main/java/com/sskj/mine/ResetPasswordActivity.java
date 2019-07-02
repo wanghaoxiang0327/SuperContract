@@ -86,7 +86,7 @@ public class ResetPasswordActivity extends BaseActivity<ResetPasswordPresenter> 
             }
 
             if (isEmpty(newPsEdt)) {
-                ToastUtils.show("请输入新密码");
+                ToastUtils.show(getString(R.string.mine_resetPasswordActivity1));
                 return;
             }
             if (isEmptyShow(psRepeatEdt)) {
@@ -98,7 +98,7 @@ public class ResetPasswordActivity extends BaseActivity<ResetPasswordPresenter> 
             }
 
             if (!getText(psRepeatEdt).equals(getText(newPsEdt))) {
-                ToastUtils.show("两次密码输入不一致");
+                ToastUtils.show(getString(R.string.mine_resetPasswordActivity2));
                 return;
             }
 

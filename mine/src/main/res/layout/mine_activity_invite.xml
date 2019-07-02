@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -11,9 +11,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:background_color="@color/common_action_bar"
-        app:right_text="规则"
+        app:right_text="@string/mine_mine_activity_invite201"
         app:right_text_color="@color/common_text"
-        app:title="邀请好友" />
+        app:title="@string/mine_mine_activity_invite20" />
 
 
     <android.support.constraint.ConstraintLayout
@@ -44,7 +44,7 @@
                 android:id="@+id/mine_textview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="专属邀请码"
+                android:text="@string/mine_mine_activity_invite100"
                 android:textColor="@color/common_text"
                 android:textSize="13sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -54,7 +54,7 @@
                 android:id="@+id/copy_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="复制"
+                android:text="@string/mine_mine_activity_bind_googl_everify140"
                 android:textColor="@color/common_tip"
                 android:textSize="15sp"
                 app:layout_constraintBaseline_toBaselineOf="@+id/mine_textview"
@@ -90,7 +90,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/common_hint_50"
                 android:gravity="center"
-                android:text="专属推广海报"
+                android:text="@string/mine_mine_activity_invite190"
                 android:textColor="@color/common_text" />
 
             <TextView
@@ -101,7 +101,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/common_hint_50"
                 android:gravity="center"
-                android:text="我的客户"
+                android:text="@string/mine_mine_activity_invite210"
                 android:textColor="@color/common_text" />
 
             <TextView
@@ -112,7 +112,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/common_hint_50"
                 android:gravity="center"
-                android:text="佣金明细"
+                android:text="@string/mine_mine_activity_commission20"
                 android:textColor="@color/common_text" />
 
         </LinearLayout>

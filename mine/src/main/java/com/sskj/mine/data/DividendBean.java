@@ -9,7 +9,7 @@ public class DividendBean {
      * count : 1
      * p : 1
      * size : 15
-     * data : {"list":[{"id":"7","user_id":"171","account":"52034171","inc_USDT":"1.3000","inc_BTC":"0.0000","inc_ETH":"0.0000","inc_EOS":"0.0000","addtime":"1561685242","strtime":"1560700800","endtime":"1561305599","week":"第二十五周"}],"total":[{"code":"USDT","img":"/Uploads/img/2018/12-27/5c24649eac12663091.png","num":1.3},{"code":"BTC","img":"/Uploads/img/2018/12-27/5c24649eac12663091.png","num":0},{"code":"ETH","img":"/Uploads/img/2018/12-27/5c24649eac12663091.png","num":0},{"code":"EOS","img":"/Uploads/img/2018/12-27/5c24649eac12663091.png","num":0}]}
+     * data : {"list":[{"id":"7","user_id":"171","account":"52034171","inc_USDT":"1.3000","inc_BTC":"0.0000","inc_ETH":"0.0000","inc_EOS":"0.0000","addtime":"1561685242","strtime":"1560700800","endtime":"1561305599","week":getString(R.string.mine_dividendBean1)}],"total":[{"code":"USDT","img":"/Uploads/img/2018/12-27/5c24649eac12663091.png","num":1.3},{"code":"BTC","img":"/Uploads/img/2018/12-27/5c24649eac12663091.png","num":0},{"code":"ETH","img":"/Uploads/img/2018/12-27/5c24649eac12663091.png","num":0},{"code":"EOS","img":"/Uploads/img/2018/12-27/5c24649eac12663091.png","num":0}]}
      */
 
     private String count;

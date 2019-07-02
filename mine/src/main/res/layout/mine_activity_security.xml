@@ -1,110 +1,23 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/mine_background"
-    android:orientation="vertical">
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:background="@color/mine_background" android:layout_height="match_parent" android:layout_width="match_parent" android:orientation="vertical">
 
 
-    <com.sskj.common.view.ToolBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:background_color="@color/common_background"
-        app:title="安全中心" />
+    <com.sskj.common.view.ToolBarLayout android:layout_height="wrap_content" android:layout_width="match_parent" app:background_color="@color/common_background" app:title="@string/mine_mine_activity_security20"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/common_margin"
-        android:text="* 短信验证用于提币、修改登录密码、修改资金密码；\n* 谷歌验证用于登录、提币、修改登录密码、修改资金密码；\n* 为了保证您的账户安全，以下两种验证方式至少开启一种；"
-        android:textColor="@color/common_hint" />
+    <TextView android:layout_height="wrap_content" android:layout_width="match_parent" android:padding="@dimen/common_margin" android:text="@string/mine_mine_activity_security40" android:textColor="@color/common_hint"/>
 
-    <com.allen.library.SuperTextView
-        android:id="@+id/menu_sms_verify"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:layout_marginTop="10dp"
-        android:paddingLeft="@dimen/common_margin"
-        android:paddingRight="@dimen/common_margin"
-        app:sBackgroundDrawableRes="@color/common_background"
-        app:sDividerLineColor="@color/common_divider"
-        app:sDividerLineType="bottom"
-        app:sLeftTextColor="@color/common_text"
-        app:sLeftTextSize="16sp"
-        app:sLeftTextString="短信验证"
-        app:sRightTextColor="@color/common_hint"
-        app:sRightTextSize="14sp"
-        app:sRightTvDrawableRight="@mipmap/common_arrow_right" />
+    <com.allen.library.SuperTextView android:id="@+id/menu_sms_verify" android:layout_height="56dp" android:layout_marginTop="10dp" android:layout_width="match_parent" android:paddingLeft="@dimen/common_margin" android:paddingRight="@dimen/common_margin" app:sBackgroundDrawableRes="@color/common_background" app:sDividerLineColor="@color/common_divider" app:sDividerLineType="bottom" app:sLeftTextColor="@color/common_text" app:sLeftTextSize="16sp" app:sLeftTextString="@string/mine_verify2" app:sRightTextColor="@color/common_hint" app:sRightTextSize="14sp" app:sRightTvDrawableRight="@mipmap/common_arrow_right"/>
 
 
-    <com.allen.library.SuperTextView
-        android:id="@+id/menu_google_verify"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:paddingLeft="@dimen/common_margin"
-        android:paddingRight="@dimen/common_margin"
-        app:sBackgroundDrawableRes="@color/common_background"
-        app:sDividerLineType="none"
-        app:sLeftTextColor="@color/common_text"
-        app:sLeftTextSize="16sp"
-        app:sLeftTextString="谷歌验证"
-        app:sRightTextColor="@color/common_hint"
-        app:sRightTextSize="14sp"
-        app:sRightTvDrawableRight="@mipmap/common_arrow_right" />
+    <com.allen.library.SuperTextView android:id="@+id/menu_google_verify" android:layout_height="56dp" android:layout_width="match_parent" android:paddingLeft="@dimen/common_margin" android:paddingRight="@dimen/common_margin" app:sBackgroundDrawableRes="@color/common_background" app:sDividerLineType="none" app:sLeftTextColor="@color/common_text" app:sLeftTextSize="16sp" app:sLeftTextString="@string/mine_verify4" app:sRightTextColor="@color/common_hint" app:sRightTextSize="14sp" app:sRightTvDrawableRight="@mipmap/common_arrow_right"/>
 
 
-    <com.allen.library.SuperTextView
-        android:id="@+id/menu_email_verify"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:layout_marginTop="5dp"
-        android:paddingLeft="@dimen/common_margin"
-        android:paddingRight="@dimen/common_margin"
-        app:sBackgroundDrawableRes="@color/common_background"
-        app:sDividerLineColor="@color/common_divider"
-        app:sDividerLineType="none"
-        app:sLeftTextColor="@color/common_text"
-        app:sLeftTextSize="16sp"
-        app:sLeftTextString="邮箱验证"
-        app:sRightTextColor="@color/common_hint"
-        app:sRightTextSize="14sp"
-        app:sRightTvDrawableRight="@mipmap/common_arrow_right" />
+    <com.allen.library.SuperTextView android:id="@+id/menu_email_verify" android:layout_height="56dp" android:layout_marginTop="5dp" android:layout_width="match_parent" android:paddingLeft="@dimen/common_margin" android:paddingRight="@dimen/common_margin" app:sBackgroundDrawableRes="@color/common_background" app:sDividerLineColor="@color/common_divider" app:sDividerLineType="none" app:sLeftTextColor="@color/common_text" app:sLeftTextSize="16sp" app:sLeftTextString="@string/mine_verify6" app:sRightTextColor="@color/common_hint" app:sRightTextSize="14sp" app:sRightTvDrawableRight="@mipmap/common_arrow_right"/>
 
 
-    <com.allen.library.SuperTextView
-        android:id="@+id/menu_login_ps"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:layout_marginTop="5dp"
-        android:paddingLeft="@dimen/common_margin"
-        android:paddingRight="@dimen/common_margin"
-        app:sRightTextString="已设置"
-        app:sBackgroundDrawableRes="@color/common_background"
-        app:sDividerLineColor="@color/common_divider"
-        app:sDividerLineType="bottom"
-        app:sLeftTextColor="@color/common_text"
-        app:sLeftTextSize="16sp"
-        app:sLeftTextString="登录密码"
-        app:sRightTextColor="@color/common_hint"
-        app:sRightTextSize="14sp"
-        app:sRightTvDrawableRight="@mipmap/common_arrow_right" />
+    <com.allen.library.SuperTextView android:id="@+id/menu_login_ps" android:layout_height="56dp" android:layout_marginTop="5dp" android:layout_width="match_parent" android:paddingLeft="@dimen/common_margin" android:paddingRight="@dimen/common_margin" app:sBackgroundDrawableRes="@color/common_background" app:sDividerLineColor="@color/common_divider" app:sDividerLineType="bottom" app:sLeftTextColor="@color/common_text" app:sLeftTextSize="16sp" app:sLeftTextString="@string/mine_mine_activity_security120" app:sRightTextColor="@color/common_hint" app:sRightTextSize="14sp" app:sRightTextString="@string/mine_securityActivity2" app:sRightTvDrawableRight="@mipmap/common_arrow_right"/>
 
-    <com.allen.library.SuperTextView
-        android:id="@+id/menu_pay_ps"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:paddingLeft="@dimen/common_margin"
-        android:paddingRight="@dimen/common_margin"
-        app:sBackgroundDrawableRes="@color/common_background"
-        app:sDividerLineColor="@color/common_divider"
-        app:sDividerLineType="none"
-        app:sLeftTextColor="@color/common_text"
-        app:sLeftTextSize="16sp"
-        app:sLeftTextString="资金密码"
-        app:sRightTextColor="@color/common_hint"
-        app:sRightTextSize="14sp"
-        app:sRightTvDrawableRight="@mipmap/common_arrow_right" />
+    <com.allen.library.SuperTextView android:id="@+id/menu_pay_ps" android:layout_height="56dp" android:layout_width="match_parent" android:paddingLeft="@dimen/common_margin" android:paddingRight="@dimen/common_margin" app:sBackgroundDrawableRes="@color/common_background" app:sDividerLineColor="@color/common_divider" app:sDividerLineType="none" app:sLeftTextColor="@color/common_text" app:sLeftTextSize="16sp" app:sLeftTextString="@string/mine_mine_activity_reset_pa_ypassword130" app:sRightTextColor="@color/common_hint" app:sRightTextSize="14sp" app:sRightTvDrawableRight="@mipmap/common_arrow_right"/>
 
 
 </LinearLayout>

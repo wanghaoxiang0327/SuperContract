@@ -1,112 +1,31 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/mine_background"
-    android:orientation="vertical">
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:background="@color/mine_background" android:layout_height="match_parent" android:layout_width="match_parent" android:orientation="vertical">
 
-    <com.sskj.common.view.ToolBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:background_color="@color/common_action_bar"
-        app:title="我的团队" />
+    <com.sskj.common.view.ToolBarLayout android:layout_height="wrap_content" android:layout_width="match_parent" app:background_color="@color/common_action_bar" app:title="@string/mine_mine_activity_my_team20"/>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/common_divider" />
+    <View android:background="@color/common_divider" android:layout_height="1dp" android:layout_width="match_parent"/>
 
-    <android.support.constraint.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/common_background"
-        android:padding="@dimen/common_margin">
+    <android.support.constraint.ConstraintLayout android:background="@color/common_background" android:layout_height="wrap_content" android:layout_width="match_parent" android:padding="@dimen/common_margin">
 
-        <TextView
-            android:id="@+id/team_count"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/common_text"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toStartOf="@+id/mine_guideline"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="100" />
+        <TextView android:id="@+id/team_count" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textColor="@color/common_text" android:textSize="18sp" app:layout_constraintEnd_toStartOf="@+id/mine_guideline" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" tools:text="100"/>
 
 
-        <android.support.constraint.Guideline
-            android:id="@+id/mine_guideline"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.5" />
+        <android.support.constraint.Guideline android:id="@+id/mine_guideline" android:layout_height="wrap_content" android:layout_width="wrap_content" android:orientation="vertical" app:layout_constraintGuide_percent="0.5"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
-            android:text="团队人数"
-            android:textColor="@color/common_hint"
-            app:layout_constraintEnd_toStartOf="@+id/mine_guideline"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/team_count" />
+        <TextView android:layout_height="wrap_content" android:layout_marginEnd="8dp" android:layout_marginStart="8dp" android:layout_marginTop="16dp" android:layout_width="wrap_content" android:text="@string/mine_mine_activity_my_team120" android:textColor="@color/common_hint" app:layout_constraintEnd_toStartOf="@+id/mine_guideline" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/team_count"/>
 
-        <TextView
-            android:id="@+id/increase_count"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:textColor="@color/common_text"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.49"
-            app:layout_constraintStart_toStartOf="@+id/mine_guideline"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="100" />
+        <TextView android:id="@+id/increase_count" android:layout_height="wrap_content" android:layout_marginEnd="8dp" android:layout_marginStart="8dp" android:layout_width="wrap_content" android:textColor="@color/common_text" android:textSize="18sp" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.49" app:layout_constraintStart_toStartOf="@+id/mine_guideline" app:layout_constraintTop_toTopOf="parent" tools:text="100"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
-            android:text="今日新增"
-            android:textColor="@color/common_hint"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/mine_guideline"
-            app:layout_constraintTop_toBottomOf="@+id/increase_count" />
+        <TextView android:layout_height="wrap_content" android:layout_marginEnd="8dp" android:layout_marginStart="8dp" android:layout_marginTop="16dp" android:layout_width="wrap_content" android:text="@string/mine_mine_activity_my_team160" android:textColor="@color/common_hint" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="@+id/mine_guideline" app:layout_constraintTop_toBottomOf="@+id/increase_count"/>
     </android.support.constraint.ConstraintLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="5dp"
-        android:background="@color/common_background"
-        android:orientation="horizontal">
+    <LinearLayout android:background="@color/common_background" android:layout_height="50dp" android:layout_marginTop="5dp" android:layout_width="match_parent" android:orientation="horizontal">
 
-        <View
-            android:layout_width="3dp"
-            android:layout_height="20dp"
-            android:layout_gravity="center_vertical"
-            android:background="@color/common_tip" />
+        <View android:background="@color/common_tip" android:layout_gravity="center_vertical" android:layout_height="20dp" android:layout_width="3dp"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="20dp"
-            android:gravity="center_vertical"
-            android:text="我的直推"
-            android:textColor="@color/common_text" />
+        <TextView android:gravity="center_vertical" android:layout_height="match_parent" android:layout_marginLeft="20dp" android:layout_width="wrap_content" android:text="@string/mine_mine_activity_my_team230" android:textColor="@color/common_text"/>
 
     </LinearLayout>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/team_list"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+    <android.support.v7.widget.RecyclerView android:id="@+id/team_list" android:layout_height="wrap_content" android:layout_width="match_parent"/>
 </LinearLayout>

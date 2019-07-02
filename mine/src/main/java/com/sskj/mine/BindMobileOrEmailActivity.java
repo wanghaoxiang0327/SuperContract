@@ -55,10 +55,10 @@ public class BindMobileOrEmailActivity extends BaseActivity<BindMobileOrEmailPre
         verifyName.setText(verify.getName());
         switch (verify) {
             case EMAIL:
-                verifyCodeName.setText("邮箱验证码");
+                verifyCodeName.setText(getString(R.string.mine_bindMobileOrEmailActivity1));
                 break;
             case SMS:
-                verifyCodeName.setText("手机验证码");
+                verifyCodeName.setText(getString(R.string.mine_bindMobileOrEmailActivity2));
                 break;
         }
 

@@ -58,36 +58,36 @@ public class SecurityActivity extends BaseActivity<SecurityPresenter> {
             if (userBean != null) {
                 setPayPs = TextUtils.isEmpty(userBean.getTpwd());
                 if (setPayPs) {
-                    menuPayPs.setRightString("未设置");
+                    menuPayPs.setRightString(getString(R.string.mine_securityActivity1));
                 } else {
-                    menuPayPs.setRightString("已设置");
+                    menuPayPs.setRightString(getString(R.string.mine_securityActivity2));
                 }
                 if (userBean.getIsBindMail() == 1) {
-                    menuEmailVerify.setRightString("已设置");
+                    menuEmailVerify.setRightString(getString(R.string.mine_securityActivity2));
                 } else {
-                    menuEmailVerify.setRightString("未设置");
+                    menuEmailVerify.setRightString(getString(R.string.mine_securityActivity1));
                 }
 
                 if (userBean.getIsStartGoogle() == 1) {
                     startGoogle=true;
-                    menuGoogleVerify.setRightString("已开启");
+                    menuGoogleVerify.setRightString(getString(R.string.mine_securityActivity3));
                 } else {
                     startGoogle=false;
                     if (userBean.getIsBindGoogle() == 1) {
-                        menuGoogleVerify.setRightString("未开启");
+                        menuGoogleVerify.setRightString(getString(R.string.mine_securityActivity4));
                     } else {
-                        menuGoogleVerify.setRightString("未设置");
+                        menuGoogleVerify.setRightString(getString(R.string.mine_securityActivity1));
                     }
                 }
                 if (userBean.getIsStartSms() == 1) {
                     startSms=true;
-                    menuSmsVerify.setRightString("已开启");
+                    menuSmsVerify.setRightString(getString(R.string.mine_securityActivity3));
                 } else {
                     startSms=false;
                     if (TextUtils.isEmpty(userBean.getMobile())) {
-                        menuSmsVerify.setRightString("未设置");
+                        menuSmsVerify.setRightString(getString(R.string.mine_securityActivity1));
                     } else {
-                        menuSmsVerify.setRightString("未开启");
+                        menuSmsVerify.setRightString(getString(R.string.mine_securityActivity4));
                     }
 
                 }
@@ -113,7 +113,7 @@ public class SecurityActivity extends BaseActivity<SecurityPresenter> {
             if (setPayPs) {
                 if (!startSms&&startGoogle){
                     new TipDialog(this)
-                            .setContent("为了保证您的账户安全，短信验证和谷歌验证方式至少开启一种")
+                            .setContent(getString(R.string.mine_securityActivity5))
                             .setCancelVisible(View.GONE)
                             .show();
                 }else {

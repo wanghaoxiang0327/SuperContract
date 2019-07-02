@@ -84,7 +84,7 @@ public class SettingPasswordActivity extends BaseActivity<SettingPasswordPresent
             }
 
             if (!getText(psRepeatEdt).equals(getText(psEdt))) {
-                ToastUtils.show("两次密码输入不一致");
+                ToastUtils.show(getString(R.string.mine_resetPasswordActivity2));
                 return;
             }
 

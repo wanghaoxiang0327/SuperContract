@@ -1,73 +1,25 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/common_dark"
-    android:orientation="vertical">
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:background="@color/common_dark" android:layout_height="match_parent" android:layout_width="match_parent" android:orientation="vertical">
 
-    <com.sskj.common.view.ToolBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:background_color="@color/common_action_bar"
-        app:title="佣金明细" />
+    <com.sskj.common.view.ToolBarLayout android:layout_height="wrap_content" android:layout_width="match_parent" app:background_color="@color/common_action_bar" app:title="@string/mine_mine_activity_commission20"/>
 
 
-    <android.support.v4.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <android.support.v4.widget.NestedScrollView android:layout_height="wrap_content" android:layout_width="match_parent">
 
-        <LinearLayout
-            android:id="@+id/content_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+        <LinearLayout android:id="@+id/content_layout" android:layout_height="wrap_content" android:layout_width="match_parent" android:orientation="vertical">
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/commission_top_list"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:nestedScrollingEnabled="false"
-                android:padding="@dimen/common_margin" />
+            <android.support.v7.widget.RecyclerView android:id="@+id/commission_top_list" android:layout_height="wrap_content" android:layout_width="match_parent" android:nestedScrollingEnabled="false" android:padding="@dimen/common_margin"/>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:background="@color/mine_background"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingLeft="@dimen/common_margin"
-                android:paddingRight="@dimen/common_margin">
+            <LinearLayout android:background="@color/mine_background" android:gravity="center_vertical" android:layout_height="40dp" android:layout_width="match_parent" android:orientation="horizontal" android:paddingLeft="@dimen/common_margin" android:paddingRight="@dimen/common_margin">
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="UID"
-                    android:textColor="@color/common_hint" />
+                <TextView android:layout_height="wrap_content" android:layout_weight="1" android:layout_width="0dp" android:text="UID" android:textColor="@color/common_hint"/>
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="佣金"
-                    android:textColor="@color/common_hint" />
+                <TextView android:layout_height="wrap_content" android:layout_weight="1" android:layout_width="0dp" android:text="@string/mine_mine_activity_commission140" android:textColor="@color/common_hint"/>
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="right"
-                    android:text="平仓时间"
-                    android:textColor="@color/common_hint" />
+                <TextView android:gravity="right" android:layout_height="wrap_content" android:layout_weight="1" android:layout_width="0dp" android:text="@string/mine_mine_activity_commission160" android:textColor="@color/common_hint"/>
             </LinearLayout>
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/detail_list"
-                android:layout_width="match_parent"
-                android:nestedScrollingEnabled="false"
-                android:layout_height="wrap_content" />
+            <android.support.v7.widget.RecyclerView android:id="@+id/detail_list" android:layout_height="wrap_content" android:layout_width="match_parent" android:nestedScrollingEnabled="false"/>
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 </LinearLayout>
