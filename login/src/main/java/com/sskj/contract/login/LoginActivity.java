@@ -80,8 +80,8 @@ public class LoginActivity extends BaseActivity<LoginPresenter> {
 
     @Override
     public void initView() {
-        typeTabs.add(new TabItem("手机号登录"));
-        typeTabs.add(new TabItem("邮箱登录"));
+        typeTabs.add(new TabItem(getString(R.string.login_loginActivity1)));
+        typeTabs.add(new TabItem(getString(R.string.login_loginActivity2)));
         typeTabLayout.setTabData(typeTabs);
         typeTabLayout.setOnTabSelectListener(new TabSelectListener() {
             @Override

@@ -1,5 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <resources>
-    <string name="login_failed">"Login failed"</string>
     <string name="login_input_mobile">请输入手机号</string>
     <string name="login_input_email">请输入邮箱地址</string>
     <string name="login_get_verify_code">获取验证码</string>
@@ -8,4 +8,21 @@
     <string name="login_login_btn">立即登录</string>
     <string name="login_ps_format">8-20位字符且字母数字组合</string>
     <string name="login_repeat_ps">请输入确认密码</string>
+    <string name="login_registerActivity5">请先阅读并同意《用户注册协议》</string>
+    <string name="login_login_activity_login40">登录</string>
+    <string name="login_registerActivity1">手机号注册</string>
+    <string name="login_registerActivity2">邮箱注册</string>
+    <string name="login_login_activity_register600">请输入邀请码</string>
+    <string name="login_registerActivity3">已阅读并同意《用户注册协议》</string>
+    <string name="login_login_activity_register190">请输入昵称</string>
+    <string name="login_forgetPsActivity3">密码输入不一致</string>
+    <string name="login_loginActivity2">邮箱登录</string>
+    <string name="login_forgetPsActivity2">邮箱找回</string>
+    <string name="login_forgetPsActivity1">手机号找回</string>
+    <string name="login_login_activity_register40">注册</string>
+    <string name="login_login_activity_forget_ps240">请输入验证码</string>
+    <string name="login_login_activity_forget_ps470">提交</string>
+    <string name="login_loginActivity1">手机号登录</string>
+    <string name="login_login_activity_login350">还没有账号?立即注册</string>
+    <string name="login_login_activity_forget_ps40">忘记密码</string>
 </resources>

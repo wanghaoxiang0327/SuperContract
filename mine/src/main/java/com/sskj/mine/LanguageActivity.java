@@ -90,6 +90,7 @@ public class LanguageActivity extends BaseActivity<LanguagePresenter> {
         if (isChecked) {
             LocalManageUtil.saveSelectLanguage(this, selection);
             ARouter.getInstance().build(RoutePath.SPLASH).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP).navigation();
+            AppManager.getInstance().finishAll();
         }
     }
 

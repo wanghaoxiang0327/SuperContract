@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string name="login_input_mobile">핸드폰 번호 입력해주세요.</string>
+	<string name="login_input_email">메일 주소를 입력하십시오</string>
+	<string name="login_get_verify_code">인증 코드 가져오기</string>
+	<string name="login_get_code_retry">S 후 다시 보내기</string>
+	<string name="login_input_loagin_ps">로그인 비밀번호를 입력하십시오</string>
+	<string name="login_login_btn">즉시 로그인</string>
+	<string name="login_ps_format">8 -20비트 문자, 알파벳 숫자 조합</string>
+	<string name="login_repeat_ps">비밀번호 확인</string>
+	<string name="login_registerActivity5">먼저 읽고 《사용자 등록 협의》 에 동의해 주십시오</string>
+	<string name="login_login_activity_login40">로그인</string>
+	<string name="login_registerActivity1">휴대폰 번호 등록</string>
+	<string name="login_registerActivity2">메일박스 등록</string>
+	<string name="login_login_activity_register600">초대장 코드 입력</string>
+	<string name="login_registerActivity3">이미 읽으면서 《 사용자 등록 협의 》 에 동의했다</string>
+	<string name="login_login_activity_register190">닉네임 입력해주세요.</string>
+	<string name="login_forgetPsActivity3">암호 입력 불일치</string>
+	<string name="login_loginActivity2">메일박스 등록</string>
+	<string name="login_forgetPsActivity2">메일박스를 되찾다</string>
+	<string name="login_forgetPsActivity1">핸드폰 번호를 되찾다</string>
+	<string name="login_login_activity_register40">등록</string>
+	<string name="login_login_activity_forget_ps240">인증 코드 입력</string>
+	<string name="login_login_activity_forget_ps470">제출하다</string>
+	<string name="login_loginActivity1">휴대폰 번호 등록</string>
+	<string name="login_login_activity_login350">아직 계좌가 없어요? 즉각 등록</string>
+	<string name="login_login_activity_forget_ps40">비밀번호 잊기</string>
+
+</resources>

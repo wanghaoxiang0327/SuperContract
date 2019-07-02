@@ -89,8 +89,8 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> {
 
     @Override
     public void initView() {
-        typeTabs.add(new TabItem("手机号注册"));
-        typeTabs.add(new TabItem("邮箱注册"));
+        typeTabs.add(new TabItem(getString(R.string.login_registerActivity1)));
+        typeTabs.add(new TabItem(getString(R.string.login_registerActivity2)));
         typeTabLayout.setTabData(typeTabs);
         typeTabLayout.setOnTabSelectListener(new TabSelectListener() {
             @Override
@@ -121,7 +121,7 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> {
                 EditUtil.togglePs(repeatPsEdt, showRepeatPsImg)
         );
 
-        SpannableString reg=new SpannableString("已阅读并同意《用户注册协议》");
+        SpannableString reg=new SpannableString(getString(R.string.login_registerActivity3));
         ClickableSpan clickableSpan=new ClickableSpan() {
             @Override
             public void onClick(@NonNull View widget) {
@@ -173,7 +173,7 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> {
             }
 
             if (!getText(psEdt).equals(getText(repeatPsEdt))) {
-                ToastUtils.show("密码输入不一致");
+                ToastUtils.show(getString(R.string.login_forgetPsActivity3));
                 return;
             }
 
@@ -181,7 +181,7 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> {
                 return;
             }
             if (!readRules.isChecked()) {
-                ToastUtils.show("请先阅读并同意《用户注册协议》");
+                ToastUtils.show(getString(R.string.login_registerActivity5));
                 return;
             }
             mPresenter.register(mobileEdt.getText().toString(),

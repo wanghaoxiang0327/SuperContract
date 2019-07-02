@@ -1,14 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-	<string name="login_failed">"Login failed"</string>
-	<string name="login_input_mobile">Please enter your cell phone number</string>
-	<string name="login_input_email">Please enter your email address</string>
-	<string name="login_get_verify_code">Get the authentication code</string>
+	<string name="login_input_mobile">Enter your cell phone number</string>
+	<string name="login_input_email">Enter your email address</string>
+	<string name="login_get_verify_code">Get verify</string>
 	<string name="login_get_code_retry">Re-send after S</string>
-	<string name="login_input_loagin_ps">Please enter your login password</string>
+	<string name="login_input_loagin_ps">Enter your login password</string>
 	<string name="login_login_btn">Login</string>
-	<string name="login_ps_format">8-20-bit characters and alphanumeric combinations</string>
-	<string name="login_repeat_ps">Please enter a confirmation password</string>
+	<string name="login_ps_format">8-20 digits and letter</string>
+	<string name="login_repeat_ps">Enter a confirmation password</string>
+	<string name="login_registerActivity5">Please read and agree to the 《User Registration Agreement》 first</string>
+	<string name="login_login_activity_login40">Login</string>
+	<string name="login_registerActivity1">Mobile register</string>
+	<string name="login_registerActivity2">Email register</string>
+	<string name="login_login_activity_register600">Enter the invitation code</string>
+	<string name="login_registerActivity3">Read and agree to 《User Registration Agreement》</string>
+	<string name="login_login_activity_register190">Enter a nickname</string>
+	<string name="login_forgetPsActivity3">Inconsistent password input</string>
+	<string name="login_loginActivity2">Email login</string>
+	<string name="login_forgetPsActivity2">Email Retrieval</string>
+	<string name="login_forgetPsActivity1">Mobile Retrieval</string>
+	<string name="login_login_activity_register40">Register</string>
+	<string name="login_login_activity_forget_ps240">Enter the verification code</string>
+	<string name="login_login_activity_forget_ps470">Submit</string>
+	<string name="login_loginActivity1">Mobile login</string>
+	<string name="login_login_activity_login350">No account yet? Register immediately</string>
+	<string name="login_login_activity_forget_ps40">Forget the password</string>
 
 </resources>

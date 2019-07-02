@@ -75,8 +75,8 @@ public class ForgetPsActivity extends BaseActivity<ForgetPsPresenter> {
 
     @Override
     public void initView() {
-        typeTabs.add(new TabItem("手机号找回"));
-        typeTabs.add(new TabItem("邮箱找回"));
+        typeTabs.add(new TabItem(getString(R.string.login_forgetPsActivity1)));
+        typeTabs.add(new TabItem(getString(R.string.login_forgetPsActivity2)));
         typeTabLayout.setTabData(typeTabs);
         typeTabLayout.setOnTabSelectListener(new TabSelectListener() {
             @Override
@@ -140,7 +140,7 @@ public class ForgetPsActivity extends BaseActivity<ForgetPsPresenter> {
             }
 
             if (!getText(psEdt).equals(getText(repeatPsEdt))) {
-                ToastUtils.show("密码输入不一致");
+                ToastUtils.show(getString(R.string.login_forgetPsActivity3));
                 return;
             }
 

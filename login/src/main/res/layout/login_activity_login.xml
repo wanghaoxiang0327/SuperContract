@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -15,7 +15,7 @@
         <com.sskj.common.view.ToolBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:title="登录" />
+            app:title="@string/login_login_activity_login40" />
 
     </LinearLayout>
 
@@ -120,7 +120,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:gravity="right|center_vertical"
-                android:text="忘记密码"
+                android:text="@string/login_login_activity_forget_ps40"
                 android:textColor="@color/common_text" />
 
 
@@ -129,20 +129,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:layout_marginTop="30dp"
-                android:textSize="13sp"
                 android:background="@drawable/common_tip_50"
                 android:text="@string/login_login_btn"
-                android:textColor="@color/common_button_text" />
+                android:textColor="@color/common_button_text"
+                android:textSize="13sp" />
 
             <TextView
                 android:id="@+id/register_tv"
-                android:layout_marginTop="10dp"
-                android:textColor="@color/common_text"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
+                android:layout_marginTop="10dp"
                 android:gravity="center"
-                android:textSize="13sp"
-                android:text="还没有账号?立即注册" />
+                android:text="@string/login_login_activity_login350"
+                android:textColor="@color/common_text"
+                android:textSize="13sp" />
 
         </LinearLayout>
 

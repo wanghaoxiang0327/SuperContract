@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string name="login_input_mobile">請輸入手機號</string>
+	<string name="login_input_email">請輸入郵箱地址</string>
+	<string name="login_get_verify_code">獲取驗證碼</string>
+	<string name="login_get_code_retry">S後重新發送</string>
+	<string name="login_input_loagin_ps">請輸入登入密碼</string>
+	<string name="login_login_btn">立即登入</string>
+	<string name="login_ps_format">8-20字元且字母數位組合</string>
+	<string name="login_repeat_ps">請輸入確認密碼</string>
+	<string name="login_registerActivity5">請先閱讀並同意《用戶注册協議》</string>
+	<string name="login_login_activity_login40">登入</string>
+	<string name="login_registerActivity1">手機號注册</string>
+	<string name="login_registerActivity2">郵箱註冊</string>
+	<string name="login_login_activity_register600">請輸入邀請碼</string>
+	<string name="login_registerActivity3">已閱讀並同意《用戶注册協議》</string>
+	<string name="login_login_activity_register190">請輸入昵稱</string>
+	<string name="login_forgetPsActivity3">密碼輸入不一致</string>
+	<string name="login_loginActivity2">郵箱登錄</string>
+	<string name="login_forgetPsActivity2">郵箱找回</string>
+	<string name="login_forgetPsActivity1">手機號找回</string>
+	<string name="login_login_activity_register40">注册</string>
+	<string name="login_login_activity_forget_ps240">請輸入驗證碼</string>
+	<string name="login_login_activity_forget_ps470">提交</string>
+	<string name="login_loginActivity1">手機號登入</string>
+	<string name="login_login_activity_login350">還沒有帳號？立即注册</string>
+	<string name="login_login_activity_forget_ps40">忘記密碼</string>
+
+</resources>
