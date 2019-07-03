@@ -20,6 +20,7 @@ public class HttpConfig {
     public static final String BANNER = "/Home/Sign/bannerfind";
 
     public static final String NOTICE_LIST = "/Home/Article/notice_list";
+    public static final String INFORMATION = "/Home/Article/zixun_list";
 
     public static final String NOTICE_DETAIL = "/Home/Article/notice_detail";
 

@@ -37,7 +37,7 @@
             android:gravity="center"
             android:textColor="@color/common_hint"
             android:textSize="12sp"
-            tools:text="/USDT" />
+            android:text="/USDT" />
     </LinearLayout>
 
 

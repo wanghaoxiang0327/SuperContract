@@ -1,5 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="ResourceName">
-    <string name="strLoadViewFactory200" >点击加载更多</string>
+    <string name="strLoadViewFactory200">点击加载更多</string>
     <string name="strLoadViewFactory201">正在加载中..</string>
     <string name="strLoadViewFactory202">加载失败，点击重新加载</string>
     <string name="strLoadViewFactory203">已经加载完毕</string>
@@ -10,4 +11,34 @@
     <string name="strLoadViewFactory208">网络或数据异常</string>
     <string name="strLoadViewFactory209">重试</string>
     <string name="common_no_data">暂无数据</string>
+    <string name="common_encryptTool1">长度不是偶数</string>
+    <string name="common_common_activity_scan20">二维码扫描</string>
+    <string name="common_common_activity_scan40">将条码放入框内，即可自动扫描</string>
+    <string name="common_baseActivity2">获取验证码</string>
+    <string name="common_webActivity1">注册协议</string>
+    <string name="common_common_dialog_verify_password410">粘贴</string>
+    <string name="common_baseActivity1">S后重新发送</string>
+    <string name="common_scanActivity1">请打开相机权限</string>
+    <string name="common_scanActivity2">打开相机错误，请重试</string>
+    <string name="common_imgUtil1">保存成功,请到相册中查看</string>
+    <string name="common_common_dialog_verify_password270">请输入短信验证码</string>
+    <string name="common_common_dialog_verify_password170">请输资金密码</string>
+    <string name="common_common_dialog_verify_password390">请输入谷歌验证码</string>
+    <string name="common_common_dialog_verify_password230">验证手机</string>
+    <string name="common_common_dialog_verify_password450">确认</string>
+    <string name="common_copyUtils1">已复制到剪切板</string>
+    <string name="common_common_dialog_verify_password130">资金密码</string>
+    <string name="common_common_dialog_verify_password350">谷歌验证码</string>
+    <string name="common_patternUtils2">手机号码格式不正确</string>
+    <string name="common_common_tip_dialog20">提示</string>
+    <string name="common_patternUtils1">密码格式不正确</string>
+    <string name="common_common_dialog_verify_password60">取消</string>
+    <string name="common_patternUtils4">姓名格式不正确</string>
+    <string name="common_common_tip_dialog40">提示内容</string>
+    <string name="common_patternUtils3">邮箱格式不正确</string>
+    <string name="common_common_dialog_verify_password40">安全验证</string>
+    <string name="common_jsonCallBack1">数据解析失败</string>
+    <string name="common_common_tip_dialog80">确定</string>
+    <string name="common_common_activity_web20">协议</string>
+    <string name="common_refreshActivity1">该View下有且只有有一个子View</string>
 </resources>

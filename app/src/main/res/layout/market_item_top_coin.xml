@@ -1,47 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center_horizontal"
-    android:orientation="vertical">
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" android:gravity="center_horizontal" android:layout_height="match_parent" android:layout_width="match_parent" android:orientation="vertical">
 
-    <TextView
-        android:layout_marginTop="8dp"
-        android:id="@+id/coin_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/common_tip"
-        android:textSize="12sp"
-        tools:text="BTC/USDT" />
+    <TextView android:id="@+id/coin_name" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:layout_width="wrap_content" android:textColor="@color/common_tip" android:textSize="12sp" tools:text="BTC/USDT"/>
 
-    <TextView
-        android:id="@+id/coin_price"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:textColor="@color/common_text"
-        android:textSize="19sp"
-        android:textStyle="bold"
-        tools:text="BTC/USDT" />
+    <TextView android:id="@+id/coin_price" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:layout_width="wrap_content" android:textColor="@color/common_text" android:textSize="19sp" android:textStyle="bold" tools:text="BTC/USDT"/>
 
-    <TextView
-        android:id="@+id/coin_change_rate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:textColor="@color/common_tip"
-        android:textSize="12sp"
-        tools:text="+2.91%" />
+    <TextView android:id="@+id/coin_change_rate" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:layout_width="wrap_content" android:textColor="@color/common_tip" android:textSize="12sp" tools:text="+2.91%"/>
 
 
-    <TextView
-        android:id="@+id/coin_cny_price"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:textColor="@color/common_hint"
-        android:textSize="12sp"
-        android:layout_marginBottom="8dp"
-        tools:text="≈2522CNY" />
+    <TextView android:id="@+id/coin_cny_price" android:layout_height="wrap_content" android:layout_marginBottom="8dp" android:layout_marginTop="8dp" android:layout_width="wrap_content" android:textColor="@color/common_hint" android:textSize="12sp" tools:text="≈2522CNY"/>
 </LinearLayout>

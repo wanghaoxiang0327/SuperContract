@@ -47,7 +47,7 @@ public class RefreshActivity extends AppCompatActivity {
                     mRefreshLayout.addView(childView);
                     parent.addView(mRefreshLayout);
                 } else {
-                    throw new RuntimeException("该View下有且只有有一个子View");
+                    throw new RuntimeException(getString(R.string.common_refreshActivity1));
                 }
             }
         }

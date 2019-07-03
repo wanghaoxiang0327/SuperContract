@@ -30,4 +30,16 @@ public class InformationPresenter extends BasePresenter<InformationFragment> {
                 });
 
     }
+
+    public Flowable<List<NewsBean>> getInformation(int page,int size) {
+        return OkGo.<HttpResult<Page<NewsBean>>>post(HttpConfig.BASE_URL + HttpConfig.INFORMATION)
+                .params("page",page)
+                .params("size",size)
+                .converter(new JsonConvert<HttpResult<Page<NewsBean>>>() {})
+                .adapt(new FlowableBody<>())
+                .map(pageHttpResult -> {
+                    return pageHttpResult.getData().getRes();
+                });
+
+    }
 }

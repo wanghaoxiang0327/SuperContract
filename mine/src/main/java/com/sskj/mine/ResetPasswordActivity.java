@@ -127,9 +127,9 @@ public class ResetPasswordActivity extends BaseActivity<ResetPasswordPresenter> 
 
 
     public void resetLoginPsSuccess() {
-        AppManager.getInstance().finishAllLogin();
+        ARouter.getInstance().build(RoutePath.LOGIN_LOGIN).navigation();
         userViewModel.clear();
         SpUtil.clear();
-        ARouter.getInstance().build(RoutePath.LOGIN_LOGIN).navigation();
+        AppManager.getInstance().finishAllLogin();
     }
 }

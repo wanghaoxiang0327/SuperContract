@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -51,6 +52,10 @@ public class AssetFragment extends BaseFragment<AssetPresenter> {
     BaseAdapter<AssetData.ResBean.AssetBean> assetAdapter;
     private boolean checkSms;
     private boolean checkGoogle;
+    //是否是经纪人
+    private boolean isBroker;
+    //是否设置支付密码
+    private boolean setPs;
 
     private boolean showAsset;
     private String total;
@@ -73,6 +78,8 @@ public class AssetFragment extends BaseFragment<AssetPresenter> {
             if (userBean != null) {
                 checkSms = userBean.getIsStartSms() == 1;
                 checkGoogle = userBean.getIsStartGoogle() == 1;
+                isBroker = userBean.getRank() == 1;
+                setPs= !TextUtils.isEmpty(userBean.getTpwd());
             }
         });
         hideAssetImg.setOnClickListener(view -> {
@@ -104,10 +111,32 @@ public class AssetFragment extends BaseFragment<AssetPresenter> {
                     RechargeActivity.start(getContext());
                 });
                 ClickUtil.click(holder.getView(R.id.transfer), view -> {
+                    if (!isBroker) {
+                        new TipDialog(getContext())
+                                .setContent(getString(R.string.asset_assetFragment101))
+                                .setCancelVisible(View.GONE)
+                                .setConfirmListener(dialog -> {
+                                    dialog.dismiss();
+                                })
+                                .show();
+                        return;
+                    }
+
+                    if (!setPs){
+                        new TipDialog(getContext())
+                                .setContent(getString(R.string.asset_assetFragment2))
+                                .setCancelVisible(View.GONE)
+                                .setConfirmListener(dialog -> {
+                                    dialog.dismiss();
+                                    ARouter.getInstance().build(RoutePath.SECURITY).navigation();
+                                })
+                                .show();
+                        return;
+                    }
 
                     if (!checkSms && !checkGoogle) {
                         new TipDialog(getContext())
-                                .setContent("为了保证您的账户安全，短信验证和谷歌验证方式至少开启一种")
+                                .setContent(getString(R.string.asset_assetFragment1))
                                 .setCancelVisible(View.GONE)
                                 .setConfirmListener(dialog -> {
                                     dialog.dismiss();
@@ -120,9 +149,22 @@ public class AssetFragment extends BaseFragment<AssetPresenter> {
 
                 });
                 ClickUtil.click(holder.getView(R.id.cashOut), view -> {
+
+                    if (!setPs){
+                        new TipDialog(getContext())
+                                .setContent(getString(R.string.asset_assetFragment2))
+                                .setCancelVisible(View.GONE)
+                                .setConfirmListener(dialog -> {
+                                    dialog.dismiss();
+                                    ARouter.getInstance().build(RoutePath.SECURITY).navigation();
+                                })
+                                .show();
+                        return;
+                    }
+
                     if (!checkSms && !checkGoogle) {
                         new TipDialog(getContext())
-                                .setContent("为了保证您的账户安全，短信验证和谷歌验证方式至少开启一种")
+                                .setContent(getString(R.string.asset_assetFragment1))
                                 .setCancelVisible(View.GONE)
                                 .setConfirmListener(dialog -> {
                                     dialog.dismiss();

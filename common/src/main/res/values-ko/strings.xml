@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources tools:ignore="ResourceName" xmlns:tools="http://schemas.android.com/tools">
+	<string name="strLoadViewFactory200">더 많은 것을로드하려면 클릭하십시오.</string>
+	<string name="strLoadViewFactory201">로드 중 ...</string>
+	<string name="strLoadViewFactory202">로드 실패, 다시로드를 클릭하십시오.</string>
+	<string name="strLoadViewFactory203">이미로드되었습니다.</string>
+	<string name="strLoadViewFactory204">로드 중 ...</string>
+	<string name="strLoadViewFactory205">먼저 로그인하십시오.</string>
+	<string name="strLoadViewFactory206">네트워크 또는 데이터 변형</string>
+	<string name="strLoadViewFactory207">먼저 로그인하십시오.</string>
+	<string name="strLoadViewFactory208">네트워크 또는 데이터 변형</string>
+	<string name="strLoadViewFactory209">다시 시도하십시오.</string>
+	<string name="common_no_data">데이터가 없습니다.</string>
+	<string name="common_encryptTool1">길이가 균일하지 않습니다.</string>
+	<string name="common_common_activity_scan20">QR 코드 스캐닝</string>
+	<string name="common_common_activity_scan40">자동 스캔하려면 상자에 바코드 넣기</string>
+	<string name="common_baseActivity2">인증 코드 받기</string>
+	<string name="common_webActivity1">등록 계약</string>
+	<string name="common_common_dialog_verify_password410">붙여 넣기</string>
+	<string name="common_baseActivity1">S 다음에 다시 보내기</string>
+	<string name="common_scanActivity1">카메라 사용 권한을 켜십시오.</string>
+	<string name="common_scanActivity2">카메라 오류가 발생했습니다. 다시 시도하십시오.</string>
+	<string name="common_imgUtil1">성공적으로 저장되었습니다. 앨범에서 체크인하십시오.</string>
+	<string name="common_common_dialog_verify_password270">SMS 인증 코드를 입력하십시오.</string>
+	<string name="common_common_dialog_verify_password170">금액을 입력하십시오.</string>
+	<string name="common_common_dialog_verify_password390">Google 인증 코드를 입력하십시오.</string>
+	<string name="common_common_dialog_verify_password230">전화 확인</string>
+	<string name="common_common_dialog_verify_password450">확인</string>
+	<string name="common_copyUtils1">클립 보드에 복사되었습니다.</string>
+	<string name="common_common_dialog_verify_password130">기금 비밀 번호</string>
+	<string name="common_common_dialog_verify_password350">Google 인증 코드</string>
+	<string name="common_patternUtils2">전화 번호 형식이 잘못되었습니다.</string>
+	<string name="common_common_tip_dialog20">프롬프트</string>
+	<string name="common_patternUtils1">암호 형식이 잘못되었습니다.</string>
+	<string name="common_common_dialog_verify_password60">취소</string>
+	<string name="common_patternUtils4">이름 형식이 잘못되었습니다.</string>
+	<string name="common_common_tip_dialog40">프롬프트 내용</string>
+	<string name="common_patternUtils3">사서함 형식이 잘못되었습니다.</string>
+	<string name="common_common_dialog_verify_password40">보안 확인</string>
+	<string name="common_jsonCallBack1">데이터 구문 분석에 실패했습니다.</string>
+	<string name="common_common_tip_dialog80">결정</string>
+	<string name="common_common_activity_web20">계약서</string>
+	<string name="common_refreshActivity1">보기 아래에 하나의 하위보기 만 있습니다.</string>
+</resources>

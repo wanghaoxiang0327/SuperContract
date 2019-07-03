@@ -68,11 +68,11 @@ public class WithdrawRecordsActivity extends BaseActivity<WithdrawRecordsPresent
 
     @Override
     public void initView() {
-        statusMap.put(1, "待审核");
-        statusMap.put(2, "到账中");
-        statusMap.put(3, "已拒绝");
-        statusMap.put(4, "已到账");
-        statusMap.put(5, "失败");
+        statusMap.put(1, getString(R.string.asset_withdrawRecordsActivity1));
+        statusMap.put(2, getString(R.string.asset_withdrawRecordsActivity2));
+        statusMap.put(3, getString(R.string.asset_withdrawRecordsActivity3));
+        statusMap.put(4, getString(R.string.asset_withdrawRecordsActivity4));
+        statusMap.put(5, getString(R.string.asset_withdrawRecordsActivity5));
         withdrawRecords.addItemDecoration(new DividerLineItemDecoration(this)
                 .setFirstDraw(false)
                 .setLastDraw(false)
@@ -128,13 +128,13 @@ public class WithdrawRecordsActivity extends BaseActivity<WithdrawRecordsPresent
         }
 //        boolean addAll = true;
 //        for (CoinAsset coin : data) {
-//            if (coin.getPname().equals("全部")) {
+//            if (coin.getPname().equals(getString(R.string.asset_assetRecordsActivity1))) {
 //                addAll = false;
 //            }
 //        }
 //        if (addAll) {
 //            CoinAsset coinAsset = new CoinAsset();
-//            coinAsset.setPname("全部");
+//            coinAsset.setPname(getString(R.string.asset_assetRecordsActivity1));
 //            coinAsset.setPid("");
 //            data.add(0, coinAsset);
 //        }

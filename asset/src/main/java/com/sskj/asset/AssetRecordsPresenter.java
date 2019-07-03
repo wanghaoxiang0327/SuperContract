@@ -12,6 +12,7 @@ import com.sskj.common.http.HttpResult;
 import com.sskj.common.http.JsonCallBack;
 import com.sskj.common.http.JsonConvert;
 import com.sskj.common.http.Page;
+import com.sskj.common.language.LocalManageUtil;
 
 import java.util.List;
 
@@ -64,8 +65,9 @@ public class AssetRecordsPresenter extends BasePresenter<AssetRecordsActivity> {
 
     }
 
-    public void getAssetType(boolean showDialog) {
+    public void getAssetType(boolean showDialog,String lang) {
         OkGo.<HttpResult<List<AssetType>>>get(BaseHttpConfig.BASE_URL + HttpConfig.ASSET_TYPE)
+                .params("lang", lang)
                 .execute(new JsonCallBack<HttpResult<List<AssetType>>>() {
                     @Override
                     protected void onNext(HttpResult<List<AssetType>> result) {

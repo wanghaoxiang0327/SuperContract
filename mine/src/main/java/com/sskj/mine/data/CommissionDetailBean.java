@@ -11,6 +11,15 @@ public class CommissionDetailBean {
     private String down_account;
     private String fee;
     private long addtime;
+    private String pname;
+
+    public String getPname() {
+        return pname;
+    }
+
+    public void setPname(String pname) {
+        this.pname = pname;
+    }
 
     public String getDown_account() {
         return down_account;

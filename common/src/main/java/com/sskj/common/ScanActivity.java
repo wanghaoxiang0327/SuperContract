@@ -64,7 +64,7 @@ public class ScanActivity extends BaseActivity<ScanPresenter> implements QRCodeV
                         // 显示扫描框，并开始识别
                         scanView.startSpotAndShowRect();
                     } else {
-                        ToastUtils.show("请打开相机权限");
+                        ToastUtils.show(getString(R.string.common_scanActivity1));
                         finish();
                     }
                 });
@@ -105,6 +105,6 @@ public class ScanActivity extends BaseActivity<ScanPresenter> implements QRCodeV
 
     @Override
     public void onScanQRCodeOpenCameraError() {
-        scanView.getScanBoxView().setTipText("打开相机错误，请重试");
+        scanView.getScanBoxView().setTipText(getString(R.string.common_scanActivity2));
     }
 }

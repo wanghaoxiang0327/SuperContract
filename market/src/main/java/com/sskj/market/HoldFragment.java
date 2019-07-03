@@ -16,10 +16,13 @@ import com.sskj.common.http.RxUtils;
 import com.sskj.common.mvc.DataSource;
 import com.sskj.common.mvc.SmartRefreshHelper;
 import com.sskj.common.rxbus.RxBus;
+import com.sskj.common.rxbus.Subscribe;
+import com.sskj.common.rxbus.ThreadMode;
 import com.sskj.common.simple.SimpleObserver;
 import com.sskj.common.utils.DigitUtils;
 import com.sskj.common.utils.NumberUtils;
 import com.sskj.common.utils.TimeFormatUtil;
+import com.sskj.market.data.CoinBean;
 import com.sskj.market.data.HoldBean;
 
 import java.util.List;
@@ -61,6 +64,7 @@ public class HoldFragment extends BaseFragment<HoldPresenter> {
 
     @Override
     public void initView() {
+        getLifecycle().addObserver(RxBus.getDefault(this, true));
         recordsList.setLayoutManager(new LinearLayoutManager(getContext()));
         recordsList.addItemDecoration(new DividerLineItemDecoration(getContext())
                 .setDividerColor(color(R.color.common_dark))
@@ -120,6 +124,19 @@ public class HoldFragment extends BaseFragment<HoldPresenter> {
                     }
                 });
     }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void updateCoin(CoinBean coinBean) {
+        if (holdAdapter != null) {
+            for (int i = 0; i < holdAdapter.getData().size(); i++) {
+                if (holdAdapter.getData().get(i).getMark().equals(coinBean.getCode())) {
+                    holdAdapter.getData().get(i).setActprice(coinBean.getPrice()+"");
+                    holdAdapter.notifyItemChanged(i);
+                }
+            }
+        }
+    }
+
 
     @Override
     public void loadData() {

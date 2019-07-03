@@ -6,6 +6,9 @@ package com.sskj.common.encrypt;
  * @date 2018/10/10 16:37
  */
 
+import com.sskj.common.App;
+import com.sskj.common.R;
+
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -578,7 +581,7 @@ public class EncryptTool {
     public static byte[] hexString2Bytes(String hexString) {
         int len = hexString.length();
         if (len % 2 != 0) {
-            throw new IllegalArgumentException("长度不是偶数");
+            throw new IllegalArgumentException(App.INSTANCE.getString(R.string.common_encryptTool1));
         }
         char[] hexBytes = hexString.toUpperCase().toCharArray();
         byte[] ret = new byte[len >>> 1];

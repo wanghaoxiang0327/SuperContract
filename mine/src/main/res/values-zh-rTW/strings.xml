@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-
 	<string name="mine_mineFragment4">確定要退出嗎</string>
 	<string name="mine_mine_activity_reset_password60">原密碼</string>
 	<string name="mine_mineFragment3">離董事分紅僅差一步，趕快邀請好友。</string>
@@ -64,7 +63,7 @@
 	<string name="mine_mine_activity_bind_mobile_or_email120">請輸入驗證碼</string>
 	<string name="mine_mine_activity_language20">選擇語言</string>
 	<string name="mine_mine_activity_bind_googl_everify20">綁定穀歌驗證器</string>
-	<string name="mine_mine_activity_security40">*簡訊驗證用於提幣、修改登入密碼、修改資金密碼；\n*穀歌驗證用於登入、提幣、修改登入密碼、修改資金密碼；\n*為了保證您的帳戶安全，以下兩種驗證管道至少開啟一種；</string>
+	<string name="mine_mine_activity_security40">*簡訊驗證用於提幣、轉賬、修改登入密碼、修改資金密碼；\n*穀歌驗證用於登入、提幣、修改登入密碼、修改資金密碼；\n*為了保證您的帳戶安全，以下兩種驗證管道至少開啟一種；</string>
 	<string name="mine_securityActivity5">為了保證您的帳戶安全，簡訊驗證和穀歌驗證管道至少開啟一種</string>
 	<string name="mine_mine_activity_language60">簡體中文</string>
 	<string name="mine_securityActivity3">已開啟</string>

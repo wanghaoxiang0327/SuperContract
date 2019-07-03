@@ -40,7 +40,7 @@ public class WebActivity extends BaseActivity<WebPresenter> {
         type = getIntent().getIntExtra("type", 0);
         switch (type) {
             case 1:
-                mToolBarLayout.setTitle("注册协议");
+                mToolBarLayout.setTitle(getString(R.string.common_webActivity1));
                 break;
             default:
                 break;
@@ -54,7 +54,7 @@ public class WebActivity extends BaseActivity<WebPresenter> {
 
     /**
      * @param context
-     * @param type    1 注册协议
+     * @param type    1 注册协议 2 邀请规则
      */
     public static void start(Context context, int type) {
         Intent intent = new Intent(context, WebActivity.class);
@@ -67,6 +67,10 @@ public class WebActivity extends BaseActivity<WebPresenter> {
         switch (type) {
             case 1:
                 RichText.fromHtml(data.getReg_agree()).into(text);
+                break;
+
+            case 2:
+                RichText.fromHtml(data.getTj_agree()  ).into(text);
                 break;
             default:
                 break;

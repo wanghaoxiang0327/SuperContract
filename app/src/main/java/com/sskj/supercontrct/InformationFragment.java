@@ -7,12 +7,15 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.sskj.common.adapter.BaseAdapter;
 import com.sskj.common.adapter.ViewHolder;
 import com.sskj.common.base.BaseFragment;
 import com.sskj.common.mvc.DataSource;
 import com.sskj.common.mvc.SmartRefreshHelper;
+import com.sskj.common.utils.ClickUtil;
 import com.sskj.supercontrct.data.NewsBean;
 
 import java.util.List;
@@ -65,9 +68,18 @@ public class InformationFragment extends BaseFragment<InformationPresenter> {
         newsAdapter = new BaseAdapter<NewsBean>(R.layout.app_item_news, null, newsList) {
             @Override
             public void bind(ViewHolder holder, NewsBean item) {
-                holder.getView(R.id.news_img).setVisibility(View.GONE);
+                if (type == 1) {
+                    holder.getView(R.id.news_img).setVisibility(View.GONE);
+                } else {
+                    Glide.with(InformationFragment.this).load(item.getPic_addr()).into((ImageView) holder.getView(R.id.news_img));
+                    holder.getView(R.id.news_img).setVisibility(View.VISIBLE);
+                }
+
                 holder.setText(R.id.news_title, item.getTitle())
                         .setText(R.id.time_tv, item.getDate());
+                ClickUtil.click(holder.itemView, view -> {
+                    NewsDetailActivity.start(getContext(), item, type);
+                });
             }
         };
     }
@@ -79,7 +91,11 @@ public class InformationFragment extends BaseFragment<InformationPresenter> {
         smartRefreshHelper.setDataSource(new DataSource<NewsBean>() {
             @Override
             public Flowable<List<NewsBean>> bindData(int page) {
-                return mPresenter.getNotice(page, size);
+                if (type == 1) {
+                    return mPresenter.getNotice(page, size);
+                } else {
+                    return mPresenter.getInformation(page, size);
+                }
             }
         });
         smartRefreshHelper.setAdapter(newsAdapter);

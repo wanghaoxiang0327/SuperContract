@@ -1,47 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/common_background"
-    android:padding="@dimen/common_margin">
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:background="@color/common_background" android:layout_height="wrap_content" android:layout_width="match_parent" android:padding="@dimen/common_margin">
 
-    <TextView
-        android:id="@+id/type_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/common_text"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="资金转入" />
+    <TextView android:id="@+id/type_name" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textColor="@color/common_text" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" tools:text="@string/asset_asset_item_transfer_records20"/>
 
-    <TextView
-        android:id="@+id/time_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:textColor="@color/common_hint"
-        app:layout_constraintStart_toStartOf="@+id/type_name"
-        app:layout_constraintTop_toBottomOf="@+id/type_name"
-        tools:text="2018-11-12 15:21:36" />
+    <TextView android:id="@+id/time_tv" android:layout_height="wrap_content" android:layout_marginTop="16dp" android:layout_width="wrap_content" android:textColor="@color/common_hint" app:layout_constraintStart_toStartOf="@+id/type_name" app:layout_constraintTop_toBottomOf="@+id/type_name" tools:text="2018-11-12 15:21:36"/>
 
-    <TextView
-        android:id="@+id/count_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/common_text"
-        app:layout_constraintBaseline_toBaselineOf="@+id/type_name"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:text="50.00 ETH" />
+    <TextView android:id="@+id/count_tv" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textColor="@color/common_text" app:layout_constraintBaseline_toBaselineOf="@+id/type_name" app:layout_constraintEnd_toEndOf="parent" tools:text="50.00 ETH"/>
 
-    <TextView
-        android:id="@+id/account_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/common_hint"
-        app:layout_constraintBaseline_toBaselineOf="@+id/time_tv"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:text="ID:564" />
+    <TextView android:id="@+id/account_tv" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textColor="@color/common_hint" app:layout_constraintBaseline_toBaselineOf="@+id/time_tv" app:layout_constraintEnd_toEndOf="parent" tools:text="ID:564"/>
 
 </android.support.constraint.ConstraintLayout>

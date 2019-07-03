@@ -10,6 +10,8 @@ import android.os.Environment;
 import android.view.View;
 
 import com.hjq.toast.ToastUtils;
+import com.sskj.common.App;
+import com.sskj.common.R;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -41,7 +43,7 @@ public class ImgUtil {
             Uri uri = Uri.fromFile(file);
             context.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, uri));
             if (isSuccess) {
-                ToastUtils.show("保存成功,请到相册中查看");
+                ToastUtils.show(App.INSTANCE.getString(R.string.common_imgUtil1));
                 return file;
             } else {
                 return null;

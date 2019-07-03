@@ -6,11 +6,13 @@ import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.widget.TextView;
 
+import com.sskj.common.WebActivity;
 import com.sskj.common.base.BaseActivity;
 import com.sskj.common.http.HttpResult;
 import com.sskj.common.utils.ClickUtil;
 import com.sskj.common.utils.CopyUtils;
 import com.sskj.common.view.LoadingView;
+import com.sskj.common.view.ToolBarLayout;
 import com.sskj.mine.data.ShareInfo;
 
 import butterknife.BindView;
@@ -50,7 +52,9 @@ public class InviteActivity extends BaseActivity<InvitePresenter> {
 
     @Override
     public void initView() {
-
+        mToolBarLayout.setRightButtonOnClickListener(v -> {
+            WebActivity.start(this, 2);
+        });
     }
 
     @Override

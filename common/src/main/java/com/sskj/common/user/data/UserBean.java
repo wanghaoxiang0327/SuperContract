@@ -59,8 +59,22 @@ public class UserBean {
     @Embedded
     private ZcTotalBean zcTotal;
 
+
+    //经纪人 0非经纪人  1初级经纪人  2中级  3高级
+    private int rank;
+
     //是否是董事
     private int is_ds;
+
+
+    public int getRank() {
+        return rank;
+    }
+
+    public void setRank(int rank) {
+        this.rank = rank;
+    }
+
 
     public int getIs_ds() {
         return is_ds;
@@ -186,7 +200,7 @@ public class UserBean {
         @ColumnInfo
         private double ttl_usable;
         @ColumnInfo
-        private int ttl_frost;
+        private double ttl_frost;
         @ColumnInfo
         private double ttl_money;
         @ColumnInfo
@@ -201,11 +215,11 @@ public class UserBean {
             this.ttl_usable = ttl_usable;
         }
 
-        public int getTtl_frost() {
+        public double getTtl_frost() {
             return ttl_frost;
         }
 
-        public void setTtl_frost(int ttl_frost) {
+        public void setTtl_frost(double ttl_frost) {
             this.ttl_frost = ttl_frost;
         }
 

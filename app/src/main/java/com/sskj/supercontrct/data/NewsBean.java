@@ -1,6 +1,11 @@
 package com.sskj.supercontrct.data;
 
-public class NewsBean {
+import com.alibaba.fastjson.annotation.JSONField;
+import com.google.gson.annotations.SerializedName;
+
+import java.io.Serializable;
+
+public class NewsBean implements Serializable {
 
     /**
      * id : 26
@@ -10,10 +15,31 @@ public class NewsBean {
      */
 
     private String id;
+
+    @JSONField(name = "title", alternateNames = {"date", "bm_title"})
     private String title;
+    @JSONField(name = "date", alternateNames = {"date", "issue_time"})
     private String date;
     private String content;
     private int is_read;
+    private String pic_addr;
+    private String context;
+
+    public String getPic_addr() {
+        return pic_addr;
+    }
+
+    public void setPic_addr(String pic_addr) {
+        this.pic_addr = pic_addr;
+    }
+
+    public String getContext() {
+        return context;
+    }
+
+    public void setContext(String context) {
+        this.context = context;
+    }
 
     public String getContent() {
 

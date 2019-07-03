@@ -117,17 +117,17 @@ public class WithdrawActivity extends BaseActivity<WithdrawPresenter> {
         });
         ClickUtil.click(submit, view -> {
             if (isEmpty(countEdt)) {
-                ToastUtils.show("请输入转账数量");
+                ToastUtils.show(getString(R.string.asset_transferActivity1));
                 return;
             }
             double count = Double.parseDouble(getText(countEdt));
             if (count < minCount) {
-                ToastUtils.show("转账数量不可少于" + minCount);
+                ToastUtils.show(getString(R.string.asset_transferActivity2) + minCount);
                 return;
             }
 
             if (count > useful) {
-                ToastUtils.show("账户余额不足");
+                ToastUtils.show(getString(R.string.asset_withdrawActivity3));
                 return;
             }
 
@@ -208,8 +208,8 @@ public class WithdrawActivity extends BaseActivity<WithdrawPresenter> {
 
     public void setWithDrawInfo(WithdrawInfo data) {
         usefulTv.setText(NumberUtils.keepDown(data.getUsable(), DigitUtils.ASSET_DIGIT) + " " + unit);
-        countEdt.setHint("最小提币数量" + data.getTb_min());
-        feeTv.setText("手续费:" + data.getSxfee() + " " + unit + "/次");
+        countEdt.setHint(getString(R.string.asset_withdrawActivity4) + data.getTb_min());
+        feeTv.setText(getString(R.string.asset_transferActivity4) + data.getSxfee() + " " + unit + getString(R.string.asset_transferActivity5));
         fee = data.getSxfee();
         useful = data.getUsable();
     }
@@ -225,7 +225,10 @@ public class WithdrawActivity extends BaseActivity<WithdrawPresenter> {
             count = Double.parseDouble(getText(countEdt));
         }
         double arriveNum = count - fee;
-        setText(arriveCount, "到账数量：" + NumberUtils.keepDown(arriveNum, DigitUtils.ASSET_DIGIT) + " " + unit);
+        if (arriveNum < 0) {
+            arriveNum = 0;
+        }
+        setText(arriveCount, getString(R.string.asset_withdrawActivity7) + NumberUtils.keepDown(arriveNum, DigitUtils.ASSET_DIGIT) + " " + unit);
     }
 
     public void withdrawSuccess() {

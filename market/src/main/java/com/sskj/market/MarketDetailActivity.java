@@ -26,6 +26,7 @@ import com.sskj.common.rxbus.ThreadMode;
 import com.sskj.common.tab.TabItem;
 import com.sskj.common.tab.TabLayout;
 import com.sskj.common.utils.ClickUtil;
+import com.sskj.common.utils.DigitUtils;
 import com.sskj.common.utils.NumberUtils;
 import com.sskj.market.data.CoinBean;
 import com.sskj.market.data.TradeCoin;
@@ -174,11 +175,11 @@ public class MarketDetailActivity extends BaseActivity<MarketDetailPresenter> {
     public void updateUI(CoinBean data) {
         if (data != null) {
             if (data.getCode().equals(code)) {
-                tvPrice.setText(NumberUtils.keep4(data.getPrice()));
+                tvPrice.setText(NumberUtils.keepDown(data.getPrice(), DigitUtils.getDigit(data.getCode())));
                 tvCny.setText(String.format("≈%s CNY", NumberUtils.keep2(data.getCnyPrice())));
                 tvChangeRate.setText(data.getChange() > 0 ? "+" + data.getChangeRate() : data.getChangeRate());
-                tvLow.setText(NumberUtils.keep4(data.getLow()));
-                tvHigh.setText(NumberUtils.keep4(data.getHigh()));
+                tvLow.setText(NumberUtils.keepDown(data.getLow(),DigitUtils.getDigit(data.getCode())));
+                tvHigh.setText(NumberUtils.keepDown(data.getHigh(),DigitUtils.getDigit(data.getCode())));
                 tvPrice.setTextColor(data.isUp() ? color(R.color.market_green) : color(R.color.market_red));
                 tvChangeRate.setTextColor(data.isUp() ? color(R.color.market_green) : color(R.color.market_red));
             }

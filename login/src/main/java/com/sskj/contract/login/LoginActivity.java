@@ -64,9 +64,11 @@ public class LoginActivity extends BaseActivity<LoginPresenter> {
     @BindView(R2.id.register_tv)
     TextView registerTv;
 
+
     private ArrayList<CustomTabEntity> typeTabs = new ArrayList<>();
     private RegisterType registerType = RegisterType.MOBILE;
 
+    VerifyPasswordDialog verifyPasswordDialog;
 
     @Override
     public int getLayoutId() {
@@ -180,12 +182,13 @@ public class LoginActivity extends BaseActivity<LoginPresenter> {
         if (registerType == RegisterType.MOBILE) {
             SpUtil.put(CommonConfig.MOBILE, getText(mobileEdt));
         }
-        SpUtil.put(CommonConfig.LOGIN,true);
+        SpUtil.put(CommonConfig.LOGIN, true);
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.put(CommonConfig.ACCOUNT, loginBean.getAccount());
         httpHeaders.put(CommonConfig.TOKEN, loginBean.getToken());
         OkGo.getInstance().addCommonHeaders(httpHeaders);
         ARouter.getInstance().build(RoutePath.MAIN).navigation();
+        finish();
     }
 
 
@@ -209,7 +212,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> {
      * 显示谷歌验证
      */
     public void showCheckGoogle(String mobile, String opwd) {
-        VerifyPasswordDialog verifyPasswordDialog = new VerifyPasswordDialog(this, false, true, false,0);
+        verifyPasswordDialog = new VerifyPasswordDialog(this, false, true, false, 0);
         verifyPasswordDialog.setOnConfirmListener((dialog, ps, sms, google) -> {
             mPresenter.login(mobile, opwd, google);
         });

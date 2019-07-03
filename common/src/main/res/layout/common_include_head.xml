@@ -1,55 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="55dp"
-    android:background="@color/common_action_bar"
-    android:paddingStart="16dp"
-    android:paddingEnd="16dp">
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" android:background="@color/common_action_bar" android:layout_height="55dp" android:layout_width="match_parent" android:paddingEnd="16dp" android:paddingStart="16dp">
 
-    <TextView
-        android:id="@+id/tvTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:gravity="center_vertical"
-        android:textColor="@color/common_action_text"
-        android:drawablePadding="5dp"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        tools:text="Login" />
+    <TextView android:drawablePadding="5dp" android:gravity="center_vertical" android:id="@+id/tvTitle" android:layout_centerInParent="true" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textColor="@color/common_action_text" android:textSize="18sp" android:textStyle="bold" tools:text="Login"/>
 
-    <LinearLayout
-        android:id="@+id/left_layout"
-        android:minWidth="35dp"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
+    <LinearLayout android:gravity="center_vertical" android:id="@+id/left_layout" android:layout_height="match_parent" android:layout_width="wrap_content" android:minWidth="35dp" android:orientation="horizontal">
 
-        <ImageView
-            android:id="@+id/left_img"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/common_icon_back" />
+        <ImageView android:id="@+id/left_img" android:layout_height="wrap_content" android:layout_width="wrap_content" android:src="@mipmap/common_icon_back"/>
 
-        <TextView
-            android:id="@+id/left_tv"
-            android:layout_marginLeft="5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/common_action_text"
-            android:textSize="16sp"
-            android:visibility="visible" />
+        <TextView android:id="@+id/left_tv" android:layout_height="wrap_content" android:layout_marginLeft="5dp" android:layout_width="wrap_content" android:textColor="@color/common_action_text" android:textSize="16sp" android:visibility="visible"/>
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/right_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_alignParentRight="true"
-        android:drawablePadding="10dp"
-        android:gravity="center" />
+    <TextView android:drawablePadding="10dp" android:gravity="center" android:id="@+id/right_tv" android:layout_alignParentRight="true" android:layout_height="match_parent" android:layout_width="wrap_content"/>
 
 </RelativeLayout>

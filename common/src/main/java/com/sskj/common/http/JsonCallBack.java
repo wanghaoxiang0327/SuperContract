@@ -5,14 +5,19 @@ import android.support.annotation.CallSuper;
 import com.alibaba.fastjson.JSON;
 import com.hjq.toast.ToastUtils;
 import com.lzy.okgo.callback.AbsCallback;
+import com.lzy.okgo.model.HttpParams;
 import com.lzy.okgo.model.Response;
 import com.lzy.okgo.request.base.Request;
 import com.sskj.common.base.BasePresenter;
 import com.sskj.common.exception.LogoutException;
 import com.sskj.common.rxbus.RxBus;
+import com.sskj.common.utils.MD5Util;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.List;
 
 import io.reactivex.schedulers.Schedulers;
 import okhttp3.ResponseBody;
@@ -32,6 +37,20 @@ public abstract class JsonCallBack<T> extends AbsCallback<T> {
     @Override
     public void onStart(Request<T, ? extends Request> request) {
         super.onStart(request);
+        HttpParams httpParams = request.getParams();
+        LinkedHashMap<String, List<String>> map = httpParams.urlParamsMap;
+        Iterator<String> iterable = map.keySet().iterator();
+        while (iterable.hasNext()) {
+            String name = iterable.next();
+            if (name.contains("pwd")) {
+                List<String> values = map.get(name);
+                for (int i = 0; i < values.size(); i++) {
+                    String value=values.get(i);
+                    String encodeValue= MD5Util.encry5(value);
+                    values.set(i, encodeValue);
+                }
+            }
+        }
         if (presenter != null) {
             presenter.showLoading();
         }
@@ -48,7 +67,7 @@ public abstract class JsonCallBack<T> extends AbsCallback<T> {
         if (response.getException() instanceof ApiException) {
             ToastUtils.show(((ApiException) response.getException()).getMsg());
         } else if (response.getException() instanceof LogoutException) {
-            RxBus.getDefault().post(response.getException());
+            RxBus.getDefault().postPre(response.getException());
         } else {
             response.getException().printStackTrace();
         }
@@ -73,7 +92,7 @@ public abstract class JsonCallBack<T> extends AbsCallback<T> {
                     } else if (result.getStatus() == BaseHttpConfig.LOGOUT) {
                         throw new LogoutException(result.getMsg());
                     } else {
-                         throw new ApiException(result.getMsg());
+                        throw new ApiException(result.getMsg());
                     }
                 }
             }

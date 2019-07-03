@@ -1,5 +1,6 @@
 package com.sskj.market.dialog;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomSheetDialog;
@@ -30,6 +31,11 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.reactivex.Flowable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
 
 public class CreateOrderDialog extends BottomSheetDialog {
 
@@ -109,6 +115,7 @@ public class CreateOrderDialog extends BottomSheetDialog {
 
     }
 
+    @SuppressLint("CheckResult")
     private void initView() {
         for (int i = 1; i < 11; i++) {
             nums.add(i + "手");
@@ -123,15 +130,18 @@ public class CreateOrderDialog extends BottomSheetDialog {
         //初始化交易资产
         initTradeCoin();
         //初始化目标点位
-        for (TradeCoin tradeCoin : tradeInfo.getTradeCoins()) {
-            if (tradeCoin.getMark().equals(code)) {
-                initTradePoint(tradeCoin.getAim_point());
-                minChangePrice = tradeCoin.getMin_price();
-                price = Double.parseDouble(tradeCoin.getPrice());
-                price_tv.setText(tradeCoin.getPrice());
-                pid = tradeCoin.getPid();
-            }
-        }
+        Flowable.fromIterable(tradeInfo.getTradeCoins())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .filter(tradeCoin -> tradeCoin.getMark().equals(code)).
+                subscribe(tradeCoin -> {
+                    initTradePoint(tradeCoin.getAim_point());
+                    minChangePrice = tradeCoin.getMin_price();
+                    price = Double.parseDouble(tradeCoin.getPrice());
+                    price_tv.setText(tradeCoin.getPrice());
+                    pid = tradeCoin.getPid();
+                }, Throwable::printStackTrace);
+
 
         if (isUp) {
             submit.setText("买涨");
@@ -196,7 +206,7 @@ public class CreateOrderDialog extends BottomSheetDialog {
             radioButton.setText(tradeInfo.getCoinAssets().get(i).getPname());
             radioButton.setEnabled(tradeInfo.getCoinAssets().get(i).getYue() != 0);
             radioButton.setGravity(Gravity.CENTER);
-            radioButton.setTextColor(ContextCompat.getColor(getContext(), R.color.common_text));
+            radioButton.setTextColor(ContextCompat.getColorStateList(getContext(), R.color.market_color));
             radioButton.setButtonDrawable(null);
             assetGroup.addView(radioButton);
         }

@@ -37,9 +37,9 @@ public class ImmersionProxy {
         if (mFragment != null) {
             if (mFragment.getUserVisibleHint()) {
                 if (mIsActivityCreated) {
-                        if (mImmersionOwner.immersionBarEnabled()) {
-                            mImmersionOwner.initImmersionBar();
-                        }
+                    if (mImmersionOwner.immersionBarEnabled()) {
+                        mImmersionOwner.initImmersionBar();
+                    }
                 }
             }
         }

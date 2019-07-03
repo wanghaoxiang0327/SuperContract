@@ -94,11 +94,11 @@ public class TransferActivity extends BaseActivity<TransferPresenter> {
     public void initData() {
         ClickUtil.click(submit, view -> {
             if (isEmpty(countEdt)) {
-                ToastUtils.show("请输入转账数量");
+                ToastUtils.show(getString(R.string.asset_transferActivity1));
             }
             double count = Double.parseDouble(getText(countEdt));
             if (count < minCount) {
-                ToastUtils.show("转账数量不可少于" + minCount);
+                ToastUtils.show(getString(R.string.asset_transferActivity2) + minCount);
             }
             new VerifyPasswordDialog(this, checkSms, checkGoogle, true, 5)
                     .setOnConfirmListener((dialog, ps, sms, google) -> {
@@ -149,9 +149,9 @@ public class TransferActivity extends BaseActivity<TransferPresenter> {
 
 
     public void setTransferInfo(TransferInfo data) {
-        usefulTv.setText("可用: " + NumberUtils.keepDown(data.getUsable(), DigitUtils.ASSET_DIGIT));
-        feeTv.setText("手续费:" + data.getSxfee() + "/次");
-        countEdt.setHint("转账数量不可少于" + data.getZz_min());
+        usefulTv.setText(getString(R.string.asset_transferActivity3) + NumberUtils.keepDown(data.getUsable(), DigitUtils.ASSET_DIGIT));
+        feeTv.setText(getString(R.string.asset_transferActivity4) + data.getSxfee() + getString(R.string.asset_transferActivity5));
+        countEdt.setHint(getString(R.string.asset_transferActivity2) + data.getZz_min());
         minCount = data.getZz_min();
     }
 

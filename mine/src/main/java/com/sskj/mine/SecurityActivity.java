@@ -41,6 +41,10 @@ public class SecurityActivity extends BaseActivity<SecurityPresenter> {
     private boolean startGoogle;
     private boolean startSms;
 
+    private boolean bindEmail;
+    private boolean bindSMS;
+    private boolean bindGoogle;
+
     @Override
     public int getLayoutId() {
         return R.layout.mine_activity_security;
@@ -64,29 +68,35 @@ public class SecurityActivity extends BaseActivity<SecurityPresenter> {
                 }
                 if (userBean.getIsBindMail() == 1) {
                     menuEmailVerify.setRightString(getString(R.string.mine_securityActivity2));
+                    bindEmail = true;
                 } else {
+                    bindEmail = false;
                     menuEmailVerify.setRightString(getString(R.string.mine_securityActivity1));
                 }
 
                 if (userBean.getIsStartGoogle() == 1) {
-                    startGoogle=true;
+                    startGoogle = true;
                     menuGoogleVerify.setRightString(getString(R.string.mine_securityActivity3));
                 } else {
-                    startGoogle=false;
+                    startGoogle = false;
                     if (userBean.getIsBindGoogle() == 1) {
+                        bindGoogle = true;
                         menuGoogleVerify.setRightString(getString(R.string.mine_securityActivity4));
                     } else {
+                        bindGoogle = false;
                         menuGoogleVerify.setRightString(getString(R.string.mine_securityActivity1));
                     }
                 }
                 if (userBean.getIsStartSms() == 1) {
-                    startSms=true;
+                    startSms = true;
                     menuSmsVerify.setRightString(getString(R.string.mine_securityActivity3));
                 } else {
-                    startSms=false;
+                    startSms = false;
                     if (TextUtils.isEmpty(userBean.getMobile())) {
+                        bindSMS = false;
                         menuSmsVerify.setRightString(getString(R.string.mine_securityActivity1));
                     } else {
+                        bindSMS = true;
                         menuSmsVerify.setRightString(getString(R.string.mine_securityActivity4));
                     }
 
@@ -98,25 +108,37 @@ public class SecurityActivity extends BaseActivity<SecurityPresenter> {
     @Override
     public void initData() {
         ClickUtil.click(menuSmsVerify, view -> {
-            VerifySettingActivity.start(this, Verify.SMS);
+            if (!bindSMS) {
+                BindMobileOrEmailActivity.start(this, Verify.SMS);
+            } else {
+                VerifySettingActivity.start(this, Verify.SMS);
+            }
         });
         ClickUtil.click(menuEmailVerify, view -> {
-            VerifySettingActivity.start(this, Verify.EMAIL);
+            if (bindEmail) {
+                VerifySettingActivity.start(this, Verify.EMAIL);
+            } else {
+                BindMobileOrEmailActivity.start(this, Verify.EMAIL);
+            }
         });
         ClickUtil.click(menuGoogleVerify, view -> {
-            VerifySettingActivity.start(this, Verify.GOOGLE);
+            if (bindGoogle) {
+                VerifySettingActivity.start(this, Verify.GOOGLE);
+            } else {
+                BindGoogleVerifyActivity.start(this);
+            }
         });
         ClickUtil.click(menuLoginPs, view -> {
             ResetPasswordActivity.start(this);
         });
         ClickUtil.click(menuPayPs, view -> {
             if (setPayPs) {
-                if (!startSms&&!startGoogle){
+                if (!startSms && !startGoogle) {
                     new TipDialog(this)
                             .setContent(getString(R.string.mine_securityActivity5))
                             .setCancelVisible(View.GONE)
                             .show();
-                }else {
+                } else {
                     SettingPasswordActivity.start(this);
                 }
             } else {

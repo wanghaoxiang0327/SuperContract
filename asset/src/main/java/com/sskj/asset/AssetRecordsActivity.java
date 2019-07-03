@@ -16,6 +16,7 @@ import com.sskj.common.data.CoinAsset;
 import com.sskj.common.dialog.SelectCoinDialog;
 import com.sskj.common.dialog.SelectCoinDialog.OnSelectListener;
 import com.sskj.common.dialog.SelectTypeDialog;
+import com.sskj.common.language.LocalManageUtil;
 import com.sskj.common.mvc.DataSource;
 import com.sskj.common.mvc.SmartRefreshHelper;
 import com.sskj.common.utils.NumberUtils;
@@ -103,7 +104,7 @@ public class AssetRecordsActivity extends BaseActivity<AssetRecordsPresenter> {
         });
         selectTypeName.setOnClickListener(view -> {
             if (typeList == null) {
-                mPresenter.getAssetType(true);
+                mPresenter.getAssetType(true, LocalManageUtil.getLanguage(this));
             } else {
                 showTypeDialog(typeList);
             }
@@ -114,7 +115,7 @@ public class AssetRecordsActivity extends BaseActivity<AssetRecordsPresenter> {
     public void loadData() {
         smartRefreshHelper.refresh();
         mPresenter.getCoinAsset(false);
-        mPresenter.getAssetType(false);
+        mPresenter.getAssetType(false,LocalManageUtil.getLanguage(this));
     }
 
     public static void start(Context context) {
@@ -138,13 +139,13 @@ public class AssetRecordsActivity extends BaseActivity<AssetRecordsPresenter> {
         }
         boolean addAll = true;
         for (CoinAsset coin : data) {
-            if (coin.getPname().equals("全部")) {
+            if (coin.getPname().equals(getString(R.string.asset_assetRecordsActivity1))) {
                 addAll = false;
             }
         }
         if (addAll) {
             CoinAsset coinAsset = new CoinAsset();
-            coinAsset.setPname("全部");
+            coinAsset.setPname(getString(R.string.asset_assetRecordsActivity1));
             coinAsset.setPid("");
             data.add(0, coinAsset);
         }
@@ -164,13 +165,13 @@ public class AssetRecordsActivity extends BaseActivity<AssetRecordsPresenter> {
         }
         boolean addAll = true;
         for (AssetType coin : data) {
-            if (coin.getTitle().equals("全部")) {
+            if (coin.getTitle().equals(getString(R.string.asset_assetRecordsActivity1))) {
                 addAll = false;
             }
         }
         if (addAll) {
             AssetType coinAsset = new AssetType();
-            coinAsset.setTitle("全部");
+            coinAsset.setTitle(getString(R.string.asset_assetRecordsActivity1));
             coinAsset.setId(0);
             data.add(0, coinAsset);
         }

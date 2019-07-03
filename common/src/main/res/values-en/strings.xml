@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="ResourceName">
+    <string name="strLoadViewFactory200">Click to load more</string>
+    <string name="strLoadViewFactory201">Loading..</string>
+    <string name="strLoadViewFactory202">Loading failed, click reload</string>
+    <string name="strLoadViewFactory203">Already loaded</string>
+    <string name="strLoadViewFactory204">Loading...</string>
+    <string name="strLoadViewFactory205">please log in first</string>
+    <string name="strLoadViewFactory206">Network or data anomaly</string>
+    <string name="strLoadViewFactory207">please log in first</string>
+    <string name="strLoadViewFactory208">Network or data anomaly</string>
+    <string name="strLoadViewFactory209">Retry</string>
+    <string name="common_no_data">No data</string>
+    <string name="common_encryptTool1">Length is not even</string>
+    <string name="common_common_activity_scan20">QR code scanning</string>
+    <string name="common_common_activity_scan40">Put the barcode into the box to automatically scan</string>
+    <string name="common_baseActivity2">get verification code</string>
+    <string name="common_webActivity1">Registration Agreement</string>
+    <string name="common_common_dialog_verify_password410">Paste</string>
+    <string name="common_baseActivity1">Resend after S</string>
+    <string name="common_scanActivity1">Please turn on camera permissions</string>
+    <string name="common_scanActivity2">Open camera error, please try again</string>
+    <string name="common_imgUtil1">Saved successfully, please check in the album</string>
+    <string name="common_common_dialog_verify_password270">Please enter SMS verification code</string>
+    <string name="common_common_dialog_verify_password170">Please enter the money password</string>
+    <string name="common_common_dialog_verify_password390">Please enter Google verification code</string>
+    <string name="common_common_dialog_verify_password230">Verify phone</string>
+    <string name="common_common_dialog_verify_password450">confirm</string>
+    <string name="common_copyUtils1">Has been copied to the clipboard</string>
+    <string name="common_common_dialog_verify_password130">Fund password</string>
+    <string name="common_common_dialog_verify_password350">Google verification code</string>
+    <string name="common_patternUtils2">Phone number format is incorrect</string>
+    <string name="common_common_tip_dialog20">prompt</string>
+    <string name="common_patternUtils1">The password format is incorrect</string>
+    <string name="common_common_dialog_verify_password60">cancel</string>
+    <string name="common_patternUtils4">Name format is incorrect</string>
+    <string name="common_common_tip_dialog40">Prompt content</string>
+    <string name="common_patternUtils3">E-mail format is incorrect</string>
+    <string name="common_common_dialog_verify_password40">safety verification</string>
+    <string name="common_jsonCallBack1">Data parsing failed</string>
+    <string name="common_common_tip_dialog80">determine</string>
+    <string name="common_common_activity_web20">protocol</string>
+    <string name="common_refreshActivity1">There is only one subview under the View</string>
+</resources>

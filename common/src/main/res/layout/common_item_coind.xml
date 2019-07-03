@@ -1,10 +1,2 @@
-<?xml version="1.0" encoding="utf-8"?>
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/name"
-    android:layout_width="match_parent"
-    android:layout_height="50dp"
-    android:background="@drawable/common_edt_line_bg"
-    android:gravity="center"
-    android:text="BTC"
-    android:textColor="@color/common_text"
-    android:textSize="16sp" />
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android" android:background="@drawable/common_edt_line_bg" android:gravity="center" android:id="@+id/name" android:layout_height="50dp" android:layout_width="match_parent" android:text="BTC" android:textColor="@color/common_text" android:textSize="16sp"/>

@@ -211,9 +211,11 @@ public class ChartFragment extends BaseFragment<ChartPresenter> {
 
     public void setChartData(List<Stock> data) {
         if (data != null) {
-            Collections.reverse(data);
-            chartView.hideLoading();
-            mAdapter.updateData(data);
+            if (chartView!=null){
+                Collections.reverse(data);
+                chartView.hideLoading();
+                mAdapter.updateData(data);
+            }
         }
     }
 

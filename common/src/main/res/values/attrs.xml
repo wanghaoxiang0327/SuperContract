@@ -1,16 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="ResourceName">
     <declare-styleable name="ToolBarLayout" tools:ignore="ResourceName">
-        <attr name="left_img" format="reference" />
-        <attr name="right_img" format="reference" />
-        <attr name="title" format="string" />
-        <attr name="left_text" format="string" />
-        <attr name="title_color" format="color" />
-        <attr name="right_text" format="string" />
-        <attr name="right_text_color" format="color" />
-        <attr name="background_color" format="color"/>
+        <attr format="reference" name="left_img"/>
+        <attr format="reference" name="right_img"/>
+        <attr format="string" name="title"/>
+        <attr format="string" name="left_text"/>
+        <attr format="color" name="title_color"/>
+        <attr format="string" name="right_text"/>
+        <attr format="color" name="right_text_color"/>
+        <attr format="color" name="background_color"/>
     </declare-styleable>
-    <style name="BottomSheetDialog" parent="Theme.Design.Light.BottomSheetDialog" >
+    <style name="BottomSheetDialog" parent="Theme.Design.Light.BottomSheetDialog">
         <item name="bottomSheetStyle">@style/bottomSheetStyleWrapper</item>
     </style>
 

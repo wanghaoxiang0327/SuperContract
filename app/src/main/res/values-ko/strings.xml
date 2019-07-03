@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">SCEX</string>
+	<string name="app_app_fragment_home320">흥망 성쇠</string>
+	<string name="app_app_fragment_home280">이름</string>
+	<string name="app_app_item_news60">Algorand blockchain은 공식적으로 완전히 공개 소스이며 공개 버그 보상 프로그램을 시작합니다.</string>
+	<string name="app_app_activity_news_detail20">정보 세부 정보</string>
+	<string name="app_homeFragment2">중국어 번체</string>
+	<string name="app_newsFragment2">플랫폼 발표</string>
+	<string name="app_homeFragment1">중국어 간체</string>
+	<string name="app_newsFragment1">업계 정보</string>
+	<string name="app_app_activity_news_detail100">Algorand blockchain은 공식적으로 완전히 공개 소스이며 공개 버그 보상 프로그램을 시작합니다.</string>
+	<string name="app_mainActivity2">정보</string>
+	<string name="app_mainActivity3">자산</string>
+	<string name="app_mainActivity4">내</string>
+	<string name="app_app_fragment_home300">최신 가격</string>
+	<string name="app_mainActivity1">홈</string>
+</resources>

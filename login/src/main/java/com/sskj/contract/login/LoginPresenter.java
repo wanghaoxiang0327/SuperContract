@@ -25,7 +25,6 @@ public class LoginPresenter extends BasePresenter<LoginActivity> {
                     @Override
                     protected void onNext(HttpResult<LoginBean> result) {
                         mView.loginSuccess(result.getData());
-
                     }
                 });
     }

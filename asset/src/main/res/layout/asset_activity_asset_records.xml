@@ -1,92 +1,31 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/common_dark"
-    android:orientation="vertical">
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:background="@color/common_dark" android:layout_height="match_parent" android:layout_width="match_parent" android:orientation="vertical">
 
 
-    <com.sskj.common.view.ToolBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:background_color="@color/common_action_bar"
-        app:title="账单明细" />
+    <com.sskj.common.view.ToolBarLayout android:layout_height="wrap_content" android:layout_width="match_parent" app:background_color="@color/common_action_bar" app:title="@string/asset_asset_activity_asset_records20"/>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/common_divider" />
+    <View android:background="@color/common_divider" android:layout_height="1dp" android:layout_width="match_parent"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginBottom="5dp"
-        android:background="@color/common_action_bar"
-        android:orientation="horizontal"
-        android:paddingLeft="@dimen/common_margin"
-        android:paddingRight="@dimen/common_margin">
+    <LinearLayout android:background="@color/common_action_bar" android:layout_height="50dp" android:layout_marginBottom="5dp" android:layout_width="match_parent" android:orientation="horizontal" android:paddingLeft="@dimen/common_margin" android:paddingRight="@dimen/common_margin">
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="horizontal">
+        <LinearLayout android:layout_height="match_parent" android:layout_weight="1" android:layout_width="0dp" android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="币种"
-                android:textColor="@color/common_hint"
-                android:textSize="16sp" />
+            <TextView android:gravity="center" android:layout_height="match_parent" android:layout_width="wrap_content" android:text="@string/asset_asset_activity_asset_records100" android:textColor="@color/common_hint" android:textSize="16sp"/>
 
-            <TextView
-                android:id="@+id/select_coin_name"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="8dp"
-                android:drawableRight="@mipmap/asset_icon_select"
-                android:drawablePadding="3dp"
-                android:gravity="center"
-                android:text="全部"
-                android:textColor="@color/common_text" />
+            <TextView android:drawablePadding="3dp" android:drawableRight="@mipmap/asset_icon_select" android:gravity="center" android:id="@+id/select_coin_name" android:layout_height="match_parent" android:layout_marginLeft="8dp" android:layout_width="wrap_content" android:text="@string/asset_assetRecordsActivity1" android:textColor="@color/common_text"/>
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="horizontal">
+        <LinearLayout android:layout_height="match_parent" android:layout_weight="1" android:layout_width="0dp" android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="类型"
-                android:textColor="@color/common_hint"
-                android:textSize="16sp" />
+            <TextView android:gravity="center" android:layout_height="match_parent" android:layout_width="wrap_content" android:text="@string/asset_asset_activity_asset_records170" android:textColor="@color/common_hint" android:textSize="16sp"/>
 
-            <TextView
-                android:id="@+id/select_type_name"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="8dp"
-                android:drawableRight="@mipmap/asset_icon_select"
-                android:drawablePadding="3dp"
-                android:gravity="center"
-                android:text="全部"
-                android:textColor="@color/common_text" />
+            <TextView android:drawablePadding="3dp" android:drawableRight="@mipmap/asset_icon_select" android:gravity="center" android:id="@+id/select_type_name" android:layout_height="match_parent" android:layout_marginLeft="8dp" android:layout_width="wrap_content" android:text="@string/asset_assetRecordsActivity1" android:textColor="@color/common_text"/>
 
         </LinearLayout>
     </LinearLayout>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/asset_records_list"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+    <android.support.v7.widget.RecyclerView android:id="@+id/asset_records_list" android:layout_height="wrap_content" android:layout_width="match_parent"/>
 
 
 

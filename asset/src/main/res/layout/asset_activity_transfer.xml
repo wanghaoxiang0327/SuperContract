@@ -1,137 +1,41 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/common_dark"
-    android:orientation="vertical">
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:background="@color/common_dark" android:layout_height="match_parent" android:layout_width="match_parent" android:orientation="vertical">
 
 
-    <com.sskj.common.view.ToolBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:background_color="@color/common_action_bar"
-        app:right_img="@mipmap/asset_icon_history"
-        app:title="站内转账" />
+    <com.sskj.common.view.ToolBarLayout android:layout_height="wrap_content" android:layout_width="match_parent" app:background_color="@color/common_action_bar" app:right_img="@mipmap/asset_icon_history" app:title="@string/asset_asset_activity_transfer20"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:background="@color/common_background"
-        android:orientation="vertical"
-        android:paddingLeft="@dimen/common_margin"
-        android:paddingRight="@dimen/common_margin">
+    <LinearLayout android:background="@color/common_background" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:layout_width="match_parent" android:orientation="vertical" android:paddingLeft="@dimen/common_margin" android:paddingRight="@dimen/common_margin">
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@drawable/common_edt_line_bg">
+        <LinearLayout android:background="@drawable/common_edt_line_bg" android:layout_height="50dp" android:layout_width="match_parent">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="对方ID"
-                android:textColor="@color/common_text"
-                android:textSize="15sp" />
+            <TextView android:gravity="center" android:layout_height="match_parent" android:layout_width="wrap_content" android:text="@string/asset_asset_activity_transfer80" android:textColor="@color/common_text" android:textSize="15sp"/>
 
-            <EditText
-                android:id="@+id/account_edt"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="8dp"
-                android:background="@null"
-                android:hint="请输入对方ID"
-                android:textColor="@color/common_text"
-                android:textColorHint="@color/common_hint"
-                android:textSize="15sp" />
+            <EditText android:background="@null" android:hint="@string/asset_asset_activity_transfer100" android:id="@+id/account_edt" android:layout_height="match_parent" android:layout_marginLeft="8dp" android:layout_width="match_parent" android:textColor="@color/common_text" android:textColorHint="@color/common_hint" android:textSize="15sp"/>
         </LinearLayout>
 
 
-        <com.allen.library.SuperTextView
-            android:id="@+id/select_coin"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            app:sBackgroundDrawableRes="@color/common_background"
-            app:sDividerLineColor="@color/common_divider"
-            app:sDividerLineType="top"
-            app:sLeftTextColor="@color/common_text"
-            app:sLeftTextString="选择币种"
-            app:sLeftViewMarginLeft="0dp"
-            app:sRightTextColor="@color/common_text"
-            app:sRightTvDrawableRight="@mipmap/common_arrow_right" />
+        <com.allen.library.SuperTextView android:id="@+id/select_coin" android:layout_height="50dp" android:layout_width="match_parent" app:sBackgroundDrawableRes="@color/common_background" app:sDividerLineColor="@color/common_divider" app:sDividerLineType="top" app:sLeftTextColor="@color/common_text" app:sLeftTextString="@string/asset_asset_activity_recharge40" app:sLeftViewMarginLeft="0dp" app:sRightTextColor="@color/common_text" app:sRightTvDrawableRight="@mipmap/common_arrow_right"/>
 
 
     </LinearLayout>
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:orientation="horizontal"
-        android:paddingLeft="@dimen/common_margin"
-        android:paddingRight="@dimen/common_margin">
+    <LinearLayout android:layout_height="35dp" android:layout_width="match_parent" android:orientation="horizontal" android:paddingLeft="@dimen/common_margin" android:paddingRight="@dimen/common_margin">
 
-        <TextView
-            android:id="@+id/useful_tv"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center_vertical"
-            android:textColor="@color/common_hint"
-            tools:text="可用:0.00" />
+        <TextView android:gravity="center_vertical" android:id="@+id/useful_tv" android:layout_height="match_parent" android:layout_weight="1" android:layout_width="0dp" android:textColor="@color/common_hint" tools:text="@string/asset_asset_activity_transfer180"/>
 
-        <TextView
-            android:id="@+id/fee_tv"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center_vertical|right"
-            android:textColor="@color/common_hint"
-            tools:text="手续费:0.00" />
+        <TextView android:gravity="center_vertical|right" android:id="@+id/fee_tv" android:layout_height="match_parent" android:layout_weight="1" android:layout_width="0dp" android:textColor="@color/common_hint" tools:text="@string/asset_asset_activity_transfer200"/>
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/common_background"
-        android:paddingLeft="@dimen/common_margin"
-        android:paddingRight="@dimen/common_margin">
+    <LinearLayout android:background="@color/common_background" android:layout_height="50dp" android:layout_width="match_parent" android:paddingLeft="@dimen/common_margin" android:paddingRight="@dimen/common_margin">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="转账数量"
-            android:textColor="@color/common_text"
-            android:textSize="15sp" />
+        <TextView android:gravity="center" android:layout_height="match_parent" android:layout_width="wrap_content" android:text="@string/asset_asset_activity_transfer250" android:textColor="@color/common_text" android:textSize="15sp"/>
 
-        <EditText
-            android:id="@+id/count_edt"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="8dp"
-            android:background="@null"
-            android:inputType="numberDecimal"
-            android:hint="转账数量不可少于100"
-            android:textColor="@color/common_text"
-            android:textColorHint="@color/common_hint"
-            android:textSize="15sp" />
+        <EditText android:background="@null" android:hint="@string/asset_asset_activity_transfer270" android:id="@+id/count_edt" android:inputType="numberDecimal" android:layout_height="match_parent" android:layout_marginLeft="8dp" android:layout_width="match_parent" android:textColor="@color/common_text" android:textColorHint="@color/common_hint" android:textSize="15sp"/>
     </LinearLayout>
 
-    <Button
-        android:id="@+id/submit"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_marginLeft="@dimen/common_margin"
-        android:layout_marginTop="50dp"
-        android:layout_marginRight="@dimen/common_margin"
-        android:background="@drawable/common_tip_50"
-        android:text="提交"
-        android:textColor="@color/common_button_text" />
+    <Button android:background="@drawable/common_tip_50" android:id="@+id/submit" android:layout_height="45dp" android:layout_marginLeft="@dimen/common_margin" android:layout_marginRight="@dimen/common_margin" android:layout_marginTop="50dp" android:layout_width="match_parent" android:text="@string/asset_asset_activity_transfer300" android:textColor="@color/common_button_text"/>
 
 
 </LinearLayout>

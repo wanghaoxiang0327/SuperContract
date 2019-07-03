@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.hjq.toast.ToastUtils;
 import com.lzy.okgo.OkGo;
+import com.sskj.common.App;
 import com.sskj.common.BaseApplication;
 import com.sskj.common.R;
 import com.sskj.common.R2;
@@ -155,7 +156,7 @@ public class VerifyPasswordDialog extends BottomSheetDialog {
             public void onNext(Long aLong) {
                 int time = (int) (60 - aLong);
                 if (getCodeView != null) {
-                    getCodeView.setText(time + "S后重新发送");
+                    getCodeView.setText(time + App.INSTANCE.getString(R.string.common_baseActivity1));
                 }
             }
 
@@ -167,7 +168,7 @@ public class VerifyPasswordDialog extends BottomSheetDialog {
             @Override
             public void onComplete() {
                 if (getCodeView != null) {
-                    getCodeView.setText("获取验证码");
+                    getCodeView.setText(App.INSTANCE.getString(R.string.common_baseActivity2));
                     getCodeView.setEnabled(true);
                     getCodeView.setTextColor(ContextCompat.getColor(getContext(), R.color.common_white));
                 }

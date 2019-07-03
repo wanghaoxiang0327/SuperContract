@@ -3,8 +3,11 @@ package com.sskj.supercontrct;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.just.agentweb.AgentWeb;
 import com.sskj.common.base.BaseActivity;
 import com.sskj.common.http.Page;
 import com.sskj.supercontrct.data.NewsBean;
@@ -26,7 +29,17 @@ public class NewsDetailActivity extends BaseActivity<NewsDetailPresenter> {
     TextView timeTv;
     @BindView(R.id.content_tv)
     TextView contentTv;
-    private String id;
+    @BindView(R.id.content_layout)
+    LinearLayout linearLayout;
+    @BindView(R.id.top_layout)
+    LinearLayout topLayout;
+
+    private AgentWeb agentWeb;
+
+
+    private int type;
+
+    private NewsBean newsBean;
 
     @Override
     public int getLayoutId() {
@@ -40,17 +53,32 @@ public class NewsDetailActivity extends BaseActivity<NewsDetailPresenter> {
 
     @Override
     public void initView() {
-        id=getIntent().getStringExtra("id");
+        newsBean = (NewsBean) getIntent().getSerializableExtra("newsBean");
+        type = getIntent().getIntExtra("type", 0);
     }
 
     @Override
     public void initData() {
-        mPresenter.getNoticeDetail(id);
+        if (type == 1) {
+            mPresenter.getNoticeDetail(newsBean.getId());
+            linearLayout.setVisibility(View.GONE);
+            topLayout.setVisibility(View.VISIBLE);
+        } else {
+            linearLayout.setVisibility(View.VISIBLE);
+            agentWeb = AgentWeb.with(this)
+                    .setAgentWebParent(linearLayout, new LinearLayout.LayoutParams(-1, -1))
+                    .useDefaultIndicator()
+                    .createAgentWeb()
+                    .ready()
+                    .go(newsBean.getContext());
+            topLayout.setVisibility(View.GONE);
+        }
     }
 
-    public static void start(Context context,String id) {
+    public static void start(Context context, NewsBean newsBean, int type) {
         Intent intent = new Intent(context, NewsDetailActivity.class);
-        intent.putExtra("id", id);
+        intent.putExtra("newsBean", newsBean);
+        intent.putExtra("type", type);
         context.startActivity(intent);
     }
 

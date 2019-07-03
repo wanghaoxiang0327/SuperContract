@@ -1,24 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/common_dark"
-    android:orientation="vertical">
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:background="@color/common_dark" android:layout_height="match_parent" android:layout_width="match_parent" android:orientation="vertical">
 
 
-    <com.sskj.common.view.ToolBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        app:background_color="@color/common_action_bar"
-        app:title="转账明细" />
+    <com.sskj.common.view.ToolBarLayout android:layout_height="wrap_content" android:layout_marginBottom="5dp" android:layout_width="match_parent" app:background_color="@color/common_action_bar" app:title="@string/asset_asset_activity_transfer_records20"/>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/records_list"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-      />
+    <android.support.v7.widget.RecyclerView android:id="@+id/records_list" android:layout_height="wrap_content" android:layout_width="match_parent"/>
 
 
 </LinearLayout>

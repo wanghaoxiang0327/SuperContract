@@ -1,22 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/common_background"
-    android:orientation="vertical">
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:background="@color/common_background" android:layout_height="match_parent" android:layout_width="match_parent" android:orientation="vertical">
 
-    <com.sskj.common.view.ToolBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:background_color="@color/common_action_bar"
-        app:title="协议" />
+    <com.sskj.common.view.ToolBarLayout android:layout_height="wrap_content" android:layout_width="match_parent" app:background_color="@color/common_action_bar" app:title="@string/common_common_activity_web20"/>
 
-    <TextView
-        android:id="@+id/text"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textColor="@color/common_text" />
+    <TextView android:id="@+id/text" android:layout_height="match_parent" android:layout_width="match_parent" android:textColor="@color/common_text"/>
 
 
 </LinearLayout>

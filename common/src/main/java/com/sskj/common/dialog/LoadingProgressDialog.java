@@ -6,13 +6,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 
 import com.sskj.common.R;
+import com.sskj.common.view.LoadingView;
 
 public class LoadingProgressDialog extends AppCompatDialog {
+
+    LoadingView loadingView;
 
     public LoadingProgressDialog(Context context) {
         super(context, R.style.common_custom_dialog);
         View view = LayoutInflater.from(context).inflate(R.layout.common_loading_dialog, null);
         setContentView(view);
+        loadingView = view.findViewById(R.id.loading_view);
         setCancelable(false);
     }
 
@@ -26,4 +30,11 @@ public class LoadingProgressDialog extends AppCompatDialog {
 //        layoutParams.height=height;
 //        getWindow().setAttributes(layoutParams);
     }
+
+    @Override
+    public void dismiss() {
+        super.dismiss();
+        loadingView.getIndeterminateDrawable().stop();
+    }
+
 }

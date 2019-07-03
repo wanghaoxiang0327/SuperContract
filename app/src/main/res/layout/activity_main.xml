@@ -1,26 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/common_background"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:background="@color/common_background" android:layout_height="match_parent" android:layout_width="match_parent" android:orientation="vertical" tools:context=".MainActivity">
 
 
-    <FrameLayout
-        android:id="@+id/main_content"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
+    <FrameLayout android:id="@+id/main_content" android:layout_height="0dp" android:layout_weight="1" android:layout_width="match_parent"/>
 
-    <com.sskj.common.tab.TabLayout
-        android:id="@+id/main_tab_layout"
-        android:layout_width="match_parent"
-        app:indicator_height="0dp"
-        android:layout_height="50dp"
-        android:background="@color/common_tab"
-        app:textSelectColor="@color/common_tip"
-        app:textUnselectColor="@color/common_hint" />
+    <com.sskj.common.tab.TabLayout android:background="@color/common_tab" android:id="@+id/main_tab_layout" android:layout_height="50dp" android:layout_width="match_parent" app:indicator_height="0dp" app:textSelectColor="@color/common_tip" app:textUnselectColor="@color/common_hint"/>
 </LinearLayout>

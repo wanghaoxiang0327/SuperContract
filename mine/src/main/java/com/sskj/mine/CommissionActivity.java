@@ -76,7 +76,7 @@ public class CommissionActivity extends BaseActivity<CommissionPresenter> {
             @Override
             public void bind(ViewHolder holder, CommissionDetailBean item) {
                 holder.setText(R.id.user_id, item.getDown_account())
-                        .setText(R.id.count, item.getFee())
+                        .setText(R.id.count, item.getFee()+item.getPname())
                         .setText(R.id.time, TimeFormatUtil.SF_FORMAT_E.format(item.getAddtime() * 1000));
             }
         };

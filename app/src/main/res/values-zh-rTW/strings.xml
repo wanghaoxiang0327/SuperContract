@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">SCEX</string>
+	<string name="app_app_fragment_home320">漲跌幅</string>
+	<string name="app_app_fragment_home280">名稱</string>
+	<string name="app_app_item_news60">Algorand區塊鏈正式完全開源，並推出公共Bug獎勵計劃</string>
+	<string name="app_app_activity_news_detail20">資訊詳情</string>
+	<string name="app_homeFragment2">繁體中文</string>
+	<string name="app_newsFragment2">平台公告</string>
+	<string name="app_homeFragment1">簡體中文</string>
+	<string name="app_newsFragment1">行業資訊</string>
+	<string name="app_app_activity_news_detail100">Algorand區塊鏈正式完全開源，並推出公 共Bug獎勵計劃</string>
+	<string name="app_mainActivity2">資訊</string>
+	<string name="app_mainActivity3">資產</string>
+	<string name="app_mainActivity4">我的</string>
+	<string name="app_app_fragment_home300">最新價</string>
+	<string name="app_mainActivity1">首頁</string>
+</resources>

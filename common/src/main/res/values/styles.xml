@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <resources>
 
     <style name="common_custom_dialog" parent="@style/Theme.AppCompat.Dialog">

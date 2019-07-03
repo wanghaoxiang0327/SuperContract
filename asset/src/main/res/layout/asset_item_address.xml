@@ -1,40 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:background="@color/common_background" android:layout_height="wrap_content" android:layout_width="match_parent" android:padding="@dimen/common_margin">
 
-    android:background="@color/common_background"
-    android:padding="@dimen/common_margin"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    <TextView android:id="@+id/name_tv" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textColor="@color/common_text" android:textSize="15sp" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" tools:text="HT_Address"/>
 
-    <TextView
-        android:id="@+id/name_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/common_text"
-        android:textSize="15sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="HT_Address" />
+    <TextView android:id="@+id/delete" android:layout_height="wrap_content" android:layout_width="wrap_content" android:text="@string/asset_asset_item_address40" android:textColor="@color/common_tip" app:layout_constraintBaseline_toBaselineOf="@+id/name_tv" app:layout_constraintEnd_toEndOf="parent"/>
 
-    <TextView
-        android:id="@+id/delete"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="删除"
-        android:textColor="@color/common_tip"
-        app:layout_constraintBaseline_toBaselineOf="@+id/name_tv"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <TextView
-        android:id="@+id/address"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="15sdfGffs14HT-addressSDGHHRsdjknn"
-        android:textColor="@color/common_hint"
-        android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="@+id/name_tv"
-        app:layout_constraintTop_toBottomOf="@+id/name_tv" />
+    <TextView android:id="@+id/address" android:layout_height="wrap_content" android:layout_marginTop="16dp" android:layout_width="wrap_content" android:text="15sdfGffs14HT-addressSDGHHRsdjknn" android:textColor="@color/common_hint" android:textSize="12sp" app:layout_constraintStart_toStartOf="@+id/name_tv" app:layout_constraintTop_toBottomOf="@+id/name_tv"/>
 </android.support.constraint.ConstraintLayout>

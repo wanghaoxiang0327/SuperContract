@@ -5,6 +5,8 @@ import android.content.ClipboardManager;
 import android.content.Context;
 
 import com.hjq.toast.ToastUtils;
+import com.sskj.common.App;
+import com.sskj.common.R;
 
 
 public class CopyUtils {
@@ -13,7 +15,7 @@ public class CopyUtils {
         if (cm != null) {
             // 将文本内容放到系统剪贴板里。
             cm.setPrimaryClip(ClipData.newPlainText("", content));
-            ToastUtils.show("已复制到剪切板");
+            ToastUtils.show(App.INSTANCE.getString(R.string.common_copyUtils1));
             return true;
         }
         return false;

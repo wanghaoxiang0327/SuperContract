@@ -35,6 +35,8 @@ public class VerifySettingActivity extends BaseActivity<VerifySettingPresenter> 
     TextView verifyStatus;
     @BindView(R2.id.verify_check)
     CheckButton verifyCheck;
+    @BindView(R2.id.verify_check_text)
+    TextView verifyCheckText;
 
     private boolean startGoogle;
     private boolean startSms;
@@ -54,7 +56,7 @@ public class VerifySettingActivity extends BaseActivity<VerifySettingPresenter> 
     public void initView() {
         verify = (Verify) getIntent().getSerializableExtra("type");
         verifyName.setText(verify.getName());
-        verifyCheck.setText(verify.getType());
+        verifyCheckText.setText(verify.getType());
         switch (verify) {
             case SMS:
                 ClickUtil.click(verifyStatus, view -> {
@@ -95,6 +97,7 @@ public class VerifySettingActivity extends BaseActivity<VerifySettingPresenter> 
                     } else {
                         verifyStatus.setText(getString(R.string.mine_verifySettingActivity1));
                     }
+                    verifyCheckText.setVisibility(View.GONE);
                     verifyCheck.setVisibility(View.GONE);
                 } else {
 

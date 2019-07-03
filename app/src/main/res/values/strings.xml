@@ -1,3 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <resources>
     <string name="app_name">SCEX</string>
+    <string name="app_app_fragment_home320">涨跌幅</string>
+    <string name="app_app_fragment_home280">名称</string>
+    <string name="app_app_item_news60">Algorand区块链正式完全开源，并推出公共Bug奖励计划</string>
+    <string name="app_app_activity_news_detail20">资讯详情</string>
+    <string name="app_homeFragment2">繁體中文</string>
+    <string name="app_newsFragment2">平台公告</string>
+    <string name="app_homeFragment1">简体中文</string>
+    <string name="app_newsFragment1">行业资讯</string>
+    <string name="app_app_activity_news_detail100">Algorand区块链正式完全开源，并推出公 共Bug奖励计划</string>
+    <string name="app_mainActivity2">资讯</string>
+    <string name="app_mainActivity3">资产</string>
+    <string name="app_mainActivity4">我的</string>
+    <string name="app_app_fragment_home300">最新价</string>
+    <string name="app_mainActivity1">首页</string>
 </resources>

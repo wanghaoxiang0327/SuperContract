@@ -2,6 +2,8 @@ package com.sskj.common.http;
 
 import com.alibaba.fastjson.JSON;
 import com.lzy.okgo.convert.Converter;
+import com.sskj.common.App;
+import com.sskj.common.R;
 import com.sskj.common.exception.LogoutException;
 import com.sskj.common.rxbus.RxBus;
 
@@ -12,6 +14,9 @@ import okhttp3.Response;
 import okhttp3.ResponseBody;
 
 public class JsonConvert<T> implements Converter<T> {
+
+
+
     @Override
     public T convertResponse(Response response) throws Throwable {
         T data;
@@ -21,7 +26,7 @@ public class JsonConvert<T> implements Converter<T> {
             Type type = ((ParameterizedType) genericSuperclass).getActualTypeArguments()[0];
             data = JSON.parseObject(body.string(), type);
             if (data == null) {
-                throw new ApiException("数据解析失败");
+                throw new ApiException(App.INSTANCE.getString(R.string.common_jsonCallBack1));
             } else {
                 if (data instanceof HttpResult) {
                     HttpResult result = (HttpResult) data;

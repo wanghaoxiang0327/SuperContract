@@ -44,8 +44,8 @@ public class NewsFragment extends BaseFragment<NewsPresenter> {
 
     @Override
     public void initView() {
-        tabs.add(new TabItem("行业资讯"));
-        tabs.add(new TabItem("平台公告"));
+        tabs.add(new TabItem(getString(R.string.app_newsFragment1)));
+        tabs.add(new TabItem(getString(R.string.app_newsFragment2)));
         fragments.add(InformationFragment.newInstance(0));
         fragments.add(InformationFragment.newInstance(1));
         tabLayout.setTabData(tabs,getChildFragmentManager(),R.id.news_content,fragments);

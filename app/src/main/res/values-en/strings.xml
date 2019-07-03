@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">SCEX</string>
+	<string name="app_app_fragment_home320">Change</string>
+	<string name="app_app_fragment_home280">Name</string>
+	<string name="app_app_item_news60">Algorand blockchain is officially fully open source and launches a public bug rewards program</string>
+	<string name="app_app_activity_news_detail20">Information details</string>
+	<string name="app_homeFragment2">Traditional Chinese</string>
+	<string name="app_newsFragment2">Platform announcement</string>
+	<string name="app_homeFragment1">Simplified Chinese</string>
+	<string name="app_newsFragment1">Industry information</string>
+	<string name="app_app_activity_news_detail100">Algorand blockchain is officially fully open source and launches a public bug reward program</string>
+	<string name="app_mainActivity2">News</string>
+	<string name="app_mainActivity3">Assets</string>
+	<string name="app_mainActivity4">Mine</string>
+	<string name="app_app_fragment_home300">Price</string>
+	<string name="app_mainActivity1">Home</string>
+</resources>

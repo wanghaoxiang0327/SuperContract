@@ -137,10 +137,10 @@ public class HomeFragment extends BaseFragment<HomePresenter> {
 
         switch (LanguageSPUtil.getInstance(getContext()).getSelectLanguage()) {
             case 1:
-                changeLanguage.setText("简体中文");
+                changeLanguage.setText(getString(R.string.app_homeFragment1));
                 break;
             case 2:
-                changeLanguage.setText("繁體中文");
+                changeLanguage.setText(getString(R.string.app_homeFragment2));
                 break;
             case 3:
                 changeLanguage.setText("English");
@@ -242,7 +242,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> {
                             String text = data.getRes().get(position).getTitle();
                             tvNotice.setText(text);
                             ClickUtil.click(tvNotice, view -> {
-                                NewsDetailActivity.start(getContext(), data.getRes().get(position).getId());
+                                NewsDetailActivity.start(getContext(), data.getRes().get(position),1);
                             });
                         }
                     }, throwable -> {
@@ -254,6 +254,8 @@ public class HomeFragment extends BaseFragment<HomePresenter> {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        noticeDisposable.dispose();
+        if (noticeDisposable!=null){
+            noticeDisposable.dispose();
+        }
     }
 }

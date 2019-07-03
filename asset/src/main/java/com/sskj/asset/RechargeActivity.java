@@ -101,7 +101,7 @@ public class RechargeActivity extends BaseActivity<RechargePresenter> {
         pid = coin.getPid();
         selectCoin.setRightString(coin.getPname());
         mPresenter.getRechargeInfo(pid);
-        rechargeTip.setText("请勿向上述地址充值任何非" + coin.getPname() + "资产，否则资产将不可找回。");
+        rechargeTip.setText(getString(R.string.asset_rechargeActivity1) + coin.getPname() + getString(R.string.asset_rechargeActivity2));
     }
 
 

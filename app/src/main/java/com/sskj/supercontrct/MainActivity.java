@@ -61,10 +61,10 @@ public class MainActivity extends BaseActivity<MainPresenter> {
 
     @Override
     public void initView() {
-        mainTabs.add(new TabItem("首页", R.mipmap.tab_home, R.mipmap.tab_home_p));
-        mainTabs.add(new TabItem("资讯", R.mipmap.tab_news, R.mipmap.tab_news_p));
-        mainTabs.add(new TabItem("资产", R.mipmap.tab_asset, R.mipmap.tab_asset_p));
-        mainTabs.add(new TabItem("我的", R.mipmap.tab_mine, R.mipmap.tab_mine_p));
+        mainTabs.add(new TabItem(getString(R.string.app_mainActivity1), R.mipmap.tab_home, R.mipmap.tab_home_p));
+        mainTabs.add(new TabItem(getString(R.string.app_mainActivity2), R.mipmap.tab_news, R.mipmap.tab_news_p));
+        mainTabs.add(new TabItem(getString(R.string.app_mainActivity3), R.mipmap.tab_asset, R.mipmap.tab_asset_p));
+        mainTabs.add(new TabItem(getString(R.string.app_mainActivity4), R.mipmap.tab_mine, R.mipmap.tab_mine_p));
         fragments.add(HomeFragment.newInstance());
         fragments.add(NewsFragment.newInstance());
         fragments.add(AssetFragment.newInstance());

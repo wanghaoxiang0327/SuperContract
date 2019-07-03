@@ -194,7 +194,7 @@ public abstract class BaseActivity<P extends BasePresenter> extends ExtendActivi
             public void onNext(Long aLong) {
                 int time = (int) (60 - aLong);
                 if (getCodeView != null) {
-                    getCodeView.setText(time + "S后重新发送");
+                    getCodeView.setText(time + getString(R.string.common_baseActivity1));
                 }
             }
 
@@ -206,7 +206,7 @@ public abstract class BaseActivity<P extends BasePresenter> extends ExtendActivi
             @Override
             public void onComplete() {
                 if (getCodeView != null) {
-                    getCodeView.setText("获取验证码");
+                    getCodeView.setText(getString(R.string.common_baseActivity2));
                     getCodeView.setEnabled(true);
                     getCodeView.setTextColor(color(R.color.common_white));
 
