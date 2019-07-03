@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
-
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_checked="false" android:drawable="@drawable/mine_transparent" />
-    <item android:state_checked="true"  android:drawable="@drawable/mine_ic_checked" />
+    <item android:drawable="@drawable/mine_transparent" android:state_checked="false"/>
+    <item android:drawable="@drawable/mine_ic_checked" android:state_checked="true"/>
 </selector>

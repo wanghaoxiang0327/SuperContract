@@ -64,7 +64,7 @@ public class SecurityActivity extends BaseActivity<SecurityPresenter> {
                 if (setPayPs) {
                     menuPayPs.setRightString(getString(R.string.mine_securityActivity1));
                 } else {
-                    menuPayPs.setRightString(getString(R.string.mine_securityActivity2));
+                    menuPayPs.setRightString(getString(R.string.mine_change));
                 }
                 if (userBean.getIsBindMail() == 1) {
                     menuEmailVerify.setRightString(getString(R.string.mine_securityActivity2));
@@ -76,6 +76,7 @@ public class SecurityActivity extends BaseActivity<SecurityPresenter> {
 
                 if (userBean.getIsStartGoogle() == 1) {
                     startGoogle = true;
+                    bindGoogle = true;
                     menuGoogleVerify.setRightString(getString(R.string.mine_securityActivity3));
                 } else {
                     startGoogle = false;
@@ -89,6 +90,7 @@ public class SecurityActivity extends BaseActivity<SecurityPresenter> {
                 }
                 if (userBean.getIsStartSms() == 1) {
                     startSms = true;
+                    bindSMS=true;
                     menuSmsVerify.setRightString(getString(R.string.mine_securityActivity3));
                 } else {
                     startSms = false;

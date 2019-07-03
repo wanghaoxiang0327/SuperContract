@@ -82,6 +82,9 @@
 	<string name="mine_mine_activity_bind_mobile_or_email170">提交</string>
 	<string name="mine_mine_activity_invite20">邀請好友</string>
 	<string name="mine_mine_activity_reset_pa_ypassword20">修改資金密碼</string>
-	<string name="mine_save">保存</string>
+	<string name="mine_save">保存相冊</string>
 	<string name="mine_mine_activity_invite201">規則</string>
+	<string name="mine_change">修改</string>
+	<string name="mine_bindMobileOrEmailActivity101">綁定郵箱</string>
+	<string name="mine_bindMobileOrEmailActivity201">請輸入您的郵箱地址</string>
 </resources>

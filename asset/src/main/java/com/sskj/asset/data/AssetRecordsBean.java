@@ -28,7 +28,7 @@ public class AssetRecordsBean {
     private String yprice;
     private String nprice;
     private String price;
-    private String addtime;
+    private long addtime;
     private String is_frost;
     private String state;
     private String dtime;
@@ -100,11 +100,11 @@ public class AssetRecordsBean {
         this.price = price;
     }
 
-    public String getAddtime() {
+    public long getAddtime() {
         return addtime;
     }
 
-    public void setAddtime(String addtime) {
+    public void setAddtime(long addtime) {
         this.addtime = addtime;
     }
 

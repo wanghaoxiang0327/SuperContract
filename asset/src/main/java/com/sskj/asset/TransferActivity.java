@@ -93,6 +93,9 @@ public class TransferActivity extends BaseActivity<TransferPresenter> {
     @Override
     public void initData() {
         ClickUtil.click(submit, view -> {
+            if (isEmptyShow(accountEdt)) {
+                return;
+            }
             if (isEmpty(countEdt)) {
                 ToastUtils.show(getString(R.string.asset_transferActivity1));
             }

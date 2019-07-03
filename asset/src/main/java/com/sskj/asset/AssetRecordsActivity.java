@@ -20,6 +20,7 @@ import com.sskj.common.language.LocalManageUtil;
 import com.sskj.common.mvc.DataSource;
 import com.sskj.common.mvc.SmartRefreshHelper;
 import com.sskj.common.utils.NumberUtils;
+import com.sskj.common.utils.TimeFormatUtil;
 
 import java.util.List;
 
@@ -78,7 +79,7 @@ public class AssetRecordsActivity extends BaseActivity<AssetRecordsPresenter> {
             public void bind(ViewHolder holder, AssetRecordsBean item) {
                 holder.setText(R.id.type, item.getMemo())
                         .setText(R.id.count, NumberUtils.keepDown(item.getPrice(), 4) + item.getPtype())
-                        .setText(R.id.time, item.getDtime());
+                        .setText(R.id.time, TimeFormatUtil.SF_FORMAT_E.format(item.getAddtime() * 1000));
             }
         };
     }
@@ -115,7 +116,7 @@ public class AssetRecordsActivity extends BaseActivity<AssetRecordsPresenter> {
     public void loadData() {
         smartRefreshHelper.refresh();
         mPresenter.getCoinAsset(false);
-        mPresenter.getAssetType(false,LocalManageUtil.getLanguage(this));
+        mPresenter.getAssetType(false, LocalManageUtil.getLanguage(this));
     }
 
     public static void start(Context context) {

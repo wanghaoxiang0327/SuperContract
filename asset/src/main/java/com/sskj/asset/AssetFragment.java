@@ -78,7 +78,7 @@ public class AssetFragment extends BaseFragment<AssetPresenter> {
             if (userBean != null) {
                 checkSms = userBean.getIsStartSms() == 1;
                 checkGoogle = userBean.getIsStartGoogle() == 1;
-                isBroker = userBean.getRank() == 1;
+                isBroker = userBean.getRank() != 0;
                 setPs= !TextUtils.isEmpty(userBean.getTpwd());
             }
         });
