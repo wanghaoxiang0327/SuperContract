@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+    <string name="market_high"> 고</string>
+    <string name="market_low"> 낮음 </string>
+    <string name="market_norm"> 지표 </string>
+    <string name="market_pop_kchart_main"> 메인 그림 </string>
+    <string name="market_pop_kchart_fu"> 부도 </string>
+    <string name="market_time"> 분시 </string>
+    <string name="market_day"> 일선 </string>
+    <string name="market_hold"> 햄 </string>
+    <string name="market_deal"> 성교 </string>
+    <string name="market_buy_up">구입</string>
+    <string name="market_buy_down">구매</string>
+    <string name="market_createOrderDialog1">손</string>
+    <string name="market_createOrderDialog4">거래 총액:</string>
+    <string name="market_market_fragment_profit_order170">방향</string>
+    <string name="market_market_fragment_profit_order150">시간</string>
+    <string name="market_market_dialog_create_order110">거래자산</string>
+    <string name="market_market_dialog_create_order550">거래 총액:---</string>
+    <string name="market_market_dialog_create_order80">취소</string>
+    <string name="market_market_dialog_create_order370">목표점</string>
+    <string name="market_market_dialog_create_order190">거래량</string>
+    <string name="market_dealFragment3">평창 가격</string>
+    <string name="market_dealFragment4">득이</string>
+    <string name="market_dealFragment5">지평창</string>
+    <string name="market_dealFragment6">자진 창구</string>
+    <string name="market_marketDetailActivity1">주문 만들기 성공</string>
+    <string name="market_market_item_hold80">자산 화폐 종류</string>
+    <string name="market_holdFragment3">최신가 </string>
+    <string name="market_market_dialog_create_order500">/지장:</string>
+    <string name="market_market_dialog_create_order300">1손</string>
+    <string name="market_market_dialog_create_order460">정지:</string>
+    <string name="market_market_activity_profit_share60">영리 금액</string>
+    <string name="market_market_item_hold400">최신가 64.3256</string>
+    <string name="market_market_activity_profit_share210">평창 가격</string>
+    <string name="market_market_dialog_create_order280">거래수</string>
+    <string name="market_market_fragment_profit_order80">영리 주문서</string>
+    <string name="market_market_item_hold440">공유</string>
+    <string name="market_market_item_hold120">거래총액</string>
+    <string name="market_market_item_hold340">정지</string>
+    <string name="market_market_item_hold100">다음 단가</string>
+    <string name="market_market_item_hold320">점위</string>
+    <string name="market_market_activity_profit_share170">목표 계약</string>
+    <string name="market_market_activity_profit_share390">최종 해석권은 플랫폼 모든</string>
+    <string name="market_market_activity_profit_share190">개창 가격</string>
+    <string name="market_market_item_hold360">파손가격</string>
+
+</resources>

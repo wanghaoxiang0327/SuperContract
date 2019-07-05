@@ -125,8 +125,8 @@ public class MarketDetailActivity extends BaseActivity<MarketDetailPresenter> {
         chartTabs.add(new TabItem("1M", 0, 0));
         chartTabs.add(new TabItem("5M", 0, 0));
         chartTabs.add(new TabItem("15M", 0, 0));
-        chartTabs.add(new TabItem("1小时", 0, 0));
-        chartTabs.add(new TabItem("4小时", 0, 0));
+        chartTabs.add(new TabItem("1H", 0, 0));
+        chartTabs.add(new TabItem("4H", 0, 0));
         chartTabs.add(new TabItem(getString(R.string.market_day), 0, 0));
         fragmentList.add(ChartFragment.newInstance(code, goodsType[0], true));
         fragmentList.add(ChartFragment.newInstance(code, goodsType[1], false));
@@ -289,7 +289,7 @@ public class MarketDetailActivity extends BaseActivity<MarketDetailPresenter> {
 
 
     public void createOrderSuccess() {
-        ToastUtils.show("创建订单成功");
+        ToastUtils.show(getString(R.string.market_marketDetailActivity1));
         createOrderDialog.dismiss();
     }
 

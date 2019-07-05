@@ -76,10 +76,10 @@ public class ProfitShareActivity extends BaseActivity<ProfitSharePresenter> {
         dealPrice.setText("$" + NumberUtils.keepDown(data.getSellprice(), DigitUtils.ASSET_DIGIT));
         Glide.with(this).load(data.getQrc()).into(qrCode);
         if (data.getType() == 1) {
-            buyType.setText("买涨");
+            buyType.setText(getString(R.string.market_buy_up));
             buyType.setBackgroundResource(R.drawable.market_green_bg_5);
         } else {
-            buyType.setText("买跌");
+            buyType.setText(getString(R.string.market_buy_down));
             buyType.setBackgroundResource(R.drawable.market_red_bg_5);
         }
     }

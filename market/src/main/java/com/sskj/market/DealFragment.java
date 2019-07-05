@@ -60,13 +60,13 @@ public class DealFragment extends BaseFragment<DealPresenter> {
             @Override
             public void bind(ViewHolder holder, HoldBean item) {
                 holder.setText(R.id.name_tv, item.getMark())
-                        .setText(R.id.buy_type_tv, item.getType() == 1 ? "买涨" : "买跌")
+                        .setText(R.id.buy_type_tv, item.getType() == 1 ? getString(R.string.market_buy_up) : getString(R.string.market_buy_down))
                         .setText(R.id.pay_coin_tv, item.getPtype())
                         .setText(R.id.price_tv, NumberUtils.keepDown(item.getBuyprice(), DigitUtils.getDigit(item.getMark())))
                         .setText(R.id.total_price_tv, item.getTotal_num())
                         .setText(R.id.point_tv, item.getAim_point())
-                        .setText(R.id.stop_win_str, "平仓价")
-                        .setText(R.id.stop_loss_str, "获利")
+                        .setText(R.id.stop_win_str, getString(R.string.market_dealFragment3))
+                        .setText(R.id.stop_loss_str, getString(R.string.market_dealFragment4))
                         .setText(R.id.stop_win_tv, NumberUtils.keepDown(item.getSellprice(), DigitUtils.getDigit(item.getMark())))
                         .setText(R.id.stop_loss_tv, NumberUtils.keepDown(item.getIncome(), DigitUtils.getDigit(item.getMark())));
 
@@ -81,14 +81,14 @@ public class DealFragment extends BaseFragment<DealPresenter> {
                     holder.setText(R.id.time_tv, TimeFormatUtil.SF_FORMAT_E.format(item.getSelltime() * 1000));
                     if (item.getPc_type() == 1) {
                         holder.setVisible(R.id.share_tv, true);
-                        holder.setText(R.id.new_pirce_tv, "止盈平仓");
+                        holder.setText(R.id.new_pirce_tv, getString(R.string.market_dealFragment5));
                         holder.setTextColor(R.id.new_pirce_tv, color(R.color.market_green));
                         ClickUtil.click(holder.getView(R.id.share_tv), view -> {
                             ProfitShareActivity.start(getContext(), item.getId());
                         });
                     } else {
                         holder.setVisible(R.id.share_tv, false);
-                        holder.setText(R.id.new_pirce_tv, "止损平仓");
+                        holder.setText(R.id.new_pirce_tv, getString(R.string.market_dealFragment6));
                         holder.setTextColor(R.id.new_pirce_tv, color(R.color.market_red));
                         ClickUtil.click(holder.getView(R.id.share_tv), view -> {
                         });

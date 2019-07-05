@@ -149,6 +149,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> {
                 changeLanguage.setText("한글");
                 break;
             default:
+                changeLanguage.setText("English");
                 break;
         }
 

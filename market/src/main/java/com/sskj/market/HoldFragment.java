@@ -77,14 +77,14 @@ public class HoldFragment extends BaseFragment<HoldPresenter> {
             @Override
             public void bind(ViewHolder holder, HoldBean item) {
                 holder.setText(R.id.name_tv, item.getMark())
-                        .setText(R.id.buy_type_tv, item.getType() == 1 ? "买涨" : "买跌")
+                        .setText(R.id.buy_type_tv, item.getType() == 1 ? getString(R.string.market_buy_up) : getString(R.string.market_buy_down))
                         .setText(R.id.pay_coin_tv, item.getPtype())
                         .setText(R.id.price_tv, NumberUtils.keepDown(item.getBuyprice(), DigitUtils.getDigit(item.getMark())))
                         .setText(R.id.total_price_tv, item.getTotal_num())
                         .setText(R.id.point_tv, item.getAim_point())
                         .setText(R.id.stop_win_tv, NumberUtils.keepDown(item.getStopwin(), DigitUtils.getDigit(item.getMark())))
                         .setText(R.id.stop_loss_tv, NumberUtils.keepDown(item.getStoploss(), DigitUtils.getDigit(item.getMark())))
-                        .setText(R.id.new_pirce_tv, "最新价 " + NumberUtils.keepDown(item.getActprice(), DigitUtils.getDigit(item.getMark())))
+                        .setText(R.id.new_pirce_tv, getString(R.string.market_holdFragment3) + NumberUtils.keepDown(item.getActprice(), DigitUtils.getDigit(item.getMark())))
                         .setText(R.id.time_tv, TimeFormatUtil.SF_FORMAT_E.format(item.getAddtime() * 1000));
                 if (item.getType() == 1) {
                     holder.setTextColor(R.id.buy_type_tv, color(R.color.market_green));

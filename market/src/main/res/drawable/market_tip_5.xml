@@ -1,21 +1,21 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_checked="true">
         <shape>
-            <solid android:color="@color/common_tip" />
-            <corners android:radius="3dp" />
+            <solid android:color="@color/common_tip"/>
+            <corners android:radius="3dp"/>
         </shape>
     </item>
     <item android:state_enabled="false">
         <shape>
-            <stroke android:width="1dp" android:color="#223249"/>
-            <solid android:color="#131e30" />
+            <stroke android:color="#223249" android:width="1dp"/>
+            <solid android:color="#131e30"/>
         </shape>
     </item>
     <item android:state_checked="false">
         <shape>
-            <solid android:color="#223249" />
-            <corners android:radius="3dp" />
+            <solid android:color="#223249"/>
+            <corners android:radius="3dp"/>
         </shape>
     </item>
 </selector>

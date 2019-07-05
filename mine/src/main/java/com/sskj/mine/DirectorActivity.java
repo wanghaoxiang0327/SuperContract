@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
 
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.sskj.common.WebActivity;
 import com.sskj.common.adapter.BaseAdapter;
 import com.sskj.common.adapter.ViewHolder;
 import com.sskj.common.base.BaseActivity;
@@ -55,6 +56,10 @@ public class DirectorActivity extends BaseActivity<DirectorPresenter> {
 
     @Override
     public void initView() {
+
+        mToolBarLayout.setRightButtonOnClickListener(v -> {
+            WebActivity.start(this, 3);
+        });
 
         dividendList.setLayoutManager(new LinearLayoutManager(this));
         adapter = new BaseAdapter<DividendBean.Res.Dividen>(R.layout.mine_item_dividend, null, dividendList) {

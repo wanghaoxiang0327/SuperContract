@@ -42,7 +42,7 @@ public class LocalManageUtil {
             case 4:
                 return Locale.KOREA;
             default:
-                return Locale.SIMPLIFIED_CHINESE;
+                return Locale.ENGLISH;
         }
     }
 
@@ -59,7 +59,7 @@ public class LocalManageUtil {
             case 4:
                 return "han";
             default:
-                return "zh";
+                return "en";
         }
     }
 

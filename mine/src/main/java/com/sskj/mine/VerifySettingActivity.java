@@ -59,15 +59,10 @@ public class VerifySettingActivity extends BaseActivity<VerifySettingPresenter> 
         verifyCheckText.setText(verify.getType());
         switch (verify) {
             case SMS:
-                ClickUtil.click(verifyStatus, view -> {
-                    BindMobileOrEmailActivity.start(this, verify);
-                });
                 mToolBarLayout.setTitle(getString(R.string.mine_verify2));
                 break;
             case EMAIL:
-                ClickUtil.click(verifyStatus, view -> {
-                    BindMobileOrEmailActivity.start(this, verify);
-                });
+
                 mToolBarLayout.setTitle(getString(R.string.mine_verify6));
                 break;
             case GOOGLE:
@@ -87,14 +82,25 @@ public class VerifySettingActivity extends BaseActivity<VerifySettingPresenter> 
                 if (verify == Verify.SMS) {
                     if (TextUtils.isEmpty(user.getMobile())) {
                         verifyStatus.setText(getString(R.string.mine_verifySettingActivity1));
+                        ClickUtil.click(verifyStatus, view -> {
+                            BindMobileOrEmailActivity.start(this, verify);
+                        });
                     } else {
                         verifyStatus.setText(getString(R.string.mine_verifySettingActivity2));
+                        ClickUtil.click(verifyStatus, view -> {
+
+                        });
                     }
                     verifyCheck.setChecked(user.getIsStartSms() == 1);
                 } else if (verify == Verify.EMAIL) {
                     if (user.getIsBindMail() == 1) {
+                        ClickUtil.click(verifyStatus, view -> {
+                        });
                         verifyStatus.setText(getString(R.string.mine_verifySettingActivity2));
                     } else {
+                        ClickUtil.click(verifyStatus, view -> {
+                            BindMobileOrEmailActivity.start(this, verify);
+                        });
                         verifyStatus.setText(getString(R.string.mine_verifySettingActivity1));
                     }
                     verifyCheckText.setVisibility(View.GONE);

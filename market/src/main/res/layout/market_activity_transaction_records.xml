@@ -1,45 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_height="match_parent" android:layout_width="match_parent" android:orientation="vertical">
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="?android:actionBarSize"
-        android:background="@color/common_action_bar"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:paddingLeft="@dimen/common_margin"
-        android:paddingRight="@dimen/common_margin">
+    <LinearLayout android:background="@color/common_action_bar" android:gravity="center_vertical" android:layout_height="?android:actionBarSize" android:layout_width="match_parent" android:orientation="horizontal" android:paddingLeft="@dimen/common_margin" android:paddingRight="@dimen/common_margin">
 
-        <ImageView
-            android:id="@+id/left_img"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:paddingTop="18dp"
-            android:paddingRight="18dp"
-            android:paddingBottom="18dp"
-            android:src="@mipmap/common_icon_back" />
+        <ImageView android:id="@+id/left_img" android:layout_height="50dp" android:layout_width="50dp" android:paddingBottom="18dp" android:paddingRight="18dp" android:paddingTop="18dp" android:src="@mipmap/common_icon_back"/>
 
-        <com.sskj.common.tab.TabLayout
-            android:id="@+id/tabLayout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:indicator_color="@color/common_tip"
-            app:indicator_width="30dp"
-            app:selctTextSize="18sp"
-            app:textSelectColor="@color/common_tip"
-            app:textUnselectColor="@color/common_text"
-            app:textsize="18sp" />
+        <com.sskj.common.tab.TabLayout android:id="@+id/tabLayout" android:layout_height="match_parent" android:layout_width="match_parent" app:indicator_color="@color/common_tip" app:indicator_width="30dp" app:selctTextSize="18sp" app:textSelectColor="@color/common_tip" app:textUnselectColor="@color/common_text" app:textsize="18sp"/>
     </LinearLayout>
 
-    <FrameLayout
-        android:id="@+id/content"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+    <FrameLayout android:id="@+id/content" android:layout_height="match_parent" android:layout_width="match_parent"/>
 
 
 </LinearLayout>

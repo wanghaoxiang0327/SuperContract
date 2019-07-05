@@ -5,12 +5,19 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.VIBRATE"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
 
     <application>
         <meta-data android:name="design_width_in_dp" android:value="375"/>
         <meta-data android:name="design_height_in_dp" android:value="667"/>
 
+        <provider android:authorities="${applicationId}" android:exported="false" android:grantUriPermissions="true" android:name="android.support.v4.content.FileProvider">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_paths_public"/>
+        </provider>
+
+
         <activity android:name="com.sskj.common.ScanActivity"/>
         <activity android:name="com.sskj.common.WebActivity"/>
-    </application>
+    <activity android:name="com.sskj.common.WebViewActivity"/>
+</application>
 </manifest>

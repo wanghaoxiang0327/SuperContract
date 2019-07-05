@@ -41,4 +41,6 @@
     <string name="common_common_tip_dialog80">确定</string>
     <string name="common_common_activity_web20">协议</string>
     <string name="common_refreshActivity1">该View下有且只有有一个子View</string>
+    <string name="common_invite_rules">邀请规则</string>
+    <string name="common_director_rules">分红规则</string>
 </resources>

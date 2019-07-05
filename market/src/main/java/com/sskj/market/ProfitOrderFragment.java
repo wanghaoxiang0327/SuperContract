@@ -73,7 +73,7 @@ public class ProfitOrderFragment extends BaseFragment<ProfitOrderPresenter> {
             @Override
             public void bind(ViewHolder holder, OrderBean item) {
                 holder.setText(R.id.time_tv, TimeFormatUtil.SF_FORMAT_H.format(item.getSelltime() * 1000))
-                        .setText(R.id.type_tv, item.getType() == 1 ? "买涨" : "买跌")
+                        .setText(R.id.type_tv, item.getType() == 1 ? getString(R.string.market_buy_up) : getString(R.string.market_buy_down))
                         .setText(R.id.profit_tv, item.getIncome() + " " + item.getPtype())
                         .setText(R.id.price_tv, NumberUtils.keepDown(item.getSellprice(), DigitUtils.getDigit(item.getPtype())));
                 if (item.getType() == 1) {

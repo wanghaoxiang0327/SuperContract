@@ -42,6 +42,12 @@ public class WebActivity extends BaseActivity<WebPresenter> {
             case 1:
                 mToolBarLayout.setTitle(getString(R.string.common_webActivity1));
                 break;
+            case 2:
+                mToolBarLayout.setTitle(R.string.common_invite_rules);
+                break;
+            case 3:
+                mToolBarLayout.setTitle(R.string.common_director_rules);
+                break;
             default:
                 break;
         }
@@ -54,7 +60,7 @@ public class WebActivity extends BaseActivity<WebPresenter> {
 
     /**
      * @param context
-     * @param type    1 注册协议 2 邀请规则
+     * @param type    1 注册协议 2 邀请规则 3董事分红规则
      */
     public static void start(Context context, int type) {
         Intent intent = new Intent(context, WebActivity.class);
@@ -68,9 +74,11 @@ public class WebActivity extends BaseActivity<WebPresenter> {
             case 1:
                 RichText.fromHtml(data.getReg_agree()).into(text);
                 break;
-
             case 2:
-                RichText.fromHtml(data.getTj_agree()  ).into(text);
+                RichText.fromHtml(data.getTj_agree()).into(text);
+                break;
+            case 3:
+                RichText.fromHtml(data.getFh_agree()).into(text);
                 break;
             default:
                 break;

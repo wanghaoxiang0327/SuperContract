@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <resources>
     <string name="market_high">高</string>
     <string name="market_low">低</string>
@@ -6,4 +7,41 @@
     <string name="market_pop_kchart_fu">副图</string>
     <string name="market_time">分时</string>
     <string name="market_day">日线</string>
+    <string name="market_hold">持仓</string>
+    <string name="market_deal">成交</string>
+    <string name="market_buy_up">买涨</string>
+    <string name="market_buy_down">买跌</string>
+    <string name="market_createOrderDialog1">手</string>
+    <string name="market_createOrderDialog4">交易总额:</string>
+    <string name="market_market_fragment_profit_order170">方向</string>
+    <string name="market_market_fragment_profit_order150">时间</string>
+    <string name="market_market_dialog_create_order110">交易资产</string>
+    <string name="market_market_dialog_create_order550">交易总额:---</string>
+    <string name="market_market_dialog_create_order80">取消</string>
+    <string name="market_market_dialog_create_order370">目标点位</string>
+    <string name="market_market_dialog_create_order190">交易量</string>
+    <string name="market_dealFragment3">平仓价</string>
+    <string name="market_dealFragment4">获利</string>
+    <string name="market_dealFragment5">止盈平仓</string>
+    <string name="market_dealFragment6">止损平仓</string>
+    <string name="market_marketDetailActivity1">创建订单成功</string>
+    <string name="market_market_item_hold80">资产币种</string>
+    <string name="market_holdFragment3">最新价 </string>
+    <string name="market_market_dialog_create_order500">/止损:</string>
+    <string name="market_market_dialog_create_order300">1手</string>
+    <string name="market_market_dialog_create_order460">止盈:</string>
+    <string name="market_market_activity_profit_share60">盈利金额</string>
+    <string name="market_market_item_hold400">最新价 64.3256</string>
+    <string name="market_market_activity_profit_share210">平仓价格</string>
+    <string name="market_market_dialog_create_order280">交易手数</string>
+    <string name="market_market_fragment_profit_order80">盈利订单</string>
+    <string name="market_market_item_hold440">分享</string>
+    <string name="market_market_item_hold120">交易总额</string>
+    <string name="market_market_item_hold340">止盈价</string>
+    <string name="market_market_item_hold100">下单价</string>
+    <string name="market_market_item_hold320">点位</string>
+    <string name="market_market_activity_profit_share170">目标合约</string>
+    <string name="market_market_activity_profit_share390">最终解释权归平台所有</string>
+    <string name="market_market_activity_profit_share190">开仓价格</string>
+    <string name="market_market_item_hold360">止损价</string>
 </resources>

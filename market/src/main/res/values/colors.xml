@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <resources>
     <color name="market_green">#32b28f</color>
     <color name="market_red">#ff5755</color>

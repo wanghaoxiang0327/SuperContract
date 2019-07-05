@@ -13,6 +13,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.hey.lib.HeySpinner;
+import com.sskj.common.App;
 import com.sskj.common.rxbus.RxBus;
 import com.sskj.common.rxbus.Subscribe;
 import com.sskj.common.rxbus.ThreadMode;
@@ -118,7 +119,7 @@ public class CreateOrderDialog extends BottomSheetDialog {
     @SuppressLint("CheckResult")
     private void initView() {
         for (int i = 1; i < 11; i++) {
-            nums.add(i + "手");
+            nums.add(i + App.INSTANCE.getString(R.string.market_createOrderDialog1));
         }
         tradeNumSpinner.setOnSelectListener(position -> {
             tradeNum = position + 1;
@@ -144,10 +145,10 @@ public class CreateOrderDialog extends BottomSheetDialog {
 
 
         if (isUp) {
-            submit.setText("买涨");
+            submit.setText(App.INSTANCE.getString(R.string.market_buy_up));
             submit.setBackgroundResource(R.drawable.market_green_bg_50);
         } else {
-            submit.setText("买跌");
+            submit.setText(App.INSTANCE.getString(R.string.market_buy_down));
             submit.setBackgroundResource(R.drawable.market_red_bg_50);
         }
         cancelTv.setOnClickListener(v -> {
@@ -318,7 +319,7 @@ public class CreateOrderDialog extends BottomSheetDialog {
         stopWinTv.setText(NumberUtils.keepDown(stopWin, DigitUtils.getDigit(code)));
         stopLossTv.setText(NumberUtils.keepDown(stopLoss, DigitUtils.getDigit(code)));
         double total = tradeVolume * tradeNum;
-        totalPrice.setText("交易总额:" + NumberUtils.keepDown(total, DigitUtils.getDigit(code)));
+        totalPrice.setText(App.INSTANCE.getString(R.string.market_createOrderDialog4) + NumberUtils.keepDown(total, DigitUtils.getDigit(code)));
     }
 
     public void setListener(CreateOrderListener listener) {

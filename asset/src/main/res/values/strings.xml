@@ -60,5 +60,5 @@
 	<string name="asset_asset_activity_withdraw300">手续费：5.5550 BTC/次</string>
 	<string name="asset_asset_activity_transfer80">对方ID</string>
 	<string name="asset_assetFragment101">为了保证您的账户安全，短信验证和谷歌验证方式至少开启一种</string>
-	<string name="asset_assetFragment2">请先设置支付密码</string>
+	<string name="asset_assetFragment2">请先设置资金密码</string>
 </resources>

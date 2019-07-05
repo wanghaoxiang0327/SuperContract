@@ -1,215 +1,58 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/common_background"
-    android:orientation="vertical">
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:background="@color/common_background" android:layout_height="match_parent" android:layout_width="match_parent" android:orientation="vertical">
 
 
-    <com.sskj.common.view.ToolBarLayout
-        android:focusableInTouchMode="true"
-        android:focusable="true"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:background_color="@color/common_action_bar"
-        app:right_img="@mipmap/market_order_history" />
+    <com.sskj.common.view.ToolBarLayout android:focusable="true" android:focusableInTouchMode="true" android:layout_height="wrap_content" android:layout_width="match_parent" app:background_color="@color/common_action_bar" app:right_img="@mipmap/market_order_history"/>
 
 
-    <android.support.v4.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+    <android.support.v4.widget.NestedScrollView android:layout_height="0dp" android:layout_weight="1" android:layout_width="match_parent">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+        <LinearLayout android:layout_height="match_parent" android:layout_width="match_parent" android:orientation="vertical">
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="5dp"
-                android:background="@color/common_dark" />
+            <View android:background="@color/common_dark" android:layout_height="5dp" android:layout_width="match_parent"/>
 
-            <android.support.constraint.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+            <android.support.constraint.ConstraintLayout android:layout_height="wrap_content" android:layout_width="match_parent">
 
-                <TextView
-                    android:id="@+id/tv_price"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_weight="1"
-                    android:text="0.0000"
-                    android:textColor="@color/market_green"
-                    android:textSize="21sp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                <TextView android:id="@+id/tv_price" android:layout_height="wrap_content" android:layout_marginStart="16dp" android:layout_marginTop="16dp" android:layout_weight="1" android:layout_width="0dp" android:text="0.0000" android:textColor="@color/market_green" android:textSize="21sp" android:textStyle="bold" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"/>
 
 
-                <TextView
+                <TextView android:layout_height="wrap_content" android:layout_marginEnd="8dp" android:layout_width="wrap_content" android:text="@string/market_high" android:textColor="@color/common_hint" android:textSize="14sp" app:layout_constraintBaseline_toBaselineOf="@+id/tv_high" app:layout_constraintEnd_toStartOf="@+id/tv_high"/>
 
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:text="@string/market_high"
-                    android:textColor="@color/common_hint"
-                    android:textSize="14sp"
-                    app:layout_constraintBaseline_toBaselineOf="@+id/tv_high"
-                    app:layout_constraintEnd_toStartOf="@+id/tv_high" />
-
-                <TextView
-                    android:id="@+id/tv_high"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
-                    android:gravity="end"
-                    android:text="0.0000"
-                    android:textColor="@color/common_white"
-                    android:textSize="14sp"
-                    app:layout_constraintBaseline_toBaselineOf="@+id/tv_price"
-                    app:layout_constraintEnd_toEndOf="parent" />
+                <TextView android:gravity="end" android:id="@+id/tv_high" android:layout_height="wrap_content" android:layout_marginEnd="16dp" android:layout_width="wrap_content" android:text="0.0000" android:textColor="@color/common_white" android:textSize="14sp" app:layout_constraintBaseline_toBaselineOf="@+id/tv_price" app:layout_constraintEnd_toEndOf="parent"/>
 
 
-                <TextView
-                    android:id="@+id/tv_change_rate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginBottom="16dp"
-                    android:text="+0.00%"
-                    android:textColor="@color/market_green"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/tvCny"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_price"
-                    app:layout_constraintVertical_bias="0.0" />
+                <TextView android:id="@+id/tv_change_rate" android:layout_height="wrap_content" android:layout_marginBottom="16dp" android:layout_marginStart="8dp" android:layout_marginTop="16dp" android:layout_width="wrap_content" android:text="+0.00%" android:textColor="@color/market_green" android:textSize="14sp" android:textStyle="bold" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toEndOf="@+id/tvCny" app:layout_constraintTop_toBottomOf="@+id/tv_price" app:layout_constraintVertical_bias="0.0"/>
 
-                <TextView
-                    android:id="@+id/tvCny"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="≈0.00 CNY"
-                    android:textColor="@color/common_text"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBaseline_toBaselineOf="@+id/tv_change_rate"
-                    app:layout_constraintStart_toStartOf="@+id/tv_price" />
+                <TextView android:id="@+id/tvCny" android:layout_height="wrap_content" android:layout_weight="1" android:layout_width="0dp" android:text="≈0.00 CNY" android:textColor="@color/common_text" android:textSize="14sp" android:textStyle="bold" app:layout_constraintBaseline_toBaselineOf="@+id/tv_change_rate" app:layout_constraintStart_toStartOf="@+id/tv_price"/>
 
-                <TextView
+                <TextView android:layout_height="wrap_content" android:layout_marginEnd="8dp" android:layout_width="wrap_content" android:text="@string/market_low" android:textColor="@color/common_hint" android:textSize="14sp" app:layout_constraintBaseline_toBaselineOf="@+id/tv_low" app:layout_constraintEnd_toStartOf="@+id/tv_low"/>
 
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:text="@string/market_low"
-                    android:textColor="@color/common_hint"
-                    android:textSize="14sp"
-                    app:layout_constraintBaseline_toBaselineOf="@+id/tv_low"
-                    app:layout_constraintEnd_toStartOf="@+id/tv_low" />
-
-                <TextView
-                    android:id="@+id/tv_low"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="end"
-                    android:text="0.0000"
-                    android:textColor="@color/common_white"
-                    android:textSize="14sp"
-                    app:layout_constraintBaseline_toBaselineOf="@+id/tv_change_rate"
-                    app:layout_constraintEnd_toEndOf="@+id/tv_high"
-                    app:layout_constraintStart_toStartOf="@+id/tv_high" />
+                <TextView android:gravity="end" android:id="@+id/tv_low" android:layout_height="wrap_content" android:layout_width="wrap_content" android:text="0.0000" android:textColor="@color/common_white" android:textSize="14sp" app:layout_constraintBaseline_toBaselineOf="@+id/tv_change_rate" app:layout_constraintEnd_toEndOf="@+id/tv_high" app:layout_constraintStart_toStartOf="@+id/tv_high"/>
 
             </android.support.constraint.ConstraintLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/common_divider" />
+            <View android:background="@color/common_divider" android:layout_height="1dp" android:layout_width="match_parent"/>
 
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:orientation="horizontal">
+            <LinearLayout android:layout_height="45dp" android:layout_width="match_parent" android:orientation="horizontal">
 
-                <com.sskj.common.tab.TabLayout
-                    android:id="@+id/chart_tabLayout"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    app:selctTextSize="12sp"
-                    app:textsize="12sp"
-                    app:indicator_color="@color/common_tip"
-                    app:textSelectColor="@color/common_tip"
-                    app:textUnselectColor="@color/common_hint"
-                    />
+                <com.sskj.common.tab.TabLayout android:id="@+id/chart_tabLayout" android:layout_height="match_parent" android:layout_weight="1" android:layout_width="0dp" app:indicator_color="@color/common_tip" app:selctTextSize="12sp" app:textSelectColor="@color/common_tip" app:textUnselectColor="@color/common_hint" app:textsize="12sp"/>
 
-                <TextView
-                    android:id="@+id/chart_norm"
-                    android:layout_marginTop="2dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="@string/market_norm"
-                    android:textSize="12sp"
-                    android:textColor="@color/common_hint" />
+                <TextView android:gravity="center" android:id="@+id/chart_norm" android:layout_height="match_parent" android:layout_marginTop="2dp" android:layout_width="wrap_content" android:text="@string/market_norm" android:textColor="@color/common_hint" android:textSize="12sp"/>
 
-                <ImageView
-                    android:layout_width="7dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_height="7dp"
-                    android:layout_gravity="bottom"
-                    android:layout_marginRight="16dp"
-                    android:layout_marginBottom="10dp"
-                    android:src="@mipmap/market_icon_triangle" />
+                <ImageView android:layout_gravity="bottom" android:layout_height="7dp" android:layout_marginBottom="10dp" android:layout_marginLeft="5dp" android:layout_marginRight="16dp" android:layout_width="7dp" android:src="@mipmap/market_icon_triangle"/>
             </LinearLayout>
 
-            <FrameLayout
-                android:id="@+id/chart_content"
-                android:layout_width="match_parent"
-                android:layout_height="250dp" />
+            <FrameLayout android:id="@+id/chart_content" android:layout_height="250dp" android:layout_width="match_parent"/>
 
-            <FrameLayout
-                android:id="@+id/order_content"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+            <FrameLayout android:id="@+id/order_content" android:layout_height="wrap_content" android:layout_width="match_parent"/>
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/common_background"
-        android:orientation="horizontal"
-        android:paddingLeft="@dimen/common_margin"
-        android:paddingTop="8dp"
-        android:paddingRight="@dimen/common_margin"
-        android:paddingBottom="8dp">
+    <LinearLayout android:background="@color/common_background" android:layout_height="wrap_content" android:layout_width="match_parent" android:orientation="horizontal" android:paddingBottom="8dp" android:paddingLeft="@dimen/common_margin" android:paddingRight="@dimen/common_margin" android:paddingTop="8dp">
 
-        <Button
-            android:id="@+id/buy_up_btn"
-            android:layout_width="0dp"
-            android:layout_height="45dp"
-            android:layout_weight="1"
-            android:background="@drawable/market_green_bg_50"
-            android:text="买涨"
-            android:textColor="@color/common_button_text" />
+        <Button android:background="@drawable/market_green_bg_50" android:id="@+id/buy_up_btn" android:layout_height="45dp" android:layout_weight="1" android:layout_width="0dp" android:text="@string/market_buy_up" android:textColor="@color/common_button_text"/>
 
-        <Button
-            android:id="@+id/buy_down_btn"
-            android:layout_width="0dp"
-            android:layout_height="45dp"
-            android:layout_marginLeft="16dp"
-            android:layout_weight="1"
-            android:background="@drawable/market_red_bg_50"
-            android:text="买跌"
-            android:textColor="@color/common_button_text" />
+        <Button android:background="@drawable/market_red_bg_50" android:id="@+id/buy_down_btn" android:layout_height="45dp" android:layout_marginLeft="16dp" android:layout_weight="1" android:layout_width="0dp" android:text="@string/market_buy_down" android:textColor="@color/common_button_text"/>
     </LinearLayout>
 </LinearLayout>

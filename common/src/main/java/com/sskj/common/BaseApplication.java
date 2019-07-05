@@ -18,6 +18,7 @@ import com.scwang.smartrefresh.layout.header.ClassicsHeader;
 import com.shizhefei.mvc.MVCHelper;
 import com.sskj.common.language.LocalManageUtil;
 import com.sskj.common.mvc.LoadViewFactory;
+import com.sskj.common.utils.Cockroach;
 import com.sskj.common.utils.SpUtil;
 import com.zzhoujay.richtext.RichText;
 
@@ -40,6 +41,13 @@ public class BaseApplication extends Application {
         if (BuildConfig.DEBUG) {
             ARouter.openDebug();
             ARouter.openLog();
+        }else {
+            Cockroach.install(new Cockroach.ExceptionHandler() {
+                @Override
+                public void handlerException(Thread thread, Throwable throwable) {
+
+                }
+            });
         }
         ARouter.init(this);
         RichText.initCacheDir(this);

@@ -48,7 +48,11 @@ public class TipDialog extends AlertDialog {
         });
 
         cancelBtn.setOnClickListener(view -> {
-            dismiss();
+            if (cancelListener != null) {
+                cancelListener.onCancel(this);
+            } else {
+                dismiss();
+            }
         });
 
     }
@@ -83,11 +87,18 @@ public class TipDialog extends AlertDialog {
 
 
     private OnConfirmListener confirmListener;
+    private OnCancelListener cancelListener;
+
 
     public TipDialog setConfirmListener(OnConfirmListener confirmListener) {
         this.confirmListener = confirmListener;
         return this;
     }
 
+
+    public TipDialog setCancelListener(OnCancelListener cancelListener) {
+        this.cancelListener = cancelListener;
+        return this;
+    }
 
 }

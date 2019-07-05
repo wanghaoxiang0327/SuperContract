@@ -55,8 +55,8 @@ public class TransactionRecordsActivity extends BaseActivity<TransactionRecordsP
         leftImg.setOnClickListener(v -> {
             finish();
         });
-        tabs.add(new TabItem("持仓"));
-        tabs.add(new TabItem("成交"));
+        tabs.add(new TabItem(getString(R.string.market_hold)));
+        tabs.add(new TabItem(getString(R.string.market_deal)));
         fragments.add(HoldFragment.newInstance());
         fragments.add(DealFragment.newInstance());
         tabLayout.setTabData(tabs, getSupportFragmentManager(), R.id.content, fragments);

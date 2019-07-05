@@ -57,10 +57,10 @@ public class BindMobileOrEmailActivity extends BaseActivity<BindMobileOrEmailPre
             case EMAIL:
                 mToolBarLayout.setTitle(getString(R.string.mine_bindMobileOrEmailActivity101));
                 verifyCodeName.setText(getString(R.string.mine_bindMobileOrEmailActivity1));
-                verifyAccountEdt.setHint(getString(R.string.mine_bindMobileOrEmailActivity2));
+                verifyAccountEdt.setHint(getString(R.string.mine_bindMobileOrEmailActivity201));
                 break;
             case SMS:
-                mToolBarLayout.setTitle(getString(R.string.mine_bindMobileOrEmailActivity201));
+                mToolBarLayout.setTitle(getString(R.string.mine_mine_activity_bind_mobile_or_email20));
                 verifyCodeName.setText(getString(R.string.mine_bindMobileOrEmailActivity2));
                 verifyAccountEdt.setHint(getString(R.string.mine_mine_activity_bind_mobile_or_email60));
                 break;

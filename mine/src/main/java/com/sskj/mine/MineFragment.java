@@ -8,6 +8,7 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.allen.library.SuperTextView;
 import com.sskj.common.AppManager;
 import com.sskj.common.BaseApplication;
+import com.sskj.common.WebViewActivity;
 import com.sskj.common.base.BaseFragment;
 import com.sskj.common.dialog.TipDialog;
 import com.sskj.common.router.RoutePath;
@@ -127,6 +128,19 @@ public class MineFragment extends BaseFragment<MinePresenter> {
             }
 
         });
+
+        //客服
+        ClickUtil.click(menuService, view -> {
+            if (BaseApplication.isLogin()) {
+                WebViewActivity.start(getContext(), "https://dwz.cn/rmYURhHX");
+            } else {
+                ARouter.getInstance().build(RoutePath.LOGIN_LOGIN).navigation();
+            }
+
+        });
+
+
+        //退出登錄
         ClickUtil.click(menuLogout, (view) -> {
             new TipDialog(getContext())
                     .setContent(getString(R.string.mine_mineFragment4))

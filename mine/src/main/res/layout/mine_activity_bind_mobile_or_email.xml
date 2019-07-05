@@ -1,22 +1,95 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:background="@color/mine_background" android:layout_height="match_parent" android:layout_width="match_parent" android:orientation="vertical">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mine_background"
+    android:orientation="vertical">
 
-    <com.sskj.common.view.ToolBarLayout android:layout_height="wrap_content" android:layout_width="match_parent" app:background_color="@color/common_action_bar" app:title="@string/mine_mine_activity_bind_mobile_or_email20"/>
+    <com.sskj.common.view.ToolBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:background_color="@color/common_action_bar"
+        app:title="@string/mine_mine_activity_bind_mobile_or_email20" />
 
 
-    <TextView android:background="@color/common_action_bar" android:gravity="center_vertical" android:id="@+id/verify_name" android:layout_height="35dp" android:layout_marginTop="5dp" android:layout_width="match_parent" android:paddingLeft="@dimen/common_margin" android:paddingRight="@dimen/common_margin" android:text="@string/mine_verify1" android:textColor="@color/common_hint" android:textSize="16sp"/>
+    <TextView
+        android:id="@+id/verify_name"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/common_action_bar"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/common_margin"
+        android:paddingRight="@dimen/common_margin"
+        android:text="@string/mine_verify1"
+        android:textColor="@color/common_hint"
+        android:textSize="16sp" />
 
-    <EditText android:background="@drawable/common_edt_line_bg" android:gravity="center_vertical" android:hint="@string/mine_mine_activity_bind_mobile_or_email60" android:id="@+id/verify_account_edt" android:layout_height="50dp" android:layout_width="match_parent" android:paddingLeft="@dimen/common_margin" android:paddingRight="@dimen/common_margin" android:textColor="@color/common_text" android:textColorHint="@color/common_text" android:textSize="14sp"/>
+    <EditText
+        android:id="@+id/verify_account_edt"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/common_edt_line_bg"
+        android:gravity="center_vertical"
+        android:hint="@string/mine_mine_activity_bind_mobile_or_email60"
+        android:paddingLeft="@dimen/common_margin"
+        android:paddingRight="@dimen/common_margin"
+        android:textColor="@color/common_text"
+        android:textColorHint="@color/common_text"
+        android:textSize="14sp" />
 
-    <TextView android:background="@color/common_action_bar" android:gravity="center_vertical" android:id="@+id/verify_code_name" android:layout_height="35dp" android:layout_width="match_parent" android:paddingLeft="@dimen/common_margin" android:paddingRight="@dimen/common_margin" android:text="@string/mine_bindMobileOrEmailActivity2" android:textColor="@color/common_hint" android:textSize="16sp"/>
+    <TextView
+        android:id="@+id/verify_code_name"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:background="@color/common_action_bar"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/common_margin"
+        android:paddingRight="@dimen/common_margin"
+        android:text="@string/mine_bindMobileOrEmailActivity2"
+        android:textColor="@color/common_hint"
+        android:textSize="16sp" />
 
 
-    <LinearLayout android:background="@drawable/common_edt_line_bg" android:layout_height="wrap_content" android:layout_width="match_parent" android:orientation="horizontal" android:paddingLeft="@dimen/common_margin" android:paddingRight="@dimen/common_margin">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/common_edt_line_bg"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/common_margin"
+        android:paddingRight="@dimen/common_margin">
 
-        <EditText android:background="@drawable/common_edt_line_bg" android:gravity="center_vertical" android:hint="@string/mine_mine_activity_bind_mobile_or_email120" android:id="@+id/edt_verify_code" android:layout_height="50dp" android:layout_weight="1" android:layout_width="0dp" android:textColor="@color/common_text" android:textColorHint="@color/common_text" android:textSize="14sp"/>
+        <EditText
+            android:id="@+id/edt_verify_code"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@drawable/common_edt_line_bg"
+            android:gravity="center_vertical"
+            android:hint="@string/mine_mine_activity_bind_mobile_or_email120"
+            android:textColor="@color/common_text"
+            android:textColorHint="@color/common_text"
+            android:textSize="14sp" />
 
-        <TextView android:gravity="center_vertical" android:id="@+id/get_code_tv" android:layout_height="match_parent" android:layout_marginLeft="10dp" android:layout_width="wrap_content" android:text="@string/mine_mine_activity_bind_mobile_or_email140" android:textColor="@color/common_tip"/>
+        <TextView
+            android:id="@+id/get_code_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:gravity="center_vertical"
+            android:text="@string/mine_mine_activity_bind_mobile_or_email140"
+            android:textColor="@color/common_tip" />
     </LinearLayout>
 
-    <Button android:background="@drawable/common_tip_50" android:id="@+id/submit" android:layout_height="45dp" android:layout_marginLeft="@dimen/common_margin" android:layout_marginRight="@dimen/common_margin" android:layout_marginTop="50dp" android:layout_width="match_parent" android:text="@string/mine_mine_activity_bind_mobile_or_email170" android:textColor="@color/common_button_text"/>
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginLeft="@dimen/common_margin"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="@dimen/common_margin"
+        android:background="@drawable/common_tip_50"
+        android:text="@string/mine_mine_activity_bind_mobile_or_email170"
+        android:textColor="@color/common_button_text" />
 </LinearLayout>

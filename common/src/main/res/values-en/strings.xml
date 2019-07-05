@@ -41,4 +41,6 @@
     <string name="common_common_tip_dialog80">determine</string>
     <string name="common_common_activity_web20">protocol</string>
     <string name="common_refreshActivity1">There is only one subview under the View</string>
+    <string name="common_invite_rules">Invitation rule</string>
+    <string name="common_director_rules">Dividend rule</string>
 </resources>

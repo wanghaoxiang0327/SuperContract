@@ -1,6 +1,9 @@
 package com.sskj.supercontrct;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -17,9 +20,12 @@ import com.sskj.common.BaseApplication;
 import com.sskj.common.base.BaseActivity;
 import com.sskj.common.base.BasePresenter;
 import com.sskj.common.base.NormalActivity;
+import com.sskj.common.data.VersionBean;
 import com.sskj.common.dialog.TipDialog;
+import com.sskj.common.dialog.VersionUpdateDialog;
 import com.sskj.common.exception.LogoutException;
 import com.sskj.common.http.BaseHttpConfig;
+import com.sskj.common.http.HttpResult;
 import com.sskj.common.router.RoutePath;
 import com.sskj.common.rxbus.RxBus;
 import com.sskj.common.rxbus.Subscribe;
@@ -31,6 +37,7 @@ import com.sskj.common.tab.TabSelectListener;
 import com.sskj.common.utils.SpUtil;
 import com.sskj.market.data.CoinBean;
 import com.sskj.mine.MineFragment;
+import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import java.util.ArrayList;
 
@@ -57,6 +64,13 @@ public class MainActivity extends BaseActivity<MainPresenter> {
     @Override
     protected int getLayoutId() {
         return R.layout.activity_main;
+    }
+
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        checkPermission();
     }
 
     @Override
@@ -118,8 +132,38 @@ public class MainActivity extends BaseActivity<MainPresenter> {
     }
 
     @Override
+    public void loadData() {
+        mPresenter.checkVersion(BuildConfig.VERSION_NAME);
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
         marketWebSocket.closeWebSocket();
+    }
+
+
+    @SuppressLint("CheckResult")
+    public void checkPermission() {
+        new RxPermissions(this).request(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                .subscribe(aBoolean -> {
+                    if (!aBoolean) {
+                        new TipDialog(this)
+                                .setContent("请先同意相关权限,以使App正常运行")
+                                .setConfirmListener(dialog -> {
+                                    checkPermission();
+                                })
+                                .setCancelListener(dialog -> {
+                                    finish();
+                                }).show();
+                    }
+                });
+    }
+
+
+    public void checkVersion(HttpResult<VersionBean> result) {
+        if (result != null) {
+            new VersionUpdateDialog(this, result.getData()).show();
+        }
     }
 }

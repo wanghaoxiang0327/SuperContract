@@ -41,4 +41,6 @@
 	<string name="common_common_tip_dialog80">결정</string>
 	<string name="common_common_activity_web20">계약서</string>
 	<string name="common_refreshActivity1">보기 아래에 하나의 하위보기 만 있습니다.</string>
+    <string name="common_invite_rules">초대 규칙</string>
+	<string name="common_director_rules">배당 규칙</string>
 </resources>

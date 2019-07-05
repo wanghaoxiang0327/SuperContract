@@ -90,7 +90,7 @@ public class SecurityActivity extends BaseActivity<SecurityPresenter> {
                 }
                 if (userBean.getIsStartSms() == 1) {
                     startSms = true;
-                    bindSMS=true;
+                    bindSMS = true;
                     menuSmsVerify.setRightString(getString(R.string.mine_securityActivity3));
                 } else {
                     startSms = false;
@@ -131,7 +131,14 @@ public class SecurityActivity extends BaseActivity<SecurityPresenter> {
             }
         });
         ClickUtil.click(menuLoginPs, view -> {
-            ResetPasswordActivity.start(this);
+            if (!startSms && !startGoogle) {
+                new TipDialog(this)
+                        .setContent(getString(R.string.mine_securityActivity5))
+                        .setCancelVisible(View.GONE)
+                        .show();
+            } else {
+                ResetPasswordActivity.start(this);
+            }
         });
         ClickUtil.click(menuPayPs, view -> {
             if (setPayPs) {
