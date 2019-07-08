@@ -3,12 +3,15 @@ package com.sskj.market;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
+import android.support.constraint.ConstraintLayout;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.sskj.common.base.BaseActivity;
+import com.sskj.common.language.LanguageSPUtil;
+import com.sskj.common.language.LocalManageUtil;
 import com.sskj.common.utils.ClickUtil;
 import com.sskj.common.utils.DigitUtils;
 import com.sskj.common.utils.NumberUtils;
@@ -21,8 +24,6 @@ import butterknife.BindView;
  * Create at  2019/07/01
  */
 public class ProfitShareActivity extends BaseActivity<ProfitSharePresenter> {
-
-
     @BindView(R2.id.marketTextview)
     TextView marketTextview;
     @BindView(R2.id.buy_type)
@@ -71,9 +72,9 @@ public class ProfitShareActivity extends BaseActivity<ProfitSharePresenter> {
 
     public void setOrderDetail(OrderDetail data) {
         coinName.setText(data.getPname());
-        marketProfitTv.setText(NumberUtils.keepDown(data.getIncome(), DigitUtils.ASSET_DIGIT) + data.getPtype());
-        createPrice.setText("$" + NumberUtils.keepDown(data.getBuyprice(), DigitUtils.ASSET_DIGIT));
-        dealPrice.setText("$" + NumberUtils.keepDown(data.getSellprice(), DigitUtils.ASSET_DIGIT));
+        marketProfitTv.setText(NumberUtils.keepDown(data.getIncome(), DigitUtils.getDigit(data.getPname())) + data.getPtype());
+        createPrice.setText("$" + NumberUtils.keepDown(data.getBuyprice(), DigitUtils.getDigit(data.getPname())));
+        dealPrice.setText("$" + NumberUtils.keepDown(data.getSellprice(),DigitUtils.getDigit(data.getPname())));
         Glide.with(this).load(data.getQrc()).into(qrCode);
         if (data.getType() == 1) {
             buyType.setText(getString(R.string.market_buy_up));

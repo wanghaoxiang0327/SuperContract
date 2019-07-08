@@ -1,49 +1,233 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:background="@mipmap/market_profit_bg" android:layout_height="match_parent" android:layout_width="match_parent" android:orientation="vertical" android:padding="@dimen/common_margin">
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/market_profit_bg"
+    android:orientation="vertical"
+    android:padding="@dimen/common_margin">
 
 
-    <ImageView android:id="@+id/back_img" android:layout_height="30dp" android:layout_width="30dp" android:padding="5dp" android:src="@mipmap/common_icon_back" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"/>
+    <ImageView
+        android:id="@+id/back_img"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:padding="5dp"
+        android:src="@mipmap/common_icon_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout android:gravity="center_vertical" android:id="@+id/marketLinearlayout" android:layout_height="wrap_content" android:layout_marginTop="32dp" android:layout_width="wrap_content" android:orientation="horizontal" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/marketGuideline4">
+    <LinearLayout
+        android:id="@+id/marketLinearlayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/marketGuideline4">
 
-        <TextView android:id="@+id/marketTextview" android:layout_height="wrap_content" android:layout_width="wrap_content" android:text="@string/market_market_activity_profit_share60" android:textColor="#3e3a39" android:textSize="20sp"/>
+        <TextView
+            android:id="@+id/marketTextview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/market_market_activity_profit_share60"
+            android:textColor="#3e3a39"
+            android:textSize="20sp" />
 
-        <TextView android:background="@drawable/market_green_bg_5" android:id="@+id/buy_type" android:layout_height="wrap_content" android:layout_marginLeft="8dp" android:layout_width="wrap_content" android:paddingBottom="3dp" android:paddingLeft="8dp" android:paddingRight="8dp" android:paddingTop="3dp" android:text="@string/market_buy_up" android:textColor="@color/common_white"/>
+        <TextView
+            android:id="@+id/buy_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:background="@drawable/market_green_bg_5"
+            android:paddingLeft="8dp"
+            android:paddingTop="3dp"
+            android:paddingRight="8dp"
+            android:paddingBottom="3dp"
+            android:text="@string/market_buy_up"
+            android:textColor="@color/common_white" />
 
 
     </LinearLayout>
 
 
-    <TextView android:gravity="center" android:id="@+id/deal_price" android:layout_height="wrap_content" android:layout_marginEnd="8dp" android:layout_marginStart="8dp" android:layout_width="0dp" android:textColor="#28a07c" android:textSize="16sp" app:layout_constraintBaseline_toBaselineOf="@+id/create_price" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="@+id/marketGuideline6" tools:text="1872 USDT"/>
+    <TextView
+        android:id="@+id/deal_price"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:gravity="center"
+        android:textColor="#28a07c"
+        android:textSize="16sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/create_price"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/marketGuideline6"
+        tools:text="1872 USDT" />
 
-    <TextView android:gravity="center" android:id="@+id/create_price" android:layout_height="wrap_content" android:layout_marginEnd="8dp" android:layout_marginStart="8dp" android:layout_width="0dp" android:textColor="#28a07c" android:textSize="16sp" app:layout_constraintBaseline_toBaselineOf="@+id/coin_name" app:layout_constraintEnd_toStartOf="@+id/marketGuideline6" app:layout_constraintStart_toStartOf="@+id/marketGuideline5" tools:text="1872 USDT"/>
+    <TextView
+        android:id="@+id/create_price"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:gravity="center"
+        android:textColor="#28a07c"
+        android:textSize="16sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/coin_name"
+        app:layout_constraintEnd_toStartOf="@+id/marketGuideline6"
+        app:layout_constraintStart_toStartOf="@+id/marketGuideline5"
+        tools:text="1872 USDT" />
 
-    <TextView android:gravity="center" android:id="@+id/coin_name" android:layout_height="wrap_content" android:layout_marginEnd="8dp" android:layout_marginStart="8dp" android:layout_marginTop="8dp" android:layout_width="0dp" android:textColor="#28a07c" android:textSize="16sp" app:layout_constraintEnd_toStartOf="@+id/marketGuideline5" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/marketProfit_tv6" tools:text="1872 USDT"/>
+    <TextView
+        android:id="@+id/coin_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:gravity="center"
+        android:textColor="#28a07c"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/marketGuideline5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/marketProfit_tv6"
+        tools:text="1872 USDT" />
 
-    <TextView android:id="@+id/marketProfit_tv6" android:layout_height="wrap_content" android:layout_marginTop="32dp" android:layout_width="wrap_content" android:text="@string/market_market_activity_profit_share170" android:textColor="#28a07c" android:textSize="16sp" app:layout_constraintEnd_toStartOf="@+id/marketGuideline5" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/marketProfit_tv"/>
+    <TextView
+        android:id="@+id/marketProfit_tv6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/market_market_activity_profit_share170"
+        android:textColor="#28a07c"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/marketGuideline5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/marketProfit_tv" />
 
-    <TextView android:id="@+id/marketProfit_tv10" android:layout_height="wrap_content" android:layout_width="wrap_content" android:text="@string/market_market_activity_profit_share190" android:textColor="#28a07c" android:textSize="16sp" app:layout_constraintBaseline_toBaselineOf="@+id/marketProfit_tv6" app:layout_constraintEnd_toStartOf="@+id/marketGuideline6" app:layout_constraintStart_toStartOf="@+id/marketGuideline5"/>
+    <TextView
+        android:id="@+id/marketProfit_tv10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/market_market_activity_profit_share190"
+        android:textColor="#28a07c"
+        android:textSize="16sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/marketProfit_tv6"
+        app:layout_constraintEnd_toStartOf="@+id/marketGuideline6"
+        app:layout_constraintStart_toStartOf="@+id/marketGuideline5" />
 
-    <TextView android:id="@+id/marketProfit_tv11" android:layout_height="wrap_content" android:layout_width="wrap_content" android:text="@string/market_market_activity_profit_share210" android:textColor="#28a07c" android:textSize="16sp" app:layout_constraintBaseline_toBaselineOf="@+id/marketProfit_tv10" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="@+id/marketGuideline6"/>
+    <TextView
+        android:id="@+id/marketProfit_tv11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/market_market_activity_profit_share210"
+        android:textColor="#28a07c"
+        android:textSize="16sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/marketProfit_tv10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/marketGuideline6" />
 
-    <TextView android:id="@+id/marketProfit_tv" android:layout_height="wrap_content" android:layout_marginEnd="8dp" android:layout_marginStart="8dp" android:layout_marginTop="16dp" android:layout_width="wrap_content" android:textColor="#28a07c" android:textSize="30sp" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.49" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/marketLinearlayout" tools:text="1872 USDT"/>
+    <TextView
+        android:id="@+id/marketProfit_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:textColor="#28a07c"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/marketLinearlayout"
+        tools:text="1872 USDT" />
 
-    <android.support.constraint.Guideline android:id="@+id/marketGuideline4" android:layout_height="wrap_content" android:layout_width="wrap_content" android:orientation="horizontal" app:layout_constraintGuide_percent="0.5"/>
+    <android.support.constraint.Guideline
+        android:id="@+id/marketGuideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
 
-    <android.support.constraint.Guideline android:id="@+id/marketGuideline5" android:layout_height="wrap_content" android:layout_width="wrap_content" android:orientation="vertical" app:layout_constraintGuide_percent="0.33"/>
+    <android.support.constraint.Guideline
+        android:id="@+id/marketGuideline5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.33" />
 
-    <android.support.constraint.Guideline android:id="@+id/marketGuideline6" android:layout_height="wrap_content" android:layout_width="wrap_content" android:orientation="vertical" app:layout_constraintGuide_percent="0.66"/>
+    <android.support.constraint.Guideline
+        android:id="@+id/marketGuideline6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.66" />
 
-    <TextView android:id="@+id/marketTextview6" android:layout_height="wrap_content" android:layout_marginBottom="8dp" android:layout_width="wrap_content" android:text="SCEX" android:textColor="@color/common_tip" android:textSize="24sp" android:textStyle="bold" app:layout_constraintBottom_toTopOf="@+id/marketTextview7" app:layout_constraintStart_toStartOf="@+id/marketView3"/>
+    <ImageView
+        android:id="@+id/marketTextview6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+       android:src="@mipmap/market_logo"
+        android:textColor="@color/common_tip"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/marketTextview7"
+        app:layout_constraintStart_toStartOf="@+id/marketView3" />
 
-    <View android:background="#3e3a39" android:id="@+id/marketView3" android:layout_height="3dp" android:layout_marginStart="8dp" android:layout_width="3dp" app:layout_constraintBottom_toBottomOf="@+id/marketTextview7" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="@+id/marketTextview7"/>
+    <View
+        android:id="@+id/marketView3"
+        android:layout_width="3dp"
+        android:layout_height="3dp"
+        android:layout_marginStart="8dp"
+        android:background="#3e3a39"
+        app:layout_constraintBottom_toBottomOf="@+id/marketTextview7"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/marketTextview7" />
 
-    <View android:background="#3e3a39" android:id="@+id/marketView4" android:layout_height="10dp" android:layout_marginStart="8dp" android:layout_width="1dp" app:layout_constraintBottom_toBottomOf="@+id/marketTextview6" app:layout_constraintStart_toEndOf="@+id/marketTextview6" app:layout_constraintTop_toTopOf="@+id/marketTextview6"/>
+    <View
+        android:id="@+id/marketView4"
+        android:layout_width="1dp"
+        android:layout_height="10dp"
+        android:layout_marginStart="8dp"
+        android:background="#3e3a39"
+        app:layout_constraintBottom_toBottomOf="@+id/marketTextview6"
+        app:layout_constraintStart_toEndOf="@+id/marketTextview6"
+        app:layout_constraintTop_toTopOf="@+id/marketTextview6" />
 
-    <TextView android:layout_height="wrap_content" android:layout_marginStart="8dp" android:layout_width="wrap_content" android:text="@string/market_market_activity_profit_share170" android:textColor="@color/common_tip" android:textSize="13sp" app:layout_constraintBottom_toBottomOf="@+id/marketTextview6" app:layout_constraintStart_toEndOf="@+id/marketView4" app:layout_constraintTop_toTopOf="@+id/marketTextview6"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/market_market_activity_profit_share170"
+        android:textColor="@color/common_tip"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toBottomOf="@+id/marketTextview6"
+        app:layout_constraintStart_toEndOf="@+id/marketView4"
+        app:layout_constraintTop_toTopOf="@+id/marketTextview6" />
 
-    <TextView android:id="@+id/marketTextview7" android:layout_height="wrap_content" android:layout_marginStart="8dp" android:layout_width="wrap_content" android:text="@string/market_market_activity_profit_share390" android:textColor="#3e3a39" android:textSize="12sp" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toEndOf="@+id/marketView3"/>
+    <TextView
+        android:id="@+id/marketTextview7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/market_market_activity_profit_share390"
+        android:textColor="#3e3a39"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/marketView3" />
 
-    <ImageView android:background="@color/white" android:id="@+id/qr_code" android:layout_height="70dp" android:layout_marginEnd="8dp" android:layout_width="70dp" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"/>
+    <ImageView
+        android:id="@+id/qr_code"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginEnd="8dp"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

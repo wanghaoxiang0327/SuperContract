@@ -24,8 +24,8 @@
 	<string name="asset_asset_fragment_asset20">Assets</string>
 	<string name="asset_asset_activity_recharge190">Do not recharge any non-BTC assets to the above address or the assets will not be recovered.</string>
 	<string name="asset_asset_item_asset100">Freeze</string>
-	<string name="asset_asset_activity_recharge20">Coin</string>
-	<string name="asset_asset_activity_insert_address200">Coin</string>
+	<string name="asset_asset_activity_recharge20">Recharge</string>
+	<string name="asset_asset_activity_insert_address200">Withdraw</string>
 	<string name="asset_asset_activity_transfer_records20">Transfer details</string>
 	<string name="asset_asset_activity_withdraw320">Number of arrivals: ---</string>
 	<string name="asset_rechargeActivity2">Assets, otherwise the assets will not be recovered.</string>

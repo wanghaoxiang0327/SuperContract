@@ -51,6 +51,7 @@ public class TransferActivity extends BaseActivity<TransferPresenter> {
     private SelectCoinDialog selectCoinDialog;
     private List<CoinAsset> coinList;
     private String pid;
+    private String code;
 
     double minCount;
     boolean checkSms;
@@ -141,7 +142,7 @@ public class TransferActivity extends BaseActivity<TransferPresenter> {
         pid = coin.getPid();
         selectCoin.setRightString(coin.getPname());
         mPresenter.getTransferInfo(pid);
-
+        code=coin.getPname();
     }
 
 
@@ -152,7 +153,7 @@ public class TransferActivity extends BaseActivity<TransferPresenter> {
 
 
     public void setTransferInfo(TransferInfo data) {
-        usefulTv.setText(getString(R.string.asset_transferActivity3) + NumberUtils.keepDown(data.getUsable(), DigitUtils.ASSET_DIGIT));
+        usefulTv.setText(getString(R.string.asset_transferActivity3) + NumberUtils.keepDown(data.getUsable(), DigitUtils.getAssetDigit(code)));
         feeTv.setText(getString(R.string.asset_transferActivity4) + data.getSxfee() + getString(R.string.asset_transferActivity5));
         countEdt.setHint(getString(R.string.asset_transferActivity2) + data.getZz_min());
         minCount = data.getZz_min();

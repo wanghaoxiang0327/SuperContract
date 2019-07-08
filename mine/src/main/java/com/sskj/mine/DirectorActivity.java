@@ -14,6 +14,7 @@ import com.sskj.common.WebActivity;
 import com.sskj.common.adapter.BaseAdapter;
 import com.sskj.common.adapter.ViewHolder;
 import com.sskj.common.base.BaseActivity;
+import com.sskj.common.utils.NumberUtils;
 import com.sskj.mine.data.DividendBean;
 
 import java.util.Map;
@@ -65,10 +66,10 @@ public class DirectorActivity extends BaseActivity<DirectorPresenter> {
         adapter = new BaseAdapter<DividendBean.Res.Dividen>(R.layout.mine_item_dividend, null, dividendList) {
             @Override
             public void bind(ViewHolder holder, DividendBean.Res.Dividen item) {
-                holder.setText(R.id.btc_count, item.getInc_BTC())
-                        .setText(R.id.eos_count, item.getInc_EOS())
-                        .setText(R.id.eth_count, item.getInc_ETH())
-                        .setText(R.id.usdt_count, item.getInc_USDT())
+                holder.setText(R.id.btc_count, NumberUtils.keepDown(item.getInc_BTC(), 6))
+                        .setText(R.id.eos_count, NumberUtils.keepDown(item.getInc_EOS(),2))
+                        .setText(R.id.eth_count, NumberUtils.keepDown(item.getInc_ETH(),5))
+                        .setText(R.id.usdt_count, NumberUtils.keepDown(item.getInc_USDT(),2))
                         .setText(R.id.week, item.getWeek());
             }
         };

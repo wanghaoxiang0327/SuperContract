@@ -69,6 +69,8 @@ public class WithdrawActivity extends BaseActivity<WithdrawPresenter> {
     private SelectCoinDialog selectCoinDialog;
     private List<CoinAsset> coinList;
     private String pid;
+    private String code;
+
 
     double minCount;
     boolean checkSms;
@@ -138,7 +140,7 @@ public class WithdrawActivity extends BaseActivity<WithdrawPresenter> {
                     }).show();
         });
 
-        countEdt.setFilters(new InputFilter[]{new MoneyValueFilter(DigitUtils.ASSET_DIGIT)});
+        countEdt.setFilters(new InputFilter[]{new MoneyValueFilter(DigitUtils.getAssetDigit(code))});
         countEdt.addTextChangedListener(new SimpleTextWatcher() {
             @Override
             public void afterTextChanged(Editable s) {
@@ -175,6 +177,7 @@ public class WithdrawActivity extends BaseActivity<WithdrawPresenter> {
         coinName.setText(coin.getPname());
         unit = coin.getPname();
         pid = coin.getPid();
+        code=coin.getPname();
         mPresenter.getWithdrawInfo(pid);
         countEdt.getText().clear();
     }
@@ -207,7 +210,7 @@ public class WithdrawActivity extends BaseActivity<WithdrawPresenter> {
 
 
     public void setWithDrawInfo(WithdrawInfo data) {
-        usefulTv.setText(NumberUtils.keepDown(data.getUsable(), DigitUtils.ASSET_DIGIT) + " " + unit);
+        usefulTv.setText(NumberUtils.keepDown(data.getUsable(), DigitUtils.getAssetDigit(code)) + " " + unit);
         countEdt.setHint(getString(R.string.asset_withdrawActivity4) + data.getTb_min());
         feeTv.setText(getString(R.string.asset_transferActivity4) + data.getSxfee() + " " + unit + getString(R.string.asset_transferActivity5));
         fee = data.getSxfee();
@@ -228,7 +231,7 @@ public class WithdrawActivity extends BaseActivity<WithdrawPresenter> {
         if (arriveNum < 0) {
             arriveNum = 0;
         }
-        setText(arriveCount, getString(R.string.asset_withdrawActivity7) + NumberUtils.keepDown(arriveNum, DigitUtils.ASSET_DIGIT) + " " + unit);
+        setText(arriveCount, getString(R.string.asset_withdrawActivity7) + NumberUtils.keepDown(arriveNum, DigitUtils.getAssetDigit(code)) + " " + unit);
     }
 
     public void withdrawSuccess() {

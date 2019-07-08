@@ -18,6 +18,7 @@ public class CoinIcon {
     }
 
     private static void init() {
+        iconMap.put("usdt", R.mipmap.common_icon_usdt);
         iconMap.put("btc_usdt", R.mipmap.common_icon_btc);
         iconMap.put("btc", R.mipmap.common_icon_btc);
         iconMap.put("eos_usdt", R.mipmap.common_icon_eos);

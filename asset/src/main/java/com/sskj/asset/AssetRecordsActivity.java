@@ -19,6 +19,7 @@ import com.sskj.common.dialog.SelectTypeDialog;
 import com.sskj.common.language.LocalManageUtil;
 import com.sskj.common.mvc.DataSource;
 import com.sskj.common.mvc.SmartRefreshHelper;
+import com.sskj.common.utils.DigitUtils;
 import com.sskj.common.utils.NumberUtils;
 import com.sskj.common.utils.TimeFormatUtil;
 
@@ -78,7 +79,7 @@ public class AssetRecordsActivity extends BaseActivity<AssetRecordsPresenter> {
             @Override
             public void bind(ViewHolder holder, AssetRecordsBean item) {
                 holder.setText(R.id.type, item.getMemo())
-                        .setText(R.id.count, NumberUtils.keepDown(item.getPrice(), 4) + item.getPtype())
+                        .setText(R.id.count, NumberUtils.keepDown(item.getPrice(), DigitUtils.getAssetDigit(item.getPtype())) + item.getPtype())
                         .setText(R.id.time, TimeFormatUtil.SF_FORMAT_E.format(item.getAddtime() * 1000));
             }
         };

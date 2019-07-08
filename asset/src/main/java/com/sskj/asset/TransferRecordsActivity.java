@@ -64,7 +64,7 @@ public class TransferRecordsActivity extends BaseActivity<TransferRecordsPresent
             @Override
             public void bind(ViewHolder holder, TransferRecodsBean item) {
                 holder.setText(R.id.type_name, item.getMemo())
-                        .setText(R.id.count_tv, NumberUtils.keepDown(item.getPrice(), DigitUtils.ASSET_DIGIT) + " " + item.getPname())
+                        .setText(R.id.count_tv, NumberUtils.keepDown(item.getPrice(), DigitUtils.getDigit(item.getPname())) + " " + item.getPname())
                         .setText(R.id.time_tv, TimeFormatUtil.SF_FORMAT_E.format(item.getAddtime() * 1000))
                         .setText(R.id.account_tv, "ID: " + item.getAccountId());
             }

@@ -218,10 +218,7 @@ public class CreateOrderDialog extends BottomSheetDialog {
                 RadioButton button = assetGroup.findViewById(i);
                 int position = (int) button.getTag();
                 payCoin = tradeInfo.getCoinAssets().get(position).getPname();
-
                 initTradeCount(tradeInfo.getCoinAssets().get(position).getAim_point());
-
-
             }
         });
         assetGroup.check(assetGroup.getChildAt(0).getId());
@@ -259,7 +256,7 @@ public class CreateOrderDialog extends BottomSheetDialog {
                 computeTotal();
             }
         });
-
+        tradeCountGroup.check(tradeCountGroup.getChildAt(0).getId());
     }
 
     /**
@@ -293,7 +290,7 @@ public class CreateOrderDialog extends BottomSheetDialog {
                 computeTotal();
             }
         });
-
+        tradePointGroup.check(tradePointGroup.getChildAt(0).getId());
     }
 
     /**
@@ -319,7 +316,7 @@ public class CreateOrderDialog extends BottomSheetDialog {
         stopWinTv.setText(NumberUtils.keepDown(stopWin, DigitUtils.getDigit(code)));
         stopLossTv.setText(NumberUtils.keepDown(stopLoss, DigitUtils.getDigit(code)));
         double total = tradeVolume * tradeNum;
-        totalPrice.setText(App.INSTANCE.getString(R.string.market_createOrderDialog4) + NumberUtils.keepDown(total, DigitUtils.getDigit(code)));
+        totalPrice.setText(App.INSTANCE.getString(R.string.market_createOrderDialog4) + NumberUtils.keepDown(total, DigitUtils.getAssetDigit(payCoin)));
     }
 
     public void setListener(CreateOrderListener listener) {

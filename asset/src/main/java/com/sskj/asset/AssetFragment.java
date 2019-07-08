@@ -105,8 +105,8 @@ public class AssetFragment extends BaseFragment<AssetPresenter> {
             public void bind(ViewHolder holder, AssetData.ResBean.AssetBean item) {
                 holder.setText(R.id.coin_name, item.getPname());
                 holder.setImageResource(R.id.coin_icon, CoinIcon.getIcon(item.getMark()));
-                holder.setText(R.id.asset_useful, NumberUtils.keepDown(item.getUsable(), 4));
-                holder.setText(R.id.asset_frost, NumberUtils.keepDown(item.getFrost(), 4));
+                holder.setText(R.id.asset_useful, NumberUtils.keepDown(item.getUsable(), DigitUtils.getAssetDigit(item.getPname())));
+                holder.setText(R.id.asset_frost, NumberUtils.keepDown(item.getFrost(),  DigitUtils.getAssetDigit(item.getPname())));
                 ClickUtil.click(holder.getView(R.id.recharge), view -> {
                     RechargeActivity.start(getContext());
                 });
@@ -150,31 +150,31 @@ public class AssetFragment extends BaseFragment<AssetPresenter> {
                 });
                 ClickUtil.click(holder.getView(R.id.cashOut), view -> {
 
-                    if (!setPs){
-                        new TipDialog(getContext())
-                                .setContent(getString(R.string.asset_assetFragment2))
-                                .setCancelVisible(View.GONE)
-                                .setConfirmListener(dialog -> {
-                                    dialog.dismiss();
-                                    ARouter.getInstance().build(RoutePath.SECURITY).navigation();
-                                })
-                                .show();
-                        return;
-                    }
-
-                    if (!checkSms && !checkGoogle) {
-                        new TipDialog(getContext())
-                                .setContent(getString(R.string.asset_assetFragment1))
-                                .setCancelVisible(View.GONE)
-                                .setConfirmListener(dialog -> {
-                                    dialog.dismiss();
-                                    ARouter.getInstance().build(RoutePath.SECURITY).navigation();
-                                })
-                                .show();
-                    } else {
-                        WithdrawActivity.start(getContext());
-                    }
-
+//                    if (!setPs){
+//                        new TipDialog(getContext())
+//                                .setContent(getString(R.string.asset_assetFragment2))
+//                                .setCancelVisible(View.GONE)
+//                                .setConfirmListener(dialog -> {
+//                                    dialog.dismiss();
+//                                    ARouter.getInstance().build(RoutePath.SECURITY).navigation();
+//                                })
+//                                .show();
+//                        return;
+//                    }
+//
+//                    if (!checkSms && !checkGoogle) {
+//                        new TipDialog(getContext())
+//                                .setContent(getString(R.string.asset_assetFragment1))
+//                                .setCancelVisible(View.GONE)
+//                                .setConfirmListener(dialog -> {
+//                                    dialog.dismiss();
+//                                    ARouter.getInstance().build(RoutePath.SECURITY).navigation();
+//                                })
+//                                .show();
+//                    } else {
+//                        WithdrawActivity.start(getContext());
+//                    }
+                    WithdrawActivity.start(getContext());
                 });
             }
         };

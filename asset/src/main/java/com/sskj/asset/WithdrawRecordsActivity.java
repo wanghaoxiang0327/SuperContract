@@ -17,6 +17,8 @@ import com.sskj.common.data.CoinAsset;
 import com.sskj.common.dialog.SelectCoinDialog;
 import com.sskj.common.mvc.DataSource;
 import com.sskj.common.mvc.SmartRefreshHelper;
+import com.sskj.common.utils.DigitUtils;
+import com.sskj.common.utils.NumberUtils;
 
 import java.util.HashMap;
 import java.util.List;
@@ -82,7 +84,7 @@ public class WithdrawRecordsActivity extends BaseActivity<WithdrawRecordsPresent
             @Override
             public void bind(ViewHolder holder, WithdrawRecordsBean item) {
                 holder.setText(R.id.address, item.getQianbao_url())
-                        .setText(R.id.count, item.getPrice() + " " + item.getPname())
+                        .setText(R.id.count, NumberUtils.keepDown(item.getPrice(), DigitUtils.getAssetDigit(item.getPname())) + " " + item.getPname())
                         .setText(R.id.crete_time, item.getAddtime())
                         .setText(R.id.check_time, item.getCheck_time())
                         .setText(R.id.status, statusMap.get(item.getState()));

@@ -1,70 +1,215 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:background="@color/common_background" android:layout_height="wrap_content" android:layout_width="match_parent" android:orientation="vertical" android:paddingLeft="@dimen/common_margin" android:paddingRight="@dimen/common_margin">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/common_background"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/common_margin"
+    android:paddingRight="@dimen/common_margin">
 
-    <LinearLayout android:background="@drawable/common_edt_line_bg" android:layout_height="45dp" android:layout_width="match_parent" android:orientation="horizontal">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@drawable/common_edt_line_bg"
+        android:orientation="horizontal">
 
-        <TextView android:gravity="center" android:id="@+id/name_tv" android:layout_height="match_parent" android:layout_width="wrap_content" android:textColor="@color/common_text" tools:text="XRP/USDT"/>
+        <TextView
+            android:id="@+id/name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textColor="@color/common_text"
+            tools:text="XRP/USDT" />
 
-        <TextView android:gravity="center_vertical" android:id="@+id/price_tv" android:layout_height="match_parent" android:layout_marginLeft="20dp" android:layout_weight="1" android:layout_width="0dp" android:textColor="@color/common_text" tools:text="8000.0000"/>
+        <TextView
+            android:id="@+id/price_tv"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:textColor="@color/common_text"
+            tools:text="8000.0000" />
 
-        <TextView android:gravity="center" android:id="@+id/cancel_tv" android:layout_height="match_parent" android:layout_width="wrap_content" android:text="@string/market_market_dialog_create_order80" android:textColor="@color/common_hint"/>
-
-    </LinearLayout>
-
-    <TextView android:layout_height="wrap_content" android:layout_marginTop="20dp" android:layout_width="wrap_content" android:text="@string/market_market_dialog_create_order110" android:textColor="@color/common_text"/>
-
-
-    <RadioGroup android:gravity="center_vertical" android:id="@+id/asset_group" android:layout_height="30dp" android:layout_marginTop="10dp" android:layout_width="match_parent" android:orientation="horizontal"/>
-
-
-    <View android:background="@color/common_divider" android:layout_height="1dp" android:layout_marginTop="16dp" android:layout_width="match_parent"/>
-
-
-    <LinearLayout android:layout_height="35dp" android:layout_marginTop="16dp" android:layout_width="match_parent" android:orientation="horizontal">
-
-        <TextView android:gravity="center_vertical" android:layout_height="match_parent" android:layout_width="wrap_content" android:text="@string/market_market_dialog_create_order190" android:textColor="@color/common_text"/>
-
-        <RadioGroup android:id="@+id/trade_count_group" android:layout_height="35dp" android:layout_marginLeft="28dp" android:layout_width="match_parent" android:orientation="horizontal"/>
-
-    </LinearLayout>
-
-    <View android:background="@color/common_divider" android:layout_height="1dp" android:layout_marginTop="10dp" android:layout_width="match_parent"/>
-
-    <LinearLayout android:gravity="center_vertical" android:layout_height="50dp" android:layout_width="match_parent">
-
-        <TextView android:layout_height="wrap_content" android:layout_weight="1" android:layout_width="0dp" android:text="@string/market_market_dialog_create_order280" android:textColor="@color/common_text"/>
-
-        <com.hey.lib.HeySpinner android:gravity="center" android:id="@+id/trade_num_spinner" android:layout_height="wrap_content" android:layout_width="60dp" android:text="@string/market_market_dialog_create_order300" android:textColor="@color/common_text" app:arrowColor="@color/common_tip" app:dividerColor="@color/common_divider" app:itemBackground="@color/common_action_bar" app:itemTextColor="@color/common_text"/>
-
-    </LinearLayout>
-
-    <View android:background="@color/common_divider" android:layout_height="1dp" android:layout_width="match_parent"/>
-
-    <LinearLayout android:layout_height="35dp" android:layout_marginTop="10dp" android:layout_width="match_parent" android:orientation="horizontal">
-
-        <TextView android:gravity="center_vertical" android:layout_height="match_parent" android:layout_width="wrap_content" android:text="@string/market_market_dialog_create_order370" android:textColor="@color/common_text"/>
-
-        <RadioGroup android:id="@+id/trade_point_group" android:layout_height="match_parent" android:layout_marginLeft="16dp" android:layout_width="match_parent" android:orientation="horizontal"/>
+        <TextView
+            android:id="@+id/cancel_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/market_market_dialog_create_order80"
+            android:textColor="@color/common_hint" />
 
     </LinearLayout>
 
-    <View android:background="@color/common_divider" android:layout_height="1dp" android:layout_marginTop="10dp" android:layout_width="match_parent"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/market_market_dialog_create_order110"
+        android:textColor="@color/common_text" />
 
 
-    <LinearLayout android:gravity="right|center_vertical" android:layout_height="30dp" android:layout_marginTop="16dp" android:layout_width="match_parent" android:orientation="horizontal">
+    <RadioGroup
+        android:id="@+id/asset_group"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" />
 
-        <TextView android:layout_height="wrap_content" android:layout_width="wrap_content" android:text="@string/market_market_dialog_create_order460" android:textColor="@color/common_hint" android:textSize="12sp"/>
 
-        <TextView android:id="@+id/stop_win_tv" android:layout_height="wrap_content" android:layout_width="wrap_content" android:text="0.0000" android:textColor="@color/market_green" android:textSize="12sp"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/common_divider" />
 
-        <TextView android:layout_height="wrap_content" android:layout_width="wrap_content" android:text="@string/market_market_dialog_create_order500" android:textColor="@color/common_hint" android:textSize="12sp"/>
 
-        <TextView android:id="@+id/stop_loss_tv" android:layout_height="wrap_content" android:layout_width="wrap_content" android:text="0.0000" android:textColor="@color/market_red" android:textSize="12sp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="@string/market_market_dialog_create_order190"
+            android:textColor="@color/common_text" />
+
+        <RadioGroup
+            android:id="@+id/trade_count_group"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginLeft="28dp"
+            android:orientation="horizontal" />
 
     </LinearLayout>
 
-    <TextView android:id="@+id/total_price" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:layout_width="wrap_content" android:text="@string/market_market_dialog_create_order550" android:textColor="@color/common_text"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/common_divider" />
 
-    <Button android:background="@drawable/market_green_bg_50" android:id="@+id/submit" android:layout_height="45dp" android:layout_marginBottom="20dp" android:layout_marginTop="20dp" android:layout_width="match_parent" android:text="@string/market_buy_up" android:textColor="@color/common_button_text"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/market_market_dialog_create_order280"
+            android:textColor="@color/common_text" />
+
+        <com.hey.lib.HeySpinner
+            android:id="@+id/trade_num_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/market_market_dialog_create_order300"
+            android:textColor="@color/common_text"
+            app:arrowColor="@color/common_tip"
+            app:dividerColor="@color/common_divider"
+            app:itemBackground="@color/common_action_bar"
+            app:itemTextColor="@color/common_text" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/common_divider" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="@string/market_market_dialog_create_order370"
+            android:textColor="@color/common_text" />
+
+        <RadioGroup
+            android:id="@+id/trade_point_group"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="16dp"
+            android:orientation="horizontal" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/common_divider" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="16dp"
+        android:gravity="right|center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/market_market_dialog_create_order460"
+            android:textColor="@color/common_hint"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/stop_win_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0.0000"
+            android:textColor="@color/market_green"
+            android:textSize="12sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/market_market_dialog_create_order500"
+            android:textColor="@color/common_hint"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/stop_loss_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0.0000"
+            android:textColor="@color/market_red"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/total_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="@string/market_market_dialog_create_order550"
+        android:textColor="@color/common_text" />
+
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/market_green_bg_50"
+        android:text="@string/market_buy_up"
+        android:textColor="@color/common_button_text" />
 
 </LinearLayout>

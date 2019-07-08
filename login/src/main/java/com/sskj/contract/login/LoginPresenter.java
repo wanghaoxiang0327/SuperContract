@@ -29,16 +29,16 @@ public class LoginPresenter extends BasePresenter<LoginActivity> {
                 });
     }
 
-    public void isGoogleCheck(String mobile,String opwd) {
+    public void isGoogleCheck(String mobile, String opwd) {
         OkGo.<HttpResult<Map<String, String>>>post(HttpConfig.BASE_URL + HttpConfig.GOOGLE_CHECK)
                 .params("mobile", mobile)
                 .execute(new JsonCallBack<HttpResult<Map<String, String>>>(this) {
                     @Override
                     protected void onNext(HttpResult<Map<String, String>> result) {
-                        if (result.getData().get("is_start_google").equals("0")){
-                            login(mobile,opwd,null);
-                        }else {
-                            mView.showCheckGoogle(mobile,opwd);
+                        if (result.getData().get("is_start_google") == null || result.getData().get("is_start_google").equals("0")) {
+                            login(mobile, opwd, null);
+                        } else {
+                            mView.showCheckGoogle(mobile, opwd);
                         }
                     }
                 });

@@ -14,6 +14,8 @@ import com.sskj.common.DividerLineItemDecoration;
 import com.sskj.common.adapter.BaseAdapter;
 import com.sskj.common.adapter.ViewHolder;
 import com.sskj.common.base.BaseActivity;
+import com.sskj.common.utils.DigitUtils;
+import com.sskj.common.utils.NumberUtils;
 import com.sskj.common.utils.TimeFormatUtil;
 import com.sskj.mine.data.CommissionBean;
 import com.sskj.mine.data.CommissionDetailBean;
@@ -61,9 +63,9 @@ public class CommissionActivity extends BaseActivity<CommissionPresenter> {
             @Override
             public void bind(ViewHolder holder, CommissionTopBean item) {
                 holder.setText(R.id.coin_name, item.getCode())
-                        .setText(R.id.freeze_tv, item.getForst())
-                        .setText(R.id.future_tv, item.getExpect())
-                        .setText(R.id.total_tv, item.getTotal());
+                        .setText(R.id.freeze_tv, NumberUtils.keepDown(item.getForst(), DigitUtils.getAssetDigit(item.getCode())))
+                        .setText(R.id.future_tv, NumberUtils.keepDown(item.getExpect(), DigitUtils.getAssetDigit(item.getCode())))
+                        .setText(R.id.total_tv, NumberUtils.keepDown(item.getTotal(), DigitUtils.getAssetDigit(item.getCode())));
             }
         };
 
@@ -76,7 +78,7 @@ public class CommissionActivity extends BaseActivity<CommissionPresenter> {
             @Override
             public void bind(ViewHolder holder, CommissionDetailBean item) {
                 holder.setText(R.id.user_id, item.getDown_account())
-                        .setText(R.id.count, item.getFee()+item.getPname())
+                        .setText(R.id.count, item.getFee() + item.getPname())
                         .setText(R.id.time, TimeFormatUtil.SF_FORMAT_E.format(item.getAddtime() * 1000));
             }
         };

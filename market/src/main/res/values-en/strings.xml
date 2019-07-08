@@ -36,12 +36,12 @@
     <string name="market_market_dialog_create_order280">number of trading hands </string>
     <string name="market_market_fragment_profit_order80">profit order</string>
     <string name="market_market_item_hold440">share </string>
-    <string name="market_market_item_hold120">total transaction </string>
-    <string name="market_market_item_hold340">stop-earnings price</string>
+    <string name="market_market_item_hold120">total</string>
+    <string name="market_market_item_hold340">stop-earning</string>
     <string name="market_market_item_hold100">unit price </string>
     <string name="market_market_item_hold320">dot </string>
     <string name="market_market_activity_profit_share170">target contract</string>
     <string name="market_market_activity_profit_share390">The right of final interpretation belongs to the platform </string>
     <string name="market_market_activity_profit_share190">open price</string>
-    <string name="market_market_item_hold360">stop price </string>
+    <string name="market_market_item_hold360">stop loss </string>
 </resources>

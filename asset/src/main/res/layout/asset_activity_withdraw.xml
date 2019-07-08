@@ -1,46 +1,190 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:background="@color/common_dark" android:layout_height="match_parent" android:layout_width="match_parent" android:orientation="vertical">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/common_dark"
+    android:orientation="vertical">
 
-    <com.sskj.common.view.ToolBarLayout android:layout_height="wrap_content" android:layout_width="match_parent" app:background_color="@color/common_action_bar" app:right_img="@mipmap/asset_icon_history" app:title="@string/asset_asset_activity_insert_address200"/>
-
-
-    <com.allen.library.SuperTextView android:id="@+id/select_coin" android:layout_height="50dp" android:layout_width="match_parent" android:paddingLeft="@dimen/common_margin" android:paddingRight="@dimen/common_margin" app:sBackgroundDrawableRes="@color/common_background" app:sDividerLineColor="@color/common_divider" app:sDividerLineType="top" app:sLeftTextColor="@color/common_text" app:sLeftTextString="@string/asset_asset_activity_recharge40" app:sLeftViewMarginLeft="0dp" app:sRightTextColor="@color/common_text" app:sRightTvDrawableRight="@mipmap/common_arrow_right"/>
-
-
-    <TextView android:background="@color/common_background" android:gravity="center_vertical" android:layout_height="35dp" android:layout_marginTop="5dp" android:layout_width="match_parent" android:paddingLeft="@dimen/common_margin" android:text="@string/asset_asset_activity_withdraw60" android:textColor="@color/common_hint"/>
-
-
-    <TextView android:background="@drawable/common_edt_line_bg" android:drawablePadding="10dp" android:gravity="center_vertical" android:id="@+id/useful_tv" android:layout_height="40dp" android:layout_width="match_parent" android:maxLines="1" android:paddingLeft="@dimen/common_margin" android:paddingRight="@dimen/common_margin" android:text="0.0000BTC" android:textColor="@color/common_text" android:textColorHint="@color/common_text" android:textSize="14sp"/>
-
-    <TextView android:background="@color/common_background" android:gravity="center_vertical" android:layout_height="35dp" android:layout_width="match_parent" android:paddingLeft="@dimen/common_margin" android:text="@string/asset_asset_activity_address_list20" android:textColor="@color/common_hint"/>
-
-    <LinearLayout android:background="@color/common_background" android:gravity="center_vertical" android:layout_height="50dp" android:layout_width="match_parent" android:orientation="horizontal" android:paddingLeft="@dimen/common_margin" android:paddingRight="@dimen/common_margin">
+    <com.sskj.common.view.ToolBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:background_color="@color/common_action_bar"
+        app:right_img="@mipmap/asset_icon_history"
+        app:title="@string/asset_asset_activity_insert_address200" />
 
 
-        <EditText android:background="@null" android:drawablePadding="10dp" android:hint="@string/asset_asset_activity_withdraw140" android:id="@+id/address_edt" android:imeOptions="actionNext" android:inputType="text" android:layout_height="40dp" android:layout_weight="1" android:layout_width="0dp" android:maxLines="1" android:textColor="@color/common_text" android:textColorHint="@color/common_text" android:textSize="14sp"/>
+    <com.allen.library.SuperTextView
+        android:id="@+id/select_coin"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:paddingLeft="@dimen/common_margin"
+        android:paddingRight="@dimen/common_margin"
+        app:sBackgroundDrawableRes="@color/common_background"
+        app:sDividerLineColor="@color/common_divider"
+        app:sDividerLineType="top"
+        app:sLeftTextColor="@color/common_text"
+        app:sLeftTextString="@string/asset_asset_activity_recharge40"
+        app:sLeftViewMarginLeft="0dp"
+        app:sRightTextColor="@color/common_text"
+        app:sRightTvDrawableRight="@mipmap/common_arrow_right" />
 
-        <ImageView android:id="@+id/select_address" android:layout_height="20dp" android:layout_width="20dp" android:src="@mipmap/asset_icon_list"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/common_background"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/common_margin"
+        android:text="@string/asset_asset_activity_withdraw60"
+        android:textColor="@color/common_hint" />
+
+
+    <TextView
+        android:id="@+id/useful_tv"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/common_edt_line_bg"
+        android:drawablePadding="10dp"
+        android:gravity="center_vertical"
+        android:maxLines="1"
+        android:paddingLeft="@dimen/common_margin"
+        android:paddingRight="@dimen/common_margin"
+        android:text="0.0000BTC"
+        android:textColor="@color/common_text"
+        android:textColorHint="@color/common_text"
+        android:textSize="14sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:background="@color/common_background"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/common_margin"
+        android:text="@string/asset_asset_activity_address_list20"
+        android:textColor="@color/common_hint" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/common_background"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/common_margin"
+        android:paddingRight="@dimen/common_margin">
+
+
+        <EditText
+            android:id="@+id/address_edt"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="@null"
+            android:drawablePadding="10dp"
+            android:hint="@string/asset_asset_activity_withdraw140"
+            android:imeOptions="actionNext"
+            android:inputType="text"
+            android:maxLines="1"
+            android:textColor="@color/common_text"
+            android:textColorHint="@color/common_text"
+            android:textSize="14sp" />
+
+        <ImageView
+            android:id="@+id/select_address"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@mipmap/asset_icon_list" />
 
     </LinearLayout>
 
-    <TextView android:background="@color/common_background" android:gravity="center_vertical" android:layout_height="50dp" android:layout_marginTop="5dp" android:layout_width="match_parent" android:paddingLeft="@dimen/common_margin" android:text="@string/asset_asset_activity_withdraw190" android:textColor="@color/common_hint"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/common_background"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/common_margin"
+        android:text="@string/asset_asset_activity_withdraw190"
+        android:textColor="@color/common_hint" />
 
-    <LinearLayout android:background="@color/common_background" android:gravity="center_vertical" android:layout_height="40dp" android:layout_width="match_parent" android:orientation="horizontal" android:paddingLeft="@dimen/common_margin" android:paddingRight="@dimen/common_margin">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/common_background"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/common_margin"
+        android:paddingRight="@dimen/common_margin">
 
 
-        <EditText android:background="@null" android:drawablePadding="10dp" android:hint="@string/asset_asset_activity_withdraw230" android:id="@+id/count_edt" android:imeOptions="actionNext" android:inputType="text" android:layout_height="50dp" android:layout_weight="1" android:layout_width="0dp" android:maxLines="1" android:textColor="@color/common_text" android:textColorHint="@color/common_text" android:textSize="14sp"/>
+        <EditText
+            android:id="@+id/count_edt"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@null"
+            android:drawablePadding="10dp"
+            android:hint="@string/asset_asset_activity_withdraw230"
+            android:imeOptions="actionNext"
+            android:inputType="text"
+            android:maxLines="1"
+            android:textColor="@color/common_text"
+            android:textColorHint="@color/common_text"
+            android:textSize="14sp" />
 
-        <TextView android:gravity="center_vertical" android:id="@+id/coin_name" android:layout_height="match_parent" android:layout_width="wrap_content" android:text="BTC" android:textColor="@color/common_text"/>
+        <TextView
+            android:id="@+id/coin_name"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="BTC"
+            android:textColor="@color/common_text" />
 
-        <TextView android:gravity="center_vertical" android:id="@+id/all" android:layout_height="match_parent" android:layout_marginLeft="20dp" android:layout_width="wrap_content" android:paddingLeft="10dp" android:text="@string/asset_assetRecordsActivity1" android:textColor="@color/common_tip"/>
+        <TextView
+            android:id="@+id/all"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text="@string/asset_assetRecordsActivity1"
+            android:textColor="@color/common_tip" />
 
     </LinearLayout>
 
-    <TextView android:gravity="center_vertical" android:id="@+id/fee_tv" android:layout_height="35dp" android:layout_width="match_parent" android:paddingLeft="@dimen/common_margin" android:paddingRight="@dimen/common_margin" android:text="@string/asset_asset_activity_withdraw300" android:textColor="@color/common_hint" android:textSize="12sp"/>
+    <TextView
+        android:id="@+id/fee_tv"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/common_margin"
+        android:paddingRight="@dimen/common_margin"
+        android:text="@string/asset_asset_activity_withdraw300"
+        android:textColor="@color/common_hint"
+        android:textSize="12sp" />
 
-    <TextView android:id="@+id/arrive_count" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/common_margin" android:layout_marginRight="@dimen/common_margin" android:layout_marginTop="50dp" android:layout_width="match_parent" android:text="@string/asset_asset_activity_withdraw320" android:textColor="@color/common_text" android:textSize="17sp"/>
+    <TextView
+        android:id="@+id/arrive_count"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/common_margin"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="@dimen/common_margin"
+        android:text="@string/asset_asset_activity_withdraw320"
+        android:textColor="@color/common_text"
+        android:textSize="17sp" />
 
 
-    <Button android:background="@drawable/common_tip_50" android:id="@+id/submit" android:layout_height="45dp" android:layout_marginLeft="@dimen/common_margin" android:layout_marginRight="@dimen/common_margin" android:layout_marginTop="30dp" android:layout_width="match_parent" android:text="@string/asset_asset_activity_insert_address200" android:textColor="@color/common_white"/>
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginLeft="@dimen/common_margin"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="@dimen/common_margin"
+        android:background="@drawable/common_tip_50"
+        android:text="@string/asset_asset_activity_insert_address200"
+        android:textColor="@color/common_white" />
 
 </LinearLayout>

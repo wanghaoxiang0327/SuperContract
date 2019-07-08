@@ -36,6 +36,7 @@ public class DealFragment extends BaseFragment<DealPresenter> {
     private int size = 10;
 
     SmartRefreshHelper<List<HoldBean>> smartRefreshHelper;
+
     @Override
     public int getLayoutId() {
         return R.layout.market_fragment_deal;
@@ -63,12 +64,12 @@ public class DealFragment extends BaseFragment<DealPresenter> {
                         .setText(R.id.buy_type_tv, item.getType() == 1 ? getString(R.string.market_buy_up) : getString(R.string.market_buy_down))
                         .setText(R.id.pay_coin_tv, item.getPtype())
                         .setText(R.id.price_tv, NumberUtils.keepDown(item.getBuyprice(), DigitUtils.getDigit(item.getMark())))
-                        .setText(R.id.total_price_tv, item.getTotal_num())
+                        .setText(R.id.total_price_tv, NumberUtils.keepDown(item.getTotal_num(), DigitUtils.getAssetDigit(item.getPtype())))
                         .setText(R.id.point_tv, item.getAim_point())
                         .setText(R.id.stop_win_str, getString(R.string.market_dealFragment3))
                         .setText(R.id.stop_loss_str, getString(R.string.market_dealFragment4))
                         .setText(R.id.stop_win_tv, NumberUtils.keepDown(item.getSellprice(), DigitUtils.getDigit(item.getMark())))
-                        .setText(R.id.stop_loss_tv, NumberUtils.keepDown(item.getIncome(), DigitUtils.getDigit(item.getMark())));
+                        .setText(R.id.stop_loss_tv, NumberUtils.keepDown(item.getIncome(), DigitUtils.getAssetDigit(item.getPtype())));
 
                 if (item.getType() == 1) {
                     holder.setTextColor(R.id.buy_type_tv, color(R.color.market_green));
@@ -108,11 +109,11 @@ public class DealFragment extends BaseFragment<DealPresenter> {
     @Override
     public void initData() {
         wrapRefresh(recordsList);
-        smartRefreshHelper=new SmartRefreshHelper<>(mRefreshLayout);
+        smartRefreshHelper = new SmartRefreshHelper<>(mRefreshLayout);
         smartRefreshHelper.setDataSource(new DataSource<HoldBean>() {
             @Override
             public Flowable<List<HoldBean>> bindData(int page) {
-                return  mPresenter.getOrder(2, page, size);
+                return mPresenter.getOrder(2, page, size);
             }
         });
         smartRefreshHelper.setAdapter(holdAdapter);
@@ -122,7 +123,6 @@ public class DealFragment extends BaseFragment<DealPresenter> {
     public void loadData() {
         smartRefreshHelper.refresh();
     }
-
 
 
     public static DealFragment newInstance() {

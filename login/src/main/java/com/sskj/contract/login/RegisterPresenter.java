@@ -15,16 +15,16 @@ import com.sskj.contract.login.RegisterActivity;
 public class RegisterPresenter extends BasePresenter<RegisterActivity> {
 
     public void register(String mobile, String realname, String code, String opwd, String opwd1, String tjuser) {
-        OkGo.<HttpResult>post(HttpConfig.BASE_URL + HttpConfig.REGISTER)
+        OkGo.<HttpResult<Object>>post(HttpConfig.BASE_URL + HttpConfig.REGISTER)
                 .params("mobile", mobile)
                 .params("realname", realname)
                 .params("code", code)
                 .params("opwd", opwd)
                 .params("opwd1", opwd1)
                 .params("tjuser", tjuser)
-                .execute(new JsonCallBack<HttpResult>(this) {
+                .execute(new JsonCallBack<HttpResult<Object>>(this) {
                     @Override
-                    protected void onNext(HttpResult result) {
+                    protected void onNext(HttpResult<Object> result) {
                         mView.registerSuccess(mobile);
                     }
                 });

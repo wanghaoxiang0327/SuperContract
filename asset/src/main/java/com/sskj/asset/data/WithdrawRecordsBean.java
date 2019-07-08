@@ -20,7 +20,7 @@ public class WithdrawRecordsBean {
     private String pid;
     private String qianbao_url;
     private String check_time;
-    private Object pname;
+    private String pname;
 
     public String getId() {
         return id;
@@ -78,11 +78,11 @@ public class WithdrawRecordsBean {
         this.check_time = check_time;
     }
 
-    public Object getPname() {
+    public String getPname() {
         return pname;
     }
 
-    public void setPname(Object pname) {
+    public void setPname(String pname) {
         this.pname = pname;
     }
 }
