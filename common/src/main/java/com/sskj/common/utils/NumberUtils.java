@@ -63,7 +63,7 @@ public class NumberUtils {
 
 
     public static boolean isNumeric(String str) {
-        String reg = "^[0-9]+(.[0-9]+)?$";
+        String reg = "-?[0-9]+.*[0-9]*";
         return str.matches(reg);
     }
 }

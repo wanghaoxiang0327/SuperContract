@@ -25,6 +25,8 @@ import com.sskj.common.utils.TimeFormatUtil;
 import com.sskj.market.data.CoinBean;
 import com.sskj.market.data.HoldBean;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -51,6 +53,9 @@ public class HoldFragment extends BaseFragment<HoldPresenter> {
     SmartRefreshHelper<List<HoldBean>> smartRefreshHelper;
 
     private Disposable disposable;
+
+    private DecimalFormat decimalFormat=new DecimalFormat("#.########");
+
 
     @Override
     public int getLayoutId() {
@@ -81,7 +86,7 @@ public class HoldFragment extends BaseFragment<HoldPresenter> {
                         .setText(R.id.pay_coin_tv, item.getPtype())
                         .setText(R.id.price_tv, NumberUtils.keepDown(item.getBuyprice(), DigitUtils.getDigit(item.getMark())))
                         .setText(R.id.total_price_tv, NumberUtils.keepDown(item.getTotal_num(), DigitUtils.getAssetDigit(item.getPtype())))
-                        .setText(R.id.point_tv, item.getAim_point())
+                        .setText(R.id.point_tv, decimalFormat.format(Double.parseDouble(item.getAim_point())))
                         .setText(R.id.stop_win_tv, NumberUtils.keepDown(item.getStopwin(), DigitUtils.getDigit(item.getMark())))
                         .setText(R.id.stop_loss_tv, NumberUtils.keepDown(item.getStoploss(), DigitUtils.getDigit(item.getMark())))
                         .setText(R.id.new_pirce_tv, getString(R.string.market_holdFragment3) + NumberUtils.keepDown(item.getActprice(), DigitUtils.getDigit(item.getMark())))

@@ -20,6 +20,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 import butterknife.BindView;
@@ -34,7 +35,7 @@ public class DealFragment extends BaseFragment<DealPresenter> {
     RecyclerView recordsList;
 
     private int size = 10;
-
+    private DecimalFormat decimalFormat=new DecimalFormat("#.########");
     SmartRefreshHelper<List<HoldBean>> smartRefreshHelper;
 
     @Override
@@ -65,7 +66,7 @@ public class DealFragment extends BaseFragment<DealPresenter> {
                         .setText(R.id.pay_coin_tv, item.getPtype())
                         .setText(R.id.price_tv, NumberUtils.keepDown(item.getBuyprice(), DigitUtils.getDigit(item.getMark())))
                         .setText(R.id.total_price_tv, NumberUtils.keepDown(item.getTotal_num(), DigitUtils.getAssetDigit(item.getPtype())))
-                        .setText(R.id.point_tv, item.getAim_point())
+                        .setText(R.id.point_tv,decimalFormat.format( Double.parseDouble(item.getAim_point())))
                         .setText(R.id.stop_win_str, getString(R.string.market_dealFragment3))
                         .setText(R.id.stop_loss_str, getString(R.string.market_dealFragment4))
                         .setText(R.id.stop_win_tv, NumberUtils.keepDown(item.getSellprice(), DigitUtils.getDigit(item.getMark())))
