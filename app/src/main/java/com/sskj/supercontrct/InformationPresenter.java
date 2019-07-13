@@ -22,7 +22,7 @@ import io.reactivex.Flowable;
  */
 public class InformationPresenter extends BasePresenter<InformationFragment> {
     public Flowable<List<NewsBean>> getNotice(int page,int size) {
-        return OkGo.<HttpResult<Page<NewsBean>>>get(HttpConfig.BASE_URL + HttpConfig.NOTICE_LIST)
+        return OkGo.<HttpResult<Page<NewsBean>>>post(HttpConfig.BASE_URL + HttpConfig.NOTICE_LIST)
                 .params("p",page)
                 .params("size",size)
                 .params("lang", LocalManageUtil.getLanguage(App.INSTANCE))
@@ -38,6 +38,7 @@ public class InformationPresenter extends BasePresenter<InformationFragment> {
         return OkGo.<HttpResult<Page<NewsBean>>>post(HttpConfig.BASE_URL + HttpConfig.INFORMATION)
                 .params("page",page)
                 .params("size",size)
+                .params("lang", LocalManageUtil.getLanguage(App.INSTANCE))
                 .converter(new JsonConvert<HttpResult<Page<NewsBean>>>() {})
                 .adapt(new FlowableBody<>())
                 .map(pageHttpResult -> {

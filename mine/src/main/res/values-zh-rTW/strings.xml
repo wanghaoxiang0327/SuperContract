@@ -65,7 +65,7 @@
 	<string name="mine_mine_activity_bind_googl_everify20">綁定穀歌驗證器</string>
 	<string name="mine_mine_activity_security40">*簡訊驗證用於提幣、轉賬、修改登入密碼、修改資金密碼；\n*穀歌驗證用於登入、提幣、修改登入密碼、修改資金密碼；\n*為了保證您的帳戶安全，以下兩種驗證管道至少開啟一種；</string>
 	<string name="mine_securityActivity5">為了保證您的帳戶安全，簡訊驗證和穀歌驗證管道至少開啟一種</string>
-	<string name="mine_mine_activity_language60">簡體中文</string>
+	<string name="mine_mine_activity_language60">简体中文</string>
 	<string name="mine_securityActivity3">已開啟</string>
 	<string name="mine_mine_activity_bind_googl_everify60">請妥善備份秘鑰以防遺失</string>
 	<string name="mine_mine_fragment_mine190">聯系客服</string>
@@ -87,4 +87,5 @@
 	<string name="mine_change">修改</string>
 	<string name="mine_bindMobileOrEmailActivity101">綁定郵箱</string>
 	<string name="mine_bindMobileOrEmailActivity201">請輸入您的郵箱地址</string>
+    <string name="mine_mission_total">累計佣金折合(USDT)</string>
 </resources>

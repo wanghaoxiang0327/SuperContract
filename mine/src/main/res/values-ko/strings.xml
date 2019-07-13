@@ -32,7 +32,7 @@
 	<string name="mine_mine_fragment_mine210">버전 번호</string>
 	<string name="mine_mine_activity_bind_googl_everify40">Google OTP를 열거 나 아래 QR 코드를 스캔하거나 수동으로 다음 키를 입력하여 확인 토큰을 추가하십시오. </string>
 	<string name="mine_mine_activity_security20">보안 센터</string>
-	<string name="mine_mine_activity_language100">중국어 번체</string>
+	<string name="mine_mine_activity_language100">繁體中文</string>
 	<string name="mine_mine_activity_reset_password260">확인 비밀번호를 입력하십시오.</string>
 	<string name="mine_mine_activity_reset_password100">원래 비밀번호를 입력하십시오.</string>
 	<string name="mine_mine_activity_bind_googl_everify170">Google 인증 코드</string>
@@ -65,7 +65,7 @@
 	<string name="mine_mine_activity_bind_googl_everify20">Google OTP 바인딩</string>
 	<string name="mine_mine_activity_security40">* SMS 확인은 돈을 인출하고, 돈을 송금하고, 로그인 및 비밀번호를 수정하는 데 사용됩니다. \ n * Google 인증은 로그인, 인출, 로그인 및 비밀번호 비밀번호 변경을 위해 사용됩니다. \ n * 계정의 보안을 위해 다음 두 가지 확인 방법이 있습니다. </string>
 	<string name="mine_securityActivity5">계정 보안을 유지하기 위해 SMS 확인 및 Google 확인은 적어도 한 가지 방법으로 열려 있습니다.</string>
-	<string name="mine_mine_activity_language60">중국어 간체</string>
+	<string name="mine_mine_activity_language60">简体中文</string>
 	<string name="mine_securityActivity3">열린</string>
 	<string name="mine_mine_activity_bind_googl_everify60">손실을 방지하려면 키를 올바르게 백업하십시오.</string>
 	<string name="mine_mine_fragment_mine190">고객 서비스에 문의하십시오.</string>
@@ -87,4 +87,5 @@
 	<string name="mine_change">수정</string>
 	<string name="mine_bindMobileOrEmailActivity101">편지함 바인딩</string>
 	<string name="mine_bindMobileOrEmailActivity201">이메일 주소를 입력하십시오.</string>
+	<string name="mine_mission_total">누적 커미션(USDT)</string>
 </resources>

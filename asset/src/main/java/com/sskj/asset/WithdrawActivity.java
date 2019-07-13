@@ -91,7 +91,7 @@ public class WithdrawActivity extends BaseActivity<WithdrawPresenter> {
     @Override
     public void initView() {
         mToolBarLayout.setRightButtonOnClickListener(view -> {
-            WithdrawRecordsActivity.start(this);
+            WithdrawRecordsActivity.start(this,"cash");
         });
 
         userViewModel.getUser().observe(this, userBean -> {

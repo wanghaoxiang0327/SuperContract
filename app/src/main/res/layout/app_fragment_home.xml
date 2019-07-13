@@ -51,16 +51,23 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:clipChildren="false"
             android:orientation="vertical">
 
-            <com.youth.banner.Banner
-                android:id="@+id/bannerView"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="160dp"
-                android:layout_marginLeft="35dp"
-                android:layout_marginRight="35dp"
-                android:clipChildren="false" />
+                android:layout_height="wrap_content"
+                android:clipChildren="false"
+                android:orientation="vertical">
+
+                <com.youth.banner.Banner
+                    android:id="@+id/bannerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="160dp"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginRight="35dp"
+                    android:clipChildren="false" />
+            </LinearLayout>
+
 
             <LinearLayout
                 android:layout_width="match_parent"

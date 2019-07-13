@@ -65,7 +65,9 @@ public abstract class JsonCallBack<T> extends AbsCallback<T> {
     public void onError(Response<T> response) {
         super.onError(response);
         if (response.getException() instanceof ApiException) {
-            ToastUtils.show(((ApiException) response.getException()).getMsg());
+            if (!((ApiException) response.getException()).getMsg().equals("当前版本为最新")){
+                ToastUtils.show(((ApiException) response.getException()).getMsg());
+            }
         } else if (response.getException() instanceof LogoutException) {
             RxBus.getDefault().postPre(response.getException());
         } else {

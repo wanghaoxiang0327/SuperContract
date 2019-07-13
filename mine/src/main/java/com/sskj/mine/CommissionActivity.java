@@ -3,19 +3,22 @@ package com.sskj.mine;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.sskj.common.CommonConfig;
 import com.sskj.common.DividerLineItemDecoration;
 import com.sskj.common.adapter.BaseAdapter;
 import com.sskj.common.adapter.ViewHolder;
 import com.sskj.common.base.BaseActivity;
 import com.sskj.common.utils.DigitUtils;
 import com.sskj.common.utils.NumberUtils;
+import com.sskj.common.utils.SpUtil;
 import com.sskj.common.utils.TimeFormatUtil;
 import com.sskj.mine.data.CommissionBean;
 import com.sskj.mine.data.CommissionDetailBean;
@@ -42,10 +45,20 @@ public class CommissionActivity extends BaseActivity<CommissionPresenter> {
     RecyclerView detailList;
     @BindView(R2.id.content_layout)
     LinearLayout contentLayout;
+    @BindView(R2.id.total_asset_tv)
+    TextView totalAssetTv;
+    @BindView(R2.id.hide_asset_img)
+    ImageView hideAssetImg;
+    @BindView(R2.id.cny_asset_tv)
+    TextView cnyAssetTv;
 
     private int size = 10;
     private int page = 1;
 
+    private String total;
+    private String cny;
+
+    private boolean showAsset;
     @Override
     public int getLayoutId() {
         return R.layout.mine_activity_commission;
@@ -83,6 +96,22 @@ public class CommissionActivity extends BaseActivity<CommissionPresenter> {
             }
         };
 
+        hideAssetImg.setOnClickListener(view -> {
+            if (showAsset) {
+                totalAssetTv.setText("****");
+                cnyAssetTv.setText("****");
+                showAsset = false;
+                SpUtil.put(CommonConfig.SHOWASSET, showAsset);
+                hideAssetImg.setImageResource(R.mipmap.mine_icon_hide);
+            } else {
+                totalAssetTv.setText(total);
+                cnyAssetTv.setText("≈" + cny + "CNY");
+                showAsset = true;
+                SpUtil.put(CommonConfig.SHOWASSET, showAsset);
+                hideAssetImg.setImageResource(R.mipmap.mine_icon_show);
+            }
+
+        });
 
     }
 
@@ -116,6 +145,10 @@ public class CommissionActivity extends BaseActivity<CommissionPresenter> {
 
 
     public void setCommission(CommissionBean data) {
+        total = NumberUtils.keepDown(data.getData().getTongji().getTtl_usdt(), 2);
+        cny = NumberUtils.keepDown(data.getData().getTongji().getTtl_cny(), 2);
+        totalAssetTv.setText(total);
+        cnyAssetTv.setText("≈" + cny + "CNY");
         commissionAdapter.setNewData(data.getData().getTotal());
         if (page == 1) {
             commissionDetailAdapter.setNewData(data.getData().getList());
@@ -127,4 +160,6 @@ public class CommissionActivity extends BaseActivity<CommissionPresenter> {
             mRefreshLayout.setNoMoreData(true);
         }
     }
+
+
 }

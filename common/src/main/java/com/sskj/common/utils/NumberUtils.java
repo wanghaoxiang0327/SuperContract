@@ -31,7 +31,7 @@ public class NumberUtils {
 
 
     public static String keepDown(Object num, int digit) {
-        return format(num, digit, digit, RoundingMode.DOWN);
+        return format(num, 0, digit, RoundingMode.DOWN);
     }
 
 

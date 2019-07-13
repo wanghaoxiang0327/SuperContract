@@ -58,6 +58,8 @@ public abstract class BaseActivity<P extends BasePresenter> extends ExtendActivi
 
     protected UserViewModel userViewModel;
 
+    TipDialog tipDialog;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -174,16 +176,20 @@ public abstract class BaseActivity<P extends BasePresenter> extends ExtendActivi
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void logout(LogoutException e) {
-        new TipDialog(this)
-                .setContent(e.getMessage())
-                .setCancelVisible(View.GONE)
-                .setConfirmListener(dialog -> {
-                    dialog.dismiss();
-                    SpUtil.exit(BaseApplication.getMobile());
-                    userViewModel.clear();
-                    ARouter.getInstance().build(RoutePath.LOGIN_LOGIN).navigation();
-                    AppManager.getInstance().finishAllLogin();
-                }).show();
+        if (tipDialog==null){
+            tipDialog = new TipDialog(this)
+                    .setContent(e.getMessage())
+                    .setCancelVisible(View.GONE)
+                    .setConfirmListener(dialog -> {
+                        dialog.dismiss();
+                        SpUtil.exit(BaseApplication.getMobile());
+                        userViewModel.clear();
+                        ARouter.getInstance().build(RoutePath.LOGIN_LOGIN).navigation();
+                        AppManager.getInstance().finishAllLogin();
+                    });
+        }
+        tipDialog.setCancelable(false);
+        tipDialog.show();
     }
 
     public void startTimeDown(TextView getCodeView) {

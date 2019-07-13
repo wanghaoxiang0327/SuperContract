@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.Gravity;
 import android.widget.FrameLayout;
 import android.widget.TextSwitcher;
@@ -20,6 +21,7 @@ import com.sskj.common.glide.ZoomOutPageTransformer;
 import com.sskj.common.http.BaseHttpConfig;
 import com.sskj.common.http.Page;
 import com.sskj.common.language.LanguageSPUtil;
+import com.sskj.common.language.LocalManageUtil;
 import com.sskj.common.router.RoutePath;
 import com.sskj.common.rxbus.RxBus;
 import com.sskj.common.rxbus.Subscribe;
@@ -123,6 +125,8 @@ public class HomeFragment extends BaseFragment<HomePresenter> {
 
         tvNotice.setFactory(() -> {
             TextView textView = new TextView(getActivity());
+            textView.setMaxLines(2);
+            textView.setEllipsize(TextUtils.TruncateAt.END);
             textView.setTextColor(color(R.color.common_text));
             textView.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT));
             textView.setGravity(Gravity.CENTER_VERTICAL);
@@ -166,7 +170,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> {
     @Override
     public void loadData() {
         mPresenter.getMarketList();
-        mPresenter.getBanner();
+        mPresenter.getBanner(LocalManageUtil.getLanguage(getContext()));
         mPresenter.getNotice();
     }
 

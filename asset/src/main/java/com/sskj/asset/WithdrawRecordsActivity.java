@@ -56,7 +56,8 @@ public class WithdrawRecordsActivity extends BaseActivity<WithdrawRecordsPresent
 
     private String type = "cash";
 
-    private Map<Integer, String> statusMap = new HashMap<>();
+    private Map<Integer, String> withDrawStatusMap = new HashMap<>();
+    private Map<Integer, String> rechargeStatusMap = new HashMap<>();
 
     @Override
     public int getLayoutId() {
@@ -70,11 +71,24 @@ public class WithdrawRecordsActivity extends BaseActivity<WithdrawRecordsPresent
 
     @Override
     public void initView() {
-        statusMap.put(1, getString(R.string.asset_withdrawRecordsActivity1));
-        statusMap.put(2, getString(R.string.asset_withdrawRecordsActivity2));
-        statusMap.put(3, getString(R.string.asset_withdrawRecordsActivity3));
-        statusMap.put(4, getString(R.string.asset_withdrawRecordsActivity4));
-        statusMap.put(5, getString(R.string.asset_withdrawRecordsActivity5));
+        type=getIntent().getStringExtra("type");
+
+        if (type.equals("cash")){
+            mToolBarLayout.setTitle(getString(R.string.asset_asset_activity_withdraw_records20));
+        }else {
+            mToolBarLayout.setTitle(R.string.asset_recharge_records);
+        }
+
+        withDrawStatusMap.put(1, getString(R.string.asset_withdrawRecordsActivity1));
+        withDrawStatusMap.put(2, getString(R.string.asset_withdrawRecordsActivity2));
+        withDrawStatusMap.put(3, getString(R.string.asset_withdrawRecordsActivity3));
+        withDrawStatusMap.put(4, getString(R.string.asset_withdrawRecordsActivity4));
+        withDrawStatusMap.put(5, getString(R.string.asset_withdrawRecordsActivity5));
+
+        rechargeStatusMap.put(1, getString(R.string.asset_unpay));
+        rechargeStatusMap.put(2, getString(R.string.asset_payed));
+
+
         withdrawRecords.addItemDecoration(new DividerLineItemDecoration(this)
                 .setFirstDraw(false)
                 .setLastDraw(false)
@@ -86,8 +100,16 @@ public class WithdrawRecordsActivity extends BaseActivity<WithdrawRecordsPresent
                 holder.setText(R.id.address, item.getQianbao_url())
                         .setText(R.id.count, NumberUtils.keepDown(item.getPrice(), DigitUtils.getAssetDigit(item.getPname())) + " " + item.getPname())
                         .setText(R.id.crete_time, item.getAddtime())
-                        .setText(R.id.check_time, item.getCheck_time())
-                        .setText(R.id.status, statusMap.get(item.getState()));
+                        .setText(R.id.check_time, item.getCheck_time());
+                if (type.equals("cash")){
+                    holder.setText(R.id.address_name, R.string.asset_withdraw);
+                    holder.setText(R.id.count_name, R.string.asset_withdraw_count);
+                    holder.setText(R.id.status, withDrawStatusMap.get(item.getState()));
+                }else {
+                    holder.setText(R.id.address_name, R.string.asset_recharge_address);
+                    holder.setText(R.id.count_name, R.string.asset_recharge_count);
+                    holder.setText(R.id.status, rechargeStatusMap.get(item.getState()));
+                }
             }
         };
 
@@ -159,8 +181,9 @@ public class WithdrawRecordsActivity extends BaseActivity<WithdrawRecordsPresent
     }
 
 
-    public static void start(Context context) {
+    public static void start(Context context,String type) {
         Intent intent = new Intent(context, WithdrawRecordsActivity.class);
+        intent.putExtra("type", type);
         context.startActivity(intent);
     }
 

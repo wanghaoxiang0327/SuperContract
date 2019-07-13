@@ -1,26 +1,104 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:background="@color/common_dark" android:layout_height="match_parent" android:layout_width="match_parent" android:orientation="vertical">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/common_dark"
+    android:orientation="vertical">
 
-    <com.sskj.common.view.ToolBarLayout android:layout_height="wrap_content" android:layout_width="match_parent" app:background_color="@color/common_action_bar" app:right_img="@mipmap/asset_icon_history" app:title="@string/asset_asset_activity_recharge20"/>
+    <com.sskj.common.view.ToolBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:background_color="@color/common_action_bar"
+        app:right_img="@mipmap/asset_icon_history"
+        app:title="@string/asset_asset_activity_recharge20" />
 
 
-    <com.allen.library.SuperTextView android:id="@+id/select_coin" android:layout_height="50dp" android:layout_width="match_parent" android:paddingLeft="@dimen/common_margin" android:paddingRight="@dimen/common_margin" app:sBackgroundDrawableRes="@color/common_background" app:sDividerLineColor="@color/common_divider" app:sDividerLineType="top" app:sLeftTextColor="@color/common_text" app:sLeftTextString="@string/asset_asset_activity_recharge40" app:sRightTextColor="@color/common_text" app:sRightTvDrawableRight="@mipmap/common_arrow_right"/>
+    <com.allen.library.SuperTextView
+        android:id="@+id/select_coin"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:paddingLeft="@dimen/common_margin"
+        android:paddingRight="@dimen/common_margin"
+        app:sBackgroundDrawableRes="@color/common_background"
+        app:sDividerLineColor="@color/common_divider"
+        app:sDividerLineType="top"
+        app:sLeftTextColor="@color/common_text"
+        app:sLeftTextString="@string/asset_asset_activity_recharge40"
+        app:sRightTextColor="@color/common_text"
+        app:sRightTvDrawableRight="@mipmap/common_arrow_right" />
 
 
-    <LinearLayout android:background="@drawable/asset_recharge_bg" android:gravity="center_horizontal" android:layout_height="wrap_content" android:layout_marginLeft="30dp" android:layout_marginRight="30dp" android:layout_marginTop="20dp" android:layout_width="match_parent" android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/asset_recharge_bg"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
 
-        <ImageView android:background="@color/white" android:id="@+id/qr_code_img" android:layout_height="140dp" android:layout_marginEnd="8dp" android:layout_marginStart="8dp" android:layout_marginTop="45dp" android:layout_width="140dp" android:padding="5dp"/>
+        <ImageView
+            android:id="@+id/qr_code_img"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="45dp"
+            android:layout_marginEnd="8dp"
+            android:background="@color/white"
+            android:padding="5dp" />
 
-        <TextView android:layout_height="wrap_content" android:layout_marginEnd="8dp" android:layout_marginStart="8dp" android:layout_marginTop="16dp" android:layout_width="wrap_content" android:text="@string/asset_asset_activity_recharge100" android:textColor="@color/common_text"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/asset_asset_activity_recharge100"
+            android:textColor="@color/common_text" />
 
-        <View android:background="@color/common_divider" android:layout_height="1dp" android:layout_marginLeft="@dimen/common_margin" android:layout_marginRight="@dimen/common_margin" android:layout_marginTop="20dp" android:layout_width="match_parent"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="@dimen/common_margin"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="@dimen/common_margin"
+            android:background="@color/common_divider" />
 
-        <TextView android:gravity="center" android:id="@+id/recharge_address_tv" android:layout_height="wrap_content" android:layout_marginTop="20dp" android:layout_width="match_parent" android:paddingLeft="@dimen/common_margin" android:paddingRight="@dimen/common_margin" android:textColor="@color/common_text" tools:text="ghsofjlasfdgksjdlf;asfjeso5"/>
+        <TextView
+            android:id="@+id/recharge_address_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:paddingLeft="@dimen/common_margin"
+            android:paddingRight="@dimen/common_margin"
+            android:textColor="@color/common_text"
+            tools:text="ghsofjlasfdgksjdlf;asfjeso5" />
 
-        <Button android:background="@drawable/common_tip_15" android:id="@+id/copy" android:layout_height="45dp" android:layout_marginBottom="30dp" android:layout_marginTop="30dp" android:layout_width="140dp" android:text="@string/asset_asset_activity_recharge160" android:textColor="@color/common_button_text"/>
+        <Button
+            android:id="@+id/copy"
+            android:layout_width="140dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/common_tip_15"
+            android:text="@string/asset_asset_activity_recharge160"
+            android:textColor="@color/common_button_text" />
 
     </LinearLayout>
 
-    <TextView android:id="@+id/recharge_tip" android:layout_height="wrap_content" android:layout_marginLeft="50dp" android:layout_marginRight="50dp" android:layout_marginTop="30dp" android:layout_width="match_parent" android:text="@string/asset_asset_activity_recharge190" android:textColor="@color/common_hint" android:textSize="12sp"/>
+    <TextView
+        android:id="@+id/recharge_tip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="50dp"
+        android:text="@string/asset_asset_activity_recharge190"
+        android:textColor="@color/common_hint"
+        android:textSize="12sp" />
 
 </LinearLayout>

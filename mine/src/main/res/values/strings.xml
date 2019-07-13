@@ -88,4 +88,5 @@
     <string name="mine_change">修改</string>
     <string name="mine_bindMobileOrEmailActivity101">绑定邮箱</string>
     <string name="mine_bindMobileOrEmailActivity201">请输入您的邮箱地址</string>
+    <string name="mine_mission_total">累计佣金折合(USDT)</string>
 </resources>

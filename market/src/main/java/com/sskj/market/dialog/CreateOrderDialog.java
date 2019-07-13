@@ -139,8 +139,9 @@ public class CreateOrderDialog extends BottomSheetDialog {
                     initTradePoint(tradeCoin.getAim_point());
                     minChangePrice = tradeCoin.getMin_price();
                     price = Double.parseDouble(tradeCoin.getPrice());
-                    price_tv.setText(tradeCoin.getPrice());
+                    price_tv.setText(NumberUtils.keepDown(tradeCoin.getPrice(), DigitUtils.getDigit(code)));
                     pid = tradeCoin.getPid();
+                    computeTotal();
                 }, Throwable::printStackTrace);
 
 

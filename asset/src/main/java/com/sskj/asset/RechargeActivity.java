@@ -63,6 +63,9 @@ public class RechargeActivity extends BaseActivity<RechargePresenter> {
                 showCoinDialog(coinList);
             }
         });
+       mToolBarLayout.setRightButtonOnClickListener(v -> {
+           WithdrawRecordsActivity.start(this,"recharge");
+       });
     }
 
     @Override

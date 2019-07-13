@@ -3,6 +3,7 @@ package com.sskj.asset;
 import com.lzy.okgo.OkGo;
 import com.lzy.okrx2.adapter.FlowableBody;
 import com.sskj.asset.data.AssetRecordsBean;
+import com.sskj.common.App;
 import com.sskj.common.data.AssetType;
 import com.sskj.common.base.BasePresenter;
 import com.sskj.common.data.CoinAsset;
@@ -35,6 +36,7 @@ public class AssetRecordsPresenter extends BasePresenter<AssetRecordsActivity> {
                 .params("type", type)
                 .params("p", p)
                 .params("size", size)
+                .params("lang", LocalManageUtil.getLanguage(App.INSTANCE))
                 .converter(new JsonConvert<HttpResult<Page<AssetRecordsBean>>>() {
                 })
                 .adapt(new FlowableBody<>())
@@ -65,7 +67,7 @@ public class AssetRecordsPresenter extends BasePresenter<AssetRecordsActivity> {
 
     }
 
-    public void getAssetType(boolean showDialog,String lang) {
+    public void getAssetType(boolean showDialog, String lang) {
         OkGo.<HttpResult<List<AssetType>>>get(BaseHttpConfig.BASE_URL + HttpConfig.ASSET_TYPE)
                 .params("lang", lang)
                 .execute(new JsonCallBack<HttpResult<List<AssetType>>>() {

@@ -61,4 +61,11 @@
 	<string name="asset_asset_activity_transfer80">Relative ID</string>
 	<string name="asset_assetFragment101">In order to keep your account secure, SMS verification and Google verification are at least one way open.</string>
 	<string name="asset_assetFragment2">Please set the payment password first.</string>
+    <string name="asset_payed">Paid</string>
+	<string name="asset_unpay">Unpaid</string>
+	<string name="asset_recharge_records">Recharge Record</string>
+    <string name="asset_withdraw">Address</string>
+	<string name="asset_recharge_address">Address</string>
+	<string name="asset_withdraw_count">Count</string>
+	<string name="asset_recharge_count">Count</string>
 </resources>

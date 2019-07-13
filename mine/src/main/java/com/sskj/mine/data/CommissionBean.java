@@ -12,6 +12,37 @@ public class CommissionBean {
     public static class Res {
         private List<CommissionTopBean> total;
         private List<CommissionDetailBean> list;
+        private Total tongji;
+
+        public Total getTongji() {
+            return tongji;
+        }
+
+        public void setTongji(Total tongji) {
+            this.tongji = tongji;
+        }
+
+        public class Total{
+            private String ttl_usdt;
+            private String ttl_cny;
+
+            public String getTtl_usdt() {
+                return ttl_usdt;
+            }
+
+            public void setTtl_usdt(String ttl_usdt) {
+                this.ttl_usdt = ttl_usdt;
+            }
+
+            public String getTtl_cny() {
+                return ttl_cny;
+            }
+
+            public void setTtl_cny(String ttl_cny) {
+                this.ttl_cny = ttl_cny;
+            }
+        }
+
 
         public List<CommissionTopBean> getTotal() {
             return total;

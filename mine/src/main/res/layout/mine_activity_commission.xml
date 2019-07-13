@@ -24,6 +24,59 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/common_margin"
+                android:background="@drawable/common_tip_15"
+                android:padding="@dimen/common_margin">
+
+                <TextView
+                    android:id="@+id/asset_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/mine_mission_total"
+                    android:textColor="@color/common_text"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <TextView
+                    android:id="@+id/total_asset_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="0.0000"
+                    android:textColor="@color/common_text"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="@+id/asset_textview"
+                    app:layout_constraintTop_toBottomOf="@+id/asset_textview" />
+
+                <ImageView
+                    android:id="@+id/hide_asset_img"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_marginStart="16dp"
+                    android:src="@mipmap/mine_icon_show"
+                    app:layout_constraintBottom_toBottomOf="@+id/total_asset_tv"
+                    app:layout_constraintStart_toEndOf="@+id/total_asset_tv"
+                    app:layout_constraintTop_toTopOf="@+id/total_asset_tv" />
+
+                <TextView
+                    android:id="@+id/cny_asset_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="≈0.00CNY"
+                    android:textColor="@color/common_text"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="@+id/total_asset_tv"
+                    app:layout_constraintTop_toBottomOf="@+id/total_asset_tv" />
+
+            </android.support.constraint.ConstraintLayout>
+
+
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/commission_top_list"
                 android:layout_width="match_parent"

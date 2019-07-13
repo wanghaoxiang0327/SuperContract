@@ -61,4 +61,11 @@
 	<string name="asset_asset_activity_transfer80">상대 ID</string>
 	<string name="asset_assetFragment101">계정 보안을 유지하기 위해 SMS 확인 및 Google 확인은 적어도 한 가지 방법으로 열려 있습니다.</string>
 	<string name="asset_assetFragment2">먼저 지불 비밀번호를 설정하십시오.</string>
+    <string name="asset_payed">유료</string>
+	<string name="asset_unpay">지불되지 않은</string>
+	<string name="asset_recharge_records">통화 기록</string>
+    <string name="asset_withdraw">주소</string>
+	<string name="asset_recharge_address">주소</string>
+	<string name="asset_withdraw_count">수량</string>
+	<string name="asset_recharge_count">수량</string>
 </resources>

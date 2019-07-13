@@ -9,6 +9,7 @@ import com.sskj.common.http.BaseHttpConfig;
 import com.sskj.common.http.HttpConfig;
 import com.sskj.common.http.HttpResult;
 import com.sskj.common.http.JsonCallBack;
+import com.sskj.common.language.LocalManageUtil;
 import com.sskj.common.user.data.UserBean;
 import com.sskj.common.user.data.UserDao;
 import com.sskj.common.user.data.UserDataBase;
@@ -36,8 +37,8 @@ public class UserRepository {
     public void update() {
 
         if (BaseApplication.isLogin()){
-
             OkGo.<HttpResult<UserBean>>post(BaseHttpConfig.BASE_URL + HttpConfig.USER_INFO)
+                    .params("lang", LocalManageUtil.getLanguage(App.INSTANCE))
                     .execute(new JsonCallBack<HttpResult<UserBean>>() {
                         @Override
                         protected void onNext(HttpResult<UserBean> result) {

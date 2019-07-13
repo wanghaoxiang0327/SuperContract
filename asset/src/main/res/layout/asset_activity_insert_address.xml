@@ -1,29 +1,105 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:background="@color/common_dark" android:layout_height="match_parent" android:layout_width="match_parent" android:orientation="vertical">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/common_dark"
+    android:orientation="vertical">
 
 
-    <com.sskj.common.view.ToolBarLayout android:layout_height="wrap_content" android:layout_width="match_parent" app:background_color="@color/common_action_bar" app:title="@string/asset_asset_activity_address_list20"/>
+    <com.sskj.common.view.ToolBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:background_color="@color/common_action_bar"
+        app:title="@string/asset_asset_activity_address_list20" />
 
 
-    <LinearLayout android:background="@drawable/common_edt_line_bg" android:gravity="center_vertical" android:layout_height="50dp" android:layout_marginTop="5dp" android:layout_width="match_parent" android:orientation="horizontal" android:paddingLeft="@dimen/common_margin" android:paddingRight="@dimen/common_margin">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/common_edt_line_bg"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/common_margin"
+        android:paddingRight="@dimen/common_margin">
 
-        <TextView android:layout_height="wrap_content" android:layout_width="wrap_content" android:text="@string/asset_asset_activity_insert_address60" android:textColor="@color/common_text" android:textSize="15sp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/asset_asset_activity_insert_address60"
+            android:textColor="@color/common_text"
+            android:textSize="15sp" />
 
-        <EditText android:background="@null" android:drawablePadding="10dp" android:hint="@string/asset_asset_activity_insert_address80" android:id="@+id/address_edt" android:imeOptions="actionNext" android:inputType="text" android:layout_height="50dp" android:layout_marginLeft="16dp" android:layout_weight="1" android:layout_width="0dp" android:maxLines="1" android:textColor="@color/common_text" android:textColorHint="@color/common_hint" android:textSize="14sp"/>
+        <EditText
+            android:id="@+id/address_edt"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="16dp"
+            android:layout_weight="1"
+            android:background="@null"
+            android:drawablePadding="10dp"
+            android:hint="@string/asset_asset_activity_insert_address80"
+            android:imeOptions="actionNext"
+            android:inputType="text"
+            android:maxLines="1"
+            android:textColor="@color/common_text"
+            android:textColorHint="@color/common_hint"
+            android:textSize="14sp" />
 
-        <ImageView android:id="@+id/select_address" android:layout_height="20dp" android:layout_marginLeft="16dp" android:layout_width="20dp" android:src="@mipmap/asset_scan"/>
+        <ImageView
+            android:id="@+id/select_address"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="16dp"
+            android:src="@mipmap/asset_scan" />
 
     </LinearLayout>
 
-    <LinearLayout android:background="@drawable/common_edt_line_bg" android:gravity="center_vertical" android:layout_height="50dp" android:layout_width="match_parent" android:orientation="horizontal" android:paddingLeft="@dimen/common_margin" android:paddingRight="@dimen/common_margin">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/common_edt_line_bg"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/common_margin"
+        android:paddingRight="@dimen/common_margin">
 
-        <TextView android:layout_height="wrap_content" android:layout_width="wrap_content" android:text="@string/asset_asset_activity_insert_address150" android:textColor="@color/common_text" android:textSize="15sp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/asset_asset_activity_insert_address150"
+            android:textColor="@color/common_text"
+            android:textSize="15sp" />
 
-        <EditText android:background="@null" android:drawablePadding="10dp" android:hint="@string/asset_asset_activity_insert_address170" android:id="@+id/remark_edt" android:imeOptions="actionNext" android:inputType="text" android:layout_height="50dp" android:layout_marginLeft="16dp" android:layout_weight="1" android:layout_width="0dp" android:maxLines="1" android:textColor="@color/common_text" android:textColorHint="@color/common_hint" android:textSize="14sp"/>
+        <EditText
+            android:id="@+id/remark_edt"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="16dp"
+            android:layout_weight="1"
+            android:background="@null"
+            android:drawablePadding="10dp"
+            android:hint="@string/asset_asset_activity_insert_address170"
+            android:imeOptions="actionNext"
+            android:inputType="text"
+            android:maxLines="1"
+            android:textColor="@color/common_text"
+            android:textColorHint="@color/common_hint"
+            android:textSize="14sp" />
 
 
     </LinearLayout>
 
 
-    <Button android:background="@drawable/common_tip_50" android:id="@+id/submit" android:layout_height="45dp" android:layout_marginLeft="@dimen/common_margin" android:layout_marginRight="@dimen/common_margin" android:layout_marginTop="50dp" android:layout_width="match_parent" android:text="@string/asset_asset_activity_insert_address200" android:textColor="@color/common_white"/>
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginLeft="@dimen/common_margin"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="@dimen/common_margin"
+        android:background="@drawable/common_tip_50"
+        android:text="@string/asset_asset_activity_insert_address200"
+        android:textColor="@color/common_white" />
 </LinearLayout>

@@ -33,9 +33,10 @@ public class HomePresenter extends BasePresenter<HomeFragment> {
     }
 
 
-    public void getBanner() {
+    public void getBanner(String lang) {
         OkGo.<HttpResult<List<BannerBean>>>get(HttpConfig.BASE_URL + HttpConfig.BANNER)
                 .params("type", 0)
+                .params("lang", lang)
                 .execute(new JsonCallBack<HttpResult<List<BannerBean>>>(this) {
                     @Override
                     protected void onNext(HttpResult<List<BannerBean>> result) {
@@ -46,7 +47,7 @@ public class HomePresenter extends BasePresenter<HomeFragment> {
     }
 
     public void getNotice() {
-        OkGo.<HttpResult<Page<NewsBean>>>get(HttpConfig.BASE_URL + HttpConfig.NOTICE_LIST)
+        OkGo.<HttpResult<Page<NewsBean>>>post(HttpConfig.BASE_URL + HttpConfig.NOTICE_LIST)
                 .params("lang", LocalManageUtil.getLanguage(App.INSTANCE))
                 .execute(new JsonCallBack<HttpResult<Page<NewsBean>>>(this) {
                     @Override

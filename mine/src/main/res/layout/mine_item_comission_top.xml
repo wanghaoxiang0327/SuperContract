@@ -86,6 +86,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
+        android:maxLines="1"
+        android:ellipsize="end"
         android:textColor="@color/common_text"
         android:textSize="13sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/mine_textview2"

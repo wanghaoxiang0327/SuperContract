@@ -61,4 +61,11 @@
 	<string name="asset_asset_activity_transfer80">對方ID</string>
 	<string name="asset_assetFragment101">為了保證您的賬戶安全，短信驗證和谷歌驗證方式至少開啟一種</string>
 	<string name="asset_assetFragment2">請先設置資金密碼</string>
+    <string name="asset_payed">未支付</string>
+	<string name="asset_unpay">已支付</string>
+	<string name="asset_recharge_records">充幣記錄</string>
+    <string name="asset_withdraw">提幣地址</string>
+	<string name="asset_recharge_address">充值地址</string>
+	<string name="asset_withdraw_count">提幣數量</string>
+	<string name="asset_recharge_count">充幣數量</string>
 </resources>

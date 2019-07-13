@@ -72,7 +72,7 @@ public class HoldFragment extends BaseFragment<HoldPresenter> {
                 .setFirstDraw(false)
                 .setLastDraw(false)
         );
-
+        recordsList.getItemAnimator().setChangeDuration(0);
         holdAdapter = new BaseAdapter<HoldBean>(R.layout.market_item_hold, null, recordsList, false) {
             @Override
             public void bind(ViewHolder holder, HoldBean item) {

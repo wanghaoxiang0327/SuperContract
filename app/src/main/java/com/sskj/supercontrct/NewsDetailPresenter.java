@@ -20,7 +20,7 @@ public class NewsDetailPresenter extends BasePresenter<NewsDetailActivity> {
 
 
     public void getNoticeDetail(String id) {
-        OkGo.<HttpResult<NewsBean>>get(HttpConfig.BASE_URL + HttpConfig.NOTICE_DETAIL)
+        OkGo.<HttpResult<NewsBean>>post(HttpConfig.BASE_URL + HttpConfig.NOTICE_DETAIL)
                 .params("id",id)
                 .params("lang", LocalManageUtil.getLanguage(App.INSTANCE))
                 .execute(new JsonCallBack<HttpResult<NewsBean>>(this) {
