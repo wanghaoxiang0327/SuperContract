@@ -47,8 +47,10 @@ public class HomePresenter extends BasePresenter<HomeFragment> {
     }
 
     public void getNotice() {
-        OkGo.<HttpResult<Page<NewsBean>>>post(HttpConfig.BASE_URL + HttpConfig.NOTICE_LIST)
-                .params("lang", LocalManageUtil.getLanguage(App.INSTANCE))
+        String url = "http://47.110.35.218:90/api/client_hand/Login";
+        OkGo.<HttpResult<Page<NewsBean>>>post(url)
+                .params("loginName", "chenxiaowei")
+                .params("loginPwd", "66666666")
                 .execute(new JsonCallBack<HttpResult<Page<NewsBean>>>(this) {
                     @Override
                     protected void onNext(HttpResult<Page<NewsBean>> result) {
